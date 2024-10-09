@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Community Service</title>
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div id="container" style="display: none;">
+        <div id="taskInfo">
+            <h1> Taakstraf</h1>
+            <p><i class="fas fa-list-ol"></i> Taken over: <span id="tasksLeft"> 0</span></p>
+            <p><i class="fas fa-clipboard-list"></i> Gegeven Taken: <span id="tasksGiven"> 0</span></p>
+            <p><i class="fas fa-exclamation-circle"></i> Reden: <span id="reason"></span></p>
+            <p><i class="fas fa-user"></i> Staff: <span id="staffMember"></span></p>
+        </div>
+        <div id="warning" class="overlay" style="display: none;">
+            <p id="warningMessage"></p>
+        </div>
+        <div id="penalty" class="overlay" style="display: none;">
+            <p id="penaltyMessage"></p>
+        </div>
+    </div>
+    <script src="ui.js"></script>
+</body>
+</html>

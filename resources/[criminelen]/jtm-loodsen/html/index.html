@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Loods Interface</title>
+    <style>
+        html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container,
+.containerOwner {
+    background-color: #2b2b2b;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 1020px; /* Fixed width for the "computer screen" */
+    height: 680px;
+    display: none;
+    position: relative; /* Allow positioning of the scrollable area */
+}
+
+.container .scrollable-content,
+.containerOwner .scrollable-content {
+    height: calc(100% - 100px); /* Adjust height to accommodate buttons and padding */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 0px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #444;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+#opslagData {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    font-size: 14px;
+    word-break: break-word; /* To handle long text */
+}
+
+.button-container {
+    padding: 10px;
+}
+
+/* Flexbox container for plant growth */
+.plant-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.plant-box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.plant-box h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.plant-box p {
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loods Beheer</h1>
+        <div class="scrollable-content">
+            <div class="plant-container" id="plantContainer">Loading...</div>
+            <div class="opslagContainer">
+                <a>Test</a>
+            </div>
+        </div>
+        <button id="sluiten">Sluiten</button>
+    </div>
+    <div class="containerOwner">
+        <h1>Loods beheer</h1>
+        <div class="scrollable-content">
+            <div class="plant-container" id="plantContainerOwner">Loading...</div>
+            <div class="opslagContainerOwner">
+                <a>Test</a>
+            </div>
+            <button id="plukken">Plukken</button>
+            <!-- <button id="wassen">Wassen</button> -->
+            <button id="sluitenOwner">Sluiten</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('message', function (event) {
+            if (event.data.action === 'show') {
+                document.querySelector('.container').style.display = 'block';
+                document.querySelector('body').style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+
+                
+            } else if (event.data.action === 'showowner') {
+                document.querySelector('.containerOwner').style.display = 'block';
+                document.querySelector('body').style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+
+                
+            } else if (event.data.action === 'hide') {
+                document.querySelector('.container').style.display = 'none';
+                document.querySelector('body').style.backgroundColor = 'transparent';
+            } else if (event.data.action === 'hideowner') {
+                document.querySelector('.containerOwner').style.display = 'none';
+                document.querySelector('body').style.backgroundColor = 'transparent';
+            } else if (event.data.action === 'plantGrowthUpdate') {
+                // Create plant growth boxes for owners
+                let plantContainerOwner = document.querySelector('#plantContainerOwner');
+                let plantContainer = document.querySelector('#plantContainer');
+                plantContainerOwner.innerHTML = '';
+                plantContainer.innerHTML = '';
+                for (let plantId in event.data.plantGrowth) {
+                    let plantBox = `<div class="plant-box">
+                                        <h4>Plant ${Number(plantId) + 1}</h4>
+                                        <p>${event.data.plantGrowth[plantId]}%</p>
+                                    </div>`;
+                    plantContainerOwner.innerHTML += plantBox;
+                    plantContainer.innerHTML += plantBox;
+                }
+                let opslagContainerOwner = document.querySelector('.opslagContainerOwner');
+                let opslagContainer = document.querySelector('.opslagContainer');
+                opslagContainer.innerHTML = "Opslag: " + event.data.opslag + "/" + event.data.maxopslag + " KG";
+                opslagContainerOwner.innerHTML = "Opslag: " + event.data.opslag + "/" + event.data.maxopslag + " KG";
+            }
+        });
+
+        document.getElementById('plukken').addEventListener('click', function () {
+            fetch(`https://${GetParentResourceName()}/plukken`, { 
+                method: 'POST', 
+                headers: { 
+                    'Content-Type': 'application/json' 
+                }
+            });
+        });
+
+       // document.getElementById('wassen').addEventListener('click', function () {
+      //      fetch(`https://${GetParentResourceName()}/wassen`, { method: 'POST' });
+       // });
+
+        document.getElementById('sluiten').addEventListener('click', function () {
+            fetch(`https://${GetParentResourceName()}/close`, { method: 'POST' });
+        });
+        document.getElementById('sluitenOwner').addEventListener('click', function () {
+            fetch(`https://${GetParentResourceName()}/closeOwner`, { method: 'POST' });
+        });
+    </script>
+</body>
+</html>

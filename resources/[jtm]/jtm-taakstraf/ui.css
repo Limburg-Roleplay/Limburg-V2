@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+#container {
+    position: fixed;
+    top: 50%; /* Verplaats naar midden van de pagina */
+    right: 20px;
+    transform: translateY(-50%); /* Verschuif omhoog met helft van de hoogte van de container */
+    background-color: #1E1E1E;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    display: none;
+    width: 300px;
+}
+
+#taskInfo, #warning, #penalty {
+    display: none;
+}
+
+#taskInfo h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#taskInfo p {
+    margin: 5px 0;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
+
+#taskInfo i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.overlay {
+    background-color: rgba(255, 255, 0, 0.75);
+    color: black;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#penalty {
+    background-color: rgba(255, 0, 0, 0.75);
+    color: white;
+}

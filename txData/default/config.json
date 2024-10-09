@@ -1,0 +1,51 @@
+{
+  "global": {
+    "serverName": "Limburg Roleplay",
+    "language": "nl",
+    "menuEnabled": true,
+    "menuAlignRight": false,
+    "menuPageKey": "Tab",
+    "hideDefaultAnnouncement": false,
+    "hideDefaultDirectMessage": false,
+    "hideDefaultWarning": false,
+    "hideDefaultScheduledRestartWarning": false
+  },
+  "logger": {},
+  "monitor": {
+    "restarterSchedule": [
+      "06:00",
+      "18:00"
+    ],
+    "resourceStartingTolerance": 90
+  },
+  "playerDatabase": {
+    "onJoinCheckBan": true,
+    "whitelistMode": "guildRoles",
+    "whitelistedDiscordRoles": [
+      "1249792709774938177"
+    ],
+    "whitelistRejectionMessage": "Je hebt nog niet de inwoner rol in onze discord join https://discord.com/invite/limburgroleplay om te spelen!",
+    "requiredBanHwidMatches": 1,
+    "banRejectionMessage": "Onterechte ban? maak een ticket aan in onze support discord -> https://discord.com/invite/limburgroleplay"
+  },
+  "webServer": {
+    "disableNuiSourceCheck": false
+  },
+  "discordBot": {
+    "enabled": true,
+    "token": "MTI1NjkxNTQ4NjAwNDg3NTI2NA.Gw6-HF.448SlJFEFVmqEynnR7E_wMQDhdGIIBCOP66lqc",
+    "guild": "1249792709774938172",
+    "announceChannel": "1249792712689844325",
+    "embedJson": "{\n  \"title\": \"{{serverName}}\",\n  \"url\": \"{{serverBrowserUrl}}\",\n  \"description\": \"Limburg Roleplay Server Status\",\n  \"fields\": [\n    {\n      \"name\": \"> STATUS\",\n      \"value\": \"```\\n{{statusString}}\\n```\",\n      \"inline\": true\n    },\n    {\n      \"name\": \"> PLAYERS\",\n      \"value\": \"```\\n{{serverClients}}/{{serverMaxClients}}\\n```\",\n      \"inline\": true\n    },\n    {\n      \"name\": \"> F8 CONNECT COMMAND\",\n      \"value\": \"```\\nconnect 185.228.81.108\\n```\"\n    },\n    {\n      \"name\": \"> NEXT RESTART\",\n      \"value\": \"```\\n{{nextScheduledRestart}}\\n```\",\n      \"inline\": true\n    },\n    {\n      \"name\": \"> UPTIME\",\n      \"value\": \"```\\n{{uptime}}\\n```\",\n      \"inline\": true\n    }\n  ],\n  \"image\": {\n    \"url\": \"https://cdn.discordapp.com/attachments/1249792712689844325/1258731203729555536/BoinaVerde.png?ex=66891c49&is=6687cac9&hm=3a07eb6be26e981466b2675c7a45148db6ee81b8d8dd2975fef49b1d430a78f9&\"\n  },\n  \"thumbnail\": {\n    \"url\": \"https://cdn.discordapp.com/attachments/1249792712689844325/1258731203729555536/BoinaVerde.png?ex=66891c49&is=6687cac9&hm=3a07eb6be26e981466b2675c7a45148db6ee81b8d8dd2975fef49b1d430a78f9&\"\n  }\n}",
+    "embedConfigJson": "{\n  \"onlineString\": \"🟢 Online\",\n  \"onlineColor\": \"#0BA70B\",\n  \"partialString\": \"🟡 Restarting\",\n  \"partialColor\": \"#FFF100\",\n  \"offlineString\": \"🔴 Offline\",\n  \"offlineColor\": \"#A70B28\",\n  \"buttons\": [\n    {\n      \"emoji\": \"1062338355909640233\",\n      \"label\": \"FiveM Connect\",\n      \"url\": \"{{serverJoinUrl}}\"\n    },\n    {\n      \"emoji\": \"1062338355909640233\",\n      \"label\": \"JTM-Development\",\n      \"url\": \"https://discord.gg/jtmdevelopment\"\n    }\n  ]\n}"
+  },
+  "fxRunner": {
+    "serverDataPath": "C:/Limburg/",
+    "cfgPath": "C:/Limburg/server.cfg",
+    "commandLine": "",
+    "onesync": "on",
+    "autostart": true,
+    "quiet": false
+  },
+  "banTemplates": []
+}
