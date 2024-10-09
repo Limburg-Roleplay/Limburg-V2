@@ -1,3 +1,6 @@
+ESX = exports["es_extended"]:getSharedObject()
+
+
 CreateThread(function()
 	for k,v in pairs(Config.Items) do
 		ESX.RegisterUsableItem(k, function(source)

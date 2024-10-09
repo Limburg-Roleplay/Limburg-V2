@@ -1,16 +1,17 @@
 Lobbies = {}
 MaintenanceMode = false
-Citizen.CreateThread(function()
-    ESX = exports["es_extended"]:getSharedObject()
-end)
+ESX = exports["es_extended"]:getSharedObject()
 
 
 RegisterNetEvent('ff_airsoft:login', function(group)
 	local _source = source
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local aces = {}
+	if not xPlayer then 
+		return
+	end
 	local playerGroup = xPlayer.getGroup()
-	
+
 	for _, gamemode in pairs(Config.GameModes) do
 		if gamemode.Ace then
 			aces[gamemode.Ace] = playerGroup == "owner"

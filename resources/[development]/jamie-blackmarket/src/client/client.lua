@@ -10,13 +10,12 @@ Citizen.CreateThread(function()
             SetBlipScale(blip, 0.8) -- grootte
             SetBlipAsShortRange(blip, true)
 
-            BeginTextCommandSetBlipName('STRING')
+            BeginTextCommandSetBlipName('Wapenwinkel')
             AddTextComponentSubstringPlayerName("Wapenwinkel") -- Naam ingesteld op "Wapenwinkel"
             EndTextCommandSetBlipName(blip)
         end
     end
 end)
-
 
 
 CreateThread(function()
