@@ -4,11 +4,11 @@ endpoint_add_udp "0.0.0.0:30120"
 ## You need to edit the following:
 set sv_licenseKey cfxk_ieb4wwMquQ7FLqu1N6gZ_34381V
 
-sv_hostname "^5Limburg Roleplay"
-sets sv_projectDesc "De Grootse easyweapon server zonder bots."
-sets sv_projectName "^5Limburg Roleplay"
+sv_hostname "^5Limburg Development"
+sets sv_projectDesc "Limburg Development"
+sets sv_projectName "^5Limburg Development"
 sets tags "roleplay, esx, ox"
-set mysql_connection_string "server=localhost;uid=lrpdev;database=s1_limburgroleplay;password=O69%Fh7-V#4$M91--BL8*jG1"
+set mysql_connection_string "server=185.228.82.197;uid=lrpdev;database=s1_limburgroleplay;password=O69%Fh7-V#4$M91--BL8*jG1"
 # set mysql_slow_query_warning 150
 set steam_webApiKey "9F17E28D6A7ADAF6269E6EA248EB41B5"
 # set mysql_debug true
@@ -24,8 +24,8 @@ load_server_icon lrp.png
 setr ox:locale nl 
 sets locale "nl-NL" 
 
-sets Owners "!Jamie Matthijs Sunnless"
-sets informatie "Easyweapons Custom wapens en scripts"
+sets Owners "!Jamie Matthijs Sunnless Tijnn"
+sets informatie "Limburg Development"
 sets JTM "https://discord.gg/JxPjasd7Ch"
 sets Discord "https://discord.gg/limburgroleplay"
 sets activitypubFeed Limburgroleplay@mastodon.nl
@@ -74,8 +74,6 @@ ensure [voice]
 ensure [mlo]
 ensure [criminelen]
 ensure [jobs]
-ensure [telefoon]
-ensure [zooitjes]
 ensure [mar-dev]
 ensure FIVEGUARD
 

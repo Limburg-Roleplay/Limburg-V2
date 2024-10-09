@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container" style="display:none;">
+        <div id="header">
+            <div id="title">Je moet <span id="title-price">€350</span> betalen voor <span id="title-reason">auto wassen</span>, met welke betaalmethode wil je betalen?</div>
+            <div id="close"><i class="fa-solid fa-x"></i></div>
+        </div>
+
+        <div class="payment-cards-container">
+            <div id="cash" class="payment-cards">
+                <div class="payment-cards-item-container">
+                    <i class="fa-solid fa-money-bills"></i>
+                    <div class="payment-cards-item-labels">
+                        <div class="payment-cards-item-labels-head">Cash</div>
+                        <div id="payments-cards-cash" class="payment-cards-item-labels-bottom">Saldo: €450,50</div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="pin" class="payment-cards">
+                <div class="payment-cards-item-container">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <div class="payment-cards-item-labels">
+                        <div class="payment-cards-item-labels-head">Pinnen</div>
+                        <div id="payments-cards-pin" class="payment-cards-item-labels-bottom">Saldo: €450,50</div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.6.4.js"
+    integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+
+    <script src="./app.js"></script>
+
+</body>
+</html>

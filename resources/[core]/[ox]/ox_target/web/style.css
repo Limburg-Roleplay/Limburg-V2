@@ -1,0 +1,85 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");*/
+
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --color-default: rgba(255, 255, 255, 0.7);
+  --color-hover: rgba(255, 255, 255, 0.7);
+}
+
+body {
+  visibility: hidden;
+  user-select: none;
+  white-space: nowrap;
+  margin: 0;
+  user-select: none;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
+  margin-right: 6pt;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 40;
+}
+
+#eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22pt;
+  fill: rgb(0, 0, 0);
+}
+
+.eye-hover {
+  fill: var(--color-default);
+}
+
+#options-wrapper {
+  position: absolute;
+  top: calc(48.4%);
+  left: calc(50% + 18pt);
+  right: calc(50% + 18pt);
+}
+
+.option-container {
+  color: var(--color-default);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  box-sizing: content-box;
+  align-items: center;
+  font-family: "Saira";
+  background: rgb(27, 27, 27) 100%;
+  font-size: 11pt;
+  line-height: 22pt;
+  vertical-align: middle;
+  margin: 2pt;
+  transition: 300ms;
+  transform-origin: left top right;
+  scale: 1;
+  height: 22pt;
+  width: fit-content;
+  top: 0;
+}
+
+.option-container:hover {
+  transform-origin: left top right;
+  color: #339AF0;
+  margin-left: 4pt;
+}
+
+.option-icon {
+  font-size: 12pt;
+  line-height: 22pt;
+  width: 14pt;
+  margin: 5pt;
+  color: var(--color-default);
+}
+
+.option-label {
+  font-weight: 500;
+}

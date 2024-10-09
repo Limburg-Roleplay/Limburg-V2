@@ -20,7 +20,7 @@
   },
   "playerDatabase": {
     "onJoinCheckBan": true,
-    "whitelistMode": "guildRoles",
+    "whitelistMode": "adminOnly",
     "whitelistedDiscordRoles": [
       "1249792709774938177"
     ],
@@ -32,7 +32,7 @@
     "disableNuiSourceCheck": false
   },
   "discordBot": {
-    "enabled": true,
+    "enabled": false,
     "token": "MTI1NjkxNTQ4NjAwNDg3NTI2NA.Gw6-HF.448SlJFEFVmqEynnR7E_wMQDhdGIIBCOP66lqc",
     "guild": "1249792709774938172",
     "announceChannel": "1249792712689844325",

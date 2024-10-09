@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+#blackmarket {
+    width: 900px;
+    margin: 100px auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 50px;
+    border-radius: 0.7vh;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.50);
+}
+
+.logo {
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+#weapon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.weapon {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 0.7vh;
+    text-align: center;
+    width: calc(33.33% - 30px);
+    box-sizing: border-box;
+}
+
+.icon {
+    margin: 0;
+    padding: 0;
+}
+
+.icon img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 24px;
+    position: relative;
+    top: -30px;
+}
+
+.price {
+    color: #008cff;
+    font-weight: bold;
+}
+
+.weapon-img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+.weapon h3,
+.weapon p,
+.buy-btn {
+    margin: 10px 0;
+}
+
+.buy-btn {
+    background-color: #008cff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0.6vh;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#weapon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    overflow-y: auto;
+    max-height: 520px;
+}
+
+#weapon-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#weapon-list::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 4px;
+}
+
+#weapon-list::-webkit-scrollbar-thumb:hover {
+    background: #00b7ff;
+}
+
+#weapon-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
