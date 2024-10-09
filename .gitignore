@@ -1,8 +1,8 @@
+txData
 resources/\[assets\]
 resources/\[mlo\]
 resources/\[jobs\]/Ziekenhuis
 resources/\[criminelen\]/\[wapens\]
-txData/default
 server
 cache
 db
