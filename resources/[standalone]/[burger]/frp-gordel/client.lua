@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
               isUiOpen = true
           end
 
-      if SeatbeltON then 
+      if SeatbeltON and GetEntitySpeed(car) > 0.5 then 
         DisableControlAction(0, 75, true)  -- Disable exit vehicle when stop
         DisableControlAction(27, 75, true) -- Disable exit vehicle when Driving
 	    end
