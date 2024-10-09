@@ -55,7 +55,8 @@ end)
 RegisterNetEvent('refreshdcroles')
 AddEventHandler('refreshdcroles', function()
     -- dit kan je gebruiken om scripts te refreshen wanneer je /refreshdp typt
-    print("^2roles refreshed!") 
+    print("^2roles refreshed!")
+    TriggerServerEvent("sts_discordperms:getplayerroles")
 end)
 
 
