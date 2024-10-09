@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JTM-Development</title>
+		<style>
+			@font-face {font-family: 'Montserrat-Bold'; src: url('fonts/Montserrat-Bold.ttf')}
+
+.watermark {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    z-index: 99;
+    opacity: 0.8;
+    font-size: 0.8rem; /* Vergroot de tekstgrootte */
+    text-align: right;
+    font-family: "Montserrat-Bold";
+    font-weight: normal;
+    color: white; /* Verander de kleur naar wit */
+    text-shadow: 2px 2px 4px #000000;
+}
+
+
+
+		</style>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			window.addEventListener("message", function(event) {
+				var item = event.data;
+            
+
+				if (item.time != null) {
+					let timeElem = document.getElementById("time");
+					timeElem.innerHTML = "Limburg Roleplay | " + item.time;
+				}
+
+
+			});
+		</script>
+	</head>
+	<body>
+		<div class="watermark">
+			<div id="time"></div>
+		</div>
+</html>

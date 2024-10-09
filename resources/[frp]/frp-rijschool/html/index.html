@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBR</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://kit.fontawesome.com/52de1ced8b.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header left">
+                <div class="header left text">RESTERENDE TIJD <b>23</b> MINUTEN</div>
+            </div>
+            <div class="header right">
+                <ul class="header right icons">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <i class="fa-solid fa-flag"></i>
+                    <i class="fa-solid fa-table-cells"></i>
+                    <i class="fa-solid fa-right-to-bracket" onclick="FRP.closeCBR()"></i>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src='https://www.anwb.nl/binaries/content/gallery/anwb/portal/verkeer/veiligheid/redesign-verkeersveiligheid/voorrang-rechtdoorgaand.jpg'/>
+        </div>
+
+        <div class="checkifMaded">
+            Je bent geslaagd voor je rijexamen, gefeliciteerd! 
+        </div>
+
+        <div class="questions">
+            <div class="questions title"><b>Wie heeft voorrang?</b></div>
+            <form class="question form" id="questionform">
+                <div>
+                    <input type="radio" name="question" id="answerA" value="A">
+                    <label class="answerA">Test</label>
+                </div>
+                <div>
+                    <input type="radio" name="question" id="answerB" value="B">
+                    <label class="answerB">Test</label>
+                </div>
+                <div>
+                    <input type="radio" name="question" id="answerC" value="C">
+                    <label class="answerC">Test</label>
+                </div>
+                <div>
+                    <input type="radio" name="question" id="answerD" value="D">
+                    <label class="answerD">Test</label>
+                </div>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <div class="footer middle">
+                <div class="footer middle text">VRAAG <b>5</b> VAN DE <b>10</b></div>
+            </div>
+            <div class="footer left">
+                <div class="footer left text" onclick="lastQuestion()"><i class="fa-solid fa-chevron-left"></i> VORIGE</div>
+            </div>
+            <div class="footer right">
+                <div class="footer right text" onclick="nextQuestion()">VOLGENDE <i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

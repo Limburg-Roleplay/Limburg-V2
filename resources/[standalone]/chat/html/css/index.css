@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+:root {
+  --color-white: #ffffff;
+  --color-lightred: #FA5252;
+  --color-darkred: #C92A2A;
+  --color-lightgreen: #99cc00;
+  --color-yellow: #ffcc40;
+  --color-blue: #00afe9;
+  --color-darkblue: #123e8a;
+  --color-lightblue: #33b5e5;
+  --color-purple: #aa66cc;
+  --color-pink: #cc0000;
+  --color-grey: #2e2e2e;
+  --color-light-grey: #495057;
+
+  /*Custom*/
+  --color-announcement: #0066ff;
+  --color-anticheat: #cc0000;
+  --color-discord: #5865F2;
+  --color-politie: #1182ce;
+  --color-kmar: #114dce;
+  --color-ambulance: #ffcc40;
+  --color-anwb: #e68d2f;
+  --color-staffchat: #8132ff;
+  --color-disconnect: #22B8CF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1.3vh;
+}
+
+.no-grow {
+  flex-grow: 0;
+}
+
+em {
+  font-style: normal;
+}
+
+#app {
+  font-family: 'Saira';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background-color: transparent;
+}
+
+.chat-window {
+  position: absolute;
+  left: 15px;
+  width: 32vw;
+  height: 25vh;
+  background-color: rgba(255, 255, 255, 0);
+  top: 5vh;
+  -webkit-animation-duration: 2s;
+}
+
+.chat-messages {
+  max-height: 100%;
+  font-size: 14px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.chat-input {
+  font-size: 0.9rem;
+  position: absolute;
+  top: 30%;
+  left: 15px;
+  width: 30%;
+  box-sizing: border-box;
+}
+
+textarea {
+  font-family: 'Montserrat';
+  font-size: 1.4vh;
+  display: block;
+  box-sizing: border-box;
+  padding: 0.3vw;
+  text-indent: .5vh;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-left: .4vh solid #0066ff;
+  width: 80%;
+  min-height: 3vh;
+  max-height: 3vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  resize: none;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.msg {
+  margin-bottom: 5px;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 5px;
+  padding-left: 10px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-left: .4vh solid #0066ff;
+  
+  width: 80%;
+}
+
+.help {
+  margin-top: -10px;
+  color: #ffffffe7;
+}
+
+.disabled {
+  margin-top: -10px;
+  color: #ffffff93;
+}
+
+.suggestion {
+  margin-bottom: 4px;
+  color: #ffffffec;
+}
+
+.chat-message {
+  display: inline-block !important;
+  padding: 0.5vw;
+  padding-left: 0.6vw;
+  margin: 0vw;
+  margin-left: 0vw;
+  background-color: rgb(0 0 0 / 50%);
+  width: 64%;
+  max-width: 100%;
+  overflow: hidden;
+  word-break: break-word;
+  border-left: .4vh solid #fff;
+}
+
+.chat-message-label {
+  background-color: rgba(47, 114, 181, 0.9);
+  position: relative;
+
+  border-radius: .3vh;
+
+  top: .3vh;
+  margin-bottom: .4vh;
+  padding: .2vh;
+  padding-left: .6vh;
+  padding-right: .6vh;
+
+  font-family: 'Saira';
+  text-align: center;
+  font-size: 1.3vh;
+  font-weight: 600;
+}
+
+.chat-message-body {
+
+  font-family: 'Saira';
+
+  margin-top: 1vh;
+}
+
+.first-argument {
+  font-weight: 600;
+  font-size: 1.3vh;
+}
+
+/* Chat message labels */
+
+.warning > .chat-message-label {
+  background-color: var(--color-yellow);
+}
+
+.error > .chat-message-label {
+  background-color: var(--color-lightred);
+}
+
+.car > .chat-message-label {
+  background-color: var(--color-darkblue);
+}
+
+.politie > .chat-message-label {
+  background-color: var(--color-darkblue);
+}
+
+.fingerprint > .chat-message-label {
+  background-color: var(--color-darkblue);
+}
+
+.twt > .chat-message-label {
+  background-color: var(--color-blue);
+}
+
+.success > .chat-message-label {
+  background-color: var(--color-lightgreen);
+}
+
+.primary > .chat-message-label {
+  background-color: var(--color-blue);
+}
+
+.idkaart > .chat-message-label {
+  background-color: var(--color-blue);
+}
+
+.staff > .chat-message-label {
+  background-color: var(--color-purple);
+}
+
+.staffchat > .chat-message-label {
+  background-color: var(--color-grey);
+}
+
+.reply > .chat-message-label {
+  background-color: var(--color-pink);
+}
+
+.playtime > .chat-message-label {
+  background-color: var(--color-playtime);
+}
+
+.license > .chat-message-label {
+  background-color: var(--color-license);
+}
+
+.reply > .chat-message-label {
+  background-color: var(--color-pink);
+}
+
+.staffwarning > .chat-message-label {
+  background-color: var(--color-staffwarning);
+}
+
+.automessage > .chat-message-label {
+  background-color: var(--color-blue);
+}
+
+/* Borders of chat messages */
+
+.warning {
+  border-left: .2vh solid var(--color-yellow);
+}
+
+.error {
+  border-left: .2vh solid var(--color-lightred);
+}
+
+.car {
+  border-left: .2vh solid var(--color-darkblue);
+}
+
+.politie {
+  border-left: .2vh solid var(--color-darkblue);
+}
+
+.fingerprint {
+  border-left: .2vh solid var(--color-darkblue);
+}
+
+.twt {
+  border-left: .2vh solid var(--color-blue);
+}
+
+.success {
+  border-left: .2vh solid var(--color-lightgreen);
+}
+
+.primary {
+  border-left: .2vh solid var(--color-blue);
+}
+
+.idkaart {
+  border-left: .2vh solid var(--color-blue);
+}
+
+.staff {
+  border-left: .2vh solid var(--color-purple);
+}
+
+.staffchat {
+  border-left: .2vh solid var(--color-grey);
+}
+
+.playtime {
+  border-left: .2vh solid var(--color-playtime);
+}
+
+.license {
+  border-left: .2vh solid var(--color-license);
+}
+
+.reply {
+  border-left: .2vh solid var(--color-pink);
+}
+
+.staffwarning {
+  border-left: .2vh solid var(--color-staffwarning);
+}
+
+.ninno {
+  border-left: .2vh solid var(--color-grey);
+}
+
+.automessage {
+  border-left: .2vh solid var(--color-blue);
+}
+
+/* Icons Font Awesome Fix */
+
+.warning > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.error > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.car > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.politie > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.fingerprint > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.twt > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\1F424 \00a0"; /* Unicode for the bird emoji */
+  color: white; /* Set the color to white */
+}
+
+.success > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.primary > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: white; /* Set the color to white */
+}
+
+.staff > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: white; /* Set the color to white */
+}
+
+.staffchat > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: white; /* Set the color to white */
+}
+
+.playtime > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.license > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.idkaart > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.reply > .chat-message-label::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.staffwarning > .chat-message-label::before {
+  content: "\f3ed";
+}

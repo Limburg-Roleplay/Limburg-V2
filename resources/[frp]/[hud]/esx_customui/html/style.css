@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,300;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {padding: 0; margin: 0; box-sizing: border-box; font-family: 'Saira', sans-serif; font-size: 14px;}
+
+#ui {
+	display: none;
+}
+
+.playerStats{
+	position: fixed;
+	right: 0px; /* (18.2% Right Side of Map) | (82.0% Right Side of Screen) | (2.7% Above Map)  */
+	bottom: 40px; /* (1.85% Default-Fix for all 16:9 resolutions) | (21.0% Above Map) */
+	width: fit-content;
+}
+
+.carStats{
+	position: absolute;
+	right: 50px;
+	bottom: 50px;
+	display: none;
+}
+.jobs{
+	display: inline-block;
+}
+
+.stat{
+	color: #fff;
+	width: auto;
+	height: 33px;
+	position: relative;
+	display: inline-block;
+	margin-bottom: 7px;
+	background-color: rgba(17, 17, 17, 0.67);
+	border-radius: 9px;
+	min-width: 50px;
+	direction: inherit;
+	margin-right: 8px;
+	overflow: hidden;
+}
+
+.stat .icon{
+	height: 33px;
+	width: 33px;
+	border-radius: 10px;
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.stat .icon img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 18px;
+	width: 18px;
+	transform: translate(-50%, -50%);
+}
+
+.stat span{
+	position: relative;
+	top: -30%;
+	transform: translateY(-75%);
+	margin-left: -10px;
+	width: auto;
+	padding-right: 10px;
+}
+
+
+
+.carStats .stat{
+	background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+	text-align: right;
+}
+
+.carStats .stat .icon{
+	float: right;
+	right: 0px;
+	left: 15px;
+}
+
+.carStats .stat span{
+	white-space: nowrap;
+	right: 20px;
+}
+
+.status{
+	width: 90px;
+	position: relative;
+	display: table;
+	vertical-align: middle;
+	justify-content: space-between;
+	float: right;
+}
+
+.veh-gas{
+	display: flex;
+	width: 235px;
+	position: relative;
+	right: -15px;
+	justify-content: space-between;
+}
+
+.vert-stat{
+	border-radius: 13px;
+	width: 35px;
+	height: 35px;
+	position: relative;
+	overflow: hidden;
+	background-color: rgb(17 17 17 / 67%);
+	right: auto;
+}
+
+.vert-stat .bg{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.vert-stat img{
+	width: 50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.vert-stat2{
+	border-radius: 13px;
+	width: 35px;
+	height: 35px;
+	position: relative;
+	overflow: hidden;
+	background-color: rgb(17 17 17 / 67%);
+	right: auto;
+}
+
+.vert-stat2 .bg{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.vert-stat2 img{
+	width: 80%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#gas{
+	position: absolute;
+	right: 100px;
+	bottom: 50px;
+
+}

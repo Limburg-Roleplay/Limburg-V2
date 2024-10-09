@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    display: none;
+}
+
+.info {
+    background-color:rgba(255, 255, 255, 0.863);
+    color: black;
+    font-size:14px;
+    text-align: center;
+    padding:5px;
+    margin-top:5px;
+    border-radius:10px;
+}
+
+.header {
+    background: url('https://i.imgur.com/a3hBS5L.png');
+    background-size:cover;
+    color: white;
+    text-align: center;
+    height:90px;
+    padding-top:10px;
+    border-radius:10px;
+}
+
+.dialog {
+    min-width: 300px;
+    max-width: 900px;
+    width:30%;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius:10px;
+}
+
+.skill {
+    margin-top:5px;
+    margin-bottom:5px;
+    float:left;
+    margin-left:5px;
+    width: calc(50% - 10px);
+}
+
+.skill div {
+    height: 20px;
+}
+
+#staminaProgress {
+    width: 100%;
+    background-color: rgba(146, 145, 145, 0.27);
+    border-radius: 10px;
+}
+
+span {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size:14px;
+    padding-left: 20px;
+    
+}
+
+div span{
+    position: relative;
+    top: -18px;
+}
+
+div span span{
+    top: 0;
+}
+
+#staminaBar {
+    width: 10%;
+    height: 20px;
+    background-color: rgb(9, 82, 218);
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white; 
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#strengthProgress {
+    width: 100%;
+    background-color: rgba(146, 145, 145, 0.27);
+    border-radius: 10px;
+}
+
+#strengthBar {
+    width: 10%;
+    height: 20px;
+    background-color: rgb(9, 82, 218);
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white; 
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#drivingProgress {
+    width: 100%;
+    background-color: rgba(146, 145, 145, 0.27);
+    border-radius: 10px;
+}
+
+#drivingBar {
+    width: 10%;
+    height: 20px;
+    background-color: rgb(9, 117, 218);
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white; 
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#shootingProgress {
+    width: 100%;
+    background-color: rgba(146, 145, 145, 0.27);
+    border-radius: 10px;
+}
+
+#shootingBar {
+    width: 10%;
+    height: 20px;
+    background-color: rgb(9, 117, 218);
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white; 
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#flyingProgress {
+    width: 100%;
+    background-color: rgba(146, 145, 145, 0.27);
+    border-radius: 10px;
+}
+
+#flyingBar {
+    width: 10%;
+    height: 20px;
+    background-color: rgb(9, 137, 218);
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white; 
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#drugsProgress {
+    width: 100%;
+    background-color: rgba(146, 145, 145, 0.27);
+    border-radius: 10px;
+}
+
+#drugsBar {
+    width: 10%;
+    height: 20px;
+    background-color: rgb(9, 136, 218);
+    text-align: center; /* To center it horizontally (if you want) */
+    color: white; 
+    border-radius: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+}
+
+.placeholder {
+    display: none;
+    position: absolute;
+    left: 1vh;
+    top: 50%;
+    background-color: white;
+    border-radius: 0.55vh;
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.50);
+    width: 25vh;
+    padding: 1.25vh;
+    text-align: center;
+}
+
+.container {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #1c1b1e;
+    width: 90vh;
+    height: 25vh;
+    border-radius: 1vh;
+    padding: 2vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.container h1 {
+    color: white;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.container h1 b {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.container .close {
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
+    width: 4vh;
+    height: 3vh;
+    font-size: 3vh;
+    color: white;
+    line-height: 1;
+    cursor: pointer;
+    border: 2px solid #2e2c35;
+    border-radius: 30%;
+    background-color: #2e2c35;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.container .close:hover {
+    color: #E42217;
+}
+
+.container .button { 
+    height: 18vh;
+    width: 89vh;
+    background-color: #2e2c35;
+    border-radius: 0.9vh;
+    transition: all 0.3s ease-in-out;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    font-weight: 400;
+}
+
+.container .button:hover {
+    background-color: #373638;
+}

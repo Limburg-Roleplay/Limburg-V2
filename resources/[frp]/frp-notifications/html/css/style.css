@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+body {
+    overflow: hidden;
+    user-select: none;
+}
+
+.notification-container {
+    position: absolute;
+    left: 0.5%;
+    top: 71%;
+    height: 100%;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.notification {
+    position: relative;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    height: fit-content;
+    min-width: 30vh;
+    background-color: rgba(51, 49, 49, 0.95);
+    border-radius: 30px; 
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-text {
+    top: 0.30vh;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+}
+
+.notification-text-container {
+    width: 90%;
+    height: fit-content;
+    margin-top: 7.5px;
+    max-width: 90%;
+    margin-left: 5px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    margin-bottom: 10px;
+    display: flex;
+    border-radius: 0.25vh;
+}
+
+.error {
+    border-left: .5vh solid rgb(87, 1, 208);
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.50);
+}
+
+.error .notification-text-container:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 3vh;
+    color: white;
+    position: relative;
+    top: 0.15vh;
+    left: 0.1vh;
+    content: "\f071 \00a0";
+}
+
+.info {
+    border-left: .5vh solid rgb(87, 1, 208);
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.50);
+}
+
+.info .notification-text-container:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 3vh;
+    color: white;
+    position: relative;
+    top: 0.15vh;
+    left: 0.1vh;
+    content: "\f05a \00a0";
+}
+
+.success {
+    border-left: .5vh solid rgb(97, 150, 54);
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.50);
+}
+
+.success .notification-text-container:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 3vh;
+    color: white;
+    position: relative;
+    top: 0.15vh;
+    left: 0.1vh;
+    content: "\f058 \00a0";
+}
+
+.warning {
+    border-left: .5vh solid rgb(212, 153, 24);
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.50);
+}
+
+.warning .notification-text-container:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 3vh;
+    color: white;
+    position: relative;
+    top: 0.10vh;
+    content: "\f06a \00a0";
+}
+
+.noodknop {
+    border-left: .5vh solid rgb(212, 153, 24);
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.50);
+    animation: rgb 4s infinite alternate linear;
+}
+
+.noodknop .notification-text-container:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 3vh;
+    color: white;
+    position: relative;
+    top: 0.15vh;
+    left: 0.1vh;
+    content: "\f3ed \00a0";
+}
+
+@keyframes rgb {
+    0% {
+        border-left: .5vh solid rgb(255, 0, 0);
+    }
+    20% {
+        border-left: .5vh solid rgb(175, 80, 0);
+    }
+    50% {
+        border-left: .5vh solid rgb(80, 175, 0);
+    }
+    100% {
+        border-left: .5vh solid rgb(0, 255, 0);
+    }
+}

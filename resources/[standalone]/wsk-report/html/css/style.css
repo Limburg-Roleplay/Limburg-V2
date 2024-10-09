@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+:root {
+    --color-blue: #0382EF;
+    --color-green: #1e7a17;
+    --color-red: #8f1919;
+    --color-black: #000000;
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+}
+
+.reports-westkust {
+    display: none;
+    position: absolute;
+    right: 1vh;
+    top: 10%;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    width: 50vh;
+    padding: 0.5vh;
+    border-radius: 0.55vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 50vh;
+
+    border-bottom: .5vh solid #4B53E1;
+    border-top: .5vh solid rgba(51, 49, 49, 0.95);
+    background-color: rgba(51, 49, 49, 0.95);
+}
+
+.reports-westkust .header {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0.55vh;
+}
+
+.reports-westkust .reports .report {
+    border-radius: 0.55vh;
+    color: black;
+    padding: 0.55vh;
+    margin-bottom: 0.55vh;
+
+    background-color: rgba(210, 210, 210, 0.55);
+    box-shadow: 0.25vh 0.25vh 0.25vh rgba(0, 0, 0, 0.20);
+}
+
+.reports-westkust .reports .report .claimreport {
+    border-radius: 0.55vh;
+    margin-top: 0.25vh;
+    padding: 0.55vh;
+    color: white;
+    width: fit-content;
+    margin-right: 0.75vh;
+}
+
+.reports-westkust .reports .report .green:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #1e4a04;
+}
+
+.reports-westkust .reports .report .blue:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #04294a;
+}
+
+.reports-westkust .reports .report .red:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #4a0404;
+}
+
+.reports-westkust .reports .report .buttons {
+    display: flex;
+}
+
+.reports-westkust .reports .report .blue {
+    background-color: var(--color-blue);
+}
+
+.reports-westkust .reports .report .green {
+    background-color: var(--color-green);
+}
+
+.reports-westkust .reports .report .red {
+    background-color: var(--color-red);
+}
+
+.reports-westkust .reports .report .black {
+    color: white;
+    background-color: var(--color-black);
+}
+
+.reports-westkust .reports .report .black:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #522020;
+}
+
+* {
+    scrollbar-width: auto;
+    scrollbar-color: white rgba(51, 49, 49, 0.95);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(51, 49, 49, 0.95);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(51, 49, 49, 0.95);
+    border-radius: 6px;
+    border: 3px solid rgba(51, 49, 49, 0.95);
+}
