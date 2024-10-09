@@ -3,3 +3,6 @@ resources/\[mlo\]
 resources/\[jobs\]/Ziekenhuis
 resources/\[criminelen\]/\[wapens\]
 txData/default/logs
+server
+cache
+db

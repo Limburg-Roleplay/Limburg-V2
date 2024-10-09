@@ -12,6 +12,5 @@ version '1.2.0'
 server_scripts {
     '@es_extended/imports.lua',
 	'@oxmysql/lib/MySQL.lua',
-    'config.lua',
 	'server.lua'
 }

@@ -8,9 +8,6 @@ description 'ESX Billing'
 version '1.1.0'
 
 client_scripts {
-	'@esx_boilerplate/natives.lua',
-	'@esx_boilerplate/utils/logger.lua',
-	'@esx_boilerplate/utils/lazy_esx.lua',
 	'@es_extended/locale.lua',
 	'locales/en.lua',
 	'config.lua',

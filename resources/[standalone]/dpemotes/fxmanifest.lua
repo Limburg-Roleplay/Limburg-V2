@@ -15,8 +15,7 @@ shared_scripts {
     'config.lua',
 }
 server_scripts {
-    'server/Server.lua',
-    'server/frameworks/*.lua'
+    'server/main.lua',
 }
 client_scripts {
     'NativeUI.lua',

@@ -8,4 +8,4 @@ ui_page 'html/index.html'
 client_scripts { 'config.lua', 'client/*.lua' }
 server_scripts { 'config.lua', '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
 shared_scripts { '@es_extended/imports.lua', '@ox_lib/init.lua' }
-files { 'html/index.html', 'html/js/*.js', 'html/css/*.css', 'html/img/*.png' }
+files { 'html/index.html', 'html/js/*.js', 'html/css/*.css' }

@@ -1,6 +1,5 @@
 shared_script '@FIVEGUARD/ai_module_fg-obfuscated.lua'
 shared_script '@FIVEGUARD/shared_fg-obfuscated.lua'
-shared_script "@fivemsecure/init.lua"
 fx_version 'adamant'
 
 game 'gta5'

@@ -12,6 +12,5 @@ version '1.2.0'
 client_scripts {
     '@es_extended/imports.lua',
 	'@es_extended/locale.lua',
-    'config.lua',
 	'client/*.lua',
 }

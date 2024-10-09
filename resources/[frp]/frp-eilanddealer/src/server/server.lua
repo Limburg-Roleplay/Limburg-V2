@@ -72,7 +72,7 @@ end)
 
 -- // [COMMANDS] \\ --
 
-ESX.RegisterCommand('boatdealer_fotos', 'admin', function(xPlayer, args, showError)
+ESX.RegisterCommand('eilanddealer_fotos', 'admin', function(xPlayer, args, showError)
     xPlayer.triggerEvent('exios-eilandshop:client:handler:startFotobook', xPlayer.getGroup())
 end, false, { help = 'Maak fotos voor de cardealer' } )
 
@@ -83,6 +83,6 @@ Exios.Functions.GeneratePlate = function()
     repeat
         str = ESX.GetRandomString(8)
         local alreadyExists = MySQL.single.await('SELECT owner FROM owned_vehicles WHERE plate = ?', {str})
-    until not alreadyExists?.owner
+    until not alreadyExists.owner
     return string.upper(str)
 end

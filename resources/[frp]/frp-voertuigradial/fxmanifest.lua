@@ -11,15 +11,12 @@ shared_scripts {
 }
 client_scripts {
     'client/main.lua',
-    'client/clothing.lua',
-    'client/trunk.lua',
-    'client/brancard.lua'
 }
-server_scripts {
-    'server/main.lua',
-    'server/trunk.lua',
-    'server/brancard.lua'
-}
+-- server_scripts {
+--     'server/main.lua',
+--     'server/trunk.lua',
+--     'server/brancard.lua'
+-- }
 files {
     'html/index.html',
     'html/css/main.css',

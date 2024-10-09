@@ -1,11 +1,6 @@
 shared_script '@FIVEGUARD/ai_module_fg-obfuscated.js'
 shared_script '@FIVEGUARD/ai_module_fg-obfuscated.lua'
 shared_script '@FIVEGUARD/shared_fg-obfuscated.lua'
-shared_script '@frp-manualapi/ai_module_fg-obfuscated.lua'
-shared_script '@frp-manualapi/ai_module_fg-obfuscated.js'
- 
- 
- 
 
 fx_version 'cerulean'
 game 'gta5'

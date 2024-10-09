@@ -7,7 +7,7 @@ description 'FRP Jobmenu'
 version '1.0'
 client_scripts { 'config.lua', 'client/*.lua' }
 server_scripts { 'config.lua', '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
-shared_scripts { '@es_extended/imports.lua', '@ox_lib/init.lua', 'locales/*.lua' }
+shared_scripts { '@es_extended/imports.lua', '@ox_lib/init.lua' }
 
 escrow_ignore {
     'config.lua'

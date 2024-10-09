@@ -4,13 +4,11 @@ use_fxv2_oal 'yes'
 lua54 'yes'
 game 'gta5'
 client_scripts { 'config.lua', 'client/*.lua' }
-server_scripts { 'config.lua', '@oxmysql/lib/MySQL.lua', 'server/*.lua' }
+server_scripts { 'config.lua', '@oxmysql/lib/MySQL.lua'}
 shared_scripts { '@es_extended/imports.lua', '@ox_lib/init.lua' }
 ui_page 'html/index.html'
 files {
     'html/*.html',
     'html/**/*.css',
     'html/**/*.js',
-    'html/**/*.png',
-    'html/**/*.ttf',
 }

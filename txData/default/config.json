@@ -40,8 +40,8 @@
     "embedConfigJson": "{\n  \"onlineString\": \"🟢 Online\",\n  \"onlineColor\": \"#0BA70B\",\n  \"partialString\": \"🟡 Restarting\",\n  \"partialColor\": \"#FFF100\",\n  \"offlineString\": \"🔴 Offline\",\n  \"offlineColor\": \"#A70B28\",\n  \"buttons\": [\n    {\n      \"emoji\": \"1062338355909640233\",\n      \"label\": \"FiveM Connect\",\n      \"url\": \"{{serverJoinUrl}}\"\n    },\n    {\n      \"emoji\": \"1062338355909640233\",\n      \"label\": \"JTM-Development\",\n      \"url\": \"https://discord.gg/jtmdevelopment\"\n    }\n  ]\n}"
   },
   "fxRunner": {
-    "serverDataPath": "C:/Limburg/",
-    "cfgPath": "C:/Limburg/server.cfg",
+    "serverDataPath": "C:/main-server/",
+    "cfgPath": "C:/main-server/server.cfg",
     "commandLine": "",
     "onesync": "on",
     "autostart": true,

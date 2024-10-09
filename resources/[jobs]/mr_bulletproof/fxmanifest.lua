@@ -15,6 +15,6 @@ server_scripts {
     'server/*.lua'
 }
 
-shared_scripts {
-    'shared/*.lua'
-}
+-- shared_scripts {
+--     'shared/*.lua'
+-- }

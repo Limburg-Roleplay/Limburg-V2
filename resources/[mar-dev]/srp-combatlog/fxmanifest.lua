@@ -25,5 +25,4 @@ escrow_ignore {
 
 shared_scripts {
     "@es_extended/imports.lua",
-    "@srp-boilerplate/import.lua"
 }

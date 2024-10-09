@@ -11,9 +11,6 @@ client_scripts {
 	'@es_extended/locale.lua',
 	'cl_chat.lua'
 }
-server_scripts {
-	'sv_chat.lua'
-}
 
 files {
 	'html/webfonts/*.ttf',
