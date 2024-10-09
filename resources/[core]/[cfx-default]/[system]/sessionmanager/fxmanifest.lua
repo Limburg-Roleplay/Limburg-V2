@@ -9,5 +9,4 @@ repository 'https://github.com/citizenfx/cfx-server-data'
 fx_version 'cerulean'
 games { 'gta4', 'gta5' }
 
-server_scripts { 'server/host_lock.lua', '@mysql-async/lib/MySQL.lua' }
 client_script 'client/empty.lua'
