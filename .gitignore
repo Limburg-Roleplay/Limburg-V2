@@ -2,7 +2,7 @@ resources/\[assets\]
 resources/\[mlo\]
 resources/\[jobs\]/Ziekenhuis
 resources/\[criminelen\]/\[wapens\]
-txData/default/logs
+txData/default
 server
 cache
 db

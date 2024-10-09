@@ -28,46 +28,19 @@ CreateThread(function()
                     TriggerEvent('bishway-blackmarket:checkAccess')
                 end,
             },
-            {
-                label = "Toon Ammo-shop",
-                icon = "fas fa-shop",
-                onSelect = function()
-                     TriggerEvent("zetrox-blackmarket:client:openblackmarket")
-                end,
-            },
         }
     })
 end)
 
 RegisterNetEvent('bishway-blackmarket:checkAccess')
 AddEventHandler('bishway-blackmarket:checkAccess', function()
-    if exports["discordperms"]:hasvipblackmarketgroup() then
-        TriggerServerEvent('bishway-blackmarket:grantAccess')
-    else
-        lib.notify({
-            type = 'error',
-            title = 'Toegang geweigerd',
-            description = 'Je hebt geen toegang tot de VIP blackmarket.'
-        })
-    end
+   TriggerServerEvent('bishway-blackmarket:grantAccess')
 end)
 
 RegisterNetEvent('bishway-blackmarket:openUI')
 AddEventHandler('bishway-blackmarket:openUI', function()
-    if exports["discordperms"]:hasvipblackmarketgroup() then
         OpenBlackmarketUI()
-        return
-    end
-    TriggerServerEvent("bishiesquishy:stopcheatin:dude")
-end)
-
-RegisterNetEvent('bishway-blackmarket:accessDenied')
-AddEventHandler('bishway-blackmarket:accessDenied', function()
-    lib.notify({
-        type = 'error',
-        title = 'Toegang geweigerd',
-        description = 'Je hebt geen toegang tot de VIP blackmarket.'
-    })
+    return
 end)
 
 function OpenBlackmarketUI()
@@ -91,26 +64,6 @@ RegisterNUICallback('buyWeapon', function(data, cb)
     ESX.TriggerServerCallback('bishway-blackmarket:checkFunds', function(hasMoney)
         if hasMoney then
             TriggerServerEvent('bishway-blackmarket:purchaseWeapon', weaponName)
-        else
-            lib.notify({
-                type = 'error',
-                title = 'Blackmarket',
-                description = 'Niet genoeg geld!'
-            })
-        end
-    end, price)
-
-    cb('ok')
-end)
-
-RegisterNUICallback('buyAmmo', function(data, cb)
-    local ammoType = data.ammoType
-    local ammoAmount = tonumber(data.ammoAmount)
-    local price = tonumber(data.price)
-
-    ESX.TriggerServerCallback('bishway-blackmarket:checkFunds', function(hasMoney)
-        if hasMoney then
-            TriggerServerEvent('bishway-blackmarket:purchaseAmmo', ammoType, ammoAmount)
         else
             lib.notify({
                 type = 'error',

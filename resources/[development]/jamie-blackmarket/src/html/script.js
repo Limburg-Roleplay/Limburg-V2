@@ -6,16 +6,21 @@ window.addEventListener('message', function (event) {
         const weaponList = document.getElementById('weapon-list');
         weaponList.innerHTML = '';
 
+        // Function to format price
+        function formatPrice(price) {
+            return Math.floor(price).toLocaleString('nl-NL');
+        }
+
         data.weapons.forEach(function (weapon) {
             const weaponDiv = document.createElement('div');
             weaponDiv.classList.add('weapon');
 
             weaponDiv.innerHTML = `
-            <h3>${weapon.label}</h3>
-            <img src="${weapon.image}" alt="${weapon.label}" class="weapon-img">
-            <p class="price">Prijs: €${weapon.price}</p>
-            <button class="buy-btn" data-weapon="${weapon.name}" data-price="${weapon.price}">Kopen</button>
-        `;
+                <h3>${weapon.label}</h3>
+                <img src="${weapon.image}" alt="${weapon.label}" class="weapon-img">
+                <p class="price">Prijs: €${formatPrice(weapon.price)}</p>
+                <button class="buy-btn" data-weapon="${weapon.name}" data-price="${weapon.price}">Kopen</button>
+            `;
 
             weaponList.appendChild(weaponDiv);
         });
@@ -42,12 +47,28 @@ document.addEventListener('click', function (event) {
         const weapon = event.target.getAttribute('data-weapon');
         const price = event.target.getAttribute('data-price');
 
-        fetch(`https://${GetParentResourceName()}/buyWeapon`, {
+        const url = `https://${GetParentResourceName()}/buyWeapon`;
+        console.log('Fetching URL:', url);  // Log the URL for debugging
+
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8'
             },
             body: JSON.stringify({ weapon, price })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle successful response
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
         });
     }
 });

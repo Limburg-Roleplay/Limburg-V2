@@ -19,15 +19,18 @@ local function getDoorFromEntity(data)
 	return door
 end
 
+exports('getClosestDoorId', function() return ClosestDoor?.id end)
+exports('getDoorIdFromEntity', function(entityId) return getDoorFromEntity(entityId)?.id end) -- same as Entity(entityId).state.doorId
+
 local function entityIsNotDoor(data)
 	local entity = type(data) == 'number' and data or data.entity
 	return not getDoorFromEntity(entity)
 end
 
-local pickingLock
+PickingLock = false
 
 local function canPickLock(entity)
-	if pickingLock then return false end
+	if PickingLock then return false end
 
 	local door = getDoorFromEntity(entity)
 
@@ -38,14 +41,16 @@ end
 local function pickLock(entity)
 	local door = getDoorFromEntity(entity)
 
-	if not door or pickingLock or not door.lockpick or (not Config.CanPickUnlockedDoors and door.state == 0) then return end
+	if not door or PickingLock or not door.lockpick or (not Config.CanPickUnlockedDoors and door.state == 0) then return end
 
-	pickingLock = true
+	PickingLock = true
 
 	TaskTurnPedToFaceCoord(cache.ped, door.coords.x, door.coords.y, door.coords.z, 4000)
 	Wait(500)
-	lib.requestAnimDict('mp_common_heist')
-	TaskPlayAnim(cache.ped, 'mp_common_heist', 'pick_door', 3.0, 1.0, -1, 49, 0, true, true, true)
+
+	local animDict = lib.requestAnimDict('mp_common_heist')
+
+	TaskPlayAnim(cache.ped, animDict, 'pick_door', 3.0, 1.0, -1, 49, 0, true, true, true)
 
 	local success = lib.skillCheck(door.lockpickDifficulty or Config.LockDifficulty)
 	local rand = math.random(1, success and 100 or 5)
@@ -59,9 +64,10 @@ local function pickLock(entity)
 		lib.notify({ type = 'error', description = locale('lockpick_broke') })
 	end
 
-	StopEntityAnim(cache.ped, 'pick_door', 'mp_common_heist', 0)
+	StopEntityAnim(cache.ped, 'pick_door', animDict, 0)
+	RemoveAnimDict(animDict)
 
-	pickingLock = false
+	PickingLock = false
 end
 
 exports('pickClosestDoor', function()
@@ -94,8 +100,8 @@ end
 local isAddingDoorlock = false
 
 RegisterNUICallback('notify', function(data, cb)
-    cb(1)
-    lib.notify({title = data})
+	cb(1)
+	lib.notify({ title = data })
 end)
 
 RegisterNUICallback('createDoor', function(data, cb)
@@ -128,7 +134,7 @@ RegisterNUICallback('createDoor', function(data, cb)
 		lib.showTextUI(locale('add_door_textui'))
 
 		repeat
-			DisablePlayerFiring(cache.playerId)
+			DisablePlayerFiring(cache.playerId, true)
 			DisableControlAction(0, 25, true)
 
 			local hit, entity, coords = lib.raycast.cam(1|16)
@@ -143,7 +149,8 @@ RegisterNUICallback('createDoor', function(data, cb)
 
 			if hit then
 				---@diagnostic disable-next-line: param-type-mismatch
-				DrawMarker(28, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 255, 42, 24, 100, false, false, 0, true, false, false, false)
+				DrawMarker(28, coords.x, coords.y, coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2, 0.2, 0.2, 255, 42, 24,
+					100, false, false, 0, true, false, false, false)
 			end
 
 			if hit and entity > 0 and GetEntityType(entity) == 3 and (doorCount == 1 or doorA ~= entity) and entityIsNotDoor(entity) then
@@ -182,7 +189,6 @@ RegisterNUICallback('createDoor', function(data, cb)
 			data.coords = tempData[1].coords
 			data.heading = tempData[1].heading
 		end
-
 	else
 		if data.doors then
 			for i = 1, 2 do
@@ -211,11 +217,11 @@ RegisterNUICallback('deleteDoor', function(id, cb)
 end)
 
 RegisterNUICallback('teleportToDoor', function(id, cb)
-    cb(1)
-    SetNuiFocus(false, false)
-    local doorCoords = doors[id].coords
-    if not doorCoords then return end
-    SetEntityCoords(cache.ped, doorCoords.x, doorCoords.y, doorCoords.z)
+	cb(1)
+	SetNuiFocus(false, false)
+	local doorCoords = doors[id].coords
+	if not doorCoords then return end
+	SetEntityCoords(cache.ped, doorCoords.x, doorCoords.y, doorCoords.z, false, false, false, false)
 end)
 
 RegisterNUICallback('exit', function(_, cb)
@@ -228,11 +234,17 @@ local function openUi(id)
 
 	if not NuiHasLoaded then
 		NuiHasLoaded = true
+
 		SendNuiMessage(json.encode({
 			action = 'updateDoorData',
 			data = doors
 		}, { with_hole = false }))
 		Wait(100)
+
+		SendNUIMessage({
+			action = 'setSoundFiles',
+			data = lib.callback.await('ox_doorlock:getSounds', false)
+		})
 	end
 
 	SetNuiFocus(true, true)
@@ -254,11 +266,6 @@ CreateThread(function()
 			ox = true,
 			exp = exports.ox_target
 		}
-	elseif GetResourceState('qb-target'):find('start') then
-		target = {
-			qb = true,
-			exp = exports['qb-target']
-		}
 	elseif GetResourceState('qtarget'):find('start') then
 		target = {
 			qt = true,
@@ -276,7 +283,8 @@ CreateThread(function()
 				icon = 'fas fa-user-lock',
 				onSelect = pickLock,
 				canInteract = canPickLock,
-				items = 'lockpick',
+				items = Config.LockpickItems,
+				anyItem = true,
 				distance = 1
 			}
 		})
@@ -287,15 +295,15 @@ CreateThread(function()
 				icon = 'fas fa-user-lock',
 				action = pickLock,
 				canInteract = canPickLock,
-				item = 'lockpick',
+				item = Config.LockpickItems[1],
 				distance = 1
 			}
 		}
 
+		---@cast target table
+
 		if target.qt then
 			target.exp:Object({ options = options })
-		elseif target.qb then
-			target.exp:AddGlobalObject({ options = options })
 		end
 
 		options = { locale('pick_lock') }
@@ -304,10 +312,6 @@ CreateThread(function()
 			if resource == cache.resource then
 				if target.qt then
 					return target.exp:RemoveObject(options)
-				end
-
-				if target.qb then
-					return target.exp:RemoveGlobalObject(options)
 				end
 			end
 		end)

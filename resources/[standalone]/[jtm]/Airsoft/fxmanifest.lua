@@ -7,6 +7,7 @@ description 'An advanced airsoft script with multiple gamemodes'
 
 shared_scripts {
     '@ox_lib/init.lua',
+    '@es_extended/imports.lua',
 	'config.lua',
 	'shared/shared.lua'
 }
@@ -20,4 +21,3 @@ client_scripts {
     'client/main.lua',
     '@PolyZone/client.lua',
 }
-

@@ -1,14 +1,8 @@
-if not LoadResourceFile(lib.name, 'web/build/index.html') then
+if not LoadResourceFile(cache.resource, 'web/build/index.html') then
 	error('Unable to load UI. Build ox_doorlock or download the latest release.\n	^3https://github.com/overextended/ox_doorlock/releases/latest/download/ox_doorlock.zip^0')
 end
 
-do
-	local success, msg = lib.checkDependency('ox_lib', '3.0.0')
-	if not success then error(msg) end
-end
-
-lib.locale()
-TriggerServerEvent('ox_doorlock:getDoors')
+if not lib.checkDependency('ox_lib', '3.14.0', true) then return end
 
 local function createDoor(door)
 	local double = door.doors
@@ -38,13 +32,8 @@ end
 local nearbyDoors = {}
 local Entity = Entity
 
-RegisterNetEvent('ox_doorlock:setDoors', function(data, sounds)
+lib.callback('ox_doorlock:getDoors', false, function(data)
 	doors = data
-
-	SendNUIMessage({
-		action = 'setSoundFiles',
-		data = sounds
-	})
 
 	for _, door in pairs(data) do
 		createDoor(door)
@@ -160,25 +149,41 @@ RegisterNetEvent('ox_doorlock:setState', function(id, state, source, data)
 		DoorSystemSetDoorState(double[1].hash, door.state, false, false)
 		DoorSystemSetDoorState(double[2].hash, door.state, false, false)
 
+		if door.holdOpen then
+			DoorSystemSetHoldOpen(double[1].hash, door.state == 0)
+			DoorSystemSetHoldOpen(double[2].hash, door.state == 0)
+		end
+
 		while door.state == 1 and (not IsDoorClosed(double[1].hash) or not IsDoorClosed(double[2].hash)) do Wait(0) end
 	else
 		DoorSystemSetDoorState(door.hash, door.state, false, false)
 
+		if door.holdOpen then DoorSystemSetHoldOpen(door.hash, door.state == 0) end
 		while door.state == 1 and not IsDoorClosed(door.hash) do Wait(0) end
 	end
 
 	if door.state == state and door.distance and door.distance < 20 then
-		local volume = (0.01 * GetProfileSetting(300)) / (door.distance / 2)
-		if volume > 1 then volume = 1 end
-		local sound = state == 0 and door.unlockSound or door.lockSound or 'door-bolt-4'
+		if Config.NativeAudio then
+			RequestScriptAudioBank('dlc_oxdoorlock/oxdoorlock', false)
+			local sound = state == 0 and door.unlockSound or door.lockSound or 'door_bolt'
+			local soundId = GetSoundId()
 
-		SendNUIMessage({
-			action = 'playSound',
-			data = {
-				sound = sound,
-				volume = volume
-			}
-		})
+			PlaySoundFromCoord(soundId, sound, door.coords.x, door.coords.y, door.coords.z, 'DLC_OXDOORLOCK_SET', false, 0, false)
+			ReleaseSoundId(soundId)
+			ReleaseNamedScriptAudioBank('dlc_oxdoorlock/oxdoorlock')
+		else
+			local volume = (0.01 * GetProfileSetting(300)) / (door.distance / 2)
+			if volume > 1 then volume = 1 end
+			local sound = state == 0 and door.unlockSound or door.lockSound or 'door-bolt-4'
+
+			SendNUIMessage({
+				action = 'playSound',
+				data = {
+					sound = sound,
+					volume = volume
+				}
+			})
+		end
 	end
 end)
 
@@ -208,6 +213,8 @@ RegisterNetEvent('ox_doorlock:editDoorlock', function(id, data)
 				end
 
 				DoorSystemSetDoorState(doorHash, doorState, false, false)
+
+				if data.holdOpen then DoorSystemSetHoldOpen(doorHash, doorState == 0) end
 			else
 				DoorSystemSetDoorState(doorHash, 4, false, false)
 				DoorSystemSetDoorState(doorHash, 0, false, false)
@@ -224,6 +231,8 @@ RegisterNetEvent('ox_doorlock:editDoorlock', function(id, data)
 			end
 
 			DoorSystemSetDoorState(door.hash, doorState, false, false)
+
+			if data.holdOpen then DoorSystemSetHoldOpen(door.hash, doorState == 0) end
 		else
 			DoorSystemSetDoorState(door.hash, 4, false, false)
 			DoorSystemSetDoorState(door.hash, 0, false, false)
@@ -269,8 +278,6 @@ local function useClosestDoor()
 		TriggerServerEvent('ox_doorlock:setState', ClosestDoor.id, ClosestDoor.state == 1 and 0 or 1)
 	end
 end
-
-exports('useClosestDoor', useClosestDoor)
 
 CreateThread(function()
 	local lockDoor = locale('lock_door')
@@ -327,7 +334,7 @@ CreateThread(function()
 				showUI = ClosestDoor.state
 			end
 
-			if IsDisabledControlJustReleased(0, 38) then
+			if not PickingLock and IsDisabledControlJustReleased(0, 38) then
 				useClosestDoor()
 			end
 		elseif showUI then
@@ -338,3 +345,6 @@ CreateThread(function()
 		Wait(num > 0 and 0 or 500)
 	end
 end)
+
+exports('useClosestDoor', useClosestDoor)
+exports('getClosestDoor', function() return ClosestDoor end)

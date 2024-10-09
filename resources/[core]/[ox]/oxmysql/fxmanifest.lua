@@ -1,25 +1,32 @@
-shared_script '@FIVEGUARD/ai_module_fg-obfuscated.js'
-shared_script '@FIVEGUARD/ai_module_fg-obfuscated.lua'
-shared_script '@FIVEGUARD/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 game 'common'
+use_experimental_fxv2_oal 'yes'
+lua54 'yes'
+
 name 'oxmysql'
-description 'Database wrapper for FXServer utilising node-mysql2 offering improved performance and security.'
-version '2.7.4'
-url 'https://github.com/overextended/oxmysql'
-author 'overextended'
+author 'Overextended'
+version '2.11.2'
+license 'LGPL-3.0-or-later'
+repository 'https://github.com/overextended/oxmysql.git'
+description 'FXServer to MySQL communication via node-mysql2'
+
 dependencies {
-	'/server:5104',
+    '/server:7290',
 }
+
 client_script 'ui.lua'
 server_script 'dist/build.js'
+
 files {
 	'web/build/index.html',
 	'web/build/**/*'
 }
+
 ui_page 'web/build/index.html'
+
 provide 'mysql-async'
 provide 'ghmattimysql'
+
 convar_category 'OxMySQL' {
 	'Configuration',
 	{

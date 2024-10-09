@@ -215,7 +215,7 @@ Config = {
 		[1] = {
 			Label = "Free for all",
 			key = 'ffa', -- DO NOT CHANGE
-			Ace = "group.admin", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
+			Ace = "group.owner", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
 			DisableSettings = { -- DO NOT CHANGE
 				'team'
 			}
@@ -223,7 +223,7 @@ Config = {
 		[2] = {
 			Label = "Gungame",
 			key = 'gungame', -- DO NOT CHANGE
-			Ace = "pac_permission_everything", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
+			Ace = "group.owner", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
 			DisableSettings = { -- DO NOT CHANGE
 				'loadouts', 'team'
 			},
@@ -255,7 +255,7 @@ Config = {
 		[3] = {
 			Label = "One in the Chamber",
 			key = 'chamber', -- DO NOT CHANGE
-			Ace = "pac_permission_everything", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
+			Ace = "group.owner", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
 			DisableSettings = { -- DO NOT CHANGE
 				'loadouts', 'team', 'attachments'
 			},
@@ -268,13 +268,13 @@ Config = {
 		[4] = {
 			Label = "Team Deathmatch",
 			key = 'tdm', -- DO NOT CHANGE
-			Ace = "pac_permission_everything", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
+			Ace = "group.owner", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
 			DisableSettings = { 'stake' }, -- DO NOT CHANGE
 		},
 		[5] = {
 			Label = "Battle Royale",
 			key = 'battle', -- DO NOT CHANGE
-			Ace = "pac_permission_everything", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
+			Ace = "group.owner", -- You need this ace to select this gamemode. Leave `nil` to let anyone start this lobby
 			DisableSettings = { 'loadouts', 'team', 'map', 'timer', 'attachments' }, -- DO NOT CHANGE
 	
 			PickupModels = { -- key value pairs of weapon names and their 3d model
