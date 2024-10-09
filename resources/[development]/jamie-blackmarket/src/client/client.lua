@@ -2,6 +2,23 @@ ESX = exports["es_extended"]:getSharedObject()
 
 local pedModel = `s_m_y_dealer_01`
 
+Citizen.CreateThread(function()
+    for k, v in ipairs(Config.weapon_shops) do
+        if Config.blip then
+            local blip = AddBlipForCoord(v.coords)
+            SetBlipSprite(blip, 123) -- icoon
+            SetBlipScale(blip, 0.8) -- grootte
+            SetBlipAsShortRange(blip, true)
+
+            BeginTextCommandSetBlipName('STRING')
+            AddTextComponentSubstringPlayerName("Wapenwinkel") -- Naam ingesteld op "Wapenwinkel"
+            EndTextCommandSetBlipName(blip)
+        end
+    end
+end)
+
+
+
 CreateThread(function()
     RequestModel(pedModel)
     while not HasModelLoaded(pedModel) do

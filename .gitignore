@@ -3,7 +3,7 @@ resources/\[assets\]
 resources/\[mlo\]
 resources/\[jobs\]/Ziekenhuis
 resources/\[criminelen\]/\[wapens\]
-./server
+server-data
 cache
 db
 screenshot-basic
