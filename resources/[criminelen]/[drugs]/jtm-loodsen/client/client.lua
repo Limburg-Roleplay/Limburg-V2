@@ -913,7 +913,7 @@ function CreateTrunkMarker(vehicle, currentSellLocation)
 end
 
 function TakeCardboardBox(vehicle)
-    local boxModel = `prop_cardbordbox_02a`
+    local boxModel = 'prop_cardbordbox_02a'
 
     RequestModel(boxModel)
     while not HasModelLoaded(boxModel) do
@@ -963,7 +963,7 @@ end
 
 
 function DeliverBox(vehicle)
-    local boxModel = `prop_cardbordbox_02a`
+    local boxModel = 'prop_cardbordbox_02a'
     local playerPed = PlayerPedId()
 
     FreezeEntityPosition(playerPed, true)
