@@ -149,7 +149,14 @@ RegisterCommand('taakstraf', function(source, args)
             args = {"System", "Je hebt geen toestemming om dit commando te gebruiken."}
         })
     end
-
+    if not exports["frp-staffdienst"]:inDienst(source) then
+        TriggerClientEvent("chat:addMessage", source, {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {"Systeem", "Je moet in staffdienst zijn om dit commando te gebruiken."}
+        })
+        return
+    end
     if #args < 3 then
         local usageMsg = "Gebruik: /taakstraf [playerId] [tasks] [reason]"
         return (source == 0) and print(usageMsg) or TriggerClientEvent('chat:addMessage', source, {
@@ -219,7 +226,14 @@ RegisterCommand('offlinetaakstraf', function(source, args)
             args = {"System", "Je hebt geen toestemming om deze opdracht uit te voeren."}
         })
     end
-
+    if not exports["frp-staffdienst"]:inDienst(source) then
+        TriggerClientEvent("chat:addMessage", source, {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {"Systeem", "Je moet in staffdienst zijn om dit commando te gebruiken."}
+        })
+        return
+    end
     if #args < 3 then
         local errorMsg = "Fout: Ongeldige argumenten. Gebruik: /offlinetaakstraf [identifier] [tasks] [reason]"
         return (source == 0) and print(errorMsg) or TriggerClientEvent('chat:addMessage', source, {
@@ -270,7 +284,14 @@ RegisterCommand('removetaken', function(source, args)
     if xPlayer and not (xPlayer.getGroup() == 'staff' or xPlayer.getGroup() == 'owner' or xPlayer.getGroup() == 'hogerop' or xPlayer.getGroup() == 'admin') then
         return TriggerClientEvent('chat:addMessage', source, { args = { '^1SYSTEM', 'Je hebt geen toestemming om dit command te gebruiken.' }})
     end
-
+    if not exports["frp-staffdienst"]:inDienst(source) then
+        TriggerClientEvent("chat:addMessage", source, {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {"Systeem", "Je moet in staffdienst zijn om dit commando te gebruiken."}
+        })
+        return
+    end
     local targetId = tonumber(args[1])
     if not targetId then
         local errorMsg = "Geef een geldige speler ID op."
