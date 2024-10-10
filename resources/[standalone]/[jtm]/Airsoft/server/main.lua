@@ -1,20 +1,14 @@
 Lobbies = {}
 MaintenanceMode = false
-ESX = exports["es_extended"]:getSharedObject()
 
-
-RegisterNetEvent('ff_airsoft:login', function(group)
+RegisterNetEvent('ff_airsoft:login', function()
 	local _source = source
-	local xPlayer = ESX.GetPlayerFromId(source)
+
 	local aces = {}
-	if not xPlayer then 
-		return
-	end
-	local playerGroup = xPlayer.getGroup()
 
 	for _, gamemode in pairs(Config.GameModes) do
 		if gamemode.Ace then
-			aces[gamemode.Ace] = playerGroup == "owner"
+			aces[gamemode.Ace] = IsPlayerAceAllowed(source, "xadmin.all")
 		end
 	end
 

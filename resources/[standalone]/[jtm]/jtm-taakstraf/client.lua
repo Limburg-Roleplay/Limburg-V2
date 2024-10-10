@@ -1,3 +1,5 @@
+ESX = exports["es_extended"]:getSharedObject()
+
 local tasksLeft = 0
 local checkpoints = {
     vector3(1648.6382, 2589.7495, 45.5649),
@@ -6,17 +8,25 @@ local checkpoints = {
     vector3(1649.7043, 2623.7151, 45.5649),
     vector3(1659.9852, 2614.6851, 45.5649),
     vector3(1651.4513, 2602.1853, 45.5649)
-    
 }
 local currentCheckpointIndex = 1
 local previousCheckpointIndex = nil
-local checkpoint = nil
 local checkpointRadius = 2.0 
 local warningRadius = 40
 local penaltyRadius = 50 
 local warningActive = false
 local taskCooldown = false 
+local markerActive = false
 
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() == resourceName then
+        TriggerServerEvent('communityService:checkTasks')
+    end
+end)
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded',function(xPlayer, isNew, skin)
+    TriggerServerEvent('communityService:checkTasks')
+end)
 RegisterNetEvent('communityService:assignTasks')
 AddEventHandler('communityService:assignTasks', function(tasks, reason, staffMember)
     if tasks then
@@ -27,12 +37,10 @@ AddEventHandler('communityService:assignTasks', function(tasks, reason, staffMem
         until currentCheckpointIndex ~= previousCheckpointIndex
         previousCheckpointIndex = currentCheckpointIndex
 
-        
         SetEntityCoords(PlayerPedId(), checkpoints[currentCheckpointIndex].x, checkpoints[currentCheckpointIndex].y, checkpoints[currentCheckpointIndex].z)
         SetEntityHeading(PlayerPedId(), 52.6812)
-        
-      
-        createCheckpoint(checkpoints[currentCheckpointIndex])
+
+        markerActive = true
         
         SendNUIMessage({
             type = "show",
@@ -41,77 +49,37 @@ AddEventHandler('communityService:assignTasks', function(tasks, reason, staffMem
             reason = reason,
             staffMember = staffMember
         })
-        SetNuiFocus(false, false) 
+        SetNuiFocus(false, false)
     else
         print("Error: Invalid number of tasks received.")
     end
 end)
 
-function createCheckpoint(coords)
-    if checkpoint then
-        DeleteCheckpoint(checkpoint)
-    end
-    checkpoint = CreateCheckpoint(18, coords.x, coords.y, coords.z - 1, 90, 0, 0, checkpointRadius, 255, 0, 0, 100, 0)
-
+function createMarker(coords)
+    markerActive = true
 end
-
-RegisterNUICallback('completeTask', function(data, cb)
-    if tasksLeft > 0 and not taskCooldown then
-        tasksLeft = tasksLeft - 1
-        taskCooldown = true 
-        playTaskAnimation()
-        freezePlayerForTask()
-
-        SendNUIMessage({
-            type = "updateTasks",
-            tasksLeft = tasksLeft
-        })
-
-        
-        repeat
-            currentCheckpointIndex = math.random(1, #checkpoints)
-        until currentCheckpointIndex ~= previousCheckpointIndex
-        previousCheckpointIndex = currentCheckpointIndex
-
-        if tasksLeft <= 0 then
-           
-            if checkpoint then
-                DeleteCheckpoint(checkpoint)
-                checkpoint = nil
-            end
-            
-            SetNuiFocus(false, false)
-            SendNUIMessage({
-                type = "hide"
-            })
-            TriggerServerEvent('communityService:completeService')
-        else
-            
-            createCheckpoint(checkpoints[currentCheckpointIndex])
-        end
-
-        
-        Citizen.SetTimeout(1000, function() 
-            taskCooldown = false 
-        end)
-    else
-        print("Task on cooldown or no tasks left.")
-    end
-    cb('ok')
-end)
 
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
-        if tasksLeft > 0 then
-            local playerPed = PlayerPedId()
-            local playerCoords = GetEntityCoords(playerPed)
+        if tasksLeft > 0 and markerActive then
+            local playerCoords = GetEntityCoords(PlayerPedId())
             local distance = #(playerCoords - checkpoints[currentCheckpointIndex])
-            
+
+            ESX.DrawBasicMarker({
+                x = checkpoints[currentCheckpointIndex].x,
+                y = checkpoints[currentCheckpointIndex].y,
+                z = checkpoints[currentCheckpointIndex].z,
+                type = 1,
+                color = {r = 255, g = 0, b = 0},
+                scale = {x = 1.5, y = 1.5, z = 1.5},
+                alpha = 100
+            })
+
             if distance < checkpointRadius then
                 DisplayHelpText("Press ~INPUT_CONTEXT~ to complete a task.")
-                
-                if IsControlJustReleased(1, 51) then -- 51 is the control index for 'E'
+
+                if IsControlJustReleased(1, 51) then
                     TriggerEvent('communityService:completeTask')
                 end
             elseif distance < warningRadius then
@@ -131,7 +99,6 @@ Citizen.CreateThread(function()
                     warningActive = true
                 end
             else
-                -- Teleport back with penalty
                 tasksLeft = tasksLeft + 5
                 SendNUIMessage({
                     type = "penalty",
@@ -140,26 +107,64 @@ Citizen.CreateThread(function()
                 })
                 SetEntityCoords(PlayerPedId(), checkpoints[currentCheckpointIndex].x, checkpoints[currentCheckpointIndex].y, checkpoints[currentCheckpointIndex].z)
                 SetEntityHeading(PlayerPedId(), 52.6812)
-                FreezeEntityPosition(playerPed, true)
-                Citizen.Wait(3000) -- Freeze for 3 seconds per task
-                FreezeEntityPosition(playerPed, false)
+                FreezeEntityPosition(PlayerPedId(), true)
+                Citizen.Wait(3000)
+                FreezeEntityPosition(PlayerPedId(), false)
                 SetNuiFocus(false, false)
 
-               
                 TriggerServerEvent('communityService:updateTasks', tasksLeft)
             end
         end
     end
 end)
 
+RegisterNetEvent('communityService:completeTask')
+AddEventHandler('communityService:completeTask', function()
+    if tasksLeft > 0 and not taskCooldown then
+        tasksLeft = tasksLeft - 1
+        taskCooldown = true
+        playTaskAnimation()
+        freezePlayerForTask()
+
+        SendNUIMessage({
+            type = "updateTasks",
+            tasksLeft = tasksLeft
+        })
+
+        repeat
+            currentCheckpointIndex = math.random(1, #checkpoints)
+        until currentCheckpointIndex ~= previousCheckpointIndex
+        previousCheckpointIndex = currentCheckpointIndex
+
+        if tasksLeft <= 0 then
+            markerActive = false -- Deactivate marker when tasks are complete
+            SetNuiFocus(false, false)
+            SendNUIMessage({
+                type = "hide"
+            })
+            TriggerServerEvent('communityService:completeService')
+        else
+            createMarker(checkpoints[currentCheckpointIndex])
+        end
+
+        Citizen.SetTimeout(1000, function()
+            taskCooldown = false
+        end)
+    else
+        print("Task on cooldown or no tasks left.")
+    end
+end)
+
+-- Freeze player during task completion
 function freezePlayerForTask()
     local playerPed = PlayerPedId()
     FreezeEntityPosition(playerPed, true)
-    local freezeDuration = math.random(3000, 5000) -- Freeze for 3 to 5 seconds
+    local freezeDuration = math.random(3000, 5000)
     Citizen.Wait(freezeDuration)
     FreezeEntityPosition(playerPed, false)
 end
 
+-- Play task completion animation
 function playTaskAnimation()
     local playerPed = PlayerPedId()
     local animationScenario = "WORLD_HUMAN_GARDENER_PLANT"
@@ -170,7 +175,7 @@ function playTaskAnimation()
         animationScenario = "WORLD_HUMAN_BUM_WASH"
     end
     TaskStartScenarioInPlace(playerPed, animationScenario, 0, true)
-    local animationDuration = math.random(3000, 5000) -- 3 to 5 seconds
+    local animationDuration = math.random(3000, 5000)
     Citizen.Wait(animationDuration)
     ClearPedTasks(playerPed)
 end
@@ -181,63 +186,21 @@ function DisplayHelpText(text)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 
-RegisterNetEvent('communityService:completeTask')
-AddEventHandler('communityService:completeTask', function()
-    if tasksLeft > 0 and not taskCooldown then
-        tasksLeft = tasksLeft - 1
-        taskCooldown = true 
-        playTaskAnimation()
-        freezePlayerForTask()
-
-        SendNUIMessage({
-            type = "updateTasks",
-            tasksLeft = tasksLeft
-        })
-
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() == resourceName then
+        -- Your logic when the resource starts
+        print(resourceName .. " has started on the client.")
         
-        repeat
-            currentCheckpointIndex = math.random(1, #checkpoints)
-        until currentCheckpointIndex ~= previousCheckpointIndex
-        previousCheckpointIndex = currentCheckpointIndex
-
-        if tasksLeft <= 0 then
-            
-            if checkpoint then
-                DeleteCheckpoint(checkpoint)
-                checkpoint = nil
-            end
-            
-            SetNuiFocus(false, false)
-            SendNUIMessage({
-                type = "hide"
-            })
-            TriggerServerEvent('communityService:completeService')
-        else
-            
-            createCheckpoint(checkpoints[currentCheckpointIndex])
-        end
-
-       
-        TriggerServerEvent('communityService:updateTasks', tasksLeft)
-
-       
-        Citizen.SetTimeout(1000, function() 
-            taskCooldown = false 
-        end)
-    else
-        print("Task on cooldown or no tasks left.")
+        -- Example: Trigger some logic or events on resource start
+        TriggerEvent('communityService:initialize')
     end
 end)
 
-RegisterNetEvent('jtm-taakstraf:afgerond')
-AddEventHandler('jtm-taakstraf:afgerond', function()
-    SetNuiFocus(false, false)
-    SendNUIMessage({
-        type = "hide"
-    })
-
-     tasksLeft = 0
-
-    TriggerServerEvent('communityService:updateTasks', tasksLeft)
-    TriggerServerEvent('communityService:completeService')
+-- Example of the event you want to trigger on resource start
+RegisterNetEvent('communityService:initialize')
+AddEventHandler('communityService:initialize', function()
+    -- Your initialization logic here
+    print("Community service tasks have been initialized.")
+    
+    
 end)

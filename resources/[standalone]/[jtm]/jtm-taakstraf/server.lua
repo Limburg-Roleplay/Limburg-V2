@@ -27,6 +27,28 @@ local function loadTasks(callback)
     end)
 end
 
+RegisterNetEvent('communityService:checkTasks')
+AddEventHandler('communityService:checkTasks', function()
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+    local steamIdentifier = xPlayer.identifier -- Get the player's Steam identifier
+
+    MySQL.Async.fetchAll('SELECT tasks_left, reason, staff_name FROM player_tasks WHERE player_identifier = @identifier', {
+        ['@identifier'] = steamIdentifier
+    }, function(result)
+        if result and #result > 0 then
+            local tasksLeft = result[1].tasks_left
+            local reason = result[1].reason
+            local staffName = result[1].staff_name
+
+            TriggerClientEvent('communityService:assignTasks', _source, tasksLeft, reason, staffName)
+        else
+            -- print("No tasks found for player " .. steamIdentifier)
+        end
+    end)
+end)
+
+
 local function saveTask(playerIdentifier, tasksLeft, reason, staffName)
     MySQL.update('REPLACE INTO player_tasks (player_identifier, tasks_left, reason, staff_name) VALUES (?, ?, ?, ?)', {
         playerIdentifier, tasksLeft, reason, staffName
@@ -150,8 +172,8 @@ RegisterCommand('taakstraf', function(source, args, rawCommand)
 
         print("Verzend logboekvermelding:", logEntry)
 
-        local identifiers = GetPlayerIdentifiers(target)
-        local playerIdentifier = identifiers[1]
+        local xTarget = ESX.GetPlayerFromId(target)
+        local playerIdentifier = xTarget.identifier
         playerTasks[playerIdentifier] = {
             tasksLeft = tasks,
             reason = reason,
@@ -179,7 +201,7 @@ RegisterCommand('offlinetaakstraf', function(source, args, rawCommand)
         staffName = "Console"
     else
         local xPlayer = ESX.GetPlayerFromId(source)
-        if xPlayer.getGroup() ~= 'admin' and xPlayer.getGroup() ~= 'superadmin' then
+        if xPlayer.getGroup() ~= 'owner' and xPlayer.getGroup() ~= 'admin' and xPlayer.getGroup() ~= 'superadmin' then
             TriggerClientEvent('chat:addMessage', source, {
                 color = {255, 0, 0},
                 multiline = true,
@@ -292,7 +314,7 @@ RegisterCommand('removetaken', function(source, args, rawCommand)
             local playerGroup = xPlayer.getGroup()
             staffName = GetPlayerName(source)
 
-            if playerGroup ~= 'staff' and playerGroup ~= 'owner' and playerGroup ~= 'hogerop' then
+            if playerGroup ~= 'staff' and playerGroup ~= 'owner' and playerGroup ~= 'hogerop' and playerGroup ~= 'admin' then
                 TriggerClientEvent('chat:addMessage', source, {
                     args = { '^1SYSTEM', 'Je hebt geen toestemming om dit command te gebruiken.' }
                 })
@@ -317,8 +339,8 @@ RegisterCommand('removetaken', function(source, args, rawCommand)
         return
     end
     
-    local targetIdentifiers = GetPlayerIdentifiers(targetId)
-    if not targetIdentifiers or not targetIdentifiers[1] then
+    local targetIdentifier = ESX.GetPlayerFromId(targetId).identifier
+    if not targetIdentifier then
         if source == 0 then
             print("Ongeldige speler ID, gebruik /removetaken [speler ID]")
         else
@@ -329,9 +351,6 @@ RegisterCommand('removetaken', function(source, args, rawCommand)
         print("Invalid target player ID: " .. targetId)
         return
     end
-
-    local targetIdentifier = targetIdentifiers[1]
-    print("Target Identifier: " .. targetIdentifier)
     
     MySQL.query('DELETE FROM player_tasks WHERE player_identifier = ?', {targetIdentifier}, function(results, err)
         if err then

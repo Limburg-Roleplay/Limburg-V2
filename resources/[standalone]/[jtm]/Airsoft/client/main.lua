@@ -24,7 +24,7 @@ GameData = {
 }
 
 Citizen.CreateThread(function()
-	TriggerServerEvent('ff_airsoft:login')
+	TriggerServerEvent('ff_airsoft:login', GetPlayerGroup(PlayerPedId()))
 	while Config.Maps == nil do
 		Citizen.Wait(1)
 	end

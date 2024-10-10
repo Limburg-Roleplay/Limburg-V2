@@ -1,13 +1,16 @@
 shared_script '@FIVEGUARD/ai_module_fg-obfuscated.lua'
 shared_script '@FIVEGUARD/shared_fg-obfuscated.lua'
+
 fx_version 'cerulean'
 game 'gta5' 
+author 'JTM-Development'
+version '1.0.0'
+
+shared_script '@es_extended/imports.lua'
+
 client_scripts {
     'client.lua'
 }
-
-author 'JTM-Development'
-version '1.0.0'
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
