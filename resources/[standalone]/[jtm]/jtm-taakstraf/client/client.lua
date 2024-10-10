@@ -18,47 +18,9 @@ local warningActive = false
 local taskCooldown = false 
 local markerActive = false
 
-AddEventHandler('onResourceStart', function(resourceName)
-    if GetCurrentResourceName() == resourceName then
-        TriggerServerEvent('communityService:checkTasks')
-    end
-end)
-RegisterNetEvent('esx:playerLoaded')
-AddEventHandler('esx:playerLoaded',function(xPlayer, isNew, skin)
-    TriggerServerEvent('communityService:checkTasks')
-end)
-RegisterNetEvent('communityService:assignTasks')
-AddEventHandler('communityService:assignTasks', function(tasks, reason, staffMember)
-    if tasks then
-        tasksLeft = tasks
-        
-        repeat
-            currentCheckpointIndex = math.random(1, #checkpoints)
-        until currentCheckpointIndex ~= previousCheckpointIndex
-        previousCheckpointIndex = currentCheckpointIndex
-
-        SetEntityCoords(PlayerPedId(), checkpoints[currentCheckpointIndex].x, checkpoints[currentCheckpointIndex].y, checkpoints[currentCheckpointIndex].z)
-        SetEntityHeading(PlayerPedId(), 52.6812)
-
-        markerActive = true
-        
-        SendNUIMessage({
-            type = "show",
-            tasksLeft = tasksLeft,
-            tasksGiven = tasks,
-            reason = reason,
-            staffMember = staffMember
-        })
-        SetNuiFocus(false, false)
-    else
-        print("Error: Invalid number of tasks received.")
-    end
-end)
-
-function createMarker(coords)
-    markerActive = true
-end
-
+-- ################################
+-- THREADS
+-- ################################
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
@@ -92,29 +54,63 @@ Citizen.CreateThread(function()
                 end
             elseif distance < penaltyRadius then
                 if not warningActive then
-                    SendNUIMessage({
-                        type = "warning",
-                        message = "Warning: You are leaving the designated area!"
-                    })
                     warningActive = true
+                    exports['okokNotify']:Alert('Pas op!', 'Je loopt te ver weg van het takenpleintje, er komen zo 5 taken bij.', 15000, 'warning')
                 end
             else
                 tasksLeft = tasksLeft + 5
-                SendNUIMessage({
-                    type = "penalty",
-                    message = "You have left the designated area! +10 tasks added.",
-                    tasksLeft = tasksLeft
-                })
+                exports['okokNotify']:Alert('Fout', 'Je bent te ver weg gelopen, er zijn nu 5 taken bij gekomen.', 5000, 'error')
+
                 SetEntityCoords(PlayerPedId(), checkpoints[currentCheckpointIndex].x, checkpoints[currentCheckpointIndex].y, checkpoints[currentCheckpointIndex].z)
                 SetEntityHeading(PlayerPedId(), 52.6812)
-                FreezeEntityPosition(PlayerPedId(), true)
-                Citizen.Wait(3000)
-                FreezeEntityPosition(PlayerPedId(), false)
+                freezePlayerForTask()
                 SetNuiFocus(false, false)
 
                 TriggerServerEvent('communityService:updateTasks', tasksLeft)
             end
         end
+    end
+end)
+
+-- ################################
+-- EVENTS
+-- ################################
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() == resourceName then
+        TriggerServerEvent('communityService:checkTasks')
+    end
+end)
+
+RegisterNetEvent('esx:playerLoaded')
+AddEventHandler('esx:playerLoaded',function(xPlayer, isNew, skin)
+    TriggerServerEvent('communityService:checkTasks')
+end)
+
+RegisterNetEvent('communityService:assignTasks')
+AddEventHandler('communityService:assignTasks', function(tasks, reason, staffMember)
+    if tasks then
+        tasksLeft = tasks
+        
+        repeat
+            currentCheckpointIndex = math.random(1, #checkpoints)
+        until currentCheckpointIndex ~= previousCheckpointIndex
+        previousCheckpointIndex = currentCheckpointIndex
+
+        SetEntityCoords(PlayerPedId(), checkpoints[currentCheckpointIndex].x, checkpoints[currentCheckpointIndex].y, checkpoints[currentCheckpointIndex].z)
+        SetEntityHeading(PlayerPedId(), 52.6812)
+
+        markerActive = true
+        
+        SendNUIMessage({
+            type = "show",
+            tasksLeft = tasksLeft,
+            tasksGiven = tasks,
+            reason = reason,
+            staffMember = staffMember
+        })
+        SetNuiFocus(false, false)
+    else
+        print("Error: Invalid number of tasks received.")
     end
 end)
 
@@ -137,12 +133,14 @@ AddEventHandler('communityService:completeTask', function()
         previousCheckpointIndex = currentCheckpointIndex
 
         if tasksLeft <= 0 then
-            markerActive = false -- Deactivate marker when tasks are complete
+            markerActive = false
             SetNuiFocus(false, false)
             SendNUIMessage({
                 type = "hide"
             })
             TriggerServerEvent('communityService:completeService')
+            exports['okokNotify']:Alert('Info', 'Je hebt je taken succesvol afgerond.', 5000, 'info')
+
         else
             createMarker(checkpoints[currentCheckpointIndex])
         end
@@ -155,7 +153,13 @@ AddEventHandler('communityService:completeTask', function()
     end
 end)
 
--- Freeze player during task completion
+-- ################################
+-- FUNCTIONS
+-- ################################
+function createMarker(coords)
+    markerActive = true
+end
+
 function freezePlayerForTask()
     local playerPed = PlayerPedId()
     FreezeEntityPosition(playerPed, true)
@@ -164,7 +168,6 @@ function freezePlayerForTask()
     FreezeEntityPosition(playerPed, false)
 end
 
--- Play task completion animation
 function playTaskAnimation()
     local playerPed = PlayerPedId()
     local animationScenario = "WORLD_HUMAN_GARDENER_PLANT"
@@ -185,22 +188,3 @@ function DisplayHelpText(text)
     AddTextComponentString(text)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
-
-AddEventHandler('onResourceStart', function(resourceName)
-    if GetCurrentResourceName() == resourceName then
-        -- Your logic when the resource starts
-        print(resourceName .. " has started on the client.")
-        
-        -- Example: Trigger some logic or events on resource start
-        TriggerEvent('communityService:initialize')
-    end
-end)
-
--- Example of the event you want to trigger on resource start
-RegisterNetEvent('communityService:initialize')
-AddEventHandler('communityService:initialize', function()
-    -- Your initialization logic here
-    print("Community service tasks have been initialized.")
-    
-    
-end)

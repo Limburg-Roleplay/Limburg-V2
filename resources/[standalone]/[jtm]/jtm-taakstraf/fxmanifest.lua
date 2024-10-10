@@ -9,19 +9,18 @@ version '1.0.0'
 shared_script '@es_extended/imports.lua'
 
 client_scripts {
-    'client.lua'
+    'client/client.lua'
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server.lua'
+    'server/server.lua'
 }
 
-ui_page 'ui.html'
+ui_page 'html/ui.html'
 
 files {
-    'ui.html',
-    'ui.css',
-    'ui.js',
-
+    'html/ui.html',
+    'html/style.css',
+    'html/script.js'
 }
