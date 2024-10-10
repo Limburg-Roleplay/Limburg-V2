@@ -10,13 +10,11 @@ RegisterCommand("staffdienst", function(source)
     local src = source 
     local xPlayer = ESX.GetPlayerFromId(src)
 
-    -- Cooldown check
-    if lastCommandTime[src] and os.time() - lastCommandTime[src] < 120 and not xPlayer.getGroup() == 'hogerop' and not xPlayer.getGroup() == 'owner' and not xPlayer.getGroup() == 'admin' then  -- 120 seconds cooldown
+    if lastCommandTime[src] and os.time() - lastCommandTime[src] < 180 and not xPlayer.getGroup() == 'hogerop' and not xPlayer.getGroup() == 'owner' and not xPlayer.getGroup() == 'admin' then  -- 120 seconds cooldown
         TriggerClientEvent("frp-notifications:client:notify", src, 'info', 'Je moet nog wachten voor je deze commando weer kan gebruiken.')
         return
     end
 
-    -- Update the last command execution time
     lastCommandTime[src] = os.time()
 
     if xPlayer.getGroup() == "user" then

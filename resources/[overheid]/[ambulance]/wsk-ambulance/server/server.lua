@@ -173,6 +173,11 @@ AddEventHandler('txAdmin:events:healedPlayer', function(eventData)
 end)
 
 ESX.RegisterCommand('revive', {'admin', 'mod', 'staff'}, function(xPlayer, args, showError)
+    if not exports["frp-staffdienst"]:inDienst(xPlayer.source) then
+        return
+            TriggerClientEvent("frp-notifications:client:notify", source, 'error',
+                'Je bent niet in dienst, zorg dat je <br> /staffdienst hebt gedaan')
+    end
 	args.playerId.triggerEvent('wsk-ambulance:client:staffrevive:player')
 end, true, {
 	help = 'Een command om een speler te reviven',

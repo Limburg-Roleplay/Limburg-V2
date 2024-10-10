@@ -49,7 +49,12 @@ RegisterNetEvent("vl-staffdienst:toggle:dienst", function(toggle)
         
         while shouldBlock and not isSteamIDInList(steamID) do
             Citizen.Wait(0)
-            -- Schieten blokkeren
+            DisableControlAction(0, 24, true) -- Disables attack (shooting)
+            DisableControlAction(0, 25, true) -- Disables aiming
+            DisableControlAction(0, 142, true) -- Disables melee attack
+            DisableControlAction(0, 257, true) -- Disables attack when in vehicle
+            DisableControlAction(0, 140, true) -- Disables light melee attack
+            DisableControlAction(0, 263, true) -- Disables heavy melee attack
         end
     else
         shouldBlock = false

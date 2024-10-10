@@ -33,6 +33,14 @@ end)
 
 RegisterNetEvent("toggleStaffNames")
 AddEventHandler("toggleStaffNames", function(status)
+    if not exports["frp-staffdienst"]:inDienst() then
+        Event("chat:addMessage", {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {"Systeem", "Je moet in staffdienst zijn om dit commando te gebruiken."}
+        })
+        return
+    end
     if status ~= nil then
         staffNamesEnabled = status
     else

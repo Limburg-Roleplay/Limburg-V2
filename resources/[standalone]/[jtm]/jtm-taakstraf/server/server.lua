@@ -176,7 +176,7 @@ RegisterCommand('taakstraf', function(source, args)
     if player then
         TriggerClientEvent('communityService:assignTasks', target, tasks, reason, staffName)
         
-        local successMsg = "Toegekend " .. tasks .. " taken aan speler " .. player .. " om reden: " .. reason .. " door staflid: " .. staffName
+        local successMsg = player .. " heeft " .. tasks .. " taken gekregen voor " .. reason
         if source == 0 then
             print(successMsg)
         else
@@ -249,7 +249,7 @@ RegisterCommand('offlinetaakstraf', function(source, args)
     }
     saveTask(identifier, tasks, reason, staffName)
 
-    local successMsg = "Toegekend " .. tasks .. " taken aan offline speler met identifier " .. identifier .. " om reden: " .. reason .. " door staflid: " .. staffName
+    local successMsg = "Iemand heeft " .. tasks .. " offline taken gekregen voor " .. reason
     if source == 0 then
         print(successMsg)
     else

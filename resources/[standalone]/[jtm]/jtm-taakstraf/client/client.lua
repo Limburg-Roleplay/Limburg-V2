@@ -164,8 +164,12 @@ function freezePlayerForTask()
     local playerPed = PlayerPedId()
     FreezeEntityPosition(playerPed, true)
     local freezeDuration = math.random(3000, 5000)
-    Citizen.Wait(freezeDuration)
-    FreezeEntityPosition(playerPed, false)
+    if lib.progressCircle({
+        duration = freezeDuration,
+        position = 'bottom',
+        useWhileDead = false,
+        canCancel = true
+    }) then FreezeEntityPosition(playerPed, false) end
 end
 
 function playTaskAnimation()
