@@ -1,4 +1,3 @@
-txData
 resources/\[assets\]
 resources/\[mlo\]
 resources/\[jobs\]/Ziekenhuis
@@ -8,3 +7,6 @@ cache
 db
 screenshot-basic
 resources/Archive.zip
+resources/\[standalone]/\[jtm]/lrp-loadingscreen/loadingscreen/lrp.mp4
+txData/
+txData/default/data

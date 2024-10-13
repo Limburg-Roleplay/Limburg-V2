@@ -2,7 +2,7 @@ return {
 	Weapons = {
 		['WEAPON_SNSPISTOL'] = {
 			label = 'Lady Killer',
-			weight = 1584,
+			weight = 849,
 			durability = 0.03,
 			ammoname = 'ammo-pistol',
 			maxAmmo = 30,
@@ -19,7 +19,7 @@ return {
 
         ['WEAPON_PISTOL50'] = {
 			label = 'Pistol 50',
-			weight = 1584,
+			weight = 874,
 			durability = 0.03,
 			ammoname = 'ammo-pistol',
 			maxAmmo = 30,
@@ -36,7 +36,7 @@ return {
 
         ['WEAPON_PISTOL'] = {
 			label = 'Pistol',
-			weight = 1584,
+			weight = 976,
 			durability = 0.03,
 			ammoname = 'ammo-pistol',
 			maxAmmo = 30,
@@ -53,7 +53,7 @@ return {
 
         ['WEAPON_PISTOL_MK2'] = {
 			label = 'Pistol mk2',
-			weight = 1584,
+			weight = 894,
 			durability = 0.03,
 			ammoname = 'ammo-pistol',
 			maxAmmo = 30,
@@ -70,7 +70,7 @@ return {
 
 		['WEAPON_GLOCK17'] = {
 			label = 'AP-17',
-			weight = 1584,
+			weight = 768,
 			durability = 0.03,
 			ammoname = 'ammo-pistol-overheid',
 			maxAmmo = 12,
@@ -88,7 +88,7 @@ return {
 
         ['WEAPON_SIG'] = {
 			label = 'AP320',
-			weight = 1584,
+			weight = 919,
 			durability = 0.03,
 			ammoname = 'ammo-pistol',
 			maxAmmo = 30,
@@ -105,7 +105,7 @@ return {
 
         ['WEAPON_GLOCK19X'] = {
 			label = 'AP-19',
-			weight = 1584,
+			weight = 911,
 			durability = 0.03,
 			ammoname = 'ammo-pistol',
 			maxAmmo = 30,
@@ -122,7 +122,7 @@ return {
 
         ['WEAPON_COMBATPISTOL'] = {
 			label = 'Walther P99Q',
-			weight = 1584,
+			weight = 679,
 			durability = 0.03,
 			ammoname = 'ammo-pistol-overheid',
 			maxAmmo = 30,
@@ -140,7 +140,7 @@ return {
 
 		['WEAPON_SAWNOFFSHOTGUN'] = {
 			label = 'Sawed off Shotgun',
-			weight = 970,
+			weight = 1539,
 			durability = 0.3,
 			ammoname = 'ammo-shotgun',
 			maxAmmo = 36,
@@ -157,7 +157,7 @@ return {
 
 		['WEAPON_BENELLIM4'] = {
 			label = 'KS-23',
-			weight = 970,
+			weight = 1839,
 			durability = 0.3,
 			ammoname = 'ammo-shotgun',
 			maxAmmo = 36,
@@ -174,7 +174,7 @@ return {
 
 		['WEAPON_DOUBLEBARRELFM'] = {
 			label = 'MR43 Double Barrel',
-			weight = 970,
+			weight = 1783,
 			durability = 0.3,
 			ammoname = 'ammo-shotgun',
 			maxAmmo = 36,
@@ -242,7 +242,7 @@ return {
 
 		['WEAPON_AK74_1'] = {
 			label = 'AKM ',
-			weight = 3500,
+			weight = 3539,
 			durability = 0.03,
 			ammoname = 'ammo-rifle',
 			maxAmmo = 90,
@@ -259,7 +259,7 @@ return {
 
 		['WEAPON_NVRIFLE'] = {
 			label = 'NV Rifle',
-			weight = 3500,
+			weight = 3539,
 			durability = 0.03,
 			ammoname = 'ammo-rifle',
 			maxAmmo = 90,
@@ -328,7 +328,7 @@ return {
 
 		['WEAPON_MB47'] = {
 			label = 'B-M77',
-			weight = 2500,
+			weight = 3539,
 			durability = 0.05,
 			ammoname = 'ammo-rifle',
 			maxAmmo = 90,
@@ -362,7 +362,7 @@ return {
 
 		['WEAPON_AKS74U'] = {
 			label = 'AKM-U',
-			weight = 2500,
+			weight = 3539,
 			durability = 0.05,
 			ammoname = 'ammo-rifle',
 			maxAmmo = 90,
@@ -442,7 +442,7 @@ return {
 
 		['WEAPON_MACHETE'] = {
 			label = 'Machete',
-			weight = 300,
+			weight = 500,
 			durability = 0.1,
 		},
 
@@ -1220,42 +1220,42 @@ return {
 
 		['ammo-pistol'] = {
 			label = 'Pistol Ammo',
-			weight = 4,
+			weight = 7,
 		},
 
 		['ammo-pistol-overheid'] = {
 			label = 'Pistol Ammo',
-			weight = 4,
+			weight = 7,
 		},
 
         ['ammo-smg'] = {
 			label = 'Smg Ammo',
-			weight = 5,
+			weight = 7,
 		},
 
         ['ammo-smg-overheid'] = {
 			label = 'Smg Ammo',
-			weight = 5,
+			weight = 7,
 		},
 
 		['ammo-rifle'] = {
 			label = 'Rifle Ammo',
-			weight = 5,
+			weight = 9,
 		},
 
 		['ammo-rifle-overheid'] = {
 			label = 'Rifle Ammo',
-			weight = 5,
+			weight = 9,
 		},
 
 		['ammo-shotgun'] = {
 			label = 'Shotgun Ammo',
-			weight = 8,
+			weight = 11,
 		},
 
 		['ammo-shotgun-overheid'] = {
 			label = 'Shotgun Ammo',
-			weight = 8,
+			weight = 11,
 		},
 
 

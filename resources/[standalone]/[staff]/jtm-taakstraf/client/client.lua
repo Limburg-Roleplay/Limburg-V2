@@ -63,7 +63,6 @@ Citizen.CreateThread(function()
 
                 SetEntityCoords(PlayerPedId(), checkpoints[currentCheckpointIndex].x, checkpoints[currentCheckpointIndex].y, checkpoints[currentCheckpointIndex].z)
                 SetEntityHeading(PlayerPedId(), 52.6812)
-                freezePlayerForTask()
                 SetNuiFocus(false, false)
 
                 TriggerServerEvent('communityService:updateTasks', tasksLeft)
@@ -119,7 +118,6 @@ AddEventHandler('communityService:completeTask', function()
     if tasksLeft > 0 and not taskCooldown then
         tasksLeft = tasksLeft - 1
         taskCooldown = true
-        playTaskAnimation()
         freezePlayerForTask()
 
         SendNUIMessage({
@@ -133,14 +131,7 @@ AddEventHandler('communityService:completeTask', function()
         previousCheckpointIndex = currentCheckpointIndex
 
         if tasksLeft <= 0 then
-            markerActive = false
-            SetNuiFocus(false, false)
-            SendNUIMessage({
-                type = "hide"
-            })
-            TriggerServerEvent('communityService:completeService')
-            exports['okokNotify']:Alert('Info', 'Je hebt je taken succesvol afgerond.', 5000, 'info')
-
+            removeTaken()
         else
             createMarker(checkpoints[currentCheckpointIndex])
         end
@@ -153,9 +144,24 @@ AddEventHandler('communityService:completeTask', function()
     end
 end)
 
+RegisterNetEvent('jtm-taakstraf:afgerond')
+AddEventHandler('jtm-taakstraf:afgerond', function()
+    removeTaken()
+end)
+
 -- ################################
 -- FUNCTIONS
 -- ################################
+function removeTaken()
+    markerActive = false
+    SetNuiFocus(false, false)
+    SendNUIMessage({
+        type = "hide"
+    })
+    TriggerServerEvent('communityService:completeService')
+    exports['okokNotify']:Alert('Info', 'Je hebt je taken succesvol afgerond.', 5000, 'info')
+end
+
 function createMarker(coords)
     markerActive = true
 end
@@ -163,16 +169,6 @@ end
 function freezePlayerForTask()
     local playerPed = PlayerPedId()
     FreezeEntityPosition(playerPed, true)
-    local freezeDuration = math.random(3000, 5000)
-    if lib.progressCircle({
-        duration = freezeDuration,
-        position = 'bottom',
-        useWhileDead = false,
-        canCancel = true
-    }) then FreezeEntityPosition(playerPed, false) end
-end
-
-function playTaskAnimation()
     local playerPed = PlayerPedId()
     local animationScenario = "WORLD_HUMAN_GARDENER_PLANT"
     local rand = math.random()
@@ -182,9 +178,16 @@ function playTaskAnimation()
         animationScenario = "WORLD_HUMAN_BUM_WASH"
     end
     TaskStartScenarioInPlace(playerPed, animationScenario, 0, true)
-    local animationDuration = math.random(3000, 5000)
-    Citizen.Wait(animationDuration)
-    ClearPedTasks(playerPed)
+    local freezeDuration = math.random(3000, 5000)
+    if lib.progressCircle({
+        duration = freezeDuration,
+        position = 'bottom',
+        useWhileDead = false,
+        canCancel = true
+    }) then 
+        FreezeEntityPosition(playerPed, false) 
+        ClearPedTasks(playerPed)
+    end
 end
 
 function DisplayHelpText(text)

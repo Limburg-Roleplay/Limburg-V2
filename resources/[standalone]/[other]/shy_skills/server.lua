@@ -132,6 +132,9 @@ local function incrementSkill(identifier, skill, increment, src)
     getPlayerSkills(identifier, function(skills)
         if skills then
             skills[skill] = round(skills[skill] + increment, 2)
+            if skills[skill] > 100 then
+                skills[skill] = 100
+            end
             savePlayerSkills(identifier, skills)
             TriggerClientEvent('shySkills:sendPlayerSkills', src, skills)
             logInfo(string.format("Incremented %s by %s for identifier: %s", skill, increment, identifier))

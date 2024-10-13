@@ -17,12 +17,12 @@ end
 
 -- Define NPC coordinates
 
-local npcCoords1 = vector3(3333.5410, 5160.4922, 18.3061-1)
-local npcHeading1 = 147.5858
-local npcCoords2 = vector3(84.6963, 3718.0383, 40.3293-1)
-local npcHeading2 = 52.2261
-local npcCoords3 = vector3(1509.3954, -2123.6931, 76.5648-1)
-local npcHeading3 = 180.5341
+local npcCoords1 = vector3(1672.6426, -26.0702, 172.7738) -- Meth --
+local npcHeading1 = 100.8467
+local npcCoords2 = vector3(1185.3896, -3109.6050, 5.0280) -- Lsd --
+local npcHeading2 = 0.2503
+local npcCoords3 = vector3(270.1448, -1705.8024, 28.3077) -- GHb --
+local npcHeading3 = 49.3304
 
 -- Create NPC
 CreateThread(function()
@@ -35,9 +35,9 @@ end)
 -- Ox targets
 
 exports.ox_target:addBoxZone({
-    coords = vector3(3333.5833, 5160.5796, 18.3063),
+    coords = vector3(1672.6768, -26.1274, 173.7738),
     size = vector3(2,2,2),
-    rotation = 343.5858,
+    rotation = 104.5638,
     options = {
         {
             name = "jtm-drugsverkoop",
@@ -63,9 +63,9 @@ exports.ox_target:addBoxZone({
 })
 
 exports.ox_target:addBoxZone({
-    coords = vector3(84.6963, 3718.0383, 40.3293),
+    coords = vector3(270.1448, -1705.8024, 29.3077),
     size = vector3(2,2,2),
-    rotation = 52.2261,
+    rotation = 49.3304,
     options = {
         {
             name = "jtm-drugsverkoop",
@@ -84,9 +84,9 @@ exports.ox_target:addBoxZone({
 })
 
 exports.ox_target:addBoxZone({
-    coords = vector3(1509.4047, -2124.2134, 76.5648+0.3),
+    coords = vector3(1185.3896, -3109.6050, 6.0280),
     size = vector3(2,2,2),
-    rotation = 91.8932,
+    rotation = 0.2503,
     options = {
         {
             name = "jtm-drugsverkoop",
@@ -105,33 +105,8 @@ exports.ox_target:addBoxZone({
 })
 -- Blips
 
-local blipCoords = vector3(1509.3954, -2123.6931, 76.5648) 
 
-local blip = AddBlipForCoord(blipCoords)
-
-SetBlipSprite(blip, 484) -- icon
-SetBlipColour(blip, 3) -- color 
-SetBlipScale(blip, 0.8) -- size
-SetBlipAsShortRange(blip, true) 
-
-BeginTextCommandSetBlipName("STRING")
-AddTextComponentString("LSD Verkoop") 
-EndTextCommandSetBlipName(blip)
-
-local blipCoords = vector3(2530.1804, 4816.1650, 33.9008) 
-
-local blip = AddBlipForCoord(blipCoords)
-
-SetBlipSprite(blip, 484) -- icon
-SetBlipColour(blip, 3) -- color 
-SetBlipScale(blip, 0.8) -- size
-SetBlipAsShortRange(blip, true) 
-
-BeginTextCommandSetBlipName("STRING")
-AddTextComponentString("LSD Pluk") 
-EndTextCommandSetBlipName(blip)
-
-local blipCoords = vector3(84.6963, 3718.0383, 40.3293) 
+local blipCoords = vector3(270.9777, -1705.2170, 29.3049) 
 
 local blip = AddBlipForCoord(blipCoords)
 
@@ -144,7 +119,7 @@ BeginTextCommandSetBlipName("STRING")
 AddTextComponentString("GHB Verkoop") 
 EndTextCommandSetBlipName(blip)
 
-local blipCoords = vector3(256.4119, 6459.7852, 31.3985) 
+local blipCoords = vector3(-565.8213, -1459.0908, 10.2875) 
 
 local blip = AddBlipForCoord(blipCoords)
 
@@ -157,7 +132,7 @@ BeginTextCommandSetBlipName("STRING")
 AddTextComponentString("GHB Pluk") 
 EndTextCommandSetBlipName(blip)
 
-local blipCoords = vector3(-47.8312, 3348.7878, 45.2680) 
+local blipCoords = vector3(-1547.7323, 2854.8201, 31.1417) 
 
 local blip = AddBlipForCoord(blipCoords)
 
@@ -168,17 +143,4 @@ SetBlipAsShortRange(blip, true)
 
 BeginTextCommandSetBlipName("STRING")
 AddTextComponentString("Meth Pluk") 
-EndTextCommandSetBlipName(blip)
-
-local blipCoords = vector3(3333.1455, 5160.0176, 18.3072) 
-
-local blip = AddBlipForCoord(blipCoords)
-
-SetBlipSprite(blip, 514) -- icon
-SetBlipColour(blip, 3) -- color 
-SetBlipScale(blip, 0.7) -- size
-SetBlipAsShortRange(blip, true) 
-
-BeginTextCommandSetBlipName("STRING")
-AddTextComponentString("Meth Verkoop") 
 EndTextCommandSetBlipName(blip)

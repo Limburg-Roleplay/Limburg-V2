@@ -20,5 +20,5 @@ Text = {
     'Geen zin om een gang te joinen en te grinden voor levels. Kijk naar het VIP: Blackmarket Pakket in onze discord!',
     'Opzoek naar fivem scripts join deze discord! https://discord.gg/jtmdevelopment',
     'Join onze discord! discord.gg/limburgroleplay',
-    'Wist je dat je kan fouilleren met /rs en niet met het oogje!',
+    'Wist je dat je kan fouilleren met /rs en niet met het oogje!'
 }

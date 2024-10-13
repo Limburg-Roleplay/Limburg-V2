@@ -128,18 +128,21 @@ AddEventHandler("loodsen:plukken", function()
                     amountToAdd = amountToAdd + math.random(1, 4)
                 end
             end
-
+            local editedOpslag = opslag + amountToAdd
+            if editedOpslag > maxopslag then
+                editedOpslag = maxopslag
+            end
             MySQL.Async.execute(
                 "UPDATE loodsen SET plants = @plants, opslag = @opslag WHERE id = @id",
                 {
                     ["@plants"] = json.encode(plantGrowth),
-                    ["@opslag"] = opslag + amountToAdd,
+                    ["@opslag"] = editedOpslag,
                     ["@id"] = loodsId
                 },
                 function(affectedRows)
                     if affectedRows > 0 then
                         TriggerClientEvent('updatePlantGrowth', -1, loodsId, plantGrowth, opslag, maxopslag)
-                        TriggerClientEvent('updateOpslag', -1, loodsId, opslag + amountToAdd)
+                        TriggerClientEvent('updateOpslag', -1, loodsId, editedOpslag)
                     end
                 end
             )

@@ -175,7 +175,7 @@ end)
 ESX.RegisterCommand('revive', {'admin', 'mod', 'staff'}, function(xPlayer, args, showError)
     if not exports["frp-staffdienst"]:inDienst(xPlayer.source) then
         return
-            TriggerClientEvent("frp-notifications:client:notify", source, 'error',
+            TriggerClientEvent("frp-notifications:client:notify", xPlayer.source, 'error',
                 'Je bent niet in dienst, zorg dat je <br> /staffdienst hebt gedaan')
     end
 	args.playerId.triggerEvent('wsk-ambulance:client:staffrevive:player')

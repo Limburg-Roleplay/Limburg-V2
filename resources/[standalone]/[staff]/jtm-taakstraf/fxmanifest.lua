@@ -5,8 +5,12 @@ fx_version 'cerulean'
 game 'gta5' 
 author 'JTM-Development'
 version '1.0.0'
+lua54 'yes'
 
-shared_script '@es_extended/imports.lua'
+shared_scripts { 
+    '@es_extended/imports.lua',
+    '@ox_lib/init.lua',
+}
 
 client_scripts {
     'client/client.lua'

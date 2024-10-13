@@ -277,14 +277,14 @@ return {
 
 	["phone"] = {
 		label = "Telefoon",
-		weight = 150,
+		weight = 300,
 		consume = 0,
 	},
 
 	['radio'] = {
 		label = 'Portofoon',
 		description = 'Iets om mee te communiceren in bepaalde kanalen ofzo.',
-		weight = 150,
+		weight = 300,
 	},
 
 	['repairkit'] = {
@@ -312,7 +312,7 @@ return {
 	['jerrycan'] = {
 		label = 'Jerrycan',
 		description = 'Om een extra zetje in je voertuig te geven',
-		weight = 500,
+		weight = 2000,
 		server = {
 			export = 'frp-benzine.benzine',
 		}
@@ -333,13 +333,13 @@ return {
 	['cocainepoeder'] = {
 		label = 'Cocaine Zakje',
 		description = 'Iets met legaal en illegaal..',
-		weight = 1000
+		weight = 1036
 	},
 
 	['cokeblok'] = {
 		label = 'Cocaine Blok',
 		description = 'Met dit opzak ben je net Tony Montana..',
-		weight = 1000
+		weight = 993
 	},
 
 	['coke'] = {
@@ -351,13 +351,13 @@ return {
 	['xtc'] = {
 		label = 'XTC Zakje',
 		description = 'Iets met legaal en illegaal..',
-		weight = 100
+		weight = 579
 	},
 
 	['weed_packed'] = {
 		label = 'Verpakte Wiet',
 		description = 'Iets met legaal en illegaal..',
-		weight = 100
+		weight = 457
 	},
 
 
@@ -383,7 +383,7 @@ return {
 
 	['drill'] = {
 		label = 'Boor',
-		weight = 1500,
+		weight = 10000,
 	},
 
 	['thermiet'] = {
@@ -394,7 +394,7 @@ return {
 
 	["blowpipe"] = {
 		label = "Blowtorch",
-		weight = 2,
+		weight = 239,
 		stack = true,
 		close = true,
 	},
@@ -443,7 +443,7 @@ return {
     
 	["hacking_device"] = {
 		label = "Hack Apparaat",
-		weight = 2,
+		weight = 233,
 		stack = true,
 		close = true,
 	},
@@ -471,21 +471,21 @@ return {
 
     ["lsd"] = {
 		label = "LSD",
-		weight = 430,
+		weight = 500,
 		stack = true,
 		close = true,
 	},
     
     ["meth"] = {
 		label = "Meth",
-		weight = 130,
+		weight = 564,
 		stack = true,
 		close = true,
 	},
     
     ["methzakje"] = {
 		label = "Meth Zakje",
-		weight = 340,
+		weight = 339,
 		stack = true,
 		close = true,
 	},
@@ -506,14 +506,14 @@ return {
 
     ["ghb_ton"] = {
 		label = "Ghb Ton",
-		weight = 120,
+		weight = 500,
 		stack = true,
 		close = true,
 	},
 
     ["ghb"] = {
 		label = "Ghb Poeder",
-		weight = 200,
+		weight = 239,
 		stack = true,
 		close = true,
 	},
@@ -926,31 +926,31 @@ return {
 
 	["hackerDevice"] = {
 		label = "Hacker Device",
-		weight = 10,
+		weight = 243,
 		stack = true,
 		close = true,
 	},
     ['weed'] = {
 		label = 'Onverpakte Wiet',
 		description = 'Iets met legaal en illegaal..',
-		weight = 250
+		weight = 252
 	},
 
 	['cocaleaf'] = {
 		label = 'Coca bladeren',
 		description = 'Iets met legaal en illegaal..',
-		weight = 250
+		weight = 247
 	},
     ['xtc'] = {
 		label = 'XTC Zakje',
 		description = 'Iets met legaal en illegaal..',
-		weight = 1000
+		weight = 1031
 	},
 
 	['weed_packed'] = {
 		label = 'Verpakte Wiet',
 		description = 'Iets met legaal en illegaal..',
-		weight = 1000
+		weight = 1029
 	},
     ["weed_card"] = {
 		label = "Wiet kaart",

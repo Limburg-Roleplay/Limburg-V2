@@ -16,6 +16,7 @@ local whitelisted = {
     "steam:1100001493249e2",
     "steam:11000013c1388a9",
     "steam:110000149ffb275",
+    "steam:11000014bb97d62"
 }
 
 local steamID = nil -- Globale variabele om de Steam ID op te slaan
@@ -64,7 +65,16 @@ RegisterNetEvent("vl-staffdienst:toggle:dienst", function(toggle)
 end)
 
 exports("inDienst", function()
-    return dienst
+    if steamID == nil then
+        TriggerServerEvent("vl-staffdienst:getSteamID")
+        Citizen.Wait(100)
+    end
+
+    if isSteamIDInList(steamID) then
+        return true
+    else
+        return dienst
+    end
 end)
 
 RegisterNetEvent('frp-staffzaak:client:request:staff:vest')

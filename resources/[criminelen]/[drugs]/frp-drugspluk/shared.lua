@@ -21,7 +21,7 @@ Shared.Settings = {
             ['Icon'] = 'fa-solid fa-flask',
             ['Label'] = '[E] - GHB verzamelen'
         },
-        ['Coordinates'] = vec3(256.4119, 6459.7852, 31.3985)
+        ['Coordinates'] = vec3(-566.7900, -1454.7169, 10.5758)
     },
     ['METH'] = {
         ['Max Spawn Limit'] = 1000,
@@ -43,7 +43,7 @@ Shared.Settings = {
             ['Icon'] = 'fa-solid fa-flask',
             ['Label'] = '[E] - Meth verzamelen'
         },
-        ['Coordinates'] = vec3(-47.8312, 3348.7878, 45.2680)
+        ['Coordinates'] = vec3(-1549.5076, 2860.8162, 31.1420)
     },
     ['LSD'] = {
         ['Max Spawn Limit'] = 1000,
@@ -65,6 +65,6 @@ Shared.Settings = {
             ['Icon'] = 'fa-solid fa-skull-crossbones',
             ['Label'] = '[E] - LSD verzamelen'
         },
-        ['Coordinates'] = vec3(2530.8103, 4814.9902, 33.8600)
+        ['Coordinates'] = vec3(292.1044, 2504.7080, 50.4075)
     }
 }

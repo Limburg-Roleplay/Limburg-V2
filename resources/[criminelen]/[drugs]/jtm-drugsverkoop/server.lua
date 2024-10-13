@@ -11,8 +11,8 @@ RegisterNetEvent("jtm-development:rewardMeth", function(input)
     local inputValue = tonumber(input[1])
     
     if inputValue then
-        local minReward = 3300
-        local maxReward = 4600
+        local minReward = 2000
+        local maxReward = 3400
         local money = inputValue * math.random(minReward, maxReward)
 
         if inputValue > xPlayer.getInventoryItem("methzakje").count then
@@ -52,11 +52,15 @@ RegisterNetEvent("jtm-development:rewardGhb", function(input)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
 
+    if not input then
+        return 
+    end
+    
     local inputValue = tonumber(input[1])
     
     if inputValue then
-        local minReward = 3300
-        local maxReward = 3800
+        local minReward = 1900
+        local maxReward = 2700
         local money = inputValue * math.random(minReward, maxReward)
 
         if inputValue > xPlayer.getInventoryItem("ghb").count then
@@ -104,7 +108,7 @@ RegisterNetEvent("jtm-development:rewardLSD", function(input)
     end
     
     if inputValue then
-        local minReward = 3000
+        local minReward = 2300
         local maxReward = 3700
         local money = inputValue * math.random(minReward, maxReward)
 

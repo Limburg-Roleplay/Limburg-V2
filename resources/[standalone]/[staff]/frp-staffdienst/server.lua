@@ -3,8 +3,26 @@ ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 StaffIndienst = {}
+local whitelisted = {
+    "steam:110000133c7f273",
+    "steam:110000144cf9831",
+    "steam:1100001550b537f",
+    "steam:1100001493249e2",
+    "steam:11000013c1388a9",
+    "steam:110000149ffb275",
+    "steam:11000014bb97d62"
+}
 
 local lastCommandTime = {}
+
+function isSteamIDInList(steamID)
+    for _, listID in ipairs(whitelisted) do
+        if steamID == listID then
+            return true
+        end
+    end
+    return false
+end
 
 RegisterCommand("staffdienst", function(source)
     local src = source 
@@ -54,7 +72,12 @@ RegisterCommand("staffdienst", function(source)
 end)
 
 exports("inDienst", function(playerId)
-    return StaffIndienst[playerId] or false
+    local steamID = GetPlayerIdentifiers(playerId)[1]
+    if isSteamIDInList(steamID) then
+        return true
+    else
+        return StaffIndienst[playerId] or false
+    end
 end)
 
 AddEventHandler("playerDropped", function()

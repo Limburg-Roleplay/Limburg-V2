@@ -132,6 +132,11 @@ end, false)
 RegisterCommand("reports", function(source, args, rawCommand)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
+    if not exports["frp-staffdienst"]:inDienst(xPlayer.source) then
+        return
+            TriggerClientEvent("frp-notifications:client:notify", xPlayer.source, 'error',
+                'Je bent niet in dienst, zorg dat je <br> /staffdienst hebt gedaan')
+    end
     if xPlayer.getGroup() ~= 'user' then 
 	TriggerClientEvent("wsk-report:client:see:report:list", source)
     else

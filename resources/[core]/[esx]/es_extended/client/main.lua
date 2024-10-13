@@ -45,7 +45,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer, isNew, skin)
 				TriggerEvent('skinchanger:loadSkin', skin)
 			end
 
-			TriggerEvent('esx:loadingScreenOff')
+			TriggerEvent('lrp-loadingscreen:client:done')
 			ShutdownLoadingScreen()
 			ShutdownLoadingScreenNui()
 			FreezeEntityPosition(ESX.PlayerData.ped, false)
