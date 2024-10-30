@@ -106,7 +106,7 @@ AddEventHandler("loodsen:openMenu", function(markerLocation, loodsId)
                 function(data, menu)
                     if data.current.value == "enter" then
                         local teleportLocation = Config.InsideLoods
-                        exports["frp-interaction"]:clearInteraction()
+                        exports["lrp-interaction"]:clearInteraction()
                         DoScreenFadeOut(400)
                         Citizen.Wait(500)
                         SetEntityHeading(PlayerPedId(), teleportLocation.w)
@@ -125,7 +125,7 @@ AddEventHandler("loodsen:openMenu", function(markerLocation, loodsId)
                         Citizen.Wait(500)
                         DoScreenFadeIn(500)
 
-                        exports["frp-interaction"]:clearInteraction()
+                        exports["lrp-interaction"]:clearInteraction()
                     elseif data.current.value == "sell" then
                         ESX.UI.Menu.Open(
                             "default",
@@ -186,15 +186,6 @@ AddEventHandler("loodsen:openMenu", function(markerLocation, loodsId)
                     menu.close()
                 end
             )
-
-            Citizen.CreateThread(function()
-                while ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), "loodsen_menu") do
-                    Citizen.Wait(0)
-                    if IsControlJustReleased(0, 322) or IsControlJustReleased(0, 177) then
-                        ESX.UI.Menu.CloseAll()
-                    end
-                end
-            end)
         end, loodsId)
     end)
 end)
@@ -206,10 +197,12 @@ Citizen.CreateThread(
             local isInMarker = false
             local currentMarker = nil
             local markerLocation = nil
+            local sleep = 1000
             local distance =
                 #(playerCoords - vector3(Config.LeaveLocation.x, Config.LeaveLocation.y, Config.LeaveLocation.z))
 
-            if distance < 10.0 then
+            if distance < 5.0 then
+                sleep = 0
                 ESX.DrawBasicMarker(Config.LeaveLocation, 255, 0, 0)
 
                 if distance < 1.5 then
@@ -220,7 +213,7 @@ Citizen.CreateThread(
                         y = Config.LeaveLocation.y,
                         z = Config.LeaveLocation.z
                     }
-                    exports["frp-interaction"]:Interaction(
+                    exports["lrp-interaction"]:Interaction(
                         {r = "255", g = "0", b = "0"},
                         "[E] - Loods verlaten",
                         Config.LeaveLocation,
@@ -232,11 +225,11 @@ Citizen.CreateThread(
                         TriggerEvent("loodsen:showLeaveMenu")
                     end
                 else
-                    exports["frp-interaction"]:clearInteraction()
+                    exports["lrp-interaction"]:clearInteraction()
                 end
             end
 
-            Citizen.Wait(0)
+            Citizen.Wait(sleep)
         end
     end
 )
@@ -248,42 +241,50 @@ AddEventHandler("loodsen:noLoodsFound", function()
 )
 
 Citizen.CreateThread(function()
-        ESX.TriggerServerCallback("loodsen:getLoodsData", function(loodsData)
-            while true do
-                local playerCoords = GetEntityCoords(PlayerPedId())
-                local isInMarker = false
-                local currentMarker = nil
-                local markerLocation = nil
-                for _, loods in ipairs(loodsData) do
-                    local distance = #(playerCoords - vector3(json.decode(loods.location).x, json.decode(loods.location).y, json.decode(loods.location).z))
+    ESX.TriggerServerCallback("loodsen:getLoodsData", function(loodsData)
+        while true do
+            local playerCoords = GetEntityCoords(PlayerPedId())
+            local isInMarker = false
+            local currentMarker = nil
+            local markerLocation = nil
+            local sleep = 1000
 
-                    if distance < 10.0 then
-                        ESX.DrawBasicMarker(json.decode(loods.location), 0, 255, 0)
-                        if distance < 1.5 then
-                            isInMarker = true
-                            currentMarker = loods.id
-                            exports["frp-interaction"]:Interaction(
-                                {r = "0", g = "255", b = "0"},
-                                "[E] - Loods menu",
-                                json.decode(loods.location),
-                                2.5,
-                                "loods_marker",
-                                json.decode(loods.location)
-                            )
-                            markerLocation = {x = json.decode(loods.location).x, y = json.decode(loods.location).y, z = json.decode(loods.location).z}
-                            if isInMarker and IsControlJustReleased(0, 38) then
-                                TriggerEvent("loodsen:openMenu", markerLocation, loods.id)
-                            end
-                        else
-                            exports["frp-interaction"]:clearInteraction()
+            for _, loods in ipairs(loodsData) do
+                local location = json.decode(loods.location)
+                local distance = #(playerCoords - vector3(location.x, location.y, location.z))
+
+                if distance < 5.0 then
+                    sleep = 0
+                    ESX.DrawBasicMarker(location, 0, 255, 0)
+
+                    if distance < 1.5 then
+                        isInMarker = true
+                        currentMarker = loods.id
+                        markerLocation = {x = location.x, y = location.y, z = location.z}
+
+                        exports["lrp-interaction"]:Interaction(
+                            {r = "0", g = "255", b = "0"},
+                            "[E] - Loods menu",
+                            location,
+                            2.5,
+                            "loods_marker",
+                            location
+                        )
+
+                        if IsControlJustReleased(0, 38) then
+                            TriggerEvent("loodsen:openMenu", markerLocation, loods.id)
                         end
+                    else
+                        exports["lrp-interaction"]:clearInteraction()
                     end
                 end
-                Citizen.Wait(0)
             end
-        end)
-    end
-)
+
+            Citizen.Wait(sleep)
+        end
+    end)
+end)
+
 
 RegisterNetEvent("loodsen:setLoodsArea")
 AddEventHandler("loodsen:setLoodsArea",function(location)
@@ -367,17 +368,6 @@ AddEventHandler(
                         menu.close()
                     end
                 )
-
-                Citizen.CreateThread(
-                    function()
-                        while ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), "loodsen_leave_menu") do
-                            Citizen.Wait(0)
-                            if IsControlJustReleased(0, 322) or IsControlJustReleased(0, 177) then
-                                ESX.UI.Menu.CloseAll()
-                            end
-                        end
-                    end
-                )
             end,
             loodsId
         )
@@ -429,7 +419,6 @@ Seeupgrades = function()
                     menu.close()
                     for k,v in pairs(Config.upgrades) do
                         if v.value == data.current.value then
-                            ESX.ShowNotification("Je hebt " .. v.string .. " gekocht!")
             				TriggerEvent('okokNotify:Alert', "Gelukt!", "Je hebt upgrade: " .. v.string .. " gekocht!", 5000, 'success')
                         end
                     end
@@ -472,16 +461,6 @@ AddEventHandler(
             end,
             function(data, menu)
                 menu.close()
-            end
-        )
-        Citizen.CreateThread(
-            function()
-                while ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), "loodsen_invite_menu") do
-                    Citizen.Wait(0)
-                    if IsControlJustReleased(0, 322) or IsControlJustReleased(0, 177) then
-                        ESX.UI.Menu.CloseAll()
-                    end
-                end
             end
         )
     end
@@ -573,17 +552,6 @@ AddEventHandler(
                 menu.close()
             end
         )
-
-        Citizen.CreateThread(
-            function()
-                while ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), "loodsen_invitation_menu") do
-                    Citizen.Wait(0)
-                    if IsControlJustReleased(0, 322) or IsControlJustReleased(0, 177) then
-                        ESX.UI.Menu.CloseAll()
-                    end
-                end
-            end
-        )
     end
 )
 
@@ -593,7 +561,7 @@ AddEventHandler(
     function(senderRouting)
         local teleportLocation = vector3(1065.8849, -3183.4270, -39.1635)
         local heading = 175.9785
-        exports["frp-interaction"]:clearInteraction()
+        exports["lrp-interaction"]:clearInteraction()
         DoScreenFadeOut(400)
         Citizen.Wait(500)
         SetEntityHeading(PlayerPedId(), heading)
@@ -612,7 +580,7 @@ AddEventHandler(
         Citizen.Wait(500)
         DoScreenFadeIn(500)
 
-        exports["frp-interaction"]:clearInteraction()
+        exports["lrp-interaction"]:clearInteraction()
     end
 )
 
@@ -670,38 +638,30 @@ AddEventHandler(
                 menu.close()
             end
         )
-        Citizen.CreateThread(
-            function()
-                while ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), "remove_key_menu") do
-                    Citizen.Wait(0)
-                    if IsControlJustReleased(0, 322) or IsControlJustReleased(0, 177) then
-                        ESX.UI.Menu.CloseAll()
-                    end
-                end
-            end
-        )
     end
 )
 
 Citizen.CreateThread(
     function()
         local computerLocation = vector3(Config.ComputerLocation.x, Config.ComputerLocation.y, Config.ComputerLocation.z)
-        local distanceThreshold = 0.2
+        local distanceThreshold = 1.0
 
         while true do
-            Citizen.Wait(1)
 
             local playerPed = PlayerPedId()
             local playerCoords = GetEntityCoords(playerPed)
             local distance = #(playerCoords - computerLocation)
+            local sleep = 1000
 
             if distance < distanceThreshold then
+                sleep = 0
                 DisplayHelpText("Press ~INPUT_CONTEXT~ to interact with the computer.")
 
                 if IsControlJustReleased(0, 38) then
                     TriggerServerEvent("loodsen:openComputerNui")
                 end
             end
+            Citizen.Wait(sleep)
         end
     end
 )
@@ -894,12 +854,13 @@ end
 function CreateTrunkMarker(vehicle, currentSellLocation)
     Citizen.CreateThread(function()
         while not isCarryingBox do
-            Citizen.Wait(0)
+            local sleep = 1000
             local playerCoords = GetEntityCoords(PlayerPedId())
             local trunkCoords = GetOffsetFromEntityInWorldCoords(vehicle, 0.0, -2.5, 0.0)
             local sellLocation = vector3(currentSellLocation.x, currentSellLocation.y, currentSellLocation.z)
 
             if #(playerCoords - trunkCoords) < 3.0 and not IsPedInAnyVehicle(PlayerPedId(), false) and #(playerCoords - sellLocation) < 50.0 then
+                sleep = 0
                 DrawMarker(1, trunkCoords.x, trunkCoords.y, trunkCoords.z - 1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 255, 0, 100, false, true, 2, false, nil, nil, false)
                 DisplayHelpText("Druk op ~INPUT_CONTEXT~ om de doos te pakken.")
 
@@ -908,6 +869,7 @@ function CreateTrunkMarker(vehicle, currentSellLocation)
                     break
                 end
             end
+            Citizen.Wait(sleep)
         end
     end)
 end
@@ -943,10 +905,11 @@ end
 function CreateSellMarker(vehicle)
     Citizen.CreateThread(function()
         while isCarryingBox do
-            Citizen.Wait(0)
+            local sleep = 1000
             local playerCoords = GetEntityCoords(PlayerPedId())
 
             if #(playerCoords - vector3(currentSellLocation.x, currentSellLocation.y, currentSellLocation.z)) < 15.0 then
+                sleep = 0
                 DrawMarker(1, currentSellLocation.x, currentSellLocation.y, currentSellLocation.z - 1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0, 0, 255, 100, false, true, 2, false, nil, nil, false)
                 if #(playerCoords - vector3(currentSellLocation.x, currentSellLocation.y, currentSellLocation.z)) < 3.0 then
                     DisplayHelpText("Druk op ~INPUT_CONTEXT~ om de doos af te leveren.")
@@ -957,6 +920,7 @@ function CreateSellMarker(vehicle)
                     end
                 end
             end
+            Citizen.Wait(sleep)
         end
     end)
 end
@@ -1069,5 +1033,28 @@ Citizen.CreateThread(function()
         end)
             
         Citizen.Wait(10000) 
+    end
+end)
+
+
+Citizen.CreateThread(function()
+    local menus = {
+        "loodsen_menu",
+        "loodsen_leave_menu",
+        "loodsen_invite_menu",
+        "loodsen_invitation_menu",
+        "remove_key_menu"
+    }
+
+    while true do
+        Citizen.Wait(0)
+
+        for _, menuName in ipairs(menus) do
+            if ESX.UI.Menu.IsOpen("default", GetCurrentResourceName(), menuName) then
+                if IsControlJustReleased(0, 322) or IsControlJustReleased(0, 177) then
+                    ESX.UI.Menu.CloseAll()
+                end
+            end
+        end
     end
 end)

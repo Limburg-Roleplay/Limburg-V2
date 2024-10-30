@@ -87,8 +87,26 @@ function ESX.ShowNotification(type, message, length)
     	BeginTextCommandThefeedPost('STRING')
     	AddTextComponentSubstringPlayerName(message)
     	EndTextCommandThefeedPostTicker(0,1)
-    else 
-    	exports["frp-notifications"]:notify(type, message, length)
+    else
+		if length == nil then
+			length = 3000
+		end
+		
+		if message == nil then
+			exports['okokNotify']:Alert('Info', type, 3000, 'info')
+		else 
+			if type == "error" then
+				exports['okokNotify']:Alert('Error', message, length, type)
+			elseif type == "info" then
+				exports['okokNotify']:Alert('Info', message, length, type)
+			elseif type == "success" then
+				exports['okokNotify']:Alert('Succes', message, length, type)
+			elseif type == "warning" then
+				exports['okokNotify']:Alert('Waarschuwing', message, length, type)
+			elseif type == "noodknop" then
+				exports['okokNotify']:Alert('Noodknop!', message, length, "error")
+			end
+		end
     end
 end
 
@@ -1081,17 +1099,17 @@ function ESX.ShowInventory()
 												menu2.close()
 												menu1.close()
 											else
-												ESX.ShowNotification(_U('amount_invalid'))
+												ESX.ShowNotification('error', _U('amount_invalid'))
 											end
 										end, function(data3, menu3)
 											menu3.close()
 										end)
 									end
 								else
-									ESX.ShowNotification(_U('in_vehicle'))
+									ESX.ShowNotification('error', _U('in_vehicle'))
 								end
 							else
-								ESX.ShowNotification(_U('players_nearby'))
+								ESX.ShowNotification('error', _U('players_nearby'))
 								menu2.close()
 							end
 						end, function(data2, menu2)
@@ -1099,7 +1117,7 @@ function ESX.ShowInventory()
 						end)
 					end, players)
 				else
-					ESX.ShowNotification(_U('players_nearby'))
+					ESX.ShowNotification('error', _U('players_nearby'))
 				end
 			elseif data1.current.action == 'remove' then
 				if IsPedOnFoot(playerPed) and not IsPedFalling(playerPed) then
@@ -1124,7 +1142,7 @@ function ESX.ShowInventory()
 								Wait(1000)
 								TriggerServerEvent('esx:removeInventoryItem', type, item, quantity)
 							else
-								ESX.ShowNotification(_U('amount_invalid'))
+								ESX.ShowNotification('error', _U('amount_invalid'))
 							end
 						end, function(data2, menu2)
 							menu2.close()
@@ -1155,22 +1173,22 @@ function ESX.ShowInventory()
 										menu2.close()
 										menu1.close()
 									else
-										ESX.ShowNotification(_U('noammo'))
+										ESX.ShowNotification('error', _U('noammo'))
 									end
 								else
-									ESX.ShowNotification(_U('amount_invalid'))
+									ESX.ShowNotification('error', _U('amount_invalid'))
 								end
 							end, function(data2, menu2)
 								menu2.close()
 							end)
 						else
-							ESX.ShowNotification(_U('noammo'))
+							ESX.ShowNotification('error', _U('noammo'))
 						end
 					else
-						ESX.ShowNotification(_U('players_nearby'))
+						ESX.ShowNotification('error', _U('players_nearby'))
 					end
 				else
-					ESX.ShowNotification(_U('in_vehicle'))
+					ESX.ShowNotification('error', _U('in_vehicle'))
 				end
 			end
 		end, function(data1, menu1)

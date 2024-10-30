@@ -7,7 +7,7 @@ lua54 "yes"
 
 version "1.0.0"
 author 'JTM-DEVELOPMENT'
-description "FRP-Cardealer JTM-DEVELOPMENT"
+description "LRP-Cardealer JTM-DEVELOPMENT"
 
 client_scripts { "src/client/*.lua" }
 server_scripts { "shared.lua", "@oxmysql/lib/MySQL.lua", "src/server/*.lua" }

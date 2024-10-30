@@ -4,7 +4,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 -- F6 fouileren
 
-ESX.RegisterServerCallback('srp-gangmenu:getInventoryItems', function(source, cb, targetId)
+ESX.RegisterServerCallback('lrp-gangmenu:getInventoryItems', function(source, cb, targetId)
     local targetXPlayer = ESX.GetPlayerFromId(targetId)
     local xPlayer = ESX.GetPlayerFromId(source)
     lib.notify(targetId, {
@@ -37,41 +37,162 @@ RegisterNetEvent('jtm-gangjob:notification', function(targetId)
 end)
 
 RegisterNetEvent('jtm_gangjob:sendLog', function(id, logTable, color)
-    TriggerEvent('td_logs:sendLog', 
-        'https://discord.com/api/webhooks/1283467508346654873/hGREVpjlsFXVg9SEgP_wOXfAKixGZjRqkjEgCtG-ACXlC7CLxpo1KkQxatNftxO1mwsw', 
-        id, 
+    TriggerEvent('td_logs:sendLog',
+        'https://discord.com/api/webhooks/1283467508346654873/hGREVpjlsFXVg9SEgP_wOXfAKixGZjRqkjEgCtG-ACXlC7CLxpo1KkQxatNftxO1mwsw',
+        id,
         logTable,
         color
     )
 end)
 
-RegisterServerEvent('srp-gangmenu:requestSearch')
-AddEventHandler('srp-gangmenu:requestSearch', function(targetPlayerId)
+RegisterServerEvent('lrp-gangmenu:requestSearch')
+AddEventHandler('lrp-gangmenu:requestSearch', function(targetPlayerId)
     local source = source
-    TriggerClientEvent('srp-gangmenu:notifySearchRequest', targetPlayerId, source)
+    TriggerClientEvent('lrp-gangmenu:notifySearchRequest', targetPlayerId, source)
 end)
 
-RegisterServerEvent('srp-gangmenu:searchResponse')
-AddEventHandler('srp-gangmenu:searchResponse', function(requesterId, accepted)
-    local source = source
-    TriggerClientEvent('srp-gangmenu:searchResponse', requesterId, source, accepted)
+
+
+ESX.RegisterServerCallback('jtm-gangjob:gunshop:getvoorraad', function(src, cb, gangjob)
+    MySQL.Async.fetchAll(
+        "SELECT * FROM ganginkoop WHERE gangnaam = @gangnaam",
+        {
+            ["@gangnaam"] = gangjob
+        },
+        function(result)
+            if result[1] then
+                cb(result[1])
+            end
+        end
+    )
 end)
 
-RegisterServerEvent('srp-gangmenu:sendNotification')
-AddEventHandler('srp-gangmenu:sendNotification', function(targetPlayerId, playerId)
-    TriggerClientEvent("frp-notifications:client:notify", targetPlayerId, "success", "Je wordt gefouilleerd door speler " .. playerId, "3000")
+RegisterServerEvent('jtm-gangjob:koopwapen')
+AddEventHandler('jtm-gangjob:koopwapen', function(gangnaam, wapenSpawnName, wapennaam)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
+    MySQL.Async.fetchAll(
+        "SELECT * FROM ganginkoop WHERE gangnaam = @gangnaam",
+        {
+            ["@gangnaam"] = gangnaam
+        },
+        function(result)
+            if result[1] then
+                local voorraad = result[1][wapennaam]
+
+                if voorraad < 0 then
+                    TriggerClientEvent('okokNotify:Alert', src, 'Geen voorraad', 'De voorraad van dit wapen is leeg!',
+                        5000, 'error')
+                    return
+                end
+
+                if xPlayer.getAccount('bank').money < Config.wapen_prijzen[wapennaam] then
+                    TriggerClientEvent('okokNotify:Alert', src, 'Niet genoeg geld',
+                        'Je hebt niet genoeg geld om dit wapen aan te kopen!',
+                        5000, 'error')
+                    return
+                end
+                if exports.ox_inventory:CanCarryItem(src, wapenSpawnName, 1) then
+                    local gegeven, antwoord = exports.ox_inventory:AddItem(src, wapenSpawnName, 1)
+                    if not gegeven then
+                        return print(antwoord)
+                    end
+                    local overgeblevenGeld = xPlayer.getAccount('bank').money - Config.wapen_prijzen[wapennaam]
+                    xPlayer.setAccountMoney('bank', overgeblevenGeld)
+
+                    TriggerClientEvent('okokNotify:Alert', src, 'Gekocht!', 'Veel plezier met je wapen!', 5000, 'success')
+
+                    MySQL.Async.execute(
+                        string.format("UPDATE ganginkoop SET %s = @aantal WHERE gangnaam = @gangnaam", wapennaam),
+                        {
+                            ["@gangnaam"] = gangnaam,
+                            ["@aantal"] = voorraad - 1,
+                        }
+                    )
+                else
+                    TriggerClientEvent('okokNotify:Alert', src, 'Te zwaar!', 'Je kan het wapen niet dragen.',
+                        5000, 'error')
+                end
+            end
+        end
+    )
+end)
+
+
+ESX.RegisterCommand('resetwapenvoorraad', 'owner', function(xPlayer, args, showError)
+        if not args.gang then
+            TriggerClientEvent('okokNotify:Alert', xPlayer.source, 'Error!',
+                'Je moet een gang invullen om deze command te gebruiken',
+                5000, 'error')
+        end
+        if not Config.Wapeninkoopgangs[args.gang] then
+            TriggerClientEvent('okokNotify:Alert', xPlayer.source, 'Error!', 'Deze gang bestaat niet',
+                5000, 'error')
+        end
+        if not args.wapen then
+            for k, v in pairs(Config.Wapeninkoopgangs[args.gang].wapeninkoop) do
+                MySQL.Async.execute(
+                    string.format("UPDATE ganginkoop SET %s = @aantal WHERE gangnaam = @gangnaam", k),
+                    {
+                        ["@gangnaam"] = args.gang,
+                        ["@aantal"] = v,
+                    }
+                )
+
+                
+            end
+            TriggerClientEvent('okokNotify:Alert', xPlayer.source, 'Gelukt!', args.gang .. ' kan nu weer alle wapens maximaal kopen', 5000,
+                'success')
+            return
+        end
+
+        if not Config.wapen_labels[args.wapen] then
+            TriggerClientEvent('okokNotify:Alert', xPlayer.source, 'Error!', 'Dit wapen is niet bij ons bekend', 5000,
+                'error')
+            return
+        end
+
+
+        local maxVoorraad = Config.Wapeninkoopgangs[args.gang].wapeninkoop[args.wapen]
+        local wapenLabel = Config.wapen_labels[args.wapen]
+        MySQL.Async.execute(
+            string.format("UPDATE ganginkoop SET %s = @aantal WHERE gangnaam = @gangnaam", args.wapen),
+            {
+                ["@gangnaam"] = args.gang,
+                ["@aantal"] = maxVoorraad,
+            }
+        )
+        TriggerClientEvent('okokNotify:Alert', xPlayer.source, 'Gelukt!', args.gang .. ' kan nu ' .. maxVoorraad .. 'x een ' .. wapenLabel .. ' kopen!', 5000,
+        'success')
+
+    end, true,
+    { help = 'Reset de wapenvoorraad van een gang.', arguments = { { name = 'gang', help = 'De gang die de reset moet krijgen', type = 'any' }, {name = 'wapen',  help = 'De wapen die volledig beschikbaar moet zijn. Laat leeg voor alle wapens.', type = 'any' } } })
+
+
+RegisterServerEvent('lrp-gangmenu:searchResponse')
+AddEventHandler('lrp-gangmenu:searchResponse', function(requesterId, accepted)
+    local source = source
+    TriggerClientEvent('lrp-gangmenu:searchResponse', requesterId, source, accepted)
+end)
+
+RegisterServerEvent('lrp-gangmenu:sendNotification')
+AddEventHandler('lrp-gangmenu:sendNotification', function(targetPlayerId, playerId)
+
+        TriggerClientEvent('okokNotify:Alert', targetPlayerId, 'Fouilleren', "Je wordt gefouilleerd door speler " .. playerId, 5000, 'success')
 end)
 
 RegisterServerEvent('jtm-development:client:read:radio')
 AddEventHandler('jtm-development:client:read:radio', function(targetId)
     local currentRadio = Player(targetId).state.radioChannel
     local targetXPlayer = ESX.GetPlayerFromId(targetId)
-    TriggerClientEvent("frp-notifications:client:notify", targetId, "success", "Je radio word afgelezen door speler " .. source, "3000")
+    TriggerClientEvent('okokNotify:Alert', targetId, 'Radio Afgelezen', 'Je radio wordt afgelezen door' .. source, 5000,
+        'phonemessage')
     if currentRadio == 0 then
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Deze speler heeft geen radio aan!", "3000")
+        TriggerClientEvent('okokNotify:Alert', source, 'Fout', 'Deze speler heeft geen radio aan!', 5000, 'error')
         return
     end
-    TriggerClientEvent("frp-notifications:client:notify", source, "success", "Radio succesvol afgelezen! Radio: "..currentRadio, "3000")
+    TriggerClientEvent('okokNotify:Alert', source, 'Afgelezen', 'De radio is succesvol afgelezen. Radio: ' .. currentRadio,
+        5000, 'success')
 end)
 
 
@@ -177,8 +298,9 @@ AddEventHandler('jtm-witwas:startMission', function(amount)
     local jobLabel = xPlayer.getJob().label
 
     if amount < 1000000 then
-        TriggerClientEvent('okokNotify:Alert', src, 'Missie Mislukt', 'Het bedrag is te laag om een missie te starten! Minimum inzet is €1.000.000', 5000, 'error')
-        return 
+        TriggerClientEvent('okokNotify:Alert', src, 'Missie Mislukt',
+            'Het bedrag is te laag om een missie te starten! Minimum inzet is €1.000.000', 5000, 'error')
+        return
     end
 
     local formattedAmount = string.format("%0.0f", amount):reverse():gsub("(%d%d%d)", "%1."):reverse():gsub("^%.", "")
@@ -188,12 +310,15 @@ AddEventHandler('jtm-witwas:startMission', function(amount)
         startTime = os.time()
     }
 
-    missionStatus[src] = true 
+    missionStatus[src] = true
     print('witwas is troe')
 
     TriggerClientEvent('jtm-witwas:newMission', -1, src)
 
-    TriggerClientEvent('okokNotify:Alert', -1, 'Witwas Missie!', jobLabel .. ' heeft zojuist een witwasmissie gestart van €' .. formattedAmount .. '! Bekijk je map voor een mogelijke locatie!', 7500, 'info')
+    TriggerClientEvent('okokNotify:Alert', -1, 'Witwas Missie!',
+        jobLabel ..
+        ' heeft zojuist een witwasmissie gestart van €' ..
+        formattedAmount .. '! Bekijk je map voor een mogelijke locatie!', 7500, 'info')
 end)
 
 RegisterServerEvent('jtm-witwas:updateLocation')
@@ -210,7 +335,7 @@ AddEventHandler('jtm-witwas:endMission', function()
     if missionBlips[src] then
         missionBlips[src] = nil
         TriggerClientEvent('jtm-witwas:removeBlip', -1, src)
-        missionStatus[src] = false 
+        missionStatus[src] = false
         print('Witwas is fals')
     end
 end)
@@ -220,7 +345,7 @@ function getRandomPercentage(min, max)
 end
 
 function formatMoney(amount)
-    return string.format("%.2f", amount) 
+    return string.format("%.2f", amount)
 end
 
 RegisterServerEvent('jtm-witwas:witwasmissie')
@@ -230,23 +355,27 @@ AddEventHandler('jtm-witwas:witwasmissie', function(amount)
 
     if missionStatus[src] ~= true then
         exports["FIVEGUARD"]:screenshotPlayer(source, function(url)
-            print("Got URL of screenshot: ".. url .." from player: "..source)
+            print("Got URL of screenshot: " .. url .. " from player: " .. source)
         end)
-        exports["FIVEGUARD"]:fg_BanPlayer(source, "Suspicious activity detected: Player ID " .. source .. " Probeerde de gangjob witwasmissie te triggeren zonder hem gestart te hebben", true)
+        exports["FIVEGUARD"]:fg_BanPlayer(source,
+            "Suspicious activity detected: Player ID " ..
+            source .. " Probeerde de gangjob witwasmissie te triggeren zonder hem gestart te hebben", true)
         return
     end
 
     if xPlayer.getAccount('black_money').money >= amount then
         xPlayer.removeAccountMoney('black_money', amount)
-        
+
         local procent = getRandomPercentage(Config.WitwasMissie.minProcent, Config.WitwasMissie.maxProcent) / 100
-        
+
         local bedragTeOntvangen = amount * procent
         xPlayer.addMoney(bedragTeOntvangen)
-        
-        TriggerClientEvent('okokNotify:Alert', src, 'Witwas Voltooid', 'Je hebt €' .. formatMoney(bedragTeOntvangen) .. ' wit gewassen voor (' .. procent * 100 .. '%)!', 3000, 'success')
-        
-        
+
+        TriggerClientEvent('okokNotify:Alert', src, 'Witwas Voltooid',
+            'Je hebt €' .. formatMoney(bedragTeOntvangen) .. ' wit gewassen voor (' .. procent * 100 .. '%)!', 3000,
+            'success')
+
+
         local playerName = xPlayer.getName()
         local steamName = GetPlayerName(xPlayer.source)
         local steamID = xPlayer.identifier
@@ -257,19 +386,21 @@ AddEventHandler('jtm-witwas:witwasmissie', function(amount)
         local totalReceiveFormatted = formatMoney(bedragTeOntvangen)
         local percentFormatted = string.format("%.2f", procent * 100)
 
-        TriggerEvent('td_logs:sendLog', 'https://discord.com/api/webhooks/1277595807511740467/RnxgmZrtwWvYn4GJOB20X-_icwTmIX_18fvQzp2ZzDhG8PkXk_usZ3esiOwoREnNoD0P', source, {
-            title = "Gangjob Witwas Missie Logs",
-            desc = string.format(
-                "Ingame Naam Speler: %s\nSteam Naam: %s\nIdentifier Speler: %s\nCoords: %s\nZwartgeld voor: %s\nWitgeld ontvangen: %s\nProcent: %s%%",
-                playerName, steamName, steamID, coordsStr, initialBlackMoney, totalReceiveFormatted, percentFormatted
-            )
-        })
-
+        TriggerEvent('td_logs:sendLog',
+            'https://discord.com/api/webhooks/1277595807511740467/RnxgmZrtwWvYn4GJOB20X-_icwTmIX_18fvQzp2ZzDhG8PkXk_usZ3esiOwoREnNoD0P',
+            source, {
+                title = "Gangjob Witwas Missie Logs",
+                desc = string.format(
+                    "Ingame Naam Speler: %s\nSteam Naam: %s\nIdentifier Speler: %s\nCoords: %s\nZwartgeld voor: %s\nWitgeld ontvangen: %s\nProcent: %s%%",
+                    playerName, steamName, steamID, coordsStr, initialBlackMoney, totalReceiveFormatted, percentFormatted
+                )
+            })
     else
-        TriggerClientEvent('okokNotify:Alert', src, 'Missie Mislukt', 'Je hebt niet genoeg zwart geld om deze missie te voltooien!', 5000, 'error')
+        TriggerClientEvent('okokNotify:Alert', src, 'Missie Mislukt',
+            'Je hebt niet genoeg zwart geld om deze missie te voltooien!', 5000, 'error')
     end
 
-    missionStatus[src] = false 
+    missionStatus[src] = false
     print('Witwas is gefaald voor speler met ID ' .. src)
     TriggerClientEvent('jtm-witwas:removeBlip', -1, src)
 end)
@@ -281,39 +412,40 @@ ESX.RegisterServerCallback(
     function(source, callback, jobnaam)
         local ganginfo = {}
         local xPlayer = ESX.GetPlayerFromId(source)
-        local xPlayer2 = ESX.GetPlayerFromId(playerid)
+
         MySQL.Async.fetchAll(
-            "SELECT * FROM users WHERE job = @job",
+            "SELECT * FROM users WHERE job = @job OR job2 = @job",
             {
                 ["@job"] = jobnaam
             },
             function(result)
                 if result[1] then
                     for k, v in pairs(result) do
-                        table.insert(
-                            ganginfo,
-                            {
+                        local grade = 'Niks gevonden'
+
+                        if v.job == jobnaam then
+                            grade = getJobGradeLabel(jobnaam, v.job_grade)
+                        else
+                            grade = getJobGradeLabel(jobnaam, v.job2_grade)
+                        end
+
+
+                        if grade then
+                            table.insert(ganginfo, {
                                 identifier = v.identifier,
                                 voornaam = v.firstname,
                                 achternaam = v.lastname,
-                                grade = getJobGradeLabel(jobnaam, v.job_grade)
-                            }
-                        )
+                                grade = grade
+                            })
+                        end
                     end
-                    callback(ganginfo)
-                else
-                    TriggerClientEvent(
-                        "frp-notifications:client:notify",
-                        source,
-                        "error",
-                        "Je instantie heeft geen leden!",
-                        3000
-                    )
                 end
+                callback(ganginfo)
             end
         )
     end
 )
+
 
 Config = Config or {}
 if not Config.Webhooks then
@@ -323,38 +455,92 @@ end
 RegisterServerEvent("jtm-gangjob:promotemember")
 AddEventHandler(
     "jtm-gangjob:promotemember",
-    function(identifierplayer, voornaamplayer)
+    function(identifierplayer, voornaamplayer, gangnaam)
         local src = source
         local xPlayer = ESX.GetPlayerFromId(src)
         local playerHex = string.gsub(tostring(GetPlayerIdentifier(src)), "license:", "")
         local targetPlayer = ESX.GetPlayerFromIdentifier(identifierplayer)
-        local currentjob = xPlayer.job
+        local currentjob = gangnaam
         local currentgrade = 1
         if not currentjob then
             return
         end
         if targetPlayer then
-            currentjob = targetPlayer.job.name
-            currentgrade = targetPlayer.job.grade + 1
-            if currentgrade > 8 then
-                currentgrade = 8
+            if targetPlayer.job.name == gangnaam then
+                currentgrade = targetPlayer.job.grade + 1
+                currentjob = targetPlayer.job.name
+
+                if currentgrade > Config.Wapeninkoopgangs[gangnaam][1].mingrade then
+                    currentgrade = Config.Wapeninkoopgangs[gangnaam][1].mingrade
+                end
+                targetPlayer.setJob(currentjob, currentgrade)
+                MySQL.Async.execute(
+                    "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
+                    {
+                        ["@job"] = currentjob,
+                        ["@job_grade"] = currentgrade,
+                        ["@identifier"] = identifierplayer
+                    }
+                )
+            elseif targetPlayer.job2.name == gangnaam
+            then
+                currentgrade = targetPlayer.job2.grade + 1
+                currentjob = targetPlayer.job2.name
+
+                if currentgrade > Config.Wapeninkoopgangs[gangnaam][1].mingrade then
+                    currentgrade = Config.Wapeninkoopgangs[gangnaam][1].mingrade
+                end
+                targetPlayer.setJob2(currentjob, currentgrade)
+                MySQL.Async.execute(
+                    "UPDATE users SET job2 = @job, job2_grade = @job_grade WHERE identifier = @identifier",
+                    {
+                        ["@job"] = currentjob,
+                        ["@job_grade"] = currentgrade,
+                        ["@identifier"] = identifierplayer
+                    }
+                )
             end
-            targetPlayer.setJob(currentjob, currentgrade)
-            MySQL.Async.execute(
-                "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
-                {
-                    ["@job"] = currentjob,
-                    ["@job_grade"] = currentgrade,
-                    ["@identifier"] = identifierplayer
-                }
-            )
         else
-            MySQL.Async.execute(
-                "UPDATE users SET job = @job, job_grade = job_grade + 1 WHERE identifier = @identifier",
+            MySQL.Async.fetchAll(
+                "SELECT * FROM users WHERE identifier = @identifier",
                 {
-                    ["@job"] = currentjob,
                     ["@identifier"] = identifierplayer
-                }
+                },
+                function(result)
+                    if result[1] then
+                        local user = result[1]
+                        if user.job == gangnaam then
+                            local newGrade = user.job_grade + 1
+
+
+                            if newGrade > Config.Wapeninkoopgangs[gangnaam][1].mingrade then
+                                newGrade = Config.Wapeninkoopgangs[gangnaam][1].mingrade
+                            end
+
+                            MySQL.Async.execute(
+                                "UPDATE users SET job_grade = @job_grade WHERE identifier = @identifier",
+                                {
+                                    ["@job_grade"] = newGrade,
+                                    ["@identifier"] = identifierplayer
+                                }
+                            )
+                        elseif user.job2 == gangnaam then
+                            local newGrade = user.job2_grade + 1
+
+                            if newGrade > Config.Wapeninkoopgangs[gangnaam][1].mingrade then
+                                newGrade = Config.Wapeninkoopgangs[gangnaam][1].mingrade
+                            end
+
+                            MySQL.Async.execute(
+                                "UPDATE users SET job2_grade = @job_grade WHERE identifier = @identifier",
+                                {
+                                    ["@job_grade"] = newGrade,
+                                    ["@identifier"] = identifierplayer
+                                }
+                            )
+                        end
+                    end
+                end
             )
         end
         if targetPlayer then
@@ -365,18 +551,14 @@ AddEventHandler(
                 {
                     title = GetPlayerName(targetPlayer.source) ..
                         " is zojuist gepromoveerd door " ..
-                            GetPlayerName(xPlayer.source) .. " naar grade: " .. currentgrade,
+                        GetPlayerName(xPlayer.source) .. " naar grade: " .. currentgrade,
                     desc = "Job: " .. currentjob
                 },
                 0x000001
             )
-            TriggerClientEvent(
-                "frp-notifications:client:notify",
-                src,
-                "success",
-                "Je hebt " .. voornaamplayer .. " gepromoveerd naar grade: " .. currentgrade,
-                3000
-            )
+
+            TriggerClientEvent('okokNotify:Alert', src, 'Gepromoveerd', "Je hebt " .. voornaamplayer .. " gepromoveerd naar grade: " .. currentgrade, 5000, 'success')
+
         else
             TriggerEvent(
                 "td_logs:sendLog",
@@ -389,13 +571,7 @@ AddEventHandler(
                 },
                 0x000001
             )
-            TriggerClientEvent(
-                "frp-notifications:client:notify",
-                src,
-                "success",
-                "Je hebt " .. voornaamplayer .. " gepromoveerd naar grade: onbekend",
-                3000
-            )
+            TriggerClientEvent('okokNotify:Alert', src, 'Gepromoveerd', "Je hebt " .. voornaamplayer .. " gepromoveerd naar grade: onbekend", 5000, 'success')
         end
     end
 )
@@ -403,35 +579,87 @@ AddEventHandler(
 RegisterServerEvent("jtm-gangjob:demote")
 AddEventHandler(
     "jtm-gangjob:demote",
-    function(identifierplayer, voornaamplayer, job)
+    function(identifierplayer, voornaamplayer, gangnaam)
         local src = source
         local xPlayer = ESX.GetPlayerFromId(src)
         local playerHex = string.gsub(tostring(GetPlayerIdentifier(src)), "license:", "")
         local targetPlayer = ESX.GetPlayerFromIdentifier(identifierplayer)
-        local currentjob = xPlayer.job.name
+        local currentjob = ''
         local currentgrade = 1
+        if not currentjob then
+            return
+        end
         if targetPlayer then
-            currentjob = targetPlayer.job.name
-            currentgrade = targetPlayer.job.grade - 1
-            if currentgrade < 1 then
-                currentgrade = 1
+            if xPlayer.job.name == gangnaam then
+                currentgrade = targetPlayer.job.grade + 1
+                currentjob = targetPlayer.job.name
+
+                if currentgrade < 8 then
+                    currentgrade = 1
+                end
+                targetPlayer.setJob(currentjob, currentgrade)
+                MySQL.Async.execute(
+                    "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
+                    {
+                        ["@job"] = currentjob,
+                        ["@job_grade"] = currentgrade,
+                        ["@identifier"] = identifierplayer
+                    }
+                )
+            elseif xPlayer.job2.name == gangnaam
+            then
+                currentgrade = targetPlayer.job2.grade - 1
+                currentjob = targetPlayer.job2.name
+
+                if currentgrade < 1 then
+                    currentgrade = 1
+                end
+                targetPlayer.setJob2(currentjob, currentgrade)
+                MySQL.Async.execute(
+                    "UPDATE users SET job2 = @job, job2_grade = @job_grade WHERE identifier = @identifier",
+                    {
+                        ["@job"] = currentjob,
+                        ["@job_grade"] = currentgrade,
+                        ["@identifier"] = identifierplayer
+                    }
+                )
             end
-            targetPlayer.setJob(currentjob, currentgrade)
-            MySQL.Async.execute(
-                "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
-                {
-                    ["@job"] = currentjob,
-                    ["@job_grade"] = currentgrade,
-                    ["@identifier"] = identifierplayer
-                }
-            )
         else
-            MySQL.Async.execute(
-                "UPDATE users SET job = @job, job_grade = job_grade - 1 WHERE identifier = @identifier",
+            MySQL.Async.fetchAll(
+                "SELECT * FROM users WHERE identifier = @identifier",
                 {
-                    ["@job"] = currentjob,
                     ["@identifier"] = identifierplayer
-                }
+                },
+                function(result)
+                    if result[1] then
+                        local user = result[1]
+                        if user.job == gangnaam then
+                            local newGrade = user.job_grade - 1
+                            if newGrade < 1 then
+                                newGrade = 1
+                            end
+                            MySQL.Async.execute(
+                                "UPDATE users SET job_grade = @job_grade WHERE identifier = @identifier",
+                                {
+                                    ["@job_grade"] = newGrade,
+                                    ["@identifier"] = identifierplayer
+                                }
+                            )
+                        elseif user.job2 == gangnaam then
+                            local newGrade = user.job2_grade - 1
+                            if newGrade < 1 then
+                                newGrade = 1
+                            end
+                            MySQL.Async.execute(
+                                "UPDATE users SET job2_grade = @job_grade WHERE identifier = @identifier",
+                                {
+                                    ["@job_grade"] = newGrade,
+                                    ["@identifier"] = identifierplayer
+                                }
+                            )
+                        end
+                    end
+                end
             )
         end
         if targetPlayer then
@@ -447,13 +675,8 @@ AddEventHandler(
                 0x000001
             )
 
-            TriggerClientEvent(
-                "frp-notifications:client:notify",
-                src,
-                "success",
-                "Je hebt " .. voornaamplayer .. " gedemote naar grade: " .. currentgrade,
-                3000
-            )
+
+            TriggerClientEvent('okokNotify:Alert', src, 'Gedegradeerd', "Je hebt " .. voornaamplayer .. " gedegradeerd naar grade: " .. currentgrade, 5000, 'success')
         else
             TriggerEvent(
                 "td_logs:sendLog",
@@ -467,13 +690,9 @@ AddEventHandler(
                 0x000001
             )
 
-            TriggerClientEvent(
-                "frp-notifications:client:notify",
-                src,
-                "success",
-                "Je hebt " .. voornaamplayer .. " gedemote naar grade: onbekend",
-                3000
-            )
+
+
+            TriggerClientEvent('okokNotify:Alert', src, 'Gedegradeerd', "Je hebt " .. voornaamplayer .. " gedegradeerd naar grade: onbekend", 5000, 'success')
         end
     end
 )
@@ -481,29 +700,63 @@ AddEventHandler(
 RegisterServerEvent("jtm-gangjob:deletemember:serversided")
 AddEventHandler(
     "jtm-gangjob:deletemember:serversided",
-    function(identifierplayer, voornaamplayer)
+    function(identifierplayer, voornaamplayer, gangnaam)
         local src = source
         local xPlayer = ESX.GetPlayerFromId(src)
         local playerHex = string.gsub(tostring(GetPlayerIdentifier(src)), "license:", "")
         local targetPlayer = ESX.GetPlayerFromIdentifier(identifierplayer)
         if targetPlayer then
-            targetPlayer.setJob("unemployed", 0)
-            MySQL.Async.execute(
-                "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
-                {
-                    ["@job"] = "unemployed",
-                    ["@job_grade"] = 0,
-                    ["@identifier"] = identifierplayer
-                }
-            )
+            if targetPlayer.job.name == gangnaam then
+                targetPlayer.setJob("unemployed", 0)
+                MySQL.Async.execute(
+                    "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
+                    {
+                        ["@job"] = "unemployed",
+                        ["@job_grade"] = 0,
+                        ["@identifier"] = identifierplayer
+                    }
+                )
+            elseif targetPlayer.job2.name == gangnaam then
+                targetPlayer.setJob2("unemployed", 0)
+                MySQL.Async.execute(
+                    "UPDATE users SET job2 = @job, job2_grade = @job_grade WHERE identifier = @identifier",
+                    {
+                        ["@job"] = "unemployed",
+                        ["@job_grade"] = 0,
+                        ["@identifier"] = identifierplayer
+                    }
+                )
+            end
         else
-            MySQL.Async.execute(
-                "UPDATE users SET job = @job, job_grade = @job_grade WHERE identifier = @identifier",
+            MySQL.Async.fetchAll(
+                "SELECT * FROM users WHERE identifier = @identifier",
                 {
-                    ["@job"] = "unemployed",
-                    ["@job_grade"] = 0,
                     ["@identifier"] = identifierplayer
-                }
+                },
+                function(result)
+                    if result[1] then
+                        local user = result[1]
+                        if user.job == gangnaam then
+                            MySQL.Async.execute(
+                                "UPDATE users SET job = @job2, job_grade = @job_grade WHERE identifier = @identifier",
+                                {
+                                    ["@job"] = 'unemployed',
+                                    ["@job_grade"] = 0,
+                                    ["@identifier"] = identifierplayer
+                                }
+                            )
+                        elseif user.job2 == gangnaam then
+                            MySQL.Async.execute(
+                                "UPDATE users SET job2 = @job2, job2_grade = @job_grade WHERE identifier = @identifier",
+                                {
+                                    ["@job2"] = 'unemployed',
+                                    ["@job_grade"] = 0,
+                                    ["@identifier"] = identifierplayer
+                                }
+                            )
+                        end
+                    end
+                end
             )
         end
         if targetPlayer then
@@ -531,48 +784,49 @@ AddEventHandler(
             )
         end
         TriggerClientEvent(
-            "frp-notifications:client:notify",
+            "lrp-notifications:client:notify",
             source,
             "success",
             "Je hebt " .. voornaamplayer .. " ontslagen",
             3000
         )
+
+        TriggerClientEvent('okokNotify:Alert', src, 'Ontslagen', "Je hebt " .. voornaamplayer .. " succesvol ontslagen", 5000, 'success')
     end
 )
 
 ESX.RegisterServerCallback(
     "jtm-gangjob:add:playertogang",
-    function(source, callback, playerid, jobnamegang)
+    function(source, callback, playerid, jobnamegang, naarJob)
         local xPlayer = ESX.GetPlayerFromId(source)
         local xPlayer2 = ESX.GetPlayerFromId(playerid)
 
         if not xPlayer2 then
-            TriggerClientEvent("frp-notifications:client:notify", source, "error", "Deze speler is niet online!", 3000)
+            TriggerClientEvent('okokNotify:Alert', source, 'Fout', 'De speler met id ' .. playerid .. ' is niet online.',
+                5000, 'error')
             return
         end
-        
+
+
+
         MySQL.Async.fetchAll(
             "SELECT * FROM users WHERE identifier = @identifier",
             {
                 ["@identifier"] = xPlayer2.identifier
             },
             function(result)
-                if result[1] and result[1].job ~= jobnamegang then
-                    xPlayer2.setJob(jobnamegang, 1)
-                    TriggerClientEvent(
-                        "frp-notifications:client:notify",
-                        source,
-                        "success",
-                        "Je hebt een ganglid aangenomen!",
-                        3000
-                    )
-                    TriggerClientEvent(
-                        "frp-notifications:client:notify",
-                        playerid,
-                        "success",
-                        "Je bent aangenomen bij " .. jobnamegang,
-                        3000
-                    )
+                if result[1] and result[1].job and result[1].job2 ~= jobnamegang then
+                    if naarJob == 'job' then
+                        xPlayer2.setJob(jobnamegang, 1)
+                    end
+                    if naarJob == 'job2' then
+                        xPlayer2.setJob2(jobnamegang, 1)
+                    end
+
+                    TriggerClientEvent('okokNotify:Alert', source, 'Gelukt',
+                        'De speler met id ' .. playerid .. ' is succesvol aangenomen.', 5000, 'succes')
+                    TriggerClientEvent('okokNotify:Alert', playerid, 'Welkom!',
+                        'U bent aangenomen bij de gang: ' .. jobnamegang '!', 5000, 'succes')
                     TriggerEvent(
                         "td_logs:sendLog",
                         Config.Webhooks.AaneemWebhook,
@@ -584,23 +838,32 @@ ESX.RegisterServerCallback(
                         },
                         0x000001
                     )
-                    MySQL.Async.execute(
-                        "UPDATE users SET job = @job, job_grade = @grade WHERE identifier = @identifier",
-                        {
-                            ["@identifier"] = xPlayer2.identifier,
-                            ["@job"] = jobnamegang,
-                            ["@grade"] = 1
-                        }
-                    )
+
+                    if naarJob == 'job' then
+                        MySQL.Async.execute(
+                            "UPDATE users SET job = @job, job_grade = @grade WHERE identifier = @identifier",
+                            {
+                                ["@identifier"] = xPlayer2.identifier,
+                                ["@job"] = jobnamegang,
+                                ["@grade"] = 1
+                            }
+                        )
+                    end
+                    if naarJob == 'job2' then
+                        MySQL.Async.execute(
+                            "UPDATE users SET job2 = @job, job2_grade = @grade WHERE identifier = @identifier",
+                            {
+                                ["@identifier"] = xPlayer2.identifier,
+                                ["@job"] = jobnamegang,
+                                ["@grade"] = 1
+                            }
+                        )
+                    end
+
                     callback(true)
                 else
-                    TriggerClientEvent(
-                        "frp-notifications:client:notify",
-                        source,
-                        "error",
-                        "Deze persoon zit al bij je gang!",
-                        3000
-                    )
+                    TriggerClientEvent('okokNotify:Alert', source, 'Fout', 'Deze persoon zit al bij jouw gang!', 5000,
+                        'error')
                     callback(false)
                 end
             end

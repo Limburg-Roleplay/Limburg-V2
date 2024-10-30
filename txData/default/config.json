@@ -8,7 +8,9 @@
     "hideDefaultAnnouncement": false,
     "hideDefaultDirectMessage": false,
     "hideDefaultWarning": false,
-    "hideDefaultScheduledRestartWarning": false
+    "hideDefaultScheduledRestartWarning": false,
+    "hideAdminInPunishments": true,
+    "hideAdminInMessages": false
   },
   "logger": {},
   "monitor": {

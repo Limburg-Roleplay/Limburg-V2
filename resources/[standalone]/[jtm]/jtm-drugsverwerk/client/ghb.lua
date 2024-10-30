@@ -16,7 +16,7 @@ CreateThread(function()
                     if exports.ox_inventory:GetItemCount("ghb_ton") > 20 then
                         TriggerEvent("jtm-drugsverpak:ghbverpak")
                     else
-                        exports["frp-notifications"]:Notify("error", "Je hebt niet genoeg GHB Tonnetjes", 5000)
+                        exports["lrp-notifications"]:Notify("error", "Je hebt niet genoeg GHB Tonnetjes", 5000)
                     end
                 end
             }
@@ -53,7 +53,7 @@ function ProcessGHB(xGHB)
 
     if success then
         getProcessemote()
-        exports["frp-progressbar"]:Progress({
+        exports["lrp-progressbar"]:Progress({
             name = "GHB Tonnetjes mixen met poeder",
             duration = Config.ProcessTimer * 1000,
             label = "GHB Tonnetjes mixen met poeder",
@@ -72,7 +72,7 @@ function ProcessGHB(xGHB)
         TriggerServerEvent('jtm-drugsverpak:processGHB')
         isProcessing = false
     else 
-        exports["frp-notifications"]:Notify("info", "Je handen waren te glibberig zweetnek.", 5000)
+        exports["lrp-notifications"]:Notify("info", "Je handen waren te glibberig zweetnek.", 5000)
     end 
 end
 

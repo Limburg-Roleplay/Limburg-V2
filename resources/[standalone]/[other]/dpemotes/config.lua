@@ -26,7 +26,7 @@ Config = {
     -- Use a 512 x 128 image!
     -- Note this might cause an issue of the image getting stuck on peoples screens
     CustomMenuEnabled = true,
-    MenuImage = "https://cdn.discordapp.com/attachments/1195728743772192789/1199668731794702386/limburgDP.png?ex=65c36192&is=65b0ec92&hm=8196f15b9ff284291613843c829c30d368bb47c417d3e9f45019cd0a96ab3f66&", ----[Custom banner IMGUR or GIPHY URLs go here ]---
+    MenuImage = "html/image/lrpbanner", ----[Custom banner IMGUR or GIPHY URLs go here ]---
     -- You can change the menu image by pasting a link above. It must be the same width and length
     -- You can change the name of the menu here or leave it blank to remove the text in front of the custom banners
     MenuTitle = "",

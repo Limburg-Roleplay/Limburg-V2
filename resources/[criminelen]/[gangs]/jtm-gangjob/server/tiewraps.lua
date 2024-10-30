@@ -1,8 +1,4 @@
-local ESX = nil
 
-TriggerEvent('esx:getSharedObject', function(obj)
-    ESX = obj
-end)
 
 Handcuffed = {}
 AddEventHandler('esx:playerDropped', function(playerId, reason)
@@ -32,16 +28,18 @@ end)
 
 RegisterServerEvent('jtm-development:server:ProcessCuffs')
 AddEventHandler('jtm-development:server:ProcessCuffs', function(p, id)
-    if Handcuffed[source] then return end
+    if Handcuffed[id] then return end
     
    TriggerClientEvent('jtm-development:client:ProcessCuffs', tonumber(id), p)
-    Handcuffed[source] = true
+    Handcuffed[id] = true
+
+    print(json.encode(Handcuffed))
 end)
 
 RegisterServerEvent('jtm-development:server:RemoveCuffs')
 AddEventHandler('jtm-development:server:RemoveCuffs', function(p, id)
     TriggerClientEvent('jtm-development:client:RemoveCuffs', tonumber(id), p)
-    Handcuffed[source] = false
+    Handcuffed[id] = false
 end)
 
 RegisterServerEvent('jtm-development:server:dragServer')
@@ -53,9 +51,22 @@ AddEventHandler('jtm-development:server:dragServer', function(target)
     TriggerClientEvent('jtm-development:client:dragStart', target, source, needsCuff)
 end)
 
-ESX.RegisterServerCallback('jtm-development:getCuffed', function(source, cb)
-    if Handcuffed[source] then
+ESX.RegisterServerCallback('jtm-development:getCuffed', function(source, player,cb)
+    if Handcuffed[player] then
         cb(true)
+    else
+        cb(false)
+    end
+end)
+
+ESX.RegisterServerCallback('jtm-development:server:GetCuffedStatus', function(source, cb, targetServerId)
+    local targetPlayer = ESX.GetPlayerFromId(targetServerId)
+    if targetPlayer then
+        if Handcuffed[targetServerId] then
+            cb(true)
+        else
+            cb(false)
+        end
     else
         cb(false)
     end
@@ -68,6 +79,7 @@ function GetCuffedStatus()
         cb(false)
     end
 end
+
 
 RegisterServerEvent('jtm-development:server:onDrag')
 AddEventHandler('jtm-development:server:onDrag', function(target)

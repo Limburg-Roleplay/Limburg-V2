@@ -142,19 +142,18 @@ function openmenuvehicle()
             end
 
           else
-            ESX.ShowNotification(_U('trunk_closed'))
+            ESX.ShowNotification('error', _U('trunk_closed'))
           end
         end
       else
-        ESX.ShowNotification(_U('no_veh_nearby'))
+        ESX.ShowNotification('error', _U('no_veh_nearby'))
       end
       lastOpen = true
       GUI.Time  = GetGameTimer()
     end
   else
     -- Not their vehicle
-    exports['mn-notify']:grotenotification('Kofferbak', 'Dit is niet jouw voertuig', 'fas fa-car', '5000', '#0398fc', true)
-    --ESX.ShowNotification(_U('nacho_veh'))
+    ESX.ShowNotification('error', _U('nacho_veh'))
   end
 end
 local count = 0
@@ -256,7 +255,7 @@ function OpenCoffreInventoryMenu(plate,max)
               local quantity = tonumber(data2.value)
 
               if quantity == nil or quantity < 1 then
-                ESX.ShowNotification(_U('invalid_quantity'))
+                ESX.ShowNotification('error', _U('invalid_quantity'))
               else
 
                 menu.close()
@@ -354,7 +353,7 @@ function OpenPlayerInventoryMenu(owner,plate,max,weight)
               local quantity = tonumber(data2.value)
 
               if quantity == nil or quantity < 1 then
-                ESX.ShowNotification(_U('invalid_quantity'))
+                ESX.ShowNotification('error', _U('invalid_quantity'))
               else
                 menu.close()
 

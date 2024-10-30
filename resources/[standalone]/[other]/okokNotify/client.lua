@@ -1,4 +1,15 @@
 function Alert(title, message, time, type)
+	if title == type then
+		if type == 'error' then
+			title = "Error"
+		elseif type == 'success' then
+			title = "Success"
+		elseif type == 'info' then
+			title = "Info"
+		elseif type == 'warning' then
+			title = "Waarschuwing"
+		end
+	end
 	SendNUIMessage({
 		action = 'open',
 		title = title,

@@ -314,7 +314,7 @@ return {
 		description = 'Om een extra zetje in je voertuig te geven',
 		weight = 2000,
 		server = {
-			export = 'frp-benzine.benzine',
+			export = 'lrp-benzine.benzine',
 		}
 	},
 
@@ -471,7 +471,7 @@ return {
 
     ["lsd"] = {
 		label = "LSD",
-		weight = 500,
+		weight = 800,
 		stack = true,
 		close = true,
 	},
@@ -506,7 +506,7 @@ return {
 
     ["ghb_ton"] = {
 		label = "Ghb Ton",
-		weight = 500,
+		weight = 592,
 		stack = true,
 		close = true,
 	},

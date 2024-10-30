@@ -363,7 +363,7 @@ AddEventHandler('PriseAppel', function(name)
           PlaySoundFrontend(-1, "On_Call_Player_Join", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS", 0)
           PlaySoundFrontend(-1, "On_Call_Player_Join", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS", 0)
           PlaySoundFrontend(-1, "On_Call_Player_Join", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS", 0)
-          ESX.ShowNotification('~w~L\'agent ~g~'..name..'~w~ à pris l\'appel')
+          ESX.ShowNotification('error', '~w~L\'agent ~g~'..name..'~w~ à pris l\'appel')
      end
 end)
 
@@ -380,7 +380,7 @@ Citizen.CreateThread(function()
           elseif IsControlJustPressed(1, 73) and alerteEnCours then
                AlertePrise = false
                alerteEnCours = false
-               ESX.ShowNotification('~w~Vous avez refusé l\'appel')
+               ESX.ShowNotification('error', '~w~Vous avez refusé l\'appel')
           end
      end
 end)

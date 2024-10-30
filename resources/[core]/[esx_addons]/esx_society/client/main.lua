@@ -58,7 +58,7 @@ function OpenBossMenu(society, close, options)
 				elseif element.value == "confirm" then
 					local amount = tonumber(menu.eles[2].inputValue)
 					if amount == nil then
-						ESX.ShowNotification(TranslateCap('invalid_amount'))
+						ESX.ShowNotification('error', TranslateCap('invalid_amount'))
 					else
 						TriggerServerEvent('esx_society:withdrawMoney', society, amount)
 						ESX.CloseContext()
@@ -74,7 +74,7 @@ function OpenBossMenu(society, close, options)
 				elseif element.value == "confirm2" then
 					local amount = tonumber(menu.eles[2].inputValue)
 					if amount == nil then
-						ESX.ShowNotification(TranslateCap('invalid_amount'))
+						ESX.ShowNotification('error', TranslateCap('invalid_amount'))
 					else
 						TriggerServerEvent('esx_society:depositMoney', society, amount)
 						ESX.CloseContext()
@@ -90,7 +90,7 @@ function OpenBossMenu(society, close, options)
 				elseif element.value == "confirm3" then
 					local amount = tonumber(menu.eles[2].inputValue)
 					if amount == nil then
-						ESX.ShowNotification(TranslateCap('invalid_amount'))
+						ESX.ShowNotification('error', TranslateCap('invalid_amount'))
 					else
 						TriggerServerEvent('esx_society:washMoney', society, amount)
 						ESX.CloseContext()
@@ -159,7 +159,7 @@ function OpenEmployeeList(society, options)
 						ESX.CloseContext()
 						OpenPromoteMenu(society, employee, options)
 					elseif element2.value == "fire" then
-						ESX.ShowNotification(TranslateCap('you_have_fired', employee.name))
+						ESX.ShowNotification('success', TranslateCap('you_have_fired', employee.name))
 
 						ESX.TriggerServerCallback('esx_society:setJob', function()
 							OpenEmployeeList(society, options)
@@ -198,7 +198,7 @@ function OpenRecruitMenu(society, options)
 				}
 				ESX.OpenContext("right", elements2, function(menu2,element2)
 					if element2.value == "yes" then
-						ESX.ShowNotification(TranslateCap('you_have_hired', element.name))
+						ESX.ShowNotification('success', TranslateCap('you_have_hired', element.name))
 
 						ESX.TriggerServerCallback('esx_society:setJob', function()
 							OpenRecruitMenu(society, options)
@@ -232,7 +232,7 @@ function OpenPromoteMenu(society, employee, options)
 			if element.value == "return" then
 				OpenEmployeeList(society, options)
 			else
-				ESX.ShowNotification(TranslateCap('you_have_promoted', employee.name, element.title))
+				ESX.ShowNotification('success', TranslateCap('you_have_promoted', employee.name, element.title))
 
 				ESX.TriggerServerCallback('esx_society:setJob', function()
 					OpenEmployeeList(society, options)
@@ -279,10 +279,10 @@ function OpenManageSalaryMenu(society, options)
 				local amount = tonumber(menu.eles[2].inputValue)
 
 				if amount == nil then
-					ESX.ShowNotification(TranslateCap('invalid_value_nochanges'))
+					ESX.ShowNotification('error', TranslateCap('invalid_value_nochanges'))
 					OpenManageSalaryMenu(society, options)
 				elseif amount > Config.MaxSalary then
-					ESX.ShowNotification(TranslateCap('invalid_amount_max'))
+					ESX.ShowNotification('error', TranslateCap('invalid_amount_max'))
 					OpenManageSalaryMenu(society, options)
 				else
 					ESX.CloseContext()
@@ -332,7 +332,7 @@ function OpenManageGradesMenu(society, options)
 					OpenManageGradesMenu(society, options)
 				end, society, menu.eles[1].value, label)
 				else
-					ESX.ShowNotification(TranslateCap('invalid_value_nochanges'))
+					ESX.ShowNotification('error', TranslateCap('invalid_value_nochanges'))
 					OpenManageGradesMenu(society, options)
 				end
 			elseif element.value == "return" then

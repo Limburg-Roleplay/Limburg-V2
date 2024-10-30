@@ -27,7 +27,7 @@ function OpenMenu()
 	ESX.OpenContext("right", elements, function(menu, element)
 		if element.value == "citizen_wear" then
 			onDuty = false
-			ESX.ShowNotification(TranslateCap('offduty'), "success")
+			ESX.ShowNotification('success', TranslateCap('offduty'))
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 				local isMale = skin.sex == 0
 
@@ -39,19 +39,19 @@ function OpenMenu()
 			end)
 		elseif element.value == "job_wear" then
 			onDuty = true
-			ESX.ShowNotification(TranslateCap('onduty'), "success")
+			ESX.ShowNotification('success', TranslateCap('onduty'))
 			ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin, jobSkin)
 				if skin.sex == 0 then
 					if ESX.Table.SizeOf(jobSkin.skin_male) >= 1 then
 						TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_male)
 					else
-						ESX.ShowNotification(TranslateCap('no_male_clothing'), "error")
+						ESX.ShowNotification('error', TranslateCap('no_male_clothing'))
 					end
 				else
 					if ESX.Table.SizeOf(jobSkin.skin_female) >= 1 then
 						TriggerEvent('skinchanger:loadClothes', skin, jobSkin.skin_female)
 					else
-						ESX.ShowNotification(TranslateCap('no_female_clothing'), "error")
+						ESX.ShowNotification('error', TranslateCap('no_female_clothing'))
 					end
 				end
 			end)
@@ -68,7 +68,7 @@ AddEventHandler('esx_jobs:action', function(job, zone, zoneKey)
 		local playerPed = PlayerPedId()
 
 		if IsPedInAnyVehicle(playerPed, false) then
-			ESX.ShowNotification(TranslateCap('foot_work'))
+			ESX.ShowNotification('info', TranslateCap('foot_work'))
 		else
 			TriggerServerEvent('esx_jobs:startWork', zone.Item, zoneKey)
 		end
@@ -96,7 +96,7 @@ AddEventHandler('esx_jobs:action', function(job, zone, zoneKey)
 		if ESX.Game.IsSpawnPointClear(spawnPoint.Pos, 5.0) then
 			spawnVehicle(spawnPoint, vehicle, zone.Caution)
 		else
-			ESX.ShowNotification(TranslateCap('spawn_blocked'))
+			ESX.ShowNotification('error', TranslateCap('spawn_blocked'))
 		end
 	elseif zone.Type == "vehdelete" then
 		local looping = true
@@ -139,7 +139,7 @@ AddEventHandler('esx_jobs:action', function(job, zone, zoneKey)
 									end
 								end
 							else
-								ESX.ShowNotification(TranslateCap('not_your_vehicle'))
+								ESX.ShowNotification('error', TranslateCap('not_your_vehicle'))
 							end
 						end
 
@@ -175,7 +175,7 @@ function nextStep(gps)
 
 	Blips['delivery'] = AddBlipForCoord(gps.x, gps.y, gps.z)
 	SetBlipRoute(Blips['delivery'], true)
-	ESX.ShowNotification(TranslateCap('next_point'))
+	ESX.ShowNotification('info', TranslateCap('next_point'))
 end
 
 AddEventHandler('esx_jobs:hasExitedMarker', function(zone)

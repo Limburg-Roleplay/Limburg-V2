@@ -1,35 +1,35 @@
-var FRP = {};
+var LRP = {};
 
-FRP.openedStats = false;
+LRP.openedStats = false;
 
 window.addEventListener('message', function(event) {
      if (event.data.type == 'openPlaceholder') {
-        FRP.openPlaceholder(event.data.text);
+        LRP.openPlaceholder(event.data.text);
     } else if (event.data.type == 'closePlaceholder') {
-        FRP.closePlaceholder();
+        LRP.closePlaceholder();
     } else if (event.data.type == 'updatePlaceholder') {
-        FRP.updatePlaceholder(event.data.text)
+        LRP.updatePlaceholder(event.data.text)
     }
 });
 
 $(document).on('keydown', function() {
     switch(event.keyCode) {
         case 27: // ESC
-            FRP.closeGymSubscription()
+            LRP.closeGymSubscription()
             break;
     }
 });
 
-FRP.openPlaceholder = function(text) {
+LRP.openPlaceholder = function(text) {
     $('.placeholder').html(text);
     $('.placeholder').fadeIn(250);
 }
 
-FRP.updatePlaceholder = function(text) {
+LRP.updatePlaceholder = function(text) {
     $('.placeholder').html(text);
 }
 
-FRP.closePlaceholder = function() {
+LRP.closePlaceholder = function() {
     $('.placeholder').fadeOut(250, function() {
         $('.placeholder').html('Future Roleplay');
     })

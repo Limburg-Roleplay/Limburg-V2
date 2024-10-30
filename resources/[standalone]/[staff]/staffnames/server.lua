@@ -88,7 +88,7 @@ RegisterCommand("staffnames", function(source, args, rawCommand)
         return
     end
 
-    if not exports["frp-staffdienst"]:inDienst(source) then
+    if not exports["lrp-staffdienst"]:inDienst(source) then
         TriggerClientEvent("chat:addMessage", source, {
             color = {255, 0, 0},
             multiline = true,

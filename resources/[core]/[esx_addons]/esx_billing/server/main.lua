@@ -25,7 +25,7 @@ AddEventHandler('esx_billing:sendBill', function(playerId, sharedAccountName, la
 					['@label']       = label,
 					['@amount']      = amount
 				}, function(rowsChanged)
-					TriggerClientEvent('esx:showNotification', xTarget.source, _U('received_invoice'))
+					TriggerClientEvent('okokNotify:Alert', xTarget.source, _U('received_invoice'), 5000, 'info')
 				end)
 			end
 
@@ -41,7 +41,7 @@ AddEventHandler('esx_billing:sendBill', function(playerId, sharedAccountName, la
 					['@label']       = label,
 					['@amount']      = amount
 				}, function(rowsChanged)
-					TriggerClientEvent('esx:showNotification', xTarget.source, _U('received_invoice'))
+					TriggerClientEvent('okokNotify:Alert', xTarget.source, _U('received_invoice'), 5000, 'info')
 				end)
 			end
 
@@ -124,8 +124,8 @@ ESX.RegisterServerCallback('esx_billing:payBill', function(source, cb, id)
 						xPlayer.removeMoney(amount)
 						xTarget.addMoney(amount)
 
-						TriggerClientEvent('esx:showNotification', xPlayer.source, _U('paid_invoice', ESX.Math.GroupDigits(amount)))
-						TriggerClientEvent('esx:showNotification', xTarget.source, _U('received_payment', ESX.Math.GroupDigits(amount)))
+						TriggerClientEvent('okokNotify:Alert', xPlayer.source, _U('paid_invoice', ESX.Math.GroupDigits(amount)), 5000, 'success')
+						TriggerClientEvent('okokNotify:Alert', xTarget.source, _U('received_payment', ESX.Math.GroupDigits(amount)), 5000, 'success')
 
 						cb()
 					end)
@@ -138,21 +138,21 @@ ESX.RegisterServerCallback('esx_billing:payBill', function(source, cb, id)
 						xPlayer.removeAccountMoney('bank', amount)
 						xTarget.addAccountMoney('bank', amount)
 
-						TriggerClientEvent('esx:showNotification', xPlayer.source, _U('paid_invoice', ESX.Math.GroupDigits(amount)))
-						TriggerClientEvent('esx:showNotification', xTarget.source, _U('received_payment', ESX.Math.GroupDigits(amount)))
+						TriggerClientEvent('okokNotify:Alert', xPlayer.source, _U('paid_invoice', ESX.Math.GroupDigits(amount)), 5000, 'success')
+						TriggerClientEvent('okokNotify:Alert', xTarget.source, _U('received_payment', ESX.Math.GroupDigits(amount)), 5000, 'success')
 
 						cb()
 					end)
 
 				else
-					TriggerClientEvent('esx:showNotification', xTarget.source, _U('target_no_money'))
-					TriggerClientEvent('esx:showNotification', xPlayer.source, _U('no_money'))
+					TriggerClientEvent('okokNotify:Alert', xPlayer.source, _U('no_money'), 5000, 'error')
+					TriggerClientEvent('okokNotify:Alert', xTarget.source, _U('target_no_money'), 5000, 'error')
 
 					cb()
 				end
 
 			else
-				TriggerClientEvent('esx:showNotification', xPlayer.source, _U('player_not_online'))
+				TriggerClientEvent('okokNotify:Alert', xPlayer.source, _U('player_not_online'), 5000, 'error')
 				cb()
 			end
 
@@ -168,9 +168,9 @@ ESX.RegisterServerCallback('esx_billing:payBill', function(source, cb, id)
 						xPlayer.removeMoney(amount)
 						account.addMoney(amount)
 
-TriggerClientEvent("frp-notifications:client:notify", xPlayer.source, "success", "Je hebt je factuur afbetaald en er is " .. ESX.Math.GroupDigits(amount) .. " uit je broekzakken gehaald!", 3000)
+TriggerClientEvent("lrp-notifications:client:notify", xPlayer.source, "success", "Je hebt je factuur afbetaald en er is " .. ESX.Math.GroupDigits(amount) .. " uit je broekzakken gehaald!", 3000)
 						if xTarget ~= nil then
-TriggerClientEvent("frp-notifications:client:notify", xTarget.source, "success", "Je factuur is van " .. ESX.Math.GroupDigits(amount) "is betaald", 3000)
+TriggerClientEvent("lrp-notifications:client:notify", xTarget.source, "success", "Je factuur is van " .. ESX.Math.GroupDigits(amount) "is betaald", 3000)
 						end
 
 						cb()
@@ -184,20 +184,20 @@ TriggerClientEvent("frp-notifications:client:notify", xTarget.source, "success",
 						xPlayer.removeAccountMoney('bank', amount)
 						account.addMoney(amount)
 
-TriggerClientEvent("frp-notifications:client:notify", xPlayer.source, "success", "Je hebt je factuur afbetaald en er is " .. ESX.Math.GroupDigits(amount) .. " van je rekening afgeschreven", 3000)
+TriggerClientEvent("lrp-notifications:client:notify", xPlayer.source, "success", "Je hebt je factuur afbetaald en er is " .. ESX.Math.GroupDigits(amount) .. " van je rekening afgeschreven", 3000)
 
 						if xTarget ~= nil then
-TriggerClientEvent("frp-notifications:client:notify", xTarget.source, "success", "Je factuur is van " .. ESX.Math.GroupDigits(amount) "is betaald", 3000)
+TriggerClientEvent("lrp-notifications:client:notify", xTarget.source, "success", "Je factuur is van " .. ESX.Math.GroupDigits(amount) "is betaald", 3000)
 						end
 
 						cb()
 					end)
 
 				else
-                    TriggerClientEvent("frp-notifications:client:notify", source, "error", "Je hebt niet genoeg geld!", 3000)
+                    TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Je hebt niet genoeg geld!", 3000)
 
 					if xTarget ~= nil then
-                   TriggerClientEvent("frp-notifications:client:notify", xTarget.source, "error", "De persoon die je factuur probeert te betalen heeft niet genoeg geld!", 3000)
+                   TriggerClientEvent("lrp-notifications:client:notify", xTarget.source, "error", "De persoon die je factuur probeert te betalen heeft niet genoeg geld!", 3000)
 					end
 
 					cb()

@@ -3,20 +3,20 @@ RegisterCommand("sa", function(source)
     local playerGroup = xPlayer.getGroup()
 
     if playerGroup == 'staff' or playerGroup == 'owner' or playerGroup == 'hogerop' then
-        if not exports["frp-staffdienst"]:inDienst(source) then
+        if not exports["lrp-staffdienst"]:inDienst(source) then
             return
-                TriggerClientEvent("frp-notifications:client:notify", source, 'error',
+                TriggerClientEvent("lrp-notifications:client:notify", source, 'error',
                     'Je bent niet in dienst, zorg dat je <br> /staffdienst hebt gedaan')
         end
-        TriggerClientEvent("frp-staffassist:client:openmenu", source)
+        TriggerClientEvent("lrp-staffassist:client:openmenu", source)
     else
         TriggerClientEvent('chatMessage', source, 'SYSTEEM', 'error', 'Je hebt geen permissies hier voor')
     end
 end)
 ---- check voor skinmenu
-ESX.RegisterServerCallback('frp-staffassist:skinmenu', function(source, cb, action)
+ESX.RegisterServerCallback('lrp-staffassist:skinmenu', function(source, cb, action)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local discordlog = exports["frp-logging"]:createlog(Config.Webhook, " Staffassist")
+    local discordlog = exports["lrp-logging"]:createlog(Config.Webhook, " Staffassist")
 
     discordlog.addcolumns({
         staffId = source,
@@ -28,9 +28,9 @@ ESX.RegisterServerCallback('frp-staffassist:skinmenu', function(source, cb, acti
 end)
 
 ---- logger
-ESX.RegisterServerCallback('frp-staffassist:commandlog', function(source, cb, action)
+ESX.RegisterServerCallback('lrp-staffassist:commandlog', function(source, cb, action)
     local xPlayer = ESX.GetPlayerFromId(source)
-    local discordlog = exports["frp-logging"]:createlog(Config.Webhook, "Staffassist")
+    local discordlog = exports["lrp-logging"]:createlog(Config.Webhook, "Staffassist")
 
     discordlog.addcolumns({
         staffId = source,
@@ -324,7 +324,7 @@ ESX.RegisterServerCallback('refundperms', function(source, cb, identifier)
     if playerGroup == 'owner' or playerGroup == 'hogerop' then
         TriggerClientEvent('openRefundOptions', source)
     else
-      TriggerClientEvent("frp-notifications:client:notify", source, 'error', 'Je hebt niet de goede rang om dit te kunnen doen!')
+      TriggerClientEvent("lrp-notifications:client:notify", source, 'error', 'Je hebt niet de goede rang om dit te kunnen doen!')
     end
 end)
 

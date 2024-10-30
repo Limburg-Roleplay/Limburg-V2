@@ -11,7 +11,7 @@ AddEventHandler(
 			return exports["FIVEGUARD"]:fg_BanPlayer(src, "Suspicious activity detected: Player [" .. src .. "] ".. GetPlayerName(src) .. " tried to trigger esx_juwelleryrobbery:grabJewels without validation.", true)
     	end
         if robbedLately then
-            TriggerClientEvent('frp-notifications:client:notify', source, 'error', 'Er is recentelijk een juwelier overvallen, kom later terug!', '5000')
+            TriggerClientEvent('lrp-notifications:client:notify', source, 'error', 'Er is recentelijk een juwelier overvallen, kom later terug!', '5000')
 			return  
         end
         robbedLately = true

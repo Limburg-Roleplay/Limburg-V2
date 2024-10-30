@@ -18,7 +18,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(1000)  -- Verhoogde wachtijd naar 1 seconde
 
-        local inService = exports["frp-staffdienst"]:inDienst()
+        local inService = exports["lrp-staffdienst"]:inDienst()
 
         if inService and not staffNamesEnabled and not manualToggle then
             staffNamesEnabled = true
@@ -33,7 +33,7 @@ end)
 
 RegisterNetEvent("toggleStaffNames")
 AddEventHandler("toggleStaffNames", function(status)
-    if not exports["frp-staffdienst"]:inDienst() then
+    if not exports["lrp-staffdienst"]:inDienst() then
         Event("chat:addMessage", {
             color = {255, 0, 0},
             multiline = true,

@@ -89,7 +89,7 @@ end)
 RegisterNetEvent('esx_vangelico_robbery:toofarlocal')
 AddEventHandler('esx_vangelico_robbery:toofarlocal', function(robb)
 	holdingup = false
-	ESX.ShowNotification(_U('robbery_cancelled'))
+	ESX.ShowNotification('error', _U('robbery_cancelled'))
 	robbingName = ""
 	incircle = false
 end)
@@ -98,7 +98,7 @@ end)
 RegisterNetEvent('esx_vangelico_robbery:robberycomplete')
 AddEventHandler('esx_vangelico_robbery:robberycomplete', function(robb)
 	holdingup = false
-	ESX.ShowNotification(_U('robbery_complete'))
+	ESX.ShowNotification('success', _U('robbery_complete'))
 	store = ""
 	incircle = false
 end)
@@ -230,7 +230,7 @@ Citizen.CreateThread(function()
 								end)
 							else
 								blip = false
-                            	exports['frp-notifications']:notify('error', _U('notenoughgold'), 4000)
+                            	exports['lrp-notifications']:notify('error', _U('notenoughgold'), 4000)
 							end
 					end
 				end

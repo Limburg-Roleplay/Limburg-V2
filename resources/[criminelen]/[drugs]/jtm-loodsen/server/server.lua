@@ -1072,7 +1072,7 @@ ESX.RegisterServerCallback('jtm-loodsen:server:deliverGoods', function(source, c
                 local blackMoneyAmount = math.random(60000, 80000)
                 xPlayer.addAccountMoney('black_money', blackMoneyAmount)
 
-                TriggerClientEvent('esx:showNotification', source, "Je hebt ~r~€" .. blackMoneyAmount .. " zwart geld ontvangen.")
+                TriggerClientEvent('okokNotify:Alert', source, "Je hebt ~r~€" .. blackMoneyAmount .. " zwart geld ontvangen.", 5000, 'success')
 				
                 if newOpslagAmount and newOpslagAmount >= Config.MinSellAmount then
                     cb(true)

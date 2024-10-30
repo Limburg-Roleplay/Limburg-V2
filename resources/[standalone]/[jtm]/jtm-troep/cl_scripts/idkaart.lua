@@ -38,7 +38,7 @@ Citizen.CreateThread(function()
     while true do
         local sleep = 500
         if IsControlJustReleased(0, 167) then
-            FRP.Functions.openF6Menu()
+            LRP.Functions.openF6Menu()
         end
         Citizen.Wait(sleep)
     end

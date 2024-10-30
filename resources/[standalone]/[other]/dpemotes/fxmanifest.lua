@@ -29,6 +29,11 @@ client_scripts {
     'client/Walk.lua',
     'client/frameworks/*.lua'
 }
+
+files {
+    'html/image/lrpbanner.png',
+}
+
 data_file 'DLC_ITYP_REQUEST' 'badge1.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'copbadge.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'prideprops_ytyp'

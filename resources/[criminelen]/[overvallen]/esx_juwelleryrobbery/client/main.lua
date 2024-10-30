@@ -42,7 +42,7 @@ Citizen.CreateThread(
                                 		TriggerServerEvent("esx_juwelleryrobbery:startRobbery", GetPlayerPed(-1))
                                         TriggerEvent('juwelier:alertCops')
                     				else
-                        				exports['frp-notifications']:Notify('error', 'Er is niet genoeg politie!', 5000)
+                        				exports['lrp-notifications']:Notify('error', 'Er is niet genoeg politie!', 5000)
                     				end
                 				end, MinPolice)
                             

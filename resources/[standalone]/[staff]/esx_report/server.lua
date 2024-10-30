@@ -38,7 +38,7 @@ RegisterCommand('reply', function(source, args, rawCommand)
      		    SendWebhookMessage(Config.webhookurl, username, "Reply", '-> ' .. targetName .. ' ['.. targetPlayerId ..'] '..':  ' .. message)
    					 end
 			 else
-   				 TriggerClientEvent("frp-notifications:client:notify", source, "error", "Deze speler is niet online!", 		 "3000")
+   				 TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Deze speler is niet online!", 		 "3000")
              end
         else
             TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, 'Insufficient Permissions!')
@@ -119,8 +119,8 @@ RegisterCommand('report', function(source, args, rawCommand)
     })
 
     TriggerClientEvent('esx_report:sendReport', -1, source, playerName, textmsg)
-    TriggerClientEvent("wsk-report:client:new:report", -1, playerName, newReportId, textmsg, source, formattedTime)
-    TriggerClientEvent('srp-reportcounter:cl:updateCounter', -1, #reports)
+    TriggerClientEvent("lrp-report:client:new:report", -1, playerName, newReportId, textmsg, source, formattedTime)
+    TriggerClientEvent('lrp-reportcounter:cl:updateCounter', -1, #reports)
 
     local message = "Speler: " .. playerName .. " [ID: " .. source .. "] heeft een report gemaakt:\n" .. textmsg
     SendWebhookMessage(Config.webhookurl, "Report Log", "Nieuw Report", message)
@@ -132,20 +132,15 @@ end, false)
 RegisterCommand("reports", function(source, args, rawCommand)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
-    if not exports["frp-staffdienst"]:inDienst(xPlayer.source) then
-        return
-            TriggerClientEvent("frp-notifications:client:notify", xPlayer.source, 'error',
-                'Je bent niet in dienst, zorg dat je <br> /staffdienst hebt gedaan')
-    end
     if xPlayer.getGroup() ~= 'user' then 
-	TriggerClientEvent("wsk-report:client:see:report:list", source)
+	TriggerClientEvent("lrp-report:client:see:report:list", source)
     else
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Je hebt hier geen permissies voor!!", "3000")
+        TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Je hebt hier geen permissies voor!!", "3000")
     end
 end)
 
-RegisterNetEvent("wsk-report:server:claim:report")
-AddEventHandler("wsk-report:server:claim:report", function(reportid)
+RegisterNetEvent("lrp-report:server:claim:report")
+AddEventHandler("lrp-report:server:claim:report", function(reportid)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     local foundReport = nil
@@ -161,21 +156,21 @@ AddEventHandler("wsk-report:server:claim:report", function(reportid)
     
     if foundReport then
         foundReport.claimed = xPlayer.identifier
-        TriggerClientEvent("wsk-report:client:claimed:report", src, reportid, xPlayer.identifier)
+        TriggerClientEvent("lrp-report:client:claimed:report", src, reportid, xPlayer.identifier)
 
 		local zplayer = ESX.GetPlayerFromId(foundReport.src)
 		TriggerClientEvent('esx_report:textmsg', player, src, "Je report is geclaimed", GetPlayerName(player), GetPlayerName(src))
         if zplayer and zplayer.coords then
 			xPlayer.setCoords(zplayer.coords)
-            TriggerClientEvent("wsk-report:client:teleportToPlayer", src, xPlayer.coords.x, xPlayer.coords.y, xPlayer.coords.z)
+            TriggerClientEvent("lrp-report:client:teleportToPlayer", src, xPlayer.coords.x, xPlayer.coords.y, xPlayer.coords.z)
         else
         end
     end
 end)
 
 
-RegisterNetEvent("wsk-report:server:close:instant:report")
-AddEventHandler("wsk-report:server:close:instant:report", function(reportid)
+RegisterNetEvent("lrp-report:server:close:instant:report")
+AddEventHandler("lrp-report:server:close:instant:report", function(reportid)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     local foundIndex = nil
@@ -189,7 +184,7 @@ AddEventHandler("wsk-report:server:close:instant:report", function(reportid)
     end
 
     if foundIndex then
-        TriggerClientEvent('srp-reportcounter:cl:updateCounter', -1, #reports)
+        TriggerClientEvent('lrp-reportcounter:cl:updateCounter', -1, #reports)
         table.remove(reports, foundIndex)
     end
 
@@ -198,12 +193,12 @@ AddEventHandler("wsk-report:server:close:instant:report", function(reportid)
 		TriggerClientEvent('esx_report:textmsg', player, src, "Je report is gesloten", GetPlayerName(player), GetPlayerName(src))
 	end
 	
-	TriggerClientEvent("wsk-report:client:closed:report", -1, reportid)
+	TriggerClientEvent("lrp-report:client:closed:report", -1, reportid)
 end)
 
 -- Event om een report te sluiten en het staff_report_count bij te werken
-RegisterNetEvent("wsk-report:server:close:report")
-AddEventHandler("wsk-report:server:close:report", function(reportid)
+RegisterNetEvent("lrp-report:server:close:report")
+AddEventHandler("lrp-report:server:close:report", function(reportid)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     local foundIndex = nil
@@ -219,7 +214,7 @@ AddEventHandler("wsk-report:server:close:report", function(reportid)
     end
     if foundIndex then
         table.remove(reports, foundIndex)
-        TriggerClientEvent('srp-reportcounter:cl:updateCounter', -1, #reports)
+        TriggerClientEvent('lrp-reportcounter:cl:updateCounter', -1, #reports)
         
         local zplayer = ESX.GetPlayerFromId(player)
         if zplayer then      
@@ -230,7 +225,7 @@ AddEventHandler("wsk-report:server:close:report", function(reportid)
             TriggerClientEvent('esx_report:textmsg', player, src, "Je report is gesloten", GetPlayerName(player), GetPlayerName(src))
         end
         
-        TriggerClientEvent("wsk-report:client:closed:report", -1, reportid)
+        TriggerClientEvent("lrp-report:client:closed:report", -1, reportid)
     end
 end)
 
@@ -291,7 +286,7 @@ RegisterCommand('leaderboard', function(source, args, rawCommand)
             TriggerClientEvent('esx_report:showLeaderboard', source, leaderboardData)
         end)
     else
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Je hebt hier geen permissies voor!", "3000")
+        TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Je hebt hier geen permissies voor!", "3000")
     end
 end, false)
 

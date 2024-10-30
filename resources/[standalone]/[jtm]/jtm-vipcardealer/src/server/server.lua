@@ -8,7 +8,7 @@ ESX.RegisterServerCallback('jtm-vipcardealer:server:cb:get:shared', function(sou
     cb(Shared)
 end)
 
-ESX.RegisterServerCallback('frp-cardealer:isPlateTaken', function (source, cb, plate)
+ESX.RegisterServerCallback('lrp-cardealer:isPlateTaken', function (source, cb, plate)
 	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE plate = @plate', {
 		['@plate'] = plate
 	}, function (result)
@@ -39,7 +39,7 @@ ESX.RegisterServerCallback('jtm-development:server:cb:buyVehicle', function(sour
     local veh = Shared.Vehicles[class][id+1]['model']
 
     if xPlayer.getAccount('bank').money < Shared.Vehicles[class][id+1]['price'] then 
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Je hebt hier niet genoeg geld voor!", 4000)
+        TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Je hebt hier niet genoeg geld voor!", 4000)
         return 
     end
 
@@ -47,7 +47,7 @@ ESX.RegisterServerCallback('jtm-development:server:cb:buyVehicle', function(sour
 
     local vehicleColour = Shared.Fotobook.Colors[colour]
     if not vehicleColour then
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Ongeldige kleur geselecteerd!", 4000)
+        TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Ongeldige kleur geselecteerd!", 4000)
         return
     end
 
@@ -83,7 +83,7 @@ ESX.RegisterServerCallback('jtm-development:server:saveVehicle', function(source
     
     exports['oxmysql']:query('INSERT INTO `owned_vehicles` (owner, plate, vehicle, stored, type) VALUES (?, ?, ?, ?, ?)', { steamId, plate, json.encode(props), 0, 'car' })
 
-    TriggerClientEvent('frp-notifications:client:notify', source, 'success','Bedankt voor je aankoop veel plezier met je voertuig!', 5000)
+    TriggerClientEvent('lrp-notifications:client:notify', source, 'success','Bedankt voor je aankoop veel plezier met je voertuig!', 5000)
 
     local currentDate = os.date("%Y-%m-%d %H:%M:%S")
     local logMessage = string.format("Datum en tijd: %s\nSteam naam: %s\nSteam ID: %s\nRockstar license: %s\nKenteken: %s\nModel: %s\nBankgeld: €%s\nCashgeld: €%s",

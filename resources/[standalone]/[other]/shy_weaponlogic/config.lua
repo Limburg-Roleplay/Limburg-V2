@@ -25,6 +25,10 @@ Config.Recoil = {
 		factor = 0.35,
 		shake = 0.02,
 	},
+	[`WEAPON_PISTOL_MK2`] = {
+		factor = 0.15,
+		shake = 0.02,
+	},
 	[`WEAPON_GLOCK19X`] = {
 		factor = 0.40,
 		shake = 0.02,
@@ -115,8 +119,12 @@ Config.Recoil = {
 		factor = 0.15,
 		shake = 0.02,
 	},
+	[`WEAPON_ASSAULTRIFLE_MK2`] = {
+		factor = 0.05,
+		shake = 0.02,
+	},
 	[`WEAPON_NVRIFLE`] = {
-		factor = 0.00,
+		factor = 0.05,
 		shake = 0.01,
 	},
 	[`WEAPON_AKS74U`] = {
@@ -162,7 +170,7 @@ Config.DamageModifiers = {
 	[`WEAPON_TUBEPICKAXE`] = 0.75,
 	[`WEAPON_APOKATANA`] = 1.1,
 	[`WEAPON_BATTLEAXE`] = 0.80,
-	[`WEAPON_BATSPIKE`] = 0.60 ,
+	[`WEAPON_BATSPIKE`] = 0.60,
 	[`WEAPON_KARAMBIT`] = 0.75,
 	[`WEAPON_BATMETAL`] = 0.75,
 	[`WEAPON_AXE`] = 0.60,
@@ -176,20 +184,6 @@ Config.DamageModifiers = {
 	[`WEAPON_WRENCH`] = 0.15,
 	[`WEAPON_SCREWDRIVER`] = 0.15,
 	[`WEAPON_SHOVEL`] = 0.35,
-
-	-- Guns
-	[`WEAPON_FM1_M9A3`] = 1.5,
-	[`WEAPON_MICROSMG`] = 1.5,
-	[`WEAPON_ASSAULTRIFLE_MK2`] = 1.3,
-	[`WEAPON_MINIUZI`] = 0.7,
-	[`WEAPON_38SNUBNOSE`] = 1.0,
-	[`WEAPON_38SNUBNOSE2`] = 1.0,
-	[`WEAPON_38SNUBNOSE3`] = 1.0,
-	[`WEAPON_38SPECIAL`] = 1.0,
-	[`WEAPON_44MAGNUM`] = 1.0,
-	[`WEAPON_SIG`] = 1.5,
-	[`WEAPON_FM1_HK416`] = 1.3,
-	[`WEAPON_SAWNOFFSHOTGUN`] = 1.5,
 
 	-- Throwables
 	[`WEAPON_SHURIKEN`] = 50.0,

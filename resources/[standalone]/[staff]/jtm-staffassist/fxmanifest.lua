@@ -3,7 +3,7 @@ shared_script '@FIVEGUARD/shared_fg-obfuscated.lua'
 fx_version 'cerulean'
 games { 'gta5' }
 author 'JTM-Development'
-description "FRP-Staffassist JTM-Development"
+description "LRP-Staffassist JTM-Development"
 use_fxv2_oal 'yes'
 lua54 'yes'
 client_scripts { 'client/*.lua' }

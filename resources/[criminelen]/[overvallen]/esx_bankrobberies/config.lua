@@ -145,7 +145,7 @@ Config.BankHeists = {
     },
     ["Fleeca_Paleto"] = {
 
-        ["Money"] = math.random(250000, 400000),[[]]
+        ["Money"] = math.random(250000, 400000),
         ["Bank_Vault"] = {
             ["model"] = 1185745326,
             ["x"] = -104.6049,

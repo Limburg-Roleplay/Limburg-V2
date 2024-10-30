@@ -86,7 +86,7 @@ AddEventHandler('shySkills:sendPlayerSkills', function(data, skillImproved, impr
 
         if skillImproved then
             local message = "Je bent " .. improvement .. "% beter geworden in " .. skillImproved .. "."
-            exports["frp-notifications"]:Notify("success", message, 5000)
+            exports["lrp-notifications"]:Notify("success", message, 5000)
         end
 
         -- Trigger the UI update
@@ -224,33 +224,33 @@ local poly = lib.zones.poly({
     debug = false,
     inside = inside,
     onEnter = function()
-        TriggerServerEvent('frp-gym:srv:gym', true)
+        TriggerServerEvent('lrp-gym:srv:gym', true)
     end,
     onExit = function()
-        TriggerServerEvent('frp-gym:srv:gym', false)
+        TriggerServerEvent('lrp-gym:srv:gym', false)
     end,
 })
 
 
-RegisterNetEvent('frp-gym:cl:data')
-AddEventHandler('frp-gym:cl:data', function(indexId, bool)
+RegisterNetEvent('lrp-gym:cl:data')
+AddEventHandler('lrp-gym:cl:data', function(indexId, bool)
     Config.Locations[indexId]['isBusy'] = bool
 end)
 
-RegisterNetEvent('frp-gym:client:train')
-AddEventHandler('frp-gym:client:train', function(animType, gymType, indexId)
+RegisterNetEvent('lrp-gym:client:train')
+AddEventHandler('lrp-gym:client:train', function(animType, gymType, indexId)
     -- Assuming cooldown and procent are defined somewhere globally
     if cooldown > 5 then 
-        exports['frp-notifications']:notify('error', 'Je hebt een cooldown, wacht nog ' .. cooldown .. ' seconden.') 
+        exports['lrp-notifications']:notify('error', 'Je hebt een cooldown, wacht nog ' .. cooldown .. ' seconden.') 
         return 
     end
 
     if Config.Locations[indexId]['isBusy'] then 
-        exports['frp-notifications']:notify('error', 'Er is al iemand bezig hier, probeer het later opnieuw!') 
+        exports['lrp-notifications']:notify('error', 'Er is al iemand bezig hier, probeer het later opnieuw!') 
         return 
     end
 
-    TriggerServerEvent('frp-gym:srv:data', indexId, true)
+    TriggerServerEvent('lrp-gym:srv:data', indexId, true)
 
     if animType ~= 'weights' then
         loadAnimDict(Config.Animations[animType]['idleDict'])
@@ -313,7 +313,7 @@ AddEventHandler('frp-gym:client:train', function(animType, gymType, indexId)
                     SendNUIMessage({
                         type = 'closePlaceholder'
                     })
-                    TriggerServerEvent('frp-gym:srv:data', indexId, false)
+                    TriggerServerEvent('lrp-gym:srv:data', indexId, false)
                     exercising = false
                 end
             else
@@ -443,13 +443,13 @@ Citizen.CreateThread(function()
         if gymData["strength"] >= 1 then
             gymData["strength"] = gymData["strength"] - 1
             StatSetInt('MP0_STRENGHT', gymData['strength'], true)
-            TriggerServerEvent('frp-gym:srv:add:strength', gymData["strength"])
+            TriggerServerEvent('lrp-gym:srv:add:strength', gymData["strength"])
         end
 
         if gymData["stamina"] >= 1 then
             gymData["stamina"] = gymData["stamina"] - 1
             StatSetInt('MP0_STAMINA', gymData['stamina'], true)
-            TriggerServerEvent('frp-gym:srv:add:stamina', gymData["stamina"])
+            TriggerServerEvent('lrp-gym:srv:add:stamina', gymData["stamina"])
         end
     end
 end) -- Closing parenthesis added here

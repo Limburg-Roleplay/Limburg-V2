@@ -17,7 +17,7 @@ Citizen.CreateThread(function()
             last is the url (this has to start with "fivem://connect/" or "https://") 
         ]]--
         SetDiscordRichPresenceAction(0, "Main Discord", "https://discord.gg/limburgroleplay")
-        SetDiscordRichPresenceAction(1, "Development Discord", "https://discord.gg/jtm")
+        SetDiscordRichPresenceAction(1, "Development Discord", "https://discord.gg/JxPjasd7Ch")
         -- Updates every 1 minute
         Citizen.Wait(60000)
     end

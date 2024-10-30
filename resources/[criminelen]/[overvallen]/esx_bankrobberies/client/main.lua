@@ -117,13 +117,13 @@ AddEventHandler(
                         ClearPedTasksImmediately(PlayerPedId())
                         TriggerServerEvent("esx_bankrobbery:startRobbery", bank)
                     else
-                        exports['frp-notifications']:Notify('error', 'Er is niet genoeg politie!', 5000)
+                        exports['lrp-notifications']:Notify('error', 'Er is niet genoeg politie!', 5000)
                     end
                 end,
                 MinPolice
             )
         else
-            exports['frp-notifications']:Notify('error', 'Je hebt geen blowtorch!', 5000)
+            exports['lrp-notifications']:Notify('error', 'Je hebt geen blowtorch!', 5000)
         end
     end
 )
@@ -186,13 +186,13 @@ Citizen.CreateThread(
                                                             ClearPedTasksImmediately(PlayerPedId())
                                                             TriggerServerEvent("esx_bankrobbery:startRobbery", bank)
                                                         else
-                                                            exports['frp-notifications']:Notify('error', 'Er is niet genoeg politie!', 5000)
+                                                            exports['lrp-notifications']:Notify('error', 'Er is niet genoeg politie!', 5000)
                                                         end
                                                     end,
                                                     MinPolice
                                                 )
                                             else
-                                               	exports['frp-notifications']:Notify('error', 'Je hebt geen blowtorch', 5000)
+                                               	exports['lrp-notifications']:Notify('error', 'Je hebt geen blowtorch', 5000)
                                             end
                                         end
                                     }

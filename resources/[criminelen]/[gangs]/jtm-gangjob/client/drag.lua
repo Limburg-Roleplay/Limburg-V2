@@ -43,7 +43,7 @@ AddEventHandler('jtm-development:client:set:player:vehicle', function(data)
 		if distance < 2.0 then 
 			TriggerServerEvent('jtm-development:server:set:player:vehicle', GetPlayerServerId(entityPlayer))
 		else
-			exports['vesx_ia']:Notify('error', 'Deze persoon is niet meer in de buurt!', 5000)
+			exports['okokNotify']:Alert('Fout', 'Deze persoon is niet meer in de buurt!', 5000, 'error')
 		end
 	else
 		local entity = targetVehPed
@@ -53,7 +53,7 @@ AddEventHandler('jtm-development:client:set:player:vehicle', function(data)
 		if distance < 2.0 then 
 			TriggerServerEvent('jtm-development:server:set:player:vehicle', GetPlayerServerId(entityPlayer))
 		else
-			ESX.ShowNotification('Deze persoon is niet meer in de buurt!', 'error')
+			exports['okokNotify']:Alert('Fout', 'Deze persoon is niet meer in de buurt!', 5000, 'error')
 		end
 	end
 end)
@@ -66,53 +66,67 @@ end)
 
 RegisterNetEvent('jtm-development:client:dragging')
 AddEventHandler('jtm-development:client:dragging', function(data)
-    local entity = data.entity
-    local entityPlayer = ESX.Game.GetPlayerFromPed(entity)
-
-    dragStatus['isDragging'] = true
-    dragStatus['targetId'] = GetPlayerServerId(entityPlayer)
-
-    SendNUIMessage({
-        type = 'openPlaceholder',
-        text = '<b>[X]</b> Om de persoon los te laten'
-    })
-
-    TriggerServerEvent('jtm-development:server:onDrag', GetPlayerServerId(entityPlayer))
-
-    Citizen.CreateThread(function()
-        while dragStatus['isDragging'] do 
-            local sleep = 0
-
-            DisableControlAction(2, 21, true)
-
-            local isWalking = IsPedWalking(PlayerPedId())
-
-            -- Check if Config.Pushing is defined and has the necessary keys
-            if Config.Pushing and Config.Pushing['pushingAnimDict'] and Config.Pushing['pushingAnim'] then
-                local isPlayingAnim = IsEntityPlayingAnim(PlayerPedId(), Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], 51)
-
-                if IsControlJustReleased(0, 120) then
-                    TriggerServerEvent('jtm-development:server:syncs:drag', dragStatus['targetId'])
-                    SendNUIMessage({
-                        type = 'closePlaceholder'
-                    })
-                    StopAnimTask(PlayerPedId(), Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], -4.0)
-                    dragStatus['isDragging'] = false
-                    return
-                end
-
-                if isWalking and not isPlayingAnim then
-                    ESX.Game.PlayAnim(Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], 2.0, -1, 51)
-                elseif not isWalking and isPlayingAnim then
-                    StopAnimTask(PlayerPedId(), Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], -4.0)
-                end
-            else
-                print("Config.Pushing or necessary keys are not defined")
-            end
-
-            Citizen.Wait(sleep)
+	if geboeid() == true then
+		local entity = data.entity
+		local entityPlayer = ESX.Game.GetPlayerFromPed(entity)
+		local ped = GetPlayerPed(
+			source
+		)
+		if ped == entity then
+            exports['okokNotify']:Alert('Fout', 'Er is geen speler in de buurt!', 5000, 'error')
+			return
         end
-    end)
+
+	
+		dragStatus['isDragging'] = true
+		dragStatus['targetId'] = GetPlayerServerId(entityPlayer)
+	
+		SendNUIMessage({
+			type = 'openPlaceholder',
+			text = '<b>[X]</b> Om de persoon los te laten'
+		})
+	
+		TriggerServerEvent('jtm-development:server:onDrag', GetPlayerServerId(entityPlayer))
+		
+		Citizen.CreateThread(function()
+			while dragStatus['isDragging'] do 
+				local sleep = 0
+	
+				DisableControlAction(2, 21, true)
+	
+				local isWalking = IsPedWalking(PlayerPedId())
+	
+				-- Check if Config.Pushing is defined and has the necessary keys
+				if Config.Pushing and Config.Pushing['pushingAnimDict'] and Config.Pushing['pushingAnim'] then
+					local isPlayingAnim = IsEntityPlayingAnim(PlayerPedId(), Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], 51)
+	
+					if IsControlJustReleased(0, 120) then
+						TriggerServerEvent('jtm-development:server:syncs:drag', dragStatus['targetId'])
+						SendNUIMessage({
+							type = 'closePlaceholder'
+						})
+						StopAnimTask(PlayerPedId(), Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], -4.0)
+						dragStatus['isDragging'] = false
+						return
+					end
+	
+					if isWalking and not isPlayingAnim then
+						ESX.Game.PlayAnim(Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], 2.0, -1, 51)
+					elseif not isWalking and isPlayingAnim then
+						StopAnimTask(PlayerPedId(), Config.Pushing['pushingAnimDict'], Config.Pushing['pushingAnim'], -4.0)
+					end
+				else
+					print("Error: Config.Pushing of bepaalde varibalen zijn niet gegeven!")
+				end
+	
+				Citizen.Wait(sleep)
+			end
+		end)
+	else
+		exports['okokNotify']:Alert('Niet geboeid', 'Je moet eerst de persoon boeien voordat je hem kan meenemen!', 5000, 'error', true)
+	end
+
+
 end)
 
 

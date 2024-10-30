@@ -377,6 +377,23 @@ return {
 			}
 		},
 
+		['WEAPON_ASSAULTRIFLE_MK2'] = {
+			label = 'AKM-Mk2',
+			weight = 3539,
+			durability = 0.05,
+			ammoname = 'ammo-rifle',
+			maxAmmo = 90,
+			heavy = true,
+			buttons = {
+				{
+					label = 'Wapen ontladen',
+					action = function(slot)
+						TriggerEvent('ox_inventory:unloadAmmo', slot)
+					end
+				},
+			}
+		},
+
         ['WEAPON_FM1_M9A3'] = {
 			label = 'Pistol M9A3',
 			weight = 970,
@@ -473,8 +490,7 @@ return {
 
 	Components = {
 		['at_suppressor_light'] = {
-			label = 'Suppressor',
-            description = 'Deze past op de desert eagle',
+			label = 'Pistol Mk2 Suppressor',
 			weight = 280,
 			type = 'muzzle',
 			client = {
@@ -487,6 +503,101 @@ return {
 				usetime = 2500
 			}
 		},
+
+		['at_clip_extended_pistol'] = {
+			label = 'Pistol Mk2 extended Mag',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {
+					`COMPONENT_PISTOL_MK2_CLIP_02`,
+				},
+				usetime = 2500
+			}
+		},
+
+		['at_compensator'] = {
+			label = 'Pistol Mk2 Compensator',
+			type = 'barrel',
+			weight = 280,
+			client = {
+				component = {`COMPONENT_AT_PI_COMP_02`, `COMPONENT_AT_PI_COMP_03`, `COMPONENT_AT_PI_COMP`},
+				usetime = 2500
+			}
+		},
+
+		-- AKM-12 --
+
+		['at_scope_macro'] = {
+			label = 'AKM-12 Small Scope',
+			type = 'sight',
+			weight = 280,
+			client = { component = {`COMPONENT_AT_SCOPE_MACRO_MK2`},
+				usetime = 2500
+			}
+		},
+        
+        ['at_scope_holo'] = {
+			label = 'AKM-12 Holographic Sight',
+			type = 'sight',
+			weight = 280,
+			client = {
+				component = {`COMPONENT_AT_SIGHTS`},
+				usetime = 2500
+			}
+		},
+
+		['at_scope_medium'] = {
+			label = 'AKM-12 Medium Scope',
+			type = 'sight',
+			weight = 280,
+			client = {
+				component = {`COMPONENT_AT_SCOPE_MEDIUM_MK2`},
+				usetime = 2500
+			}
+		},
+
+        ['at_grip'] = {
+			label = 'AKM-12 Grip',
+			type = 'grip',
+			weight = 280,
+			client = {
+				component = {`COMPONENT_AT_AR_AFGRIP_02`},
+				usetime = 2500
+			}
+		}, 
+
+        ['at_clip_extended_rifle'] = {
+			label = 'AKM-12 Extended Clip',
+			type = 'magazine',
+			weight = 280,
+			client = {
+				component = {`COMPONENT_ASSAULTRIFLE_MK2_CLIP_02`},
+				usetime = 2500
+			}
+		},
+
+        ['at_muzzle_tactical'] = {
+			label = 'AKM-12 Muzzle',
+			type = 'barrel',
+			weight = 80,
+			client = {
+				component = {`COMPONENT_AT_MUZZLE_02`},
+				usetime = 2500
+			}
+		},
+
+		['at_suppressor_heavy'] = {
+			label = 'AKM-12 Suppressor',
+			weight = 280,
+			type = 'barrel',
+			client = {
+				component = {`COMPONENT_AT_AR_SUPP_02`},
+				usetime = 2500
+			}
+		},
+
+		-- AKM-12 --
 
 		['at_fm_scope_01'] = {
 			label = 'DSI Scope 01',
@@ -723,46 +834,6 @@ return {
 			}
 		},
 
-		['at_clip_extended_pistol'] = {
-			label = 'Extended Pistol Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_APPISTOL_CLIP_02`,
-					`COMPONENT_CERAMICPISTOL_CLIP_02`,
-					`COMPONENT_COMBATPISTOL_CLIP_02`,
-					`COMPONENT_HEAVYPISTOL_CLIP_02`,
-					`COMPONENT_PISTOL_CLIP_02`,
-					`COMPONENT_PISTOL_MK2_CLIP_02`,
-					`COMPONENT_PISTOL50_CLIP_02`,
-					`COMPONENT_SNSPISTOL_CLIP_02`,
-					`COMPONENT_SNSPISTOL_MK2_CLIP_02`,
-					`COMPONENT_VINTAGEPISTOL_CLIP_02`,
-                    `COMPONENT_TECPISTOL_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_clip_extended_smg'] = {
-			label = 'Extended SMG Clip',
-			type = 'magazine',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_ASSAULTSMG_CLIP_02`,
-					`COMPONENT_COMBATPDW_CLIP_02`,
-					`COMPONENT_MACHINEPISTOL_CLIP_02`,
-					`COMPONENT_MICROSMG_CLIP_02`,
-					`COMPONENT_MINISMG_CLIP_02`,
-					`COMPONENT_SMG_CLIP_02`,
-					`COMPONENT_SMG_MK2_CLIP_02`,
-				},
-				usetime = 2500
-			}
-		},
-
 		['at_glock19x_flash'] = {
 			label = 'AP-19 Flashlight',
 			type = 'Flashlight',
@@ -792,23 +863,6 @@ return {
 				usetime = 2500
 			}
 		},
-
-		['at_scope_macro'] = {
-			label = 'Macro Scope',
-			type = 'sight',
-			weight = 280,
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_MACRO`,
-					`COMPONENT_AT_SCOPE_MACRO_02`,
-					`COMPONENT_AT_SCOPE_MACRO_MK2`,
-					`COMPONENT_AT_SCOPE_MACRO_02_MK2`,
-					`COMPONENT_AT_SCOPE_MACRO_02_SMG_MK2`
-				},
-				usetime = 2500
-			}
-		},
-
 
 -- Addon weapons 
 

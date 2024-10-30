@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; 
+    position: relative;
+}
+
+#jail-time-label {
+    font-size: 22px;
+    color: #ffffff;
+    margin-bottom: 90px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+#jail-time-label, 
+#jail-time-box {
+    position: fixed;
+    bottom: 50px; /* Gap from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+#jail-time-box {
+    background-color: #222222;
+    color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    border: 1px solid #00ffff;
+    transition: box-shadow 0.3s ease-in-out; /* Transition only for box-shadow */
+}
+
+#jail-time-box:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+    cursor: pointer;
+}
+
+#jail-time-text {
+    font-size: 16px;
+    font-weight: normal;
+    color: #ddd;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    #jail-time-box {
+        padding: 15px 30px;
+    }
+
+    #jail-time-label {
+        font-size: 18px;
+    }
+}

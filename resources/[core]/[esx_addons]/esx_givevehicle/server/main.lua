@@ -83,7 +83,7 @@ function givevehicle(_source, _args, vehicleType)
 			if _source == 0 then
 				print("SYNTAX ERROR: givevehicle <playerID> <carModel> [plate]")
 			else
-				TriggerClientEvent('esx:showNotification', _source, '~r~/givevehicle playerID carModel [plate]')
+				TriggerClientEvent('okokNotify:Alert', _source, '~r~/givevehicle playerID carModel [plate]', 5000, 'error')
 			end
 		else
 			local target = tonumber(_args[1])
@@ -95,7 +95,7 @@ function givevehicle(_source, _args, vehicleType)
 				if _source == 0 then
 					print("Player ID " .. tostring(target) .. " does not exist")
 				else
-					TriggerClientEvent('esx:showNotification', _source, '~r~Player ID does not exist!')
+					TriggerClientEvent('okokNotify:Alert', _source, '~r~Player ID does not exist!', 5000, 'error')
 				end
 				return
 			end
@@ -122,7 +122,7 @@ function givevehicle(_source, _args, vehicleType)
 		if _source == 0 then
 			print("You don't have permission to use this command!")
 		else
-			TriggerClientEvent('esx:showNotification', _source, '~r~You don\'t have permission to use this command!')
+			TriggerClientEvent('okokNotify:Alert', _source, '~r~You don\'t have permission to use this command!', 5000, 'error')
 		end
 	end
 end
@@ -197,7 +197,7 @@ AddEventHandler('esx_giveownedcar:setVehicle', function (vehicleProps, playerID,
 		['type'] = vehicleType
 	}, function ()
 		if Config.ReceiveMsg then
-			TriggerClientEvent('esx:showNotification', _source, _U('received_car', string.upper(vehicleProps.plate)))
+			TriggerClientEvent('okokNotify:Alert', _source,  _U('received_car', string.upper(vehicleProps.plate)), 5000, 'success')
 		end
 	end)
 end)

@@ -132,7 +132,7 @@ BeginTextCommandSetBlipName("STRING")
 AddTextComponentString("GHB Pluk") 
 EndTextCommandSetBlipName(blip)
 
-local blipCoords = vector3(-1547.7323, 2854.8201, 31.1417) 
+local blipCoords = vector3(955.7702, -2614.0010, 5.4821) 
 
 local blip = AddBlipForCoord(blipCoords)
 

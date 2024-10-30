@@ -54,5 +54,5 @@ AddEventHandler('jtm-development:client:handler:startFotobook', function(group)
 
         SetCamActive(cam, false)
         RenderScriptCams(0, 0, 0, 0, 0)
-        ESX.ShowNotification("Foto's zijn succesvol geupload naar een development folder.", 'success')
+        ESX.ShowNotification('success', "Foto's zijn succesvol geupload naar een development folder.", 'success')
 end)

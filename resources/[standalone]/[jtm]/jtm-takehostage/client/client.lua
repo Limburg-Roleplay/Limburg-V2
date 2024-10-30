@@ -1,5 +1,5 @@
 local inProgress, hostageType, targetSource = false, '', -1
-local FRP = {}
+local LRP = {}
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(PlayerData)
@@ -21,7 +21,7 @@ Citizen.CreateThread(function()
 	exports.qtarget:Player({
 		options = {
 			{
-				event = 'frp-takehostage:client:send:hostage:rqst',
+				event = 'lrp-takehostage:client:send:hostage:rqst',
 				icon = 'fas fa-gun',
 				label = 'Persoon gijzelen',
 				canInteract = function(entity)
@@ -39,8 +39,8 @@ Citizen.CreateThread(function()
 	})
 end)
 
-RegisterNetEvent('frp-takehostage:client:send:hostage:rqst')
-AddEventHandler('frp-takehostage:client:send:hostage:rqst', function(data)
+RegisterNetEvent('lrp-takehostage:client:send:hostage:rqst')
+AddEventHandler('lrp-takehostage:client:send:hostage:rqst', function(data)
     local entity = data.entity
     local distance = #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(entity))
     local entityPlayer = ESX.Game.GetPlayerFromPed(entity)
@@ -63,7 +63,7 @@ AddEventHandler('frp-takehostage:client:send:hostage:rqst', function(data)
 				lib.showTextUI('[G] - Loslaten | [H] - Vermoorden', {
 					icon = 'fa-solid fa-gun'
 				})
-                -- exports["frp-notifications"]:Notify("info", "Klik G om los te laten / H om de persoon af te maken!", 4000)
+                -- exports["lrp-notifications"]:Notify("info", "Klik G om los te laten / H om de persoon af te maken!", 4000)
             end
 
             if not inProgress and canTakeHostage then 
@@ -71,7 +71,7 @@ AddEventHandler('frp-takehostage:client:send:hostage:rqst', function(data)
                     if entityPlayer ~= -1 and serverId ~= -1 and serverId ~= 0 then 
                         inProgress = true 
                         targetSource = serverId
-                        TriggerServerEvent('frp-takehostage:server:sync', serverId)
+                        TriggerServerEvent('lrp-takehostage:server:sync', serverId)
                         LoadAnimDict(Config.Animations['Agressor']['animDict'])
                         hostageType = 'agressor'
 						lib.notify({
@@ -79,7 +79,7 @@ AddEventHandler('frp-takehostage:client:send:hostage:rqst', function(data)
 							description = 'Persoon succesvol hostage genomen',
 							type = 'success'
 						})
-                        FRP.takeHostage()
+                        LRP.takeHostage()
                     end
                 end
             end
@@ -95,18 +95,18 @@ end)
 
 
 
-RegisterNetEvent('frp-takehostage:client:sync:target')
-AddEventHandler('frp-takehostage:client:sync:target', function(tgt)
+RegisterNetEvent('lrp-takehostage:client:sync:target')
+AddEventHandler('lrp-takehostage:client:sync:target', function(tgt)
 	tgtPed = GetPlayerPed(GetPlayerFromServerId(tgt))
 	inProgress = true
 	LoadAnimDict(Config.Animations['Hostage']['animDict'])
 	AttachEntityToEntity(PlayerPedId(), tgtPed, 0, Config.Animations['Hostage']['attachX'], Config.Animations['Hostage']['attachY'], Config.Animations['Hostage']['attachZ'], 0.5, 0.5, 0.0, false, false, false, false, 2, false)
 	hostageType = 'hostage'
-	FRP.takeHostage()
+	LRP.takeHostage()
 end)
 
-RegisterNetEvent('frp-takehostage:client:release:hostage')
-AddEventHandler('frp-takehostage:client:release:hostage', function()
+RegisterNetEvent('lrp-takehostage:client:release:hostage')
+AddEventHandler('lrp-takehostage:client:release:hostage', function()
 	inProgress = false 
 	hostageType = nil
 	Wait(5)
@@ -117,8 +117,8 @@ AddEventHandler('frp-takehostage:client:release:hostage', function()
 	ClearPedTasks(PlayerPedId())
 end)
 
-RegisterNetEvent('frp-takehostage:client:kill:hostage')
-AddEventHandler('frp-takehostage:client:kill:hostage', function()
+RegisterNetEvent('lrp-takehostage:client:kill:hostage')
+AddEventHandler('lrp-takehostage:client:kill:hostage', function()
 	inProgress = false 
 	hostageType = nil
 	lib.hideTextUI()
@@ -132,8 +132,8 @@ AddEventHandler('frp-takehostage:client:kill:hostage', function()
 	ClearPedTasks(PlayerPedId())
 end)
 
-RegisterNetEvent('frp-takehostage:client:stop')
-AddEventHandler('frp-takehostage:client:stop', function()
+RegisterNetEvent('lrp-takehostage:client:stop')
+AddEventHandler('lrp-takehostage:client:stop', function()
 	inProgress = false 
 	hostageType = nil
 	DetachEntity(PlayerPedId(), true, false)
@@ -143,7 +143,7 @@ AddEventHandler('frp-takehostage:client:stop', function()
 	ClearPedTasks(PlayerPedId())
 end)
 
-FRP.takeHostage = function()
+LRP.takeHostage = function()
 	while hostageType == 'agressor' do 
 		Citizen.Wait(0)
 
@@ -163,7 +163,7 @@ FRP.takeHostage = function()
 			lib.hideTextUI()
 			LoadAnimDict('reaction@shove')
 			TaskPlayAnim(PlayerPedId(), 'reaction@shove', 'shove_var_a', 8.0, -8.0, -1, 168, 0, false, false, false)
-			TriggerServerEvent('frp-takehostage:server:release:hostage', targetSource)
+			TriggerServerEvent('lrp-takehostage:server:release:hostage', targetSource)
 		end 
 
 		if IsDisabledControlJustPressed(0,47) then --release	
@@ -172,14 +172,14 @@ FRP.takeHostage = function()
 			lib.hideTextUI()
 			LoadAnimDict('reaction@shove')
 			TaskPlayAnim(PlayerPedId(), 'reaction@shove', 'shove_var_a', 8.0, -8.0, -1, 168, 0, false, false, false)
-			TriggerServerEvent('frp-takehostage:server:release:hostage', targetSource)
+			TriggerServerEvent('lrp-takehostage:server:release:hostage', targetSource)
 		elseif IsDisabledControlJustPressed(0,74) then --kill 			
 			hostageType = ''
 			inProgress = false 		
 			lib.hideTextUI()
 			LoadAnimDict('anim@gangops@hostage@')
 			TaskPlayAnim(PlayerPedId(), 'anim@gangops@hostage@', 'perp_fail', 8.0, -8.0, -1, 168, 0, false, false, false)
-			TriggerServerEvent('frp-takehostage:server:kill:hostage', targetSource)
+			TriggerServerEvent('lrp-takehostage:server:kill:hostage', targetSource)
 		end
 	end
 

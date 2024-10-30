@@ -27,6 +27,95 @@ Config.WitwasMissie = {
     }
 }
 
+Config.wapen_volgorde = { -- Wapen volgorde hoe het in de lijst komt te staan.
+    "akm",
+    "akmu",
+    "xp45",
+    "xagc",
+    "minismg",
+    "sawedoffshotgun",
+    "pistol50",
+    "pistolm9a3",
+    "ladykiller",
+    "ap320",
+    "ap19",
+    "switchblade",
+    "knuppel",
+    "mes",
+    "machete"
+}
+
+Config.wapen_spawnnames = { -- Wapen spawnnames. Niet aanzitten A.U.B
+    ["akm"] = "WEAPON_AK74_1",
+    ["akmu"] = "WEAPON_AKS74U",
+    ["xp45"] = "WEAPON_HKUMP",
+    ["xagc"] = "WEAPON_AGC",
+    ["minismg"] = "WEAPON_MINISMG",
+    ["sawedoffshotgun"] = "WEAPON_SAWNOFFSHOTGUN",
+    ["pistol50"] = "WEAPON_PISTOL50",
+    ["pistolm9a3"] = "WEAPON_FM1_M9A3",
+    ["ladykiller"] = "WEAPON_SNSPISTOL",
+    ["ap320"] = "WEAPON_SIG",
+    ["ap19"] = "WEAPON_GLOCK19X",
+    ["switchblade"] = "WEAPON_SWITCHBLADE",
+    ["knuppel"] = "WEAPON_BAT",
+    ["mes"] = "WEAPON_KNIFE",
+    ["machete"] = "WEAPON_MACHETE"
+}
+
+Config.wapen_labels = { -- Wapen Labels, zichtbaar in titels en descriptions
+    ["akm"] = "AKM",
+    ["akmu"] = "AKM-U",
+    ["xp45"] = "XP-45",
+    ["xagc"] = "",
+    ["minismg"] = "",
+    ["sawedoffshotgun"] = "",
+    ["pistol50"] = "",
+    ["pistolm9a3"] = "",
+    ["ladykiller"] = "",
+    ["ap320"] = "",
+    ["ap19"] = "",
+    ["switchblade"] = "",
+    ["knuppel"] = "",
+    ["mes"] = "Mes",
+    ["machete"] = "Machete"
+}
+
+Config.wapen_prijzen = { -- Wapen prijzen
+    ["akm"] = 10000,
+    ["akmu"] = 10000,
+    ["xp45"] = 10000,
+    ["xagc"] = 10000,
+    ["minismg"] = 10000,
+    ["sawedoffshotgun"] = 10000,
+    ["pistol50"] = 10000,
+    ["pistolm9a3"] = 10000,
+    ["ladykiller"] = 10000,
+    ["ap320"] = 10000,
+    ["ap19"] = 10000,
+    ["switchblade"] = 10000,
+    ["knuppel"] = 10000,
+    ["mes"] = 10000,
+    ["machete"] = 10000
+}
+
+Config.wapen_icons = { -- Icons die in images/.. staan
+    ["akm"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["akmu"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["xp45"] = 'nui://jtm-gangjob/images/automatischwapen.png',
+    ["xagc"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["minismg"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["sawedoffshotgun"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["pistol50"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["pistolm9a3"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["ladykiller"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["ap320"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["ap19"] = 'nui://jtm-gangjob/images/handwapen.png',
+    ["switchblade"] = 'nui://jtm-gangjob/images/mes.png',
+    ["knuppel"] = 'nui://jtm-gangjob/images/mes.png',
+    ["mes"] = 'nui://jtm-gangjob/images/mes.png',
+    ["machete"] = 'nui://jtm-gangjob/images/mes.png'
+}
 
 Config.Wapeninkoopgangs = {
     jansen = {
@@ -38,7 +127,24 @@ Config.Wapeninkoopgangs = {
             coordswapeninkoop = vector3(479.3991, -1325.6292, 29.2075),
             Startcoordswitwas = vector3(510.3524, -1314.4404, 29.3410)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = { -- MAXIMAAL aantal wapens
+            ["akm"] = 2,
+            ["akmu"] = 4,
+            ["xp45"] = 2,
+            ["xagc"] = 2,
+            ["minismg"] = 2,
+            ["sawedoffshotgun"] = 2,
+            ["pistol50"] = 2,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 2,
+            ["ap320"] = 1,
+            ["ap19"] = 2,
+            ["switchblade"] = 2,
+            ["knuppel"] = 2,
+            ["mes"] = 2,
+            ["machete"] = 2,
+        }
     },
      cjng = {
         [1] = {
@@ -49,95 +155,25 @@ Config.Wapeninkoopgangs = {
 			coordswapeninkoop = vector3(331.9081, -2013.5154, 22.3949),
             Startcoordswitwas = vector4(355.8191, -1965.7003, 24.4911, 57.5622)
         },
-        f6menu = true
-    },
-     camorra = {
-        [1] = {
-            gangname = "camorra",
-            mingrade = 8,
-            ganglevel = 2,
-            coordsbossmenu = vector3(-1482.4443, -47.4977, 57.7233),
-			coordswapeninkoop = vector3(-1479.4298, -21.5512, 50.9785),
-            Startcoordswitwas = vector4(-1465.8457, -23.7542, 54.6415, 37.2374)
-        },
-        f6menu = true
-    },
-     zone6 = {
-        [1] = {
-            gangname = "zone6",
-            mingrade = 8,
-            ganglevel = 4,
-            coordsbossmenu = vector3(1395.1283, 1160.1110, 114.3335),
-			coordswapeninkoop = vector3(1405.7371, 1137.8448, 109.7457),
-            Startcoordswitwas = vector3(1395.1283, 1160.1110, 114.3335)
-        },
-        f6menu = true
-    },
-    ms13 = {
-        [1] = {
-            gangname = "ms13",
-            mingrade = 5,
-            ganglevel = 1,
-            coordsbossmenu = vector3(-104.9405, 979.6995, 240.8824),
-			coordswapeninkoop = vector3(-59.9729, 994.9761, 239.5153),
-            Startcoordswitwas = vector3(-127.0996, 988.8734, 235.7466)
-        },
-        f6menu = true
-    },
-    saints = {
-        [1] = {
-            gangname = "saints",
-            mingrade = 6,
-            ganglevel = 2,
-            coordsbossmenu = vector3(244.2896, -3152.3064, 3.3346),
-			coordswapeninkoop = vector3(206.2487, -3176.2620, 5.8145),
-            Startcoordswitwas = vector3(187.0090, -3175.6064, 5.7020)
-        },
-        f6menu = true
-    },
-    bratva = {
-        [1] = {
-            gangname = "bratva",
-            mingrade = 6,
-            ganglevel = 4,
-            coordsbossmenu = vector3(-2674.6375, 1336.1976, 144.2575),
-			coordswapeninkoop = vector3(-2674.2891, 1328.8027, 140.8813),
-            Startcoordswitwas = vector3(-2638.1150, 1306.6460, 145.3623)
-        },
-        f6menu = true
-    },
-     pavlov = {
-        [1] = {
-            gangname = "pavlov",
-            mingrade = 6,
-            ganglevel = 4,
-            coordsbossmenu = vector3(-1546.1127, 137.3435, 55.6532),
-			coordswapeninkoop = vector3(-1517.9232, 125.9776, 48.6503),
-            Startcoordswitwas = vector4(-1498.0010, 56.4377, 54.4208, 276.5659)
-        },
-        f6menu = true
-    },
-    lfc = {
-        [1] = {
-            gangname = "lfc",
-            mingrade = 5,
-            ganglevel = 4,
-            coordsbossmenu = vector3(-1875.8385, 2060.9429, 145.5737),
-			coordswapeninkoop = vector3(-1870.2726, 2061.8125, 135.4347),
-            Startcoordswitwas = vector4(-1875.5914, 2039.4227, 140.1070, 239.3353)
-        },
-        f6menu = true
-    },
-    chipmunks = {
-        [1] = {
-            gangname = "chipmunks",
-            mingrade = 5,
-            ganglevel = 1,
-            coordsbossmenu = vector3(-640.5219, 941.3781, 243.9728),
-			coordswapeninkoop = vector3(-628.1700, 948.3683, 243.9465),
-            Startcoordswitwas = vector4(-716.7307, 1019.0453, 240.2595, 340.5587)
-        },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
     hsq = {
         [1] = {
@@ -148,40 +184,112 @@ Config.Wapeninkoopgangs = {
 			coordswapeninkoop = vector3(115.3486, 1241.1381, 214.1099),
             Startcoordswitwas = vector4(133.0420, 1218.2458, 217.6068, 105.3736)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
     sinaloa = {
         [1] = {
             gangname = "sinaloa",
             mingrade = 5,
             ganglevel = 2,
-            coordsbossmenu = vector3(-94.1752, 819.6499, 231.3329),
-			coordswapeninkoop = vector3(-102.1677, 824.2632, 227.5961),
-            Startcoordswitwas = vector4(-73.0090, 868.3975, 235.6435, 0.7833)
+            coordsbossmenu = vector3(1395.4060, 1160.0037, 114.3335),
+			coordswapeninkoop = vector3(1400.3490, 1141.4763, 114.3336),
+            Startcoordswitwas = vector4(1354.9794, 1189.1823, 112.1166, 88.9723)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
-    sons = {
+    ccf = {
         [1] = {
-            gangname = "sons",
-            mingrade = 6,
+            gangname = "ccf",
+            mingrade = 8,
             ganglevel = 1,
-            coordsbossmenu = vector3(982.9077, -91.9958, 74.8522),
-			coordswapeninkoop = vector3(987.7953, -137.5166, 73.0909),
-            Startcoordswitwas = vector4(965.0928, -131.2782, 74.3512, 146.53631)
+            coordsbossmenu = vector3(-1101.6047, -1615.5483, 8.5928),
+			coordswapeninkoop = vector3(-1070.9995, -1647.0813, 4.4633),
+            Startcoordswitwas = vector3(-1136.8572, -1578.7875, 4.4293)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
-    tgg = {
+    laoscura = {
         [1] = {
-            gangname = "tgg",
-            mingrade = 6,
-            ganglevel = 5,
-            coordsbossmenu = vector3(430.9922, 6.6181, 91.9336),
-			coordswapeninkoop = vector3(412.3693, 4.2529, 84.9215),
-            Startcoordswitwas = vector4(335.6770, 32.8280, 88.4918, 67.6122)
+            gangname = "laoscura",
+            mingrade = 7,
+            ganglevel = 1,
+            coordsbossmenu = vector3(-1101.6047, -1615.5483, 8.5928),
+			coordswapeninkoop = vector3(-1070.9995, -1647.0813, 4.4633),
+            Startcoordswitwas = vector3(-1136.8572, -1578.7875, 4.4293)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
      vatoslocos = {
         [1] = {
@@ -192,39 +300,112 @@ Config.Wapeninkoopgangs = {
 			coordswapeninkoop = vector3(-1582.2375, -31.4063, 52.6013),
             Startcoordswitwas = vector4(-1525.6399, -27.2629, 57.2930, 303.5891)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
-    redeye = {
+    carteldellago = {
         [1] = {
-            gangname = "redeye",
-            mingrade = 6,
-            ganglevel = 4,
-            coordsbossmenu = vector3(-2294.9683, 4352.5664, 37.0810),
-			coordswapeninkoop = vector3(-2305.6501, 4329.0063, 29.0838),
-            Startcoordswitwas = vector4(-2295.9612, 4284.2305, 35.2326, 144.5905)
+            gangname = "carteldellago",
+            mingrade = 7,
+            ganglevel = 1,
+            coordsbossmenu = vector3(-1529.0190, 150.5548, 60.7980),
+			coordswapeninkoop = vector3(-1545.5714, 84.8462, 53.8744),
+            Startcoordswitwas = vector4(-1612.0688, 120.4822, 61.0354)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
-    reznikov = {
+    albanesemaffia = {
         [1] = {
-            gangname = "reznikov",
+            gangname = "albanesemaffia",
             mingrade = 6,
             ganglevel = 5,
             coordsbossmenu = vector3(-686.4366, -402.3235, 52.2134),
 			coordswapeninkoop = vector3(-711.6934, -412.7919, 35.0784),
             Startcoordswitwas = vector4(-739.9949, -397.5858, 35.4785, 338.1885)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
     },
-    vissenkom = {
+    saints = {
         [1] = {
-            gangname = "vissenkom",
-            mingrade = 3,
-            ganglevel = 4,
-            coordsbossmenu = vector3(-1990.5211, -504.5139, 20.7328),
-			coordswapeninkoop = vector3(-1982.9875, -502.9479, 12.1917),
+            gangname = "saints",
+            mingrade = 7,
+            ganglevel = 1,
+            coordsbossmenu = vector3(-1876.2509, 2060.9377, 145.5736),
+			coordswapeninkoop = vector3(-1870.3710, 2061.4619, 135.4347),
+            Startcoordswitwas = vector4(-1911.5717, 2048.7026, 140.7368)
         },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 5,
+            ["akmu"] = 5,
+            ["xp45"] = 5,
+            ["xagc"] = 5,
+            ["minismg"] = 5,
+            ["sawedoffshotgun"] = 5,
+            ["pistol50"] = 5,
+            ["pistolm9a3"] = 5,
+            ["ladykiller"] = 5,
+            ["ap320"] = 5,
+            ["ap19"] = 5,
+            ["switchblade"] = 5,
+            ["knuppel"] = 5,
+            ["mes"] = 5,
+            ["machete"] = 5,
+        }
     },
     angelsofdeath = {
         [1] = {
@@ -235,40 +416,25 @@ Config.Wapeninkoopgangs = {
 			coordswapeninkoop = vector3(-316.1113, -746.9086, 28.0286),
             Startcoordswitwas = vector4(-303.5113, -703.2805, 30.1414, 337.8767)
         },
-        f6menu = true
-    },
-    crips = {
-        [1] = {
-            gangname = "crips",
-            mingrade = 5,
-            ganglevel = 2,
-            coordsbossmenu = vector3(-112.7250, -1781.3091, 28.5872),
-			coordswapeninkoop = vector3(-91.9708, -1794.1924, 26.9096),
-            Startcoordswitwas = vector4(-55.4005, -1835.9349, 26.5963, 315.8484)
-        },
-        f6menu = true
-    },
-    albanesemaffia = {
-        [1] = {
-            gangname = "albanesemaffia",
-            mingrade = 7,
-            ganglevel = 1,
-            coordsbossmenu = vector3(-112.7250, -1781.3091, 28.5872),
-			coordswapeninkoop = vector3(-91.9708, -1794.1924, 26.9096),
-            Startcoordswitwas = vector4(-55.4005, -1835.9349, 26.5963, 315.8484)
-        },
-        f6menu = true
-    },
-    calohwagoh = {
-        [1] = {
-            gangname = "calohwagoh",
-            mingrade = 5,
-            ganglevel = 3,
-            coordsbossmenu = vector3(518.2502, -2757.7852, 6.6410),
-			coordswapeninkoop = vector3(565.9285, -2777.0337, 5.9843),
-            Startcoordswitwas = vector4(598.8004, -2798.0969, 6.0565, 328.6283)
-        },
-        f6menu = true
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 5,
+            ["knuppel"] = 5,
+            ["mes"] = 5,
+            ["machete"] = 5,
+        }
     },
 }
 

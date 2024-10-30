@@ -32,14 +32,14 @@ AddEventHandler('esx_vangelico_robbery:toofar', function(robb)
 	for i=1, #xPlayers, 1 do
  		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
  		if xPlayer.job.name == 'police' or xPlayer.job.name == 'kmar' then
-			TriggerClientEvent('esx:showNotification', xPlayers[i], _U('robbery_cancelled_at') .. Stores[robb].nameofstore)
+			TriggerClientEvent('okokNotify:Alert', xPlayers[i], _U('robbery_cancelled_at') .. Stores[robb].nameofstore, 5000, 'error')
 			TriggerClientEvent('esx_vangelico_robbery:killblip', xPlayers[i])
 		end
 	end
 	if(robbers[source])then
 		TriggerClientEvent('esx_vangelico_robbery:toofarlocal', source)
 		robbers[source] = nil
-		TriggerClientEvent('esx:showNotification', source, _U('robbery_has_cancelled') .. Stores[robb].nameofstore)
+		TriggerClientEvent('okokNotify:Alert', source, _U('robbery_has_cancelled') .. Stores[robb].nameofstore, 5000, 'error')
 	end
 end)
 
@@ -51,14 +51,14 @@ AddEventHandler('esx_vangelico_robbery:endrob', function(robb)
 	for i=1, #xPlayers, 1 do
  		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
  		if xPlayer.job.name == 'police' or xPlayer.job.name == 'kmar' then
-			TriggerClientEvent('esx:showNotification', xPlayers[i], _U('end'))
+			TriggerClientEvent('okokNotify:Alert', xPlayers[i], _U('end'), 5000, 'info')
 			TriggerClientEvent('esx_vangelico_robbery:killblip', xPlayers[i])
 		end
 	end
 	if(robbers[source])then
 		TriggerClientEvent('esx_vangelico_robbery:robberycomplete', source)
 		robbers[source] = nil
-		TriggerClientEvent('esx:showNotification', source, _U('robbery_has_ended') .. Stores[robb].nameofstore)
+		TriggerClientEvent('okokNotify:Alert', source, _U('robbery_has_ended') .. Stores[robb].nameofstore, 5000, 'info')
 	end
 end)
 
@@ -76,7 +76,7 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 		if (os.time() - store.lastrobbed) < Config.SecBetwNextRob and store.lastrobbed ~= 0 then
 
             TriggerClientEvent('esx_vangelico_robbery:togliblip', source)
-			TriggerClientEvent('esx:showNotification', source, _U('already_robbed') .. (Config.SecBetwNextRob - (os.time() - store.lastrobbed)) .. _U('seconds'))
+			TriggerClientEvent('okokNotify:Alert', source, _U('already_robbed') .. (Config.SecBetwNextRob - (os.time() - store.lastrobbed)) .. _U('seconds'), 5000, 'error')
 			return
 		end
 
@@ -86,19 +86,19 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 			for i=1, #xPlayers, 1 do
 				local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
 				if xPlayer.job.name == 'police' or xPlayer.job.name == 'kmar' then
-					TriggerClientEvent('esx:showNotification', xPlayers[i], _U('rob_in_prog') .. store.nameofstore)
+					TriggerClientEvent('okokNotify:Alert', xPlayers[i], _U('rob_in_prog') .. store.nameofstore, 5000, 'info')
 					TriggerClientEvent('esx_vangelico_robbery:setblip', xPlayers[i], Stores[robb].position)
 				end
 			end
 
-			TriggerClientEvent('esx:showNotification', source, _U('started_to_rob') .. store.nameofstore .. _U('do_not_move'))
-			TriggerClientEvent('esx:showNotification', source, _U('alarm_triggered'))
-			TriggerClientEvent('esx:showNotification', source, _U('hold_pos'))
+			TriggerClientEvent('okokNotify:Alert', source, _U('started_to_rob') .. store.nameofstore .. _U('do_not_move'), 5000, 'info')
+			TriggerClientEvent('okokNotify:Alert', source, _U('alarm_triggered'), 5000, 'info')
+			TriggerClientEvent('okokNotify:Alert', source, _U('hold_pos'), 5000, 'info')
 			TriggerClientEvent('esx_vangelico_robbery:currentlyrobbing', source, robb)
             CancelEvent()
 			Stores[robb].lastrobbed = os.time()
 		else
-			TriggerClientEvent('esx:showNotification', source, _U('robbery_already'))
+			TriggerClientEvent('okokNotify:Alert', source, _U('robbery_already'), 5000, 'error')
 		end
 	end
 end)

@@ -17,7 +17,7 @@ CreateThread(function()
                     if exports.ox_inventory:GetItemCount("meth") > 20 then
                         TriggerEvent("jtm-drugsverpak:methverpak")
                     else
-                        exports["frp-notifications"]:Notify("error", "Je hebt niet genoeg Meth", 5000)
+                        exports["lrp-notifications"]:Notify("error", "Je hebt niet genoeg Meth", 5000)
                     end
                 end
             }
@@ -56,7 +56,7 @@ function ProcessMETH(xMETH)
 
     if success then
         getProcessemote()
-        exports["frp-progressbar"]:Progress({
+        exports["lrp-progressbar"]:Progress({
             name = "Meth aan het verpakken in zakjes",
             duration = Config.ProcessTimer * 1000,
             label = "Meth aan het verpakken in zakjes",
@@ -75,7 +75,7 @@ function ProcessMETH(xMETH)
         TriggerServerEvent('jtm-drugsverpak:processMETH')
         isProcessing = false
     else 
-        exports["frp-notifications"]:Notify("info", "Je kan niet eens een zakje dichtmaken oelewapper", 5000)
+        exports["lrp-notifications"]:Notify("info", "Je kan niet eens een zakje dichtmaken oelewapper", 5000)
     end 
 end
 

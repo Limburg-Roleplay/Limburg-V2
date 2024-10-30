@@ -1,8 +1,8 @@
 local ox_inventory = exports['ox_inventory']
 
 
-RegisterNetEvent('frp-staffassist:client:openmenu')
-AddEventHandler('frp-staffassist:client:openmenu', function()
+RegisterNetEvent('lrp-staffassist:client:openmenu')
+AddEventHandler('lrp-staffassist:client:openmenu', function()
     lib.registerContext({
         id = 'staffassist',
         title = 'Staff Panel | Limburg Roleplay',
@@ -36,7 +36,7 @@ AddEventHandler('frp-staffassist:client:openmenu', function()
                 title = 'Skin Menu',
                 onSelect = function()
                     local actie = 'Open Skin Menu'
-                    ESX.TriggerServerCallback('frp-staffassist:skinmenu', function(bool)
+                    ESX.TriggerServerCallback('lrp-staffassist:skinmenu', function(bool)
                         if bool then
                             exports['fivem-appearance']:startPlayerCustomization(appearance)
                         end
@@ -231,7 +231,7 @@ VoertuigMenu = function(input)
                 title = 'Voertuig Repareren',
                 onSelect = function()
 					local actie = 'Repair Closest Vehicle'
-					ESX.TriggerServerCallback('frp-staffassist:commandlog', function(bool)
+					ESX.TriggerServerCallback('lrp-staffassist:commandlog', function(bool)
 						if bool then
 							local vehicle = ESX.Game.GetClosestVehicle(coords, modelFilter)
 							exports['vehiclefailure']:setEngineHealth(vehicle, 1000.0)
@@ -247,7 +247,7 @@ VoertuigMenu = function(input)
                 title = 'Voertuig flippen',
                 onSelect = function()
 					local actie = 'Flip Closest Vehicle'
-					ESX.TriggerServerCallback('frp-staffassist:commandlog', function(bool)
+					ESX.TriggerServerCallback('lrp-staffassist:commandlog', function(bool)
 						if bool then
 							local ped = PlayerPedId()
 							local pedcoords = GetEntityCoords(ped)

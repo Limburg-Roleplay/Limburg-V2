@@ -12,5 +12,5 @@ AddEventHandler('jtm-idkaart:server:send:idkaart', function(playerId)
     --print(playerId, firstname, lastname, sex, dob)
 
     TriggerClientEvent('jtm-idkaart:client:geefidkaart', playerId, firstname, lastname, sex, dob, height)
-    TriggerClientEvent("frp-notifications:client:notify", source, "success", "Je hebt je idkaart geven aan de dichtstbijzijnde persoon!", 3000)
+    TriggerClientEvent("lrp-notifications:client:notify", source, "success", "Je hebt je idkaart geven aan de dichtstbijzijnde persoon!", 3000)
 end)

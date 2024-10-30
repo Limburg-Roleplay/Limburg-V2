@@ -12,7 +12,7 @@ ShowNotification = function(message, type)
         })
     else
         if Framework == 'esx' then
-            ESX.ShowNotification(message)
+            ESX.ShowNotification('info', message)
         elseif Framework == 'qb' then
             QBCore.Functions.Notify(message, type)
         else

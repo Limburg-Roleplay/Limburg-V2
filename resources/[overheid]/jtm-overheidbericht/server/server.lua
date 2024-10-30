@@ -5,6 +5,6 @@ RegisterCommand('overheid', function(source, raw, args)
         table.remove(raw, 2)
         TriggerClientEvent('chatMessage', -1, 'Overheids Bericht: ' .. xPlayer.getName() .. ' [' .. source .. "]", 'politie', table.concat(raw, ' '))
         else 
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Je bent Geen overheids dienst", 4000)
+        TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Je bent Geen overheids dienst", 4000)
     end
 end, false)

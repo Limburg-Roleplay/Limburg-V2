@@ -224,7 +224,7 @@ Exios.Functions.ConfirmQuickSellMenu = function(vehicle, vehLabel, sellPrice)
                         Exios.Functions.ConfirmedQuickSell()
                     else 
                         lib.hideContext(false)
-                        ESX.ShowNotification('Wacht nog ' .. countdown .. ' seconden voordat je weer een voertuig kan verkopen..')
+                        ESX.ShowNotification('error', 'Wacht nog ' .. countdown .. ' seconden voordat je weer een voertuig kan verkopen..')
                     end
                 end
             },

@@ -15,9 +15,9 @@ RegisterCommand('twt', function(source, raw, args)
                 twtCooldown[src] = nil
             end)
         else
-            TriggerClientEvent('frp-notifications:client:notify', src, "error", 'Je zit nog in een Twitter-bericht cooldown!', 4000)
+            TriggerClientEvent('lrp-notifications:client:notify', src, "error", 'Je zit nog in een Twitter-bericht cooldown!', 4000)
         end
     else
-        TriggerClientEvent('frp-notifications:client:notify', src, "error", 'Je hebt een telefoon nodig om een Twitter-bericht te sturen!', 4000)
+        TriggerClientEvent('lrp-notifications:client:notify', src, "error", 'Je hebt een telefoon nodig om een Twitter-bericht te sturen!', 4000)
     end
 end, false)

@@ -1,6 +1,6 @@
 shared_script '@FIVEGUARD/ai_module_fg-obfuscated.lua'
 shared_script '@FIVEGUARD/shared_fg-obfuscated.lua'
-author 'JTM-Development'
+author 'JTM-Development, Edit: TijeM'
 description 'JTM-Development Gangjob'
 version '1.0'
 
@@ -28,10 +28,15 @@ server_scripts {
 ui_page 'html/index.html'
 
 files {
+	'images/handwapen.png',
+    'images/mes.png',
+	'images/automatischwapen.png',
     'html/index.html',
     'html/js/*.js',
     'html/css/*.css'
 }
+
+
 
 shared_script '@ox_lib/init.lua'
 

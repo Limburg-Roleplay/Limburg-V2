@@ -250,10 +250,10 @@ CreateThread(function()
 
 			if DeathReason == "Pleegde Zelfmoord" or DeathReason == "is overleden" then
 				TriggerServerEvent('resources:playerDied', { type = 1, player_id = GetPlayerServerId(PlayerId()), death_reason = DeathReason, weapon = Weapon })
-				TriggerServerEvent('frp-ambulance:death', GetPlayerServerId(PlayerId()), Weapon)
+				TriggerServerEvent('lrp-ambulance:death', GetPlayerServerId(PlayerId()), Weapon)
 			else
 				TriggerServerEvent('resources:playerDied', { type = 2, player_id = GetPlayerServerId(PlayerId()), player_2_id = GetPlayerServerId(Killer), death_reason = DeathReason, weapon = Weapon })
-				TriggerServerEvent('frp-ambulance:death', GetPlayerServerId(PlayerId()), Weapon)
+				TriggerServerEvent('lrp-ambulance:death', GetPlayerServerId(PlayerId()), Weapon)
                     print(Weapon)
 			end
 			Killer = nil

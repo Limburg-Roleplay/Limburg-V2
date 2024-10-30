@@ -77,7 +77,7 @@ AddEventHandler('esx_giveownedcar:spawnVehicle', function(model, playerName, typ
             ESX.Game.DeleteVehicle(vehicle)    
             
             if type ~= 'console' then
-                ESX.ShowNotification(_U('gived_car', model, newPlate, playerName))
+                ESX.ShowNotification('success', _U('gived_car', model, newPlate, playerName))
             else
                 local msg = ('addCar: ' ..model.. ', plate: ' ..newPlate.. ', toPlayer: ' ..playerName)
                 TriggerServerEvent('esx_giveownedcar:printToConsole', msg)
@@ -88,7 +88,7 @@ AddEventHandler('esx_giveownedcar:spawnVehicle', function(model, playerName, typ
     Wait(2000)
     if not carExist then
         if type ~= 'console' then
-            ESX.ShowNotification(_U('unknown_car', model))
+            ESX.ShowNotification('error', _U('unknown_car', model))
         else
             TriggerServerEvent('esx_giveownedcar:printToConsole', "ERROR: "..model.." is an unknown vehicle model")
         end        
@@ -117,7 +117,7 @@ AddEventHandler('esx_giveownedcar:spawnVehiclePlate', function(playerID, model, 
 					TriggerServerEvent('esx_giveownedcar:setVehicle', vehicleProps, playerID, vehicleType)
 					ESX.Game.DeleteVehicle(vehicle)
 					if type ~= 'console' then
-						ESX.ShowNotification(_U('gived_car',  model, newPlate, playerName))
+						ESX.ShowNotification('success', _U('gived_car',  model, newPlate, playerName))
 					else
 						local msg = ('addCar: ' ..model.. ', plate: ' ..newPlate.. ', toPlayer: ' ..playerName)
 						TriggerServerEvent('esx_giveownedcar:printToConsole', msg)
@@ -127,7 +127,7 @@ AddEventHandler('esx_giveownedcar:spawnVehiclePlate', function(playerID, model, 
 		else
 			carExist = true
 			if type ~= 'console' then
-				ESX.ShowNotification(_U('plate_already_have'))
+				ESX.ShowNotification('error', _U('plate_already_have'))
 			else
 				local msg = ('ERROR: this plate is already been used on another vehicle')
 				TriggerServerEvent('esx_giveownedcar:printToConsole', msg)
@@ -138,7 +138,7 @@ AddEventHandler('esx_giveownedcar:spawnVehiclePlate', function(playerID, model, 
 	Wait(2000)
 	if not carExist then
 		if type ~= 'console' then
-			ESX.ShowNotification(_U('unknown_car', model))
+			ESX.ShowNotification('error', _U('unknown_car', model))
 		else
 			TriggerServerEvent('esx_giveownedcar:printToConsole', "ERROR: "..model.." is an unknown vehicle model")
 		end		

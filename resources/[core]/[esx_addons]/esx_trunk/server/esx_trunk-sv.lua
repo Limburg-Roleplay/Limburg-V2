@@ -124,7 +124,7 @@ AddEventHandler('esx_trunk:getItem', function(plate, type, item, count)
               end
             break
           else
-            TriggerClientEvent('esx:showNotification', _source, _U('invalid_quantity'))
+            TriggerClientEvent('okokNotify:Alert', _source, _U('invalid_quantity'), 5000, 'error')
           end
         end
       end
@@ -144,7 +144,7 @@ AddEventHandler('esx_trunk:getItem', function(plate, type, item, count)
         store.set('black_money', blackMoney)
         xPlayer.addAccountMoney(item, count)
       else
-        TriggerClientEvent('esx:showNotification', _source, _U('invalid_amount'))
+        TriggerClientEvent('okokNotify:Alert', _source, _U('invalid_amount'), 5000, 'error')
       end
     end)
 
@@ -217,7 +217,7 @@ AddEventHandler('esx_trunk:putItem', function(plate, type, item, count,max, owne
           })
         end
         if (getTotalInventoryWeight(plate)+(getItemWeight(item)*count))>max then
-            TriggerClientEvent('esx:showNotification', _source, _U('insufficient_space'))
+            TriggerClientEvent('okokNotify:Alert', _source, _U('insufficient_space'), 5000, 'error')
         else
           -- Checks passed, storing the item.
           
@@ -235,7 +235,7 @@ AddEventHandler('esx_trunk:putItem', function(plate, type, item, count,max, owne
       end)
 
     else
-      TriggerClientEvent('esx:showNotification', _source, _U('invalid_quantity'))
+      TriggerClientEvent('okokNotify:Alert', _source, _U('invalid_quantity'), 5000, 'error')
     end
 
   end
@@ -259,7 +259,7 @@ AddEventHandler('esx_trunk:putItem', function(plate, type, item, count,max, owne
         end
 
         if (getTotalInventoryWeight(plate)+blackMoney[1].amount/10) > max then
-          TriggerClientEvent('esx:showNotification', _source, _U('insufficient_space'))
+          TriggerClientEvent('okokNotify:Alert', _source, _U('insufficient_space'), 5000, 'error')
         else
           
           -- Checks passed. Storing the item.
@@ -275,7 +275,7 @@ AddEventHandler('esx_trunk:putItem', function(plate, type, item, count,max, owne
       end)
 
     else
-      TriggerClientEvent('esx:showNotification', _source, _U('invalid_amount'))
+      TriggerClientEvent('okokNotify:Alert', _source, _U('invalid_amount'), 5000, 'error')
     end
 
   end
@@ -295,7 +295,7 @@ AddEventHandler('esx_trunk:putItem', function(plate, type, item, count,max, owne
         ammo = count
       })
       if (getTotalInventoryWeight(plate)+(getItemWeight(item)))>max then
-          TriggerClientEvent('esx:showNotification', _source, _U('invalid_amount'))
+          TriggerClientEvent('okokNotify:Alert', _source, _U('invalid_amount'), 5000, 'error')
       else
         store.set('weapons', storeWeapons)
         xPlayer.removeWeapon(item)

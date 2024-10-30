@@ -12,14 +12,14 @@ function CreateNPC(model, coords, heading)
     return npcPed
 end
 
-local npcCoords = vector3(211.6376, -927.6967, 30.6920 - 1)
-local npcHeading = 56.1362
+local npcCoords = vector3(921.2661, 41.4979, 80.0960)
+local npcHeading = 55.8511
 
 CreateThread(function()
     CreateNPC("cs_chengsr", npcCoords, npcHeading)
 end)
 
-local blipCoords = vector3(211.6376, -927.6967, 30.6920)
+local blipCoords = vector3(921.2661, 41.4979, 81.0960)
 
 local blip = AddBlipForCoord(blipCoords)
 
@@ -33,7 +33,7 @@ AddTextComponentString("VIP: Blackmarket")
 EndTextCommandSetBlipName(blip)
 
 exports.ox_target:addBoxZone({
-    coords = vector3(211.6376, -927.6967, 30.6920 + 0.1),
+    coords = vector3(921.2661, 41.4979, 81.0960 + 0.1),
     size = vector3(2, 2, 2),
     rotation = 45,
     options = {

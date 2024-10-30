@@ -5,6 +5,7 @@ local playerLoaded = false
 local Weapons = {
     -- Grote wapens --
     [`WEAPON_AK74_1`] = {item = 'WEAPON_AK74_1', rot = vector3(180,180,0)},
+    [`WEAPON_ASSAULTRIFLE_MK2`] = {item = 'WEAPON_ASSAULTRIFLE_MK2', rot = vector3(180,180,0)},
     [`WEAPON_NVRIFLE`] = {item = 'WEAPON_NVRIFLE', rot = vector3(180,180,0)},
     [`WEAPON_MCXRATTLER`] = {item = 'WEAPON_MCXRATTLER', rot = vector3(180,180,0)},
     [`WEAPON_FM1_HK416`] = {item = 'WEAPON_FM1_HK416', rot = vector3(180,180,0)},
@@ -54,6 +55,11 @@ local entitieswhitelisted = {}
 local function applyWeaponComponents(weaponObject, weaponHash)
     local components = {
         `COMPONENT_AT_PI_SUPP`,
+        `COMPONENT_AT_SIGHTS`,
+        `COMPONENT_AT_SCOPE_MEDIUM_MK2`,
+        `COMPONENT_AT_AR_AFGRIP_02`,
+        `COMPONENT_ASSAULTRIFLE_MK2_CLIP_02`,
+        `COMPONENT_AT_MUZZLE_02`,
         `COMPONENT_AT_PI_SUPP_02`,
         `COMPONENT_CERAMICPISTOL_SUPP`,
         `COMPONENT_PISTOLXM3_SUPP`,

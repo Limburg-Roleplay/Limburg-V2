@@ -33,7 +33,7 @@ AddEventHandler("delall", function ()
             args = { 'CarWipe', 'Een carwipe komt over 5 seconden blijf in je auto zitten om je auto te behouden!' }
         })
       Citizen.Wait(5000)
-      TriggerEvent('frp-garage:client:garage:removeVehicleFull')
+      TriggerEvent('lrp-garage:client:garage:removeVehicleFull')
     end
     Citizen.Wait(1000) 
     for vehicle in EnumerateVehicles() do            

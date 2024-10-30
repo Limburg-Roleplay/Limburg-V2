@@ -125,7 +125,7 @@ function sit(object, modelName, data)
 
 	ESX.TriggerServerCallback('esx_sit:getPlace', function(occupied)
 		if occupied then
-			ESX.ShowNotification('There is someone on this chair')
+			ESX.ShowNotification('error', 'There is someone on this chair')
 		else
 			local playerPed = PlayerPedId()
 			lastPos, currentSitCoords = GetEntityCoords(playerPed), objectCoords

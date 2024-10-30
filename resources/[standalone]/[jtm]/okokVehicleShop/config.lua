@@ -20,7 +20,7 @@ Config.ShowOwnerBlip = false -- Activate/Deactivate owner blips
 
 Config.ShowBuyVehicleShopBlip = false -- Activate/Deactivate buy shop blip
 
-Config.ShowHasOwnerShopBlip = false -- Activate/Deactivate blip of shops with "hasOwner = false"
+Config.ShowHasOwnerShopBlip = true -- Activate/Deactivate blip of shops with "hasOwner = false"
 
 Config.TestDrive = true -- Activate/Deactivate test drive
 
@@ -135,9 +135,9 @@ Config.BigTowTruckID = "Hauler"
 Config.TrailerID = "TRFlat"
 
 Config.Aircrafts = { -- Add all of your aircrafts here so the script sets them as aircrafts in the database.
-	['f1'] = true,
-	['f2'] = true,
-	['f3'] = true,
+	['volatus'] = true,
+	['frogger'] = true,
+	['swift'] = true,
 }
 
 Config.Boats = { -- Add all of your boats here so the script sets them as boats in the database.
@@ -187,56 +187,56 @@ Config.Stands = { -- Vehicle shops informations
 		type = "vehicles",
 		id = "alwaysshop1",
 	},]]--
-	-- {
-	-- 	name = "Air Shop",
-	-- 	licenseType = "",
-	-- 	currency = "bank",
-	-- 	hasOwner = true,
-	-- 	coords = {x = -949.5, y = -2946.55, z = 13.95},
-	-- 	sellVehicleCoords = {x = -959.5, y = -2946.55, z = 12.76},
-	-- 	sellVehicleMarker = {id = 1, color = {r = 255, g = 0, b = 0, a = 90}, size = {x = 4.0, y = 4.0, z = 1.5}, radius = 2.5, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
-	-- 	ownerCoords = {x = -941.51, y = -2955.03, z = 13.95},
-	-- 	spawnFlatbedPos = {x = -947.62, y = -2976.86, z = 13.95, h = 270.0},
-	-- 	towCoords = {bone = 'bodyshell', xPos = 0.0, yPos = -2.35, zPos = 1.0},
-	-- 	missionsVehicleSpawn = {
-	-- 		{x = -1835.77, y = 2979.52, z = 32.81, h = 100.0},
-	-- 	},
-	-- 	radius = 1,
-	-- 	price = 12000,
-	-- 	blip = {blipId = 64, blipColor = 3, blipScale = 0.9, blipText = "Air shop"},
-	-- 	ownerBlip = {blipId = 64, blipColor = 2, blipScale = 0.9, blipText = "Air shop Panel"},
-	-- 	buyBlip = {blipId = 64, blipColor = 1, blipScale = 0.9, blipText = "Air shop to buy"},
-	-- 	marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
-	-- 	ownerMarker = {id = 21, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
-	-- 	bigVehicles = true,
-	-- 	type = "air",
-	-- 	id = "air1",
-	-- },
-	-- {
-	-- 	name = "Water Shop",
-	-- 	licenseType = "boat",
-	-- 	currency = "bank",
-	-- 	hasOwner = true,
-	-- 	coords = {x = -720.77, y = -1324.92, z = 1.6},
-	-- 	sellVehicleCoords = {x = -721.56, y = -1306.7, z = 3.82},
-	-- 	sellVehicleMarker = {id = 1, color = {r = 255, g = 0, b = 0, a = 90}, size = {x = 4.0, y = 4.0, z = 1.5}, radius = 2.5, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
-	-- 	ownerCoords = {x = -712.16, y = -1298.88, z = 5.1},
-	-- 	spawnFlatbedPos = {x = -719.77, y = -1286.15, z = 5.0, h = 120.0},
-	-- 	towCoords = {bone = 'bodyshell', xPos = 0.0, yPos = -2.35, zPos = 1.0},
-	-- 	missionsVehicleSpawn = {
-	-- 		{x = -758.15, y = -1488.26, z = 5.0, h = 280.0},
-	-- 	},
-	-- 	radius = 1,
-	-- 	price = 14000,
-	-- 	blip = {blipId = 427, blipColor = 3, blipScale = 0.9, blipText = "Water shop"},
-	-- 	ownerBlip = {blipId = 427, blipColor = 2, blipScale = 0.9, blipText = "Water shop Panel"},
-	-- 	buyBlip = {blipId = 427, blipColor = 1, blipScale = 0.9, blipText = "Water shop to buy"},
-	-- 	marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
-	-- 	ownerMarker = {id = 21, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
-	-- 	bigVehicles = true,
-	-- 	type = "water",
-	-- 	id = "water1",
-	-- },
+	{
+		name = "Air Shop",
+		licenseType = "",
+		currency = "bank",
+		hasOwner = false,
+		coords = {x = -949.5, y = -2946.55, z = 13.95},
+		sellVehicleCoords = {x = -959.5, y = -2946.55, z = 12.76},
+		sellVehicleMarker = {id = 1, color = {r = 255, g = 0, b = 0, a = 90}, size = {x = 4.0, y = 4.0, z = 1.5}, radius = 2.5, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
+		ownerCoords = {x = -941.51, y = -2955.03, z = 13.95},
+		spawnFlatbedPos = {x = -947.62, y = -2976.86, z = 13.95, h = 270.0},
+		towCoords = {bone = 'bodyshell', xPos = 0.0, yPos = -2.35, zPos = 1.0},
+		missionsVehicleSpawn = {
+			{x = -1835.77, y = 2979.52, z = 32.81, h = 100.0},
+		},
+		radius = 1,
+		price = 12000,
+		blip = {blipId = 64, blipColor = 3, blipScale = 0.9, blipText = "Air shop"},
+		ownerBlip = {blipId = 64, blipColor = 2, blipScale = 0.9, blipText = "Air shop Panel"},
+		buyBlip = {blipId = 64, blipColor = 1, blipScale = 0.9, blipText = "Air shop to buy"},
+		marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
+		ownerMarker = {id = 21, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
+		bigVehicles = true,
+		type = "air",
+		id = "air1",
+	},
+	{
+		name = "Water Shop",
+		licenseType = "",
+		currency = "bank",
+		hasOwner = false,
+		coords = {x = -720.77, y = -1324.92, z = 1.6},
+		sellVehicleCoords = {x = -721.56, y = -1306.7, z = 3.82},
+		sellVehicleMarker = {id = 1, color = {r = 255, g = 0, b = 0, a = 90}, size = {x = 4.0, y = 4.0, z = 1.5}, radius = 2.5, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
+		ownerCoords = {x = -712.16, y = -1298.88, z = 5.1},
+		spawnFlatbedPos = {x = -719.77, y = -1286.15, z = 5.0, h = 120.0},
+		towCoords = {bone = 'bodyshell', xPos = 0.0, yPos = -2.35, zPos = 1.0},
+		missionsVehicleSpawn = {
+			{x = -758.15, y = -1488.26, z = 5.0, h = 280.0},
+		},
+		radius = 1,
+		price = 14000,
+		blip = {blipId = 427, blipColor = 3, blipScale = 0.9, blipText = "Water shop"},
+		ownerBlip = {blipId = 427, blipColor = 2, blipScale = 0.9, blipText = "Water shop Panel"},
+		buyBlip = {blipId = 427, blipColor = 1, blipScale = 0.9, blipText = "Water shop to buy"},
+		marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
+		ownerMarker = {id = 21, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
+		bigVehicles = true,
+		type = "water",
+		id = "water1",
+	},
 }
 
 Config.ShowVehicle = { -- Display vehicle
@@ -311,32 +311,26 @@ Config.TransitionCamerasOffset = { -- Cameras positions, you can add as many as 
 
 Config.VehicleshopsCategories = { -- Categories shown on the vehicle shops, this is used to set the vehicles category
 	["vehicles"] = { -- TYPE of the vehicle shop
-		{display = "BF", id = "bf"},
-		{display = "CLASSIQUE", id = "classique"},
-		{display = "Dewbauchee", id = "dewbauchee"},
-		{display = "Zirconium", id = "zirconium"},
-		{display = "Lampadati", id = "lampadati"},
-		{display = "Bravado", id = "bravado"},
-		{display = "Obey", id = "obey"},
-		{display = "MTK", id = "mtk"},
-		{display = "Motoren", id = "motoren"},
-		{display = "Ubermacht", id = "ubermacht"},
-		{display = "Coquette", id = "coquette"},
-		{display = "Grotti", id = "grotti"},
-		{display = "Vapid", id = "vapid"},
-		{display = "Karin", id = "karin"},
-		{display = "Albany", id = "albany"},
-		{display = "Pegassi", id = "pegassi"},
-		{display = "HMR", id = "hmr"},
-		{display = "Progen", id = "progen"},
-		{display = "Annis", id = "annis"},
-		{display = "Gallivanter", id = "gallivanter"},
-		{display = "Boxtruck", id = "boxtruck"},
-		{display = "Pifster", id = "pifster"},
-		{display = "Benefactor", id = "benefactor"},
-		{display = "Canis", id = "canis"},
-		{display = "GTA", id = "gta"},
-		{display = "Dinka", id = "dinka"},
+
+	{display = "Annis", id = "annis"},
+	{display = "Baller", id = "baller"},
+	{display = "Benefactor", id = "benefactor"},
+	{display = "Bravado", id = "bravado"},
+	{display = "Enus", id = "enus"},
+	{display = "truffade", id = "truffade"},
+	{display = "Grotti", id = "grotti"},
+	{display = "GTA", id = "gta"},
+	{display = "Karin", id = "karin"},
+	{display = "Lampadati", id = "lampadati"},
+	{display = "Motoren", id = "motoren"},
+	{display = "Obey", id = "obey"},
+	{display = "Ocelot", id = "ocelot"},
+	{display = "Pegassi", id = "pegassi"},
+	{display = "Pfister", id = "pfister"},
+	{display = "Progen", id = "progen"},
+	{display = "Ubermacht", id = "ubermacht"},
+	{display = "Vapid", id = "vapid"},
+	{display = "Overig", id = "overig"},
         
 	},
 	["alwaysshop1"] = { -- TYPE of the vehicle shop
@@ -347,13 +341,13 @@ Config.VehicleshopsCategories = { -- Categories shown on the vehicle shops, this
 		{display = "MOTORCYCLES", id = "motorcycles"},
 	},
 	["air"] = {
-		{display = "BIG", id = "big"},
-		{display = "MEDIUM", id = "medium"},
-		{display = "SMALL", id = "small"},
+		{display = "HELICOPTERS", id = "big"},
+		{display = "VLIEGTUIGEN", id = "medium"},
+		{display = "KLEIN", id = "small"},
 	},
 	["water"] = {
-		{display = "BOATS", id = "boats"},
-		{display = "SUBMARINE", id = "submarine"},
+		{display = "BOTEN", id = "boats"},
+		{display = "OVERIG", id = "submarine"},
 	},
 
 }

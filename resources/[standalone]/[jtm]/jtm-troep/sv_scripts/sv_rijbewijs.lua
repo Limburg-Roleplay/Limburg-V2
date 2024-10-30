@@ -19,7 +19,7 @@ AddEventHandler(
 						end
 						TriggerClientEvent("jtm-rijbewijs:client:geefrijbewijs", playerId, GetPlayerName(xPlayer.source), licenses)
 						TriggerClientEvent(
-							"frp-notifications:client:notify",
+							"lrp-notifications:client:notify",
 							xPlayer.source,
 							"success",
 							"Je hebt je rijbewijs geven aan de dichtstbijzijnde persoon!",
@@ -29,7 +29,7 @@ AddEventHandler(
 						licenses = "Geen"
 						TriggerClientEvent("jtm-rijbewijs:client:geefrijbewijs", playerId, GetPlayerName(xPlayer.source), licenses)
 						TriggerClientEvent(
-							"frp-notifications:client:notify",
+							"lrp-notifications:client:notify",
 							xPlayer.source,
 							"success",
 							"Je hebt geen rijbewijs om te delen!",

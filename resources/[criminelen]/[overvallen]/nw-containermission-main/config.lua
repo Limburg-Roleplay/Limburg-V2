@@ -44,7 +44,7 @@ Config.Notifies = {
 }
 
 Config.Debug = {
-    debugPrinter = true,
+    debugPrinter = false,
     ox_targetDebugger = false
 }
 
@@ -77,33 +77,48 @@ Config.ContainerCoords = {
     -- grabMoneyTimer can't be higher then 47933 miliseconds or lower/equal to 0 miliseconds!
     -- I recommend you to let the timers be between 30000 and 47933 miliseconds
     {
-        containerLocation = vec3(-1564.3474, 4489.4023, 21.1035),
-        containerHeading = 99.2312,
+        containerLocation = vec3(503.6191, -2957.7417, 6.0445),
+        containerHeading = 89.2507,
         grabMoneyTimer = 47933,
     },
     {
-        containerLocation = vec3(-1402.6700, 5220.0908, 3.5803),
-        containerHeading = 136.2626,
+        containerLocation = vec3(1050.7511, -3278.2954, 5.8978),
+        containerHeading = 271.6688,
         grabMoneyTimer = 47933,
     },
     {
-        containerLocation = vec3(53.3329, 7086.0493, 2.6801),
-        containerHeading = 19.4381,
+        containerLocation = vec3(1107.8850, -2350.8884, 30.3982),
+        containerHeading = 345.1991,
         grabMoneyTimer = 47933,
     },
     {
-        containerLocation = vec3(503.6274, -3318.5576, 6.0698),
-        containerHeading = 181.7982,
+        containerLocation = vec3(599.6481, -1867.6929, 24.7257),
+        containerHeading = 328.4033,
         grabMoneyTimer = 47933,
     },
     {
-        containerLocation = vec3(1053.8604, -3278.3052, 5.8978),
-        containerHeading = 90.3660,
+        containerLocation = vec3(650.9966, -731.7726, 23.9683),
+        containerHeading = 179.1411,
         grabMoneyTimer = 47933,
     },
     {
-        containerLocation = vec3(1379.3986, -2718.8079, 2.9240),
-        containerHeading = 1.5871,
+        containerLocation = vec3(516.2918, -480.7874, 24.7582),
+        containerHeading = 80.8478,
+        grabMoneyTimer = 47933,
+    },
+    {
+        containerLocation = vec3(2666.5864, 1406.5111, 24.5464),
+        containerHeading = 358.2067,
+        grabMoneyTimer = 47933,
+    },
+    {
+        containerLocation = vec3(216.3779, 7013.7402, 2.0405),
+        containerHeading = 51.3643,
+        grabMoneyTimer = 47933,
+    },
+    {
+        containerLocation = vec3(297.9572, 4350.8242, 49.9001),
+        containerHeading = 177.0705,
         grabMoneyTimer = 47933,
     },
 }

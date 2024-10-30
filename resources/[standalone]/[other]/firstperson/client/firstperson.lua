@@ -58,29 +58,29 @@ Citizen.CreateThread(function()
 end)
 
 local ExemptWeapons = {
-	`WEAPON_UNARMED`,
-	`WEAPON_AWM`,
-	`WEAPON_M82`,
-	`WEAPON_HEAVYSNIPER_MK2`,
-	`WEAPON_MARKSMANRIFLE`,
-	`WEAPON_MARKSMANRIFLE_MK2`,
-	`WEAPON_BARRET50`,
+	'WEAPON_UNARMED',
+	'WEAPON_AWM',
+	'WEAPON_M82',
+	'WEAPON_HEAVYSNIPER_MK2',
+	'WEAPON_MARKSMANRIFLE',
+	'WEAPON_MARKSMANRIFLE_MK2',
+	'WEAPON_BARRET50',
 }
 
 local ExemptWeaponsFirstPerson = {
-	`WEAPON_BZGAS`,
-	`WEAPON_MOLOTV`,
-	`WEAPON_STICKYBOMB`,
-	`WEAPON_SNOWBALL`,
-	`WEAPON_SMOKEGRENADE`,
-	`WEAPON_FLARE`,
-	`WEAPON_BALL`,
-	`WEAPON_PROXIMINE`,
-	`WEAPON_PETROLCAN`,
-	`WEAPON_HAZARDCAN`,
-	`WEAPON_FIREEXTINGUISHER`,
-	`WEAPON_FLASHLIGHT`,
-	`WEAPON_MARKSMANPISTOL`,
+	'WEAPON_BZGAS',
+	'WEAPON_MOLOTV',
+	'WEAPON_STICKYBOMB',
+	'WEAPON_SNOWBALL',
+	'WEAPON_SMOKEGRENADE',
+	'WEAPON_FLARE',
+	'WEAPON_BALL',
+	'WEAPON_PROXIMINE',
+	'WEAPON_PETROLCAN',
+	'WEAPON_HAZARDCAN',
+	'WEAPON_FIREEXTINGUISHER',
+	'WEAPON_FLASHLIGHT',
+	'WEAPON_MARKSMANPISTOL',
 }
 
 local ThirdPersonDisable = true
@@ -195,7 +195,7 @@ Citizen.CreateThread(function()
 			end
 			
 			-- Stop slaan met zaklamp
-			if weapon == `WEAPON_FLASHLIGHT` then
+			if weapon == 'WEAPON_FLASHLIGHT' then
 				DisableControlAction(1, 140, true)
 				DisableControlAction(1, 141, true)
 				DisableControlAction(1, 142, true)
@@ -207,78 +207,26 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function PetrisAdvancedDriveBy()
-    local ped = PlayerPedId()
-    local inveh = IsPedSittingInAnyVehicle(ped)
-    local veh = GetVehiclePedIsUsing(ped)
-    local vehspeed = GetEntitySpeed(veh) * 3.6
-    
-    -- Check if the player has the "ownergroup" permission
-    local hasOwnerPerm = exports["discordperms"]:hasownergroup()
-    
-    if inveh then
-        -- Allow drive-by for players with the owner group
-        if hasOwnerPerm then
-            SetPlayerCanDoDriveBy(PlayerId(), true)
-        else
-            -- Normal speed check for drive-by
-            if vehspeed >= Config.MaxSpeedForDriveBy then
-                SetPlayerCanDoDriveBy(PlayerId(), false)
-            else
-                SetPlayerCanDoDriveBy(PlayerId(), true)
-            end
-        end
-    end
-end
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(100)
-        local playerPed = PlayerPedId()
-        
-        if IsPedInAnyVehicle(playerPed, false) then
-            local veh = GetVehiclePedIsIn(playerPed)
-            local isDriver = GetPedInVehicleSeat(veh, -1) == playerPed
-            
-            if isDriver then
-                -- If the player is in the driver's seat, always allow drive-by for owner group
-                if exports["discordperms"]:hasownergroup() then
-                    SetPlayerCanDoDriveBy(PlayerId(), true)
-                else
-                    PetrisAdvancedDriveBy()
-                end
-            else
-                SetPlayerCanDoDriveBy(PlayerId(), false)
-            end
-        else
-            SetPlayerCanDoDriveBy(PlayerId(), false)
-        end
-    end
-end)
-
 -- Weapon damage
 
 local MeeleWeapons = {
-	[`WEAPON_BAT`] = 0.20,
-	[`WEAPON_KNIFE`] = 0.01,
-	[`WEAPON_UNARMED`] = 0.20,
-	[`WEAPON_NIGHTSTICK`] = 0.05,
-	[`WEAPON_KNUCKLE`] = 0.50,
-	[`WEAPON_BOTTLE`] = 0.40,
-	[`WEAPON_HAMMER`] = 0.30,
-	[`WEAPON_CROWBAR`] = 0.30,
-	[`WEAPON_GOLFCLUB`] = 0.30,
-	[`WEAPON_DAGGER`] = 0.20,
-	[`WEAPON_SWITCHBLADE`] = 0.40,
-	[`WEAPON_HATCHET`] = 0.65,
-	[`WEAPON_FLASHLIGHT`] = 0.0,
-	[`WEAPON_POOLCUE`] = 0.20,
-	[`WEAPON_WRENCH`] = 0.30,
-	[`WEAPON_BATTLEAXE`] = 0.85,
-	[`WEAPON_CROWBAR`] = 0.25,
-	[`WEAPON_BZGAS`] = 0.10,
-	[`WEAPON_SNOWBALL`] = 0.0,
-	[`WEAPON_VINTAGEPISTOL`] = 0.7,
+	['WEAPON_BAT'] = 0.20,
+	['WEAPON_KNIFE'] = 0.01,
+	['WEAPON_UNARMED'] = 0.20,
+	['WEAPON_NIGHTSTICK'] = 0.05,
+	['WEAPON_KNUCKLE'] = 0.50,
+	['WEAPON_BOTTLE'] = 0.40,
+	['WEAPON_HAMMER'] = 0.30,
+	['WEAPON_CROWBAR'] = 0.30,
+	['WEAPON_GOLFCLUB'] = 0.30,
+	['WEAPON_DAGGER'] = 0.20,
+	['WEAPON_SWITCHBLADE'] = 0.40,
+	['WEAPON_HATCHET'] = 0.65,
+	['WEAPON_FLASHLIGHT'] = 0.0,
+	['WEAPON_POOLCUE'] = 0.20,
+	['WEAPON_WRENCH'] = 0.30,
+	['WEAPON_SNOWBALL'] = 0.0,
+	['WEAPON_VINTAGEPISTOL'] = 0.7,
 }
 
 Citizen.CreateThread(function()

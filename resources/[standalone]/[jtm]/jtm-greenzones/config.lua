@@ -30,7 +30,7 @@ Config.GreenZones = { -- These are persistent greenzones that exist constantly, 
         blipName = 'Taakstraf Greenzone'
     },
     ['VIP'] = {
-        coords = vec3(211.4591, -927.0460, 30.6920),
+        coords = vec3(921.2661, 41.4979, 81.0960),
         radius = 10.0,
         disablePlayerVehicleCollision = false,
         enableSpeedLimits = false,

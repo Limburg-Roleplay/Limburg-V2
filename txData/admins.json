@@ -15,7 +15,8 @@
         "data": {}
       }
     },
-    "permissions": []
+    "permissions": [],
+    "$schema": 1
   },
   {
     "name": "matthijs",
@@ -35,7 +36,8 @@
     },
     "permissions": [
       "all_permissions"
-    ]
+    ],
+    "$schema": 1
   },
   {
     "name": "Sunnless",
@@ -55,363 +57,8 @@
     },
     "permissions": [
       "all_permissions"
-    ]
-  },
-  {
-    "name": "jorn",
-    "master": false,
-    "password_hash": "$2a$11$YxnrrI3lXODlgOVvD0/gcenY41zb7ozPUe1itvQHpu8y9xLK1MjM2",
-    "providers": {
-      "citizenfx": {
-        "id": "jorn2000",
-        "identifier": "fivem:1762284",
-        "data": {}
-      },
-      "discord": {
-        "id": "1151507862045081691",
-        "identifier": "discord:1151507862045081691",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "all_permissions"
-    ]
-  },
-  {
-    "name": "devious",
-    "master": false,
-    "password_hash": "$2a$11$7AMOk07PNe4n/PvW3eylU.m6ZXUNZxs.vLb.fPxe3scEB9.VCtw9e",
-    "providers": {
-      "discord": {
-        "id": "1003597301304000514",
-        "identifier": "discord:1003597301304000514",
-        "data": {}
-      },
-      "citizenfx": {
-        "id": "Deviou",
-        "identifier": "fivem:14891120",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "manage.admins",
-      "console.view",
-      "console.write",
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.message",
-      "players.whitelist",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "tinosan",
-    "master": false,
-    "password_hash": "$2a$11$BtAPIduG5LNsWGDGKkUgieXI3wsdT75cfB3LhjL1RwTOWZDLoTmym",
-    "providers": {
-      "citizenfx": {
-        "id": "TinoSan7642",
-        "identifier": "fivem:11911784",
-        "data": {}
-      },
-      "discord": {
-        "id": "768115049868820481",
-        "identifier": "discord:768115049868820481",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "manage.admins",
-      "console.view",
-      "console.write",
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.message",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "Santi",
-    "master": false,
-    "password_hash": "$2a$11$K3zfepCxDijPz0OP2PQ.cOzEItUGMFlSzNMeCM.y.Rid7QBEvvYYi",
-    "providers": {
-      "citizenfx": {
-        "id": "ashtonfr1908",
-        "identifier": "fivem:11247961",
-        "data": {}
-      },
-      "discord": {
-        "id": "1073720239902183494",
-        "identifier": "discord:1073720239902183494",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "manage.admins",
-      "console.view",
-      "console.write",
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.message",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "lrp_sr",
-    "master": false,
-    "password_hash": "$2a$11$X8tUX/nkNioZF5xkdf98Iegu0YHJl1wNpVyXrsmxalawIBGV7umNq",
-    "providers": {
-      "discord": {
-        "id": "1079912890473132102",
-        "identifier": "discord:1079912890473132102",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "manage.admins",
-      "console.view",
-      "console.write",
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.message",
-      "players.whitelist",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "marcell",
-    "master": false,
-    "password_hash": "$2a$11$E23oJ1iVE.XIwqFXpJEPrexzEKFh1QTDB8KqyYdZfV2fWUSwqwc.2",
-    "providers": {
-      "discord": {
-        "id": "597457031355564035",
-        "identifier": "discord:597457031355564035",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "okana",
-    "master": false,
-    "password_hash": "$2a$11$IL5Ja7pDIxkbrUqPf0ppSOqlfW/uHCTuMXeNWy2Ymw2VCSct8Cqgq",
-    "providers": {
-      "discord": {
-        "id": "297700169040789507",
-        "identifier": "discord:297700169040789507",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "manage.admins",
-      "console.view",
-      "console.write",
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.message",
-      "players.whitelist",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "yanoo",
-    "master": false,
-    "password_hash": "$2a$11$ASPD1KoG.o26On1C31/ACeaN6zj45Xavf0NDFb9Vxekb6QfHlSGg2",
-    "providers": {
-      "citizenfx": {
-        "id": "Yanoo2",
-        "identifier": "fivem:14717790",
-        "data": {}
-      },
-      "discord": {
-        "id": "1058007706532847717",
-        "identifier": "discord:1058007706532847717",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "console.view",
-      "console.write",
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.message",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "duncanjager168",
-    "master": false,
-    "password_hash": "$2a$11$HjSq8JhB4kCZCJaz2KlYbeluqfZOKBIat1mStaPy6yJUQ1kkfIOza",
-    "providers": {
-      "citizenfx": {
-        "id": "ottopekel",
-        "identifier": "fivem:8290982",
-        "data": {}
-      },
-      "discord": {
-        "id": "945327797889536130",
-        "identifier": "discord:945327797889536130",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "anass",
-    "master": false,
-    "password_hash": "$2a$11$IJKIVgomVe.QzUH7W/L9iO9aQo0sCtVZw5Ei6BlAe2CkCINAJOwWu",
-    "providers": {
-      "discord": {
-        "id": "965577000284717107",
-        "identifier": "discord:965577000284717107",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.clear_area",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "silkroaduser",
-    "master": false,
-    "password_hash": "$2a$11$beyWdlZytWoN6XPBoBNR1ui.L2v4G1FJzf80ymTecTQb.X/ixj6/S",
-    "providers": {
-      "discord": {
-        "id": "394125162867589130",
-        "identifier": "discord:394125162867589130",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "Bear",
-    "master": false,
-    "password_hash": "$2a$11$j1rVXc9z.lSQA5sTG30KW.qfkCV.coQljNv6XVDRXtCISxiZ6saOm",
-    "providers": {
-      "citizenfx": {
-        "id": "Billian",
-        "identifier": "fivem:7984228",
-        "data": {}
-      },
-      "discord": {
-        "id": "1010976304352477295",
-        "identifier": "discord:1010976304352477295",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "menu.vehicle",
-      "menu.clear_area",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
+    ],
+    "$schema": 1
   },
   {
     "name": "Jamie",
@@ -431,108 +78,8 @@
     },
     "permissions": [
       "all_permissions"
-    ]
-  },
-  {
-    "name": "jxck",
-    "master": false,
-    "password_hash": "$2a$11$i8dqn5mFCT5owD2YXEzgR.krwoTbTdqumgytxmPhqbUFBGeA8bkBm",
-    "providers": {
-      "citizenfx": {
-        "id": "SnoopDopg",
-        "identifier": "fivem:12879907",
-        "data": {}
-      },
-      "discord": {
-        "id": "872469916463280148",
-        "identifier": "discord:872469916463280148",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "liam",
-    "master": false,
-    "password_hash": "$2a$11$aLTs71Mp3wqQvx5V4nPhQ.Gf8E4m2IK1K7KTjlF55zast1nTphu6m",
-    "password_temporary": true,
-    "providers": {
-      "citizenfx": {
-        "id": "its_liam02240",
-        "identifier": "fivem:7222245",
-        "data": {}
-      },
-      "discord": {
-        "id": "753291724796854348",
-        "identifier": "discord:753291724796854348",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "Mar",
-    "master": false,
-    "password_hash": "$2a$11$q5ZYTAR85Df8MNpQaMc6O.UGI8foOeJjOAiSdNT9GzABg62tkkokm",
-    "providers": {
-      "discord": {
-        "id": "1171497849406632047",
-        "identifier": "discord:1171497849406632047",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "all_permissions"
-    ]
-  },
-  {
-    "name": "txn8280",
-    "master": false,
-    "password_hash": "$2a$11$WnsTfbbxx9LqqeJPhriwOuR2WGY6wYS/pbyXZ/oLcJmYwPXXFEXmm",
-    "providers": {
-      "discord": {
-        "id": "938480126285451284",
-        "identifier": "discord:938480126285451284",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
+    ],
+    "$schema": 1
   },
   {
     "name": "patrick",
@@ -557,7 +104,6 @@
       "menu.vehicle",
       "menu.clear_area",
       "menu.viewids",
-      "players.message",
       "players.warn",
       "players.kick",
       "players.ban",
@@ -565,8 +111,12 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "players.direct_message",
+      "announcement",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "kivo",
@@ -595,8 +145,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "notfietsendief",
@@ -625,8 +177,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "johnwick",
@@ -649,8 +203,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "kevinverheggen",
@@ -680,8 +236,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "pal",
@@ -710,8 +268,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "lucky",
@@ -739,8 +299,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "balhaaraapje",
@@ -769,8 +331,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "Sunless",
@@ -779,7 +343,8 @@
     "providers": {},
     "permissions": [
       "all_permissions"
-    ]
+    ],
+    "$schema": 1
   },
   {
     "name": "seppe5511",
@@ -796,6 +361,7 @@
       "txadmin.log.view",
       "menu.vehicle",
       "menu.viewids",
+      "players.whitelist",
       "players.warn",
       "players.kick",
       "players.ban",
@@ -803,33 +369,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
-  },
-  {
-    "name": "veh",
-    "master": false,
-    "password_hash": "$2a$11$7lWszCcrpavMc1Xcq6XJ2uxaVo9PbKZP3ZnpK8r5/bhP02jO.JOsW",
-    "providers": {
-      "discord": {
-        "id": "1067849490310115401",
-        "identifier": "discord:1067849490310115401",
-        "data": {}
-      }
-    },
-    "permissions": [
-      "txadmin.log.view",
-      "menu.vehicle",
-      "menu.viewids",
-      "players.warn",
-      "players.kick",
-      "players.ban",
-      "players.freeze",
-      "players.heal",
-      "players.playermode",
-      "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "lencio",
@@ -856,8 +399,10 @@
       "players.freeze",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "mjaygijsen1",
@@ -880,8 +425,10 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
     "name": "rv6765",
@@ -904,28 +451,49 @@
       "players.heal",
       "players.playermode",
       "players.spectate",
-      "players.teleport"
-    ]
+      "players.teleport",
+      "server.log.view"
+    ],
+    "$schema": 1
   },
   {
-    "name": "mimi",
+    "name": "devious",
     "master": false,
-    "password_hash": "$2a$11$dOieO36np2mwVV/682HRcOom4m4ytZ7XXKSAACm6QyR18gcjtTsyK",
+    "password_hash": "$2a$11$l9nZQU.Flf6t9MW4VTsbt.yoJPHi6PQZFzLQyZ/0N5.saJBVPSo0O",
+    "password_temporary": true,
     "providers": {
       "citizenfx": {
-        "id": "BabyOlie",
-        "identifier": "fivem:5834987",
+        "id": "Deviou",
+        "identifier": "fivem:14891120",
         "data": {}
       },
       "discord": {
-        "id": "647036480337870869",
-        "identifier": "discord:647036480337870869",
+        "id": "1003597301304000514",
+        "identifier": "discord:1003597301304000514",
+        "data": {}
+      }
+    },
+    "permissions": [],
+    "$schema": 1
+  },
+  {
+    "$schema": 1,
+    "name": "niels",
+    "master": false,
+    "password_hash": "$2a$11$sKtn8.aCXS.MvgUyTTW13OwXp30GjZk3AUuecncPFSk8Wnq7wIbEq",
+    "password_temporary": true,
+    "providers": {
+      "discord": {
+        "id": "1067849490310115401",
+        "identifier": "discord:1067849490310115401",
         "data": {}
       }
     },
     "permissions": [
-      "txadmin.log.view",
       "menu.vehicle",
+      "menu.clear_area",
+      "menu.viewids",
+      "players.direct_message",
       "players.warn",
       "players.kick",
       "players.ban",

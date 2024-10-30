@@ -125,7 +125,7 @@ RegisterNetEvent('esx_jobs:caution', function(cautionType, cautionAmount, spawnP
 	
 				xPlayer.addAccountMoney('bank', toGive, "Caution Return")
 				account.removeMoney(toGive)
-				TriggerClientEvent('esx:showNotification', source, TranslateCap('bank_deposit_returned', ESX.Math.GroupDigits(toGive)))
+				TriggerClientEvent('okokNotify:Alert', _source, TranslateCap('bank_deposit_returned', ESX.Math.GroupDigits(toGive)), 5000, 'success')
 			end)
 		end
 	end

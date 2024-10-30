@@ -33,9 +33,9 @@ RegisterCommand('bonus', function(source, args, rawCommand)
             desc = logMessage
         })
 
-        TriggerClientEvent("frp-notifications:client:notify", source, "success", "Je hebt succesvol je bonus van 300.000 geclaimed!", 5000)
+        TriggerClientEvent("lrp-notifications:client:notify", source, "success", "Je hebt succesvol je bonus van 300.000 geclaimed!", 5000)
     else
-        TriggerClientEvent("frp-notifications:client:notify", source, "error", "Je hebt je bonus al geclaimed!", 5000)
+        TriggerClientEvent("lrp-notifications:client:notify", source, "error", "Je hebt je bonus al geclaimed!", 5000)
     end
 end)
 

@@ -3,7 +3,7 @@ local robbedLately = false
 RegisterServerEvent("esx_bankrobbery:startRobbery")
 AddEventHandler("esx_bankrobbery:startRobbery", function(bankId)
 	if robbedLately then
-        TriggerClientEvent('frp-notifications:client:notify', source, 'error', 'Er is recentelijk een bank overvallen, kom later terug!', '5000')
+        TriggerClientEvent('lrp-notifications:client:notify', source, 'error', 'Er is recentelijk een bank overvallen, kom later terug!', '5000')
 		return 
 	end
 	local xPlayer = ESX.GetPlayerFromId(source)
@@ -60,7 +60,7 @@ AddEventHandler("esx_bankrobbery:grabbedCash", function(bankId, oldCash, newCash
 
     xPlayer.addAccountMoney("black_money", newCash)
 
-    TriggerClientEvent('frp-notifications:client:notify', source, 'success', "Je hebt zojuist €" .. newCash .. " zwart geld ontvangen", '5000')
+    TriggerClientEvent('lrp-notifications:client:notify', source, 'success', "Je hebt zojuist €" .. newCash .. " zwart geld ontvangen", '5000')
     TriggerClientEvent("esx_bankrobbery:changeCash", -1, bankId, oldCash - newCash)
 end)
 

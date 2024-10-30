@@ -1,7 +1,7 @@
 function Notification(source, notif_type, message)
     if source and notif_type and message then
         if Config.NotificationType.client == 'esx' then
-            TriggerClientEvent('esx:showNotification', source, message)
+            TriggerClientEvent('okokNotify:Alert', source, message, 5000, 'info')
 
         elseif Config.NotificationType.client == 'chat' then
             TriggerClientEvent('chatMessage', source, message)

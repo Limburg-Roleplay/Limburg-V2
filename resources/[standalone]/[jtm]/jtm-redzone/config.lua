@@ -4,7 +4,7 @@ Config.EnableNotifications = true -- Do you want notifications when a player ent
 
 Config.GreenZones = { -- These are persistent greenzones that exist constantly, at all times - you can create as many as you want here
     ['paletoredzone'] = {
-        coords = vec3(103.5271, 6502.3828, 31.2347), -- The center-most location of the greenzone 
+        coords = vec3(1816.3503, 3798.4109, 33.6310), -- The center-most location of the greenzone 
         radius = 400.0, -- The radius (how large or small) the greenzone is (note: this must include the .0 on the end of the number to work)
         displayTextUI = true, -- Do you want textUI to display on everyones screen while in this zone? (true if yes, false if no)
         textToDisplay = 'Paletto Redzone', -- The text to display on everyones screen if displayTextUI is true for this zone
