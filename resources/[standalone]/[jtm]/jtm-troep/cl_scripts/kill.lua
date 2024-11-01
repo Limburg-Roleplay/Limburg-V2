@@ -254,7 +254,6 @@ CreateThread(function()
 			else
 				TriggerServerEvent('resources:playerDied', { type = 2, player_id = GetPlayerServerId(PlayerId()), player_2_id = GetPlayerServerId(Killer), death_reason = DeathReason, weapon = Weapon })
 				TriggerServerEvent('lrp-ambulance:death', GetPlayerServerId(PlayerId()), Weapon)
-                    print(Weapon)
 			end
 			Killer = nil
 			DeathReason = nil

@@ -17,7 +17,7 @@ local minute = 60 * second
 Config.BillCost = 2000
 Config.AIHealTimer = 20 -- How long it will take to be healed after checking in, in seconds
 
-Config.RespawnTimer = 0.1 * minute
+Config.RespawnTimer = 5 * minute
 Config.BleedoutTimer = 10 * minute
 Config.Pleistertimer = 5
 Config.KnockoutTimer 			  = 5 * minute

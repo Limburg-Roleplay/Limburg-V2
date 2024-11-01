@@ -14,13 +14,6 @@ const formatter = new Intl.NumberFormat('nl-NL', {
 $(function(){
 	window.addEventListener('message', function(event) {
 		if (event.data.action == "setValue"){
-			if (event.data.key == "job2"){
-				if (event.data.icon.includes("unemployed2")){
-					hideJob2()
-				}else{
-					showJob2()
-				}
-			}
 			setValue(event.data.key, event.data.value, event.data.icon)
 
 		}else if (event.data.action == "updateStatus"){
@@ -174,12 +167,10 @@ function setJob2Icon(value){
 
 function showJob2(){
 	$('#job2').fadeIn(750)
-	$('#logo').fadeIn(750)
 }
 
 function hideJob2(){
 	$('#job2').fadeOut(750)
-	$('#logo').fadeOut(750)
 }
 
 function updateStatus(status){

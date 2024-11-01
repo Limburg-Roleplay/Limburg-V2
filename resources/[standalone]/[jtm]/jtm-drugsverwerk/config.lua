@@ -8,6 +8,6 @@ Config.Delays = {
 	NitrousProcessing = 1000 * 7
 }
 
-Config.ProcessTimer = 3
+Config.ProcessTimer = 20
 
 Config.GiveBlack = true -- give black money? if disabled it'll give regular cash.

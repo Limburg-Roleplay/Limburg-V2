@@ -22,7 +22,7 @@ Config.WebhookImage = 'https://cdn.discordapp.com/attachments/105804070006477621
 Config.WebhookFooterImage = 'https://cdn.discordapp.com/attachments/1058040700064776212/1262478090899292200/Limburg_Roleplay_Blauw.png?ex=669ab258&is=669960d8&hm=47e4f6ccd429db1e3d8a64d49d85274a4ddbbd0a7b87534c6fc668c677c9ab86&'
 
 -- General configs
-Config.RequirePolice = true -- Set to true if you want to require police in order to rob stores (requires Config.Framework be set to 'esx' or 'qbcore' if true)
+Config.RequirePolice = false -- Set to true if you want to require police in order to rob stores (requires Config.Framework be set to 'esx' or 'qbcore' if true)
 Config.PoliceCount = 2  -- If RequirePolice is true, how many must be online to rob stores?
 Config.PoliceJobs = { 'police' } -- Add your police job names here
 Config.Dispatch = 'custom' -- Available options: 'cd_dispatch', 'linden_outlawalert', 'ps-dispatch', 'qs-dispatch' and 'custom'
@@ -41,9 +41,9 @@ Config.RegisterInput = { 'W', 'A', 'S', 'D', 'Q', 'E' } -- The keys that are use
 Config.RegisterRewardItem = 'black_money' -- The item that is rewarded upon a successful register robbery
 Config.RegisterRewardRandom = true -- Set true if you want to reward a random quantity of the above item, otherwise set false
 Config.RegisterRewardQuantity = 1000 -- If RegisterRewardRandom = false then this is the quantity rewarded, if true then can be ignored
-Config.RegisterRewardMinQuantity = 50000 -- If RegisterRewardRandom = true then this is the minimum quantity, otherwise can be ignored
-Config.RegisterRewardMaxQuantity = 70000 -- If RegisterRewardRandom = true then this is the maximum quantity, otherwise can be ignored
-Config.LockpickBreakChance = 50 -- The percentage chance the lockpick breaks when failing to lockpick a register
+Config.RegisterRewardMinQuantity = 1250000 -- If RegisterRewardRandom = true then this is the minimum quantity, otherwise can be ignored
+Config.RegisterRewardMaxQuantity = 150000 -- If RegisterRewardRandom = true then this is the maximum quantity, otherwise can be ignored
+Config.LockpickBreakChance = 10 -- The percentage chance the lockpick breaks when failing to lockpick a register
 Config.CodeChance = 10 -- The percentage chance a player receives a code from the register to skip the PC hack requirement
 
 -- Safe configs
@@ -59,7 +59,7 @@ Config.SafeRewardMaxQuantity = 80000 -- If SafeRewardRandom = true then this is 
 -- Computer configs
 Config.MaxHackAttempts = 3 -- The maximum amount of hack attempts to get the safe code before having to restart robbery
 Config.EnableQuestionnaire = false -- If true, the player will be asked a sequence of questions instead of the skillcheck below to hack the computer
-Config.ComputerDifficulty = { 'easy', 'easy', 'easy', 'easy', 'easy','easy', 'easy', 'easy', 'easy', 'easy' } -- The skillcheck difficulty, can be 'easy', 'medium' or 'hard' in any order and any quantity (If EnableQuestionnaire is true, this can be ignored)
+Config.ComputerDifficulty = { 'easy', 'easy', 'medium', 'easy', 'easy','hard' } -- The skillcheck difficulty, can be 'easy', 'medium' or 'hard' in any order and any quantity (If EnableQuestionnaire is true, this can be ignored)
 Config.ComputerInput = { 'W', 'A', 'S', 'D' } -- The keys that are used for the skillcheck minigame, can be any keys (If EnableQuestionnaire is true, this can be ignored)
 
 -- Questionnaire configs

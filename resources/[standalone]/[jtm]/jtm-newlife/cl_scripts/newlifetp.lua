@@ -57,7 +57,7 @@ lib.registerContext({
                 TriggerServerEvent('ziekenhuis-newlife')
                 StartTestDriveTimer() -- Start the test drive timer
             end,
-            icon = "hospital"
+            icon = "building"
         }
     }
 })

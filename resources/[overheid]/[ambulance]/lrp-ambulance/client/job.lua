@@ -392,6 +392,7 @@ function respawnPlayer()
         local playerPed = PlayerPedId()
         
         Citizen.Wait(500)
+		TriggerServerEvent('wasabi_ambulance:setDeathCircle')
         deathPosition = GetEntityCoords(playerPed)
         
         if deathPosition and deathPosition ~= vector3(0, 0, 0) then
@@ -400,7 +401,6 @@ function respawnPlayer()
             while not IsScreenFadedOut() do
                 Citizen.Wait(10)
             end
-
             TriggerServerEvent('wasabi_ambulance:setDeathStatus', false)
 
             -- Stel spelerpositie en richting in
@@ -426,71 +426,7 @@ function respawnPlayer()
             TriggerServerEvent('lrp-ambulance:server:revive:player', playerId)
 
             Citizen.Wait(500)
-            if deathPosition and deathPosition ~= vector3(0, 0, 0) then
-                local blip = AddBlipForRadius(deathPosition.x, deathPosition.y, deathPosition.z, redCircleRadius)
-                
-                if blip then
-                    SetBlipColour(blip, 47)
-                    SetBlipAlpha(blip, 100)
-                end
-
-                local blipDuration = 15 * 60 * 1000
-
-                Citizen.CreateThread(function()
-                    Citizen.Wait(blipDuration)
-                    if DoesBlipExist(blip) then
-                        RemoveBlip(blip)
-                    end
-                end)
-
-                local timerActive = false
-                local startTime = 0
-                
-                Citizen.CreateThread(function()
-                    while true do
-                        Citizen.Wait(1000)
-
-                        local playerPed = PlayerPedId()
-                        local playerCoords = GetEntityCoords(playerPed)
-
-                        if deathPosition then
-                            local distance = #(playerCoords - deathPosition)
-
-                            if distance < redCircleRadius then
-                                if not timerActive then
-                                    timerActive = true
-                                    startTime = GetGameTimer()
-                                end
-
-                                local elapsedTime = (GetGameTimer() - startTime) / 1000
-                                local remainingTime = warningTimer - elapsedTime
-
-                                if remainingTime > 0 then
-                                    updateNotification(string.format("Verlaat deze zone binnen %.0f seconden, anders ga je langzaam dood.", remainingTime))
-                                else
-                                    local health = GetEntityHealth(playerPed)
-                                    if health > 0 then
-                                        SetEntityHealth(playerPed, health - 10)
-                                    else
-                                        updateNotification("Je bent dood Je was te lang in een zone waar je niet mocht komen!") 
-                                    end
-                                    updateNotification("Je bent te lang in de zone. Je begint nu langzaam dood te gaan!")
-                                end
-                            else
-                                if timerActive then
-                                    timerActive = false
-                                    updateNotification("")
-                                end
-                            end
-                        else
-                            if timerActive then
-                                timerActive = false
-                                updateNotification("")
-                            end
-                        end
-                    end
-                end)
-            end
+            
         end
     end)
 end
@@ -504,8 +440,6 @@ sendDispatch = function()
     local targetCoords = GetEntityCoords(PlayerPedId())
     local streetName = GetStreetNameAtCoord(targetCoords.x, targetCoords.y, targetCoords.z)
     local playerGender = "male" 
-
-     print(targetCoords, streetName)
 
     TriggerServerEvent('esx_outlawalert:Gewondpersoon', targetCoords, streetName, playerGender)
 end
@@ -546,7 +480,6 @@ startDeathTimer = function()
                 drawTxt(0.91, 1.41, 1.0, 1.0, 0.6, "KLIK OP ~r~G ~w~OM EEN ~r~MELDING ~w~TE MAKEN", 255, 255, 255, 255)
                 if IsControlJustPressed(0, 47) then
                     sendDispatch()
-                     print("test")
                     sentDispatch = true
                 end
             else
@@ -589,7 +522,7 @@ startDeathTimer = function()
                 respawnPlayer()
                 break
             end
-            drawTxt(0.83, 1.44, 1.0, 1.0, 0.6, "~w~HOUD ~r~E ~w~(" .. math.ceil(EHeld / 100) .. ") ~w~INGEDRUKT OP TE ~r~RESPAWNEN ~w~OF WACHT OP EEN ~r~AMBULANCE", 255, 255, 255, 255)
+            drawTxt(0.83, 1.44, 1.0, 1.0, 0.6, "~w~HOUD ~r~E ~w~(" .. math.ceil(EHeld / 100) .. ") ~w~INGEDRUKT OM TE ~r~RESPAWNEN ~w~OF WACHT OP EEN ~r~AMBULANCE", 255, 255, 255, 255)
         end
     end)
 end
@@ -637,7 +570,7 @@ end
 RegisterNetEvent('lrp-ambulance:client:revive:player', function()
 	local ScriptName = GetInvokingResource()
 	if ScriptName ~= nil then
-		print(hacker)
+		print("hacker")
 		return
 	end
 	local playerPed = PlayerPedId()

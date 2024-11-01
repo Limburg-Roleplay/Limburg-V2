@@ -23,11 +23,21 @@ sqlSetStatus = function(id, isDead)
 	})
 end
 
+        
+
+
+RegisterServerEvent('wasabi_ambulance:setDeathCircle')
+AddEventHandler('wasabi_ambulance:setDeathCircle', function(isDead)
+	local src = source
+    local playerPed = GetPlayerPed(src)
+    local playerCoords = GetEntityCoords(playerPed)
+    TriggerEvent('deathCircle:create', playerCoords, src)
+end)
+
 RegisterServerEvent('wasabi_ambulance:setDeathStatus')
 AddEventHandler('wasabi_ambulance:setDeathStatus', function(isDead)
 	Player(source).state.dead = isDead
 	if not isDead then
-        print('setting player status of player ' .. source)
         exports['jtm-hungerthirst']:setPlayerStatus(0, source, 100, 100)
 		Player(source).state.injury = nil
 		if plyRequests[source] then
@@ -44,7 +54,7 @@ AddEventHandler('lrp-ambulance:server:revive:player', function(targetId)
     local xTarget = ESX.GetPlayerFromId(targetId)
 
     if not xTarget then
-        print("Target player with ID " .. tostring(targetId) .. " not found.")
+        -- print("Target player with ID " .. tostring(targetId) .. " not found.")
         TriggerClientEvent('okokNotify:Alert', source, 'Target player not found.', 5000, 'error')
         return
     end
@@ -230,7 +240,6 @@ RegisterServerEvent('medSystem:print', function(req, pulse, area, blood, a, b, c
 	Wait(100)
 	local xPlayers = ESX.GetPlayers()
 	local weapon = killdByWeapon[_source]
-	print(weapon)
 	for i = 1, #xPlayers, 1 do
 		TriggerClientEvent('medSystem:near', xPlayers[i], a, b, c, pulse, blood, _source, area, bleeding, weapon)
 		--TriggerClientEvent('medSystem:me', req)
@@ -239,7 +248,6 @@ end)
 
 RegisterServerEvent('lrp-ambulance:death')
 AddEventHandler('lrp-ambulance:death', function(PlayerId, weapon)
-	print(PlayerId, weapon)
 	if weapon ~= nil and weapon ~= "" then
 		killdByWeapon[PlayerId] = weapon
 	else

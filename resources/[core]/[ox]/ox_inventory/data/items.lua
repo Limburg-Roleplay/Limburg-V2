@@ -471,21 +471,21 @@ return {
 
     ["lsd"] = {
 		label = "LSD",
-		weight = 800,
+		weight = 1000,
 		stack = true,
 		close = true,
 	},
     
     ["meth"] = {
 		label = "Meth",
-		weight = 564,
+		weight = 764,
 		stack = true,
 		close = true,
 	},
     
     ["methzakje"] = {
 		label = "Meth Zakje",
-		weight = 339,
+		weight = 439,
 		stack = true,
 		close = true,
 	},
@@ -1014,4 +1014,11 @@ return {
 		close = true,
 	},
     
+
+	["factuur"] = {
+		label = "Factuur",
+		weight = 100,
+		stack = true,
+		close = true,
+	},
 }

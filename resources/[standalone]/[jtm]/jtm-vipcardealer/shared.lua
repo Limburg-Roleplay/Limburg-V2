@@ -3,7 +3,7 @@ Shared = {}
 Shared.Locations = {
     {
         blip = true,
-        coords = vec4(1127.1108, -785.4495, 57.5908, 269.3378)
+        coords = vec4(-31.2840, -1106.4344, 26.4223, 340.3572)
     }
 }
 
@@ -37,8 +37,8 @@ Shared.Showroom = {
 
 Shared.SpawnPlaces = {
     {
-        coords = vec3(1159.0391, -790.2590, 57.5762),
-        heading = 357.4930
+        coords = vec3(-30.5810, -1089.9016, 26.4222),
+        heading = 339.0784
     }
 }
 

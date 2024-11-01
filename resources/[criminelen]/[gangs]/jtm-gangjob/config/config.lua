@@ -353,7 +353,36 @@ Config.Wapeninkoopgangs = {
         [1] = {
             gangname = "albanesemaffia",
             mingrade = 6,
-            ganglevel = 5,
+            ganglevel = 4,
+            coordsbossmenu = vector3(-686.4366, -402.3235, 52.2134),
+			coordswapeninkoop = vector3(-711.6934, -412.7919, 35.0784),
+            Startcoordswitwas = vector4(-739.9949, -397.5858, 35.4785, 338.1885)
+        },
+        f6menu = true,
+        wapeninkoop = {
+            
+            ["akm"] = 0,
+            ["akmu"] = 0,
+            ["xp45"] = 0,
+            ["xagc"] = 0,
+            ["minismg"] = 0,
+            ["sawedoffshotgun"] = 0,
+            ["pistol50"] = 0,
+            ["pistolm9a3"] = 0,
+            ["ladykiller"] = 0,
+            ["ap320"] = 0,
+            ["ap19"] = 0,
+            ["switchblade"] = 0,
+            ["knuppel"] = 0,
+            ["mes"] = 0,
+            ["machete"] = 0,
+        }
+    },
+    niquenta = {
+        [1] = {
+            gangname = "niquenta",
+            mingrade = 6,
+            ganglevel = 1,
             coordsbossmenu = vector3(-686.4366, -402.3235, 52.2134),
 			coordswapeninkoop = vector3(-711.6934, -412.7919, 35.0784),
             Startcoordswitwas = vector4(-739.9949, -397.5858, 35.4785, 338.1885)

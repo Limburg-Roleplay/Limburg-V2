@@ -299,12 +299,11 @@ Citizen.CreateThread(function()
 			DisableControlAction(1, 24, true)  -- F
 			DisableControlAction(1, 25, true)  -- F
 			DisableControlAction(1, 106, true) -- VehicleMouseControlOverride
-			DisableControlAction(1, 140, true) -- Disables Melee Actions
-			DisableControlAction(1, 141, true) -- Disables Melee Actions
-			DisableControlAction(1, 142, true) -- Disables Melee Actions 
-			DisableControlAction(1, 37, true) -- Disables INPUT_SELECT_WEAPON (tab) Actions
+			DisableControlAction(1, 140, true) --Disables Melee Actions
+			DisableControlAction(1, 141, true) --Disables Melee Actions
+			DisableControlAction(1, 142, true) --Disables Melee Actions 
+			DisableControlAction(1, 37, true) --Disables INPUT_SELECT_WEAPON (tab) Actions
 			DisablePlayerFiring(ped, true) -- Disable weapon firing
-
 			if GetEntityHealth(ped) ~= 0 then
 				SetEntityHealth(ped, 0)
 			end
@@ -313,7 +312,6 @@ Citizen.CreateThread(function()
 		Wait(sleep)
 	end
 end)
-
 
 AddEventHandler('esx:onPlayerSpawn', function()
     isDead = false

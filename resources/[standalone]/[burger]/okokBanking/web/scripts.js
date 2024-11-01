@@ -721,7 +721,7 @@ function overview_page_function(event) {
 						<div class="card-body ccard-body">
 							<div class="card creditcard-classic_card d-flex align-items-center">
 								<div class="card-body creditcard-classic_card-body">
-									<span class="d-flex justify-content-between"><span><img src="img/srp-white.png" class="w20p"><span class="ccard-name">Limburg Bank</span></span><span><i class="fas fa-wifi"></i></span></span>
+									<span class="d-flex justify-content-between"><span><img src="img/logo.png" class="w20p"><span class="ccard-name">Limburg Bank</span></span><span><i class="fas fa-wifi"></i></span></span>
 									<div class="mt38p">
 										<div class="d-flex align-items-center">
 											<span class="ccard-status">Status</span>

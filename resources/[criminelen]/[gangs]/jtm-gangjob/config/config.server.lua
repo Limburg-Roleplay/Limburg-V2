@@ -40,6 +40,16 @@ local jobList = {
         [5] = "Subjefa",
         [6] = "Patron",
     },
+    niquenta = {
+        [1] = "Hankali",
+        [2] = "Memba",
+        [3] = "Cikakken memba",
+        [4] = "Mai harbi",
+        [5] = "Babban Mai harbi",
+        [6] = "Hannun dama",
+        [7] = "Shugaban kasa",
+        [8] = "Shugaba",
+    },
     vatoslocos = {
         [1] = "Cugine",
         [2] = "Associate",

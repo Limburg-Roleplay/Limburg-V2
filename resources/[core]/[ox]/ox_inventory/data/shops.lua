@@ -52,8 +52,8 @@ return {
 			id = 424, colour = 0, scale = 0.8
 		},
 		inventory = {
-			{ name = 'phone', price = 750},
-			{ name = 'radio', price = 500},
+			{ name = 'phone', price = 1000},
+			{ name = 'radio', price = 750},
 		}, locations = {
 			vec3(-657.0804, -857.6953, 24.5031)
 		}
@@ -79,14 +79,14 @@ return {
     politiekluis = {
         name = 'Politie | Uitrusting Kluis',
         inventory = {
-			{ name = 'WEAPON_COMBATPISTOL', price = 500, metadata = { registered = true, serial = 'Politie' }, },
-            { name = 'WEAPON_STUNGUN', price = 25, metadata = { registered = true, serial = 'Politie' }, },
-			{ name = 'WEAPON_NIGHTSTICK', price = 25, metadata = { registered = true, serial = 'Politie' }, },
-            { name = 'ammo-pistol-overheid', price = 5, metadata = { registered = false }, },
+			{ name = 'WEAPON_COMBATPISTOL', price = 1500, metadata = { registered = true, serial = 'Politie' }, },
+            { name = 'WEAPON_STUNGUN', price = 125, metadata = { registered = true, serial = 'Politie' }, },
+			{ name = 'WEAPON_NIGHTSTICK', price = 125, metadata = { registered = true, serial = 'Politie' }, },
+            { name = 'ammo-pistol-overheid', price = 100, metadata = { registered = false }, },
             { name = 'medkit', price = 250, metadata = { registered = false }, },
 			{ name = 'handcuffs', price = 50, metadata = { registered = true, serial = 'Politie' }, },
-			{ name = 'radio', price = 50, metadata = { registered = true, serial = 'Politie' }, },
-			{ name = 'phone', price = 75, metadata = { registered = true, serial = 'Politie' }, },
+			{ name = 'radio', price = 750, metadata = { registered = true, serial = 'Politie' }, },
+			{ name = 'phone', price = 1000, metadata = { registered = true, serial = 'Politie' }, },
 			{ name = 'repairkit', price = 150, metadata = { registered = true, serial = 'Politie' }, },
         },
 		groups = {
@@ -131,10 +131,10 @@ return {
                         { name = 'at_fm_scope_01', price = 50, metadata = { registered = true, serial = 'Politie' }, },
 
 			{ name = 'at_suppressor_light', price = 50, metadata = { registered = true, serial = 'Politie' }, },
-            { name = 'ammo-pistol-overheid', price = 15, metadata = { registered = false }, },
-            { name = 'ammo-smg-overheid', price = 30, metadata = { registered = false }, },
-            { name = 'ammo-shotgun-overheid', price = 30, metadata = { registered = false }, },
-            { name = 'ammo-rifle-overheid', price = 20, metadata = { registered = false }, },
+            { name = 'ammo-pistol-overheid', price = 115, metadata = { registered = false }, },
+            { name = 'ammo-smg-overheid', price = 130, metadata = { registered = false }, },
+            { name = 'ammo-shotgun-overheid', price = 130, metadata = { registered = false }, },
+            { name = 'ammo-rifle-overheid', price = 210, metadata = { registered = false }, },
 			{ name = 'dsischild', price = 1000, metadata = { registered = true, serial = 'Politie' }, },
 			{ name = 'repairkit', price = 1500, metadata = { registered = true, serial = 'Politie' }, },
         },
@@ -180,10 +180,10 @@ return {
                         { name = 'at_fm_scope_01', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
 
 			{ name = 'at_suppressor_light', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
-            { name = 'ammo-pistol-overheid', price = 15, metadata = { registered = false }, },
-            { name = 'ammo-smg-overheid', price = 30, metadata = { registered = false }, },
-            { name = 'ammo-shotgun-overheid', price = 30, metadata = { registered = false }, },
-            { name = 'ammo-rifle-overheid', price = 20, metadata = { registered = false }, },
+            { name = 'ammo-pistol-overheid', price = 115, metadata = { registered = false }, },
+            { name = 'ammo-smg-overheid', price = 130, metadata = { registered = false }, },
+            { name = 'ammo-shotgun-overheid', price = 130, metadata = { registered = false }, },
+            { name = 'ammo-rifle-overheid', price = 120, metadata = { registered = false }, },
 			{ name = 'dsischild', price = 1000, metadata = { registered = true, serial = 'Kmar' }, },
 			{ name = 'repairkit', price = 1500, metadata = { registered = true, serial = 'Kmar' }, },
         },
@@ -201,8 +201,8 @@ return {
             { name = 'WEAPON_MP5', price = 250, metadata = { registered = true, serial = 'Kmar' }, },
             { name = 'w_at_mp5_supp', price = 500, metadata = { registered = true, serial = 'Kmar' }, },
             { name = 'w_at_mp5_scope', price = 500, metadata = { registered = true, serial = 'Kmar' }, },
-            { name = 'ammo-pistol-overheid', price = 5, metadata = { registered = false }, },
-            { name = 'ammo-smg-overheid', price = 30, metadata = { registered = false }, },
+            { name = 'ammo-pistol-overheid', price =105, metadata = { registered = false }, },
+            { name = 'ammo-smg-overheid', price = 130, metadata = { registered = false }, },
 			{ name = 'handcuffs', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
             { name = 'medkit', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
 			{ name = 'radio', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
@@ -220,7 +220,7 @@ return {
 			{ name = 'WEAPON_GLOCK17', price = 500, metadata = { registered = true, serial = 'Kmar' }, },
             { name = 'WEAPON_STUNGUN', price = 25, metadata = { registered = true, serial = 'Kmar' }, },
 			{ name = 'WEAPON_NIGHTSTICK', price = 25, metadata = { registered = true, serial = 'Kmar' }, },
-            { name = 'ammo-pistol-overheid', price = 5, metadata = { registered = false }, },
+            { name = 'ammo-pistol-overheid', price = 105, metadata = { registered = false }, },
 			{ name = 'handcuffs', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
             { name = 'medkit', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
 			{ name = 'radio', price = 50, metadata = { registered = true, serial = 'Kmar' }, },
@@ -237,17 +237,18 @@ return {
         inventory = {
 
                                  -- PISTOLS --            
-            { name = 'WEAPON_PISTOL50', price = 400000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_FM1_M9A3', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SIG', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_GLOCK19X', price = 360000, metadata = { registered = true }, },
-            { name = 'WEAPON_SNSPISTOL', price = 300000, metadata = { registered = true }, },
+            { name = 'WEAPON_PISTOL50', price = 700000, metadata = { registered = true }, }, 
+            { name = 'WEAPON_PISTOL_MK2', price = 675000, metadata = { registered = true }, },
+            { name = 'WEAPON_FM1_M9A3', price = 650000, metadata = { registered = true }, },
+            { name = 'WEAPON_SIG', price = 650000, metadata = { registered = true }, },
+            { name = 'WEAPON_GLOCK19X', price = 660000, metadata = { registered = true }, },
+            { name = 'WEAPON_SNSPISTOL', price = 600000, metadata = { registered = true }, },
 
                                  -- MESSEN --                         
-			{ name = 'WEAPON_SwitchBlade', price = 50000 },
-			{ name = 'WEAPON_BAT', price = 35000 },
-			{ name = 'WEAPON_KNIFE', price = 35000 },
-			{ name = 'WEAPON_MACHETE', price = 30000 },
+			{ name = 'WEAPON_SwitchBlade', price = 100000 },
+			{ name = 'WEAPON_BAT', price = 85000 },
+			{ name = 'WEAPON_KNIFE', price = 85000 },
+			{ name = 'WEAPON_MACHETE', price = 80000 },
         }
 	},
 
@@ -255,7 +256,7 @@ return {
         name = 'Gang Level 1: Ammo Inkoop',
         inventory = {
                                  -- Ammo -- 
-			{ name = 'ammo-pistol', price = 100, },
+			{ name = 'ammo-pistol', price = 200, },
 
         }
 	},
@@ -263,8 +264,8 @@ return {
     extra = {
         name = 'Gang: Extra Inkoop',
         inventory = {
-            { name = 'phone', price = 750, metadata = { registered = false }, },
-            { name = 'radio', price = 500, metadata = { registered = false }, },
+            { name = 'phone', price = 1500, metadata = { registered = false }, },
+            { name = 'radio', price = 1200, metadata = { registered = false }, },
             { name = 'tiewraps', price = 1250, metadata = { registered = false }, },
 
         }
@@ -305,20 +306,21 @@ return {
         name = 'Gang Level 2: Inkoop Wapens',
         inventory = {
                                  -- SMGS --    
-            { name = 'WEAPON_MINISMG', price = 575000, metadata = { registered = true }, },
+            { name = 'WEAPON_MINISMG', price = 975000, metadata = { registered = true }, },
 
                                  -- PISTOLS --            
-            { name = 'WEAPON_PISTOL50', price = 400000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_FM1_M9A3', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SNSPISTOL', price = 300000, metadata = { registered = true }, },
-            { name = 'WEAPON_GLOCK19X', price = 360000, metadata = { registered = true }, },
-            { name = 'WEAPON_SIG', price = 350000, metadata = { registered = true }, },
+                     { name = 'WEAPON_PISTOL50', price = 700000, metadata = { registered = true }, }, 
+                     { name = 'WEAPON_PISTOL_MK2', price = 675000, metadata = { registered = true }, },
+                     { name = 'WEAPON_FM1_M9A3', price = 650000, metadata = { registered = true }, },
+                     { name = 'WEAPON_SIG', price = 650000, metadata = { registered = true }, },
+                     { name = 'WEAPON_GLOCK19X', price = 660000, metadata = { registered = true }, },
+                     { name = 'WEAPON_SNSPISTOL', price = 600000, metadata = { registered = true }, },
 
                                  -- MESSEN --                         
-			{ name = 'WEAPON_SwitchBlade', price = 50000 },
-			{ name = 'WEAPON_BAT', price = 35000 },
-			{ name = 'WEAPON_KNIFE', price = 35000 },
-			{ name = 'WEAPON_MACHETE', price = 30000 },
+                     { name = 'WEAPON_SwitchBlade', price = 100000 },
+                     { name = 'WEAPON_BAT', price = 85000 },
+                     { name = 'WEAPON_KNIFE', price = 85000 },
+                     { name = 'WEAPON_MACHETE', price = 80000 },
         }
 	},
 
@@ -326,8 +328,8 @@ return {
         name = 'Gang Level 2: Ammo Inkoop',
         inventory = {
                                  -- Ammo -- 
-			{ name = 'ammo-pistol', price = 100, },
-            { name = 'ammo-smg', price = 150, },
+			{ name = 'ammo-pistol', price = 200, },
+            { name = 'ammo-smg', price = 300, },
 
         }
 	},
@@ -335,8 +337,8 @@ return {
     extra2 = {
         name = 'Gang Level 2: Extra Inkoop',
         inventory = {
-            { name = 'phone', price = 750, metadata = { registered = false }, },
-            { name = 'radio', price = 500, metadata = { registered = false }, },
+            { name = 'phone', price = 1500, metadata = { registered = false }, },
+            { name = 'radio', price = 1200, metadata = { registered = false }, },
             { name = 'tiewraps', price = 1250, metadata = { registered = false }, },
 
         }
@@ -378,26 +380,26 @@ return {
     gangshop3 = {
         name = 'Gang Level 3: Inkoop Wapens',
         inventory = {
+                                -- shotguns--
+            { name = 'WEAPON_SAWNOFFSHOTGUN', price = 800000, metadata = { registered = true }, },
 
                                  -- SMGS --    
-            { name = 'WEAPON_MINIUZI', price = 650000, metadata = { registered = true }, },
-            { name = 'WEAPON_MINISMG', price = 575000, metadata = { registered = true }, },
-
-            { name = 'WEAPON_SAWNOFFSHOTGUN', price = 425000, metadata = { registered = true }, },  
+            { name = 'WEAPON_MINIUZI', price = 1075000, metadata = { registered = true }, },
+            { name = 'WEAPON_MINISMG', price = 975000, metadata = { registered = true }, },
 
                                  -- PISTOLS --            
-            { name = 'WEAPON_PISTOL50', price = 400000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_FM1_M9A3', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SNSPISTOL', price = 300000, metadata = { registered = true }, },
-            { name = 'WEAPON_SIG', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_GLOCK19X', price = 360000, metadata = { registered = true }, },
-
+                     { name = 'WEAPON_PISTOL50', price = 700000, metadata = { registered = true }, },
+                     { name = 'WEAPON_PISTOL_MK2', price = 675000, metadata = { registered = true }, }, 
+                     { name = 'WEAPON_FM1_M9A3', price = 650000, metadata = { registered = true }, },
+                     { name = 'WEAPON_SIG', price = 650000, metadata = { registered = true }, },
+                     { name = 'WEAPON_GLOCK19X', price = 660000, metadata = { registered = true }, },
+                     { name = 'WEAPON_SNSPISTOL', price = 600000, metadata = { registered = true }, },
 
                                  -- MESSEN --                         
-			{ name = 'WEAPON_SwitchBlade', price = 50000 },
-			{ name = 'WEAPON_BAT', price = 35000 },
-			{ name = 'WEAPON_KNIFE', price = 35000 },
-			{ name = 'WEAPON_MACHETE', price = 30000 },
+                     { name = 'WEAPON_SwitchBlade', price = 100000 },
+                     { name = 'WEAPON_BAT', price = 85000 },
+                     { name = 'WEAPON_KNIFE', price = 85000 },
+                     { name = 'WEAPON_MACHETE', price = 80000 },
         }
 	},
 
@@ -405,8 +407,8 @@ return {
         name = 'Gang Level 3: Ammo Inkoop',
         inventory = {
                                  -- Ammo -- 
-			{ name = 'ammo-pistol', price = 100, },
-            { name = 'ammo-smg', price = 150, },
+			{ name = 'ammo-pistol', price = 200, },
+            { name = 'ammo-smg', price = 300, },
             { name = 'ammo-shotgun', price = 250, },
 
         }
@@ -415,8 +417,8 @@ return {
     extra3 = {
         name = 'Gang Level 3: Extra Inkoop',
         inventory = {
-            { name = 'phone', price = 750, metadata = { registered = false }, },
-            { name = 'radio', price = 500, metadata = { registered = false }, },
+            { name = 'phone', price = 1500, metadata = { registered = false }, },
+            { name = 'radio', price = 1200, metadata = { registered = false }, },
             { name = 'tiewraps', price = 1250, metadata = { registered = false }, },
 
         }
@@ -473,27 +475,31 @@ return {
         name = 'Gang Level 4: Inkoop Wapens',
         inventory = {
   
-            { name = 'WEAPON_AKS74U', price = 975000, metadata = { registered = true }, },
+            { name = 'WEAPON_ASSAULTRIFLE_MK2', price = 1600000, metadata = { registered = true }, },
+            { name = 'WEAPON_AKS74U', price = 1300000, metadata = { registered = true }, },
+        
+                                -- shotguns--
+               { name = 'WEAPON_SAWNOFFSHOTGUN', price = 800000, metadata = { registered = true }, },
 
-                                 -- SMGS --  
-            { name = 'WEAPON_HKUMP', price = 700000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_MINISMG', price = 575000, metadata = { registered = true }, },
+                                -- SMGS --   
+           { name = 'WEAPON_HKUMP', price = 1100000, metadata = { registered = true }, }, 
+           { name = 'WEAPON_AGC', price = 1100000, metadata = { registered = true }, }, 
+           { name = 'WEAPON_MINIUZI', price = 1075000, metadata = { registered = true }, },
+           { name = 'WEAPON_MINISMG', price = 975000, metadata = { registered = true }, },
 
-            { name = 'WEAPON_SAWNOFFSHOTGUN', price = 425000, metadata = { registered = true }, },  
+                                -- PISTOLS --            
+                    { name = 'WEAPON_PISTOL50', price = 700000, metadata = { registered = true }, }, 
+                    { name = 'WEAPON_PISTOL_MK2', price = 675000, metadata = { registered = true }, },
+                    { name = 'WEAPON_FM1_M9A3', price = 650000, metadata = { registered = true }, },
+                    { name = 'WEAPON_SIG', price = 650000, metadata = { registered = true }, },
+                    { name = 'WEAPON_GLOCK19X', price = 660000, metadata = { registered = true }, },
+                    { name = 'WEAPON_SNSPISTOL', price = 600000, metadata = { registered = true }, },
 
-                                 -- PISTOLS --            
-            { name = 'WEAPON_PISTOL50', price = 400000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_FM1_M9A3', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SNSPISTOL', price = 300000, metadata = { registered = true }, },
-            { name = 'WEAPON_SIG', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_GLOCK19X', price = 360000, metadata = { registered = true }, },
-
-
-                                 -- MESSEN --                         
-			{ name = 'WEAPON_SwitchBlade', price = 50000 },
-			{ name = 'WEAPON_BAT', price = 35000 },
-			{ name = 'WEAPON_KNIFE', price = 35000 },
-			{ name = 'WEAPON_MACHETE', price = 30000 },
+                                -- MESSEN --                         
+                    { name = 'WEAPON_SwitchBlade', price = 100000 },
+                    { name = 'WEAPON_BAT', price = 85000 },
+                    { name = 'WEAPON_KNIFE', price = 85000 },
+                    { name = 'WEAPON_MACHETE', price = 80000 },
         }
 	},
 
@@ -501,10 +507,10 @@ return {
         name = 'Gang Level 4: Ammo Inkoop',
         inventory = {
                                  -- Ammo -- 
-			{ name = 'ammo-pistol', price = 100, },
-            { name = 'ammo-smg', price = 150, },
-            { name = 'ammo-shotgun', price = 250, },
-            { name = 'ammo-rifle', price = 450, },
+                                 { name = 'ammo-pistol', price = 200, },
+                                 { name = 'ammo-smg', price = 300, },
+                                 { name = 'ammo-shotgun', price = 250, },
+                                 { name = 'ammo-rifle', price = 550, },
 
         }
 	},
@@ -512,8 +518,8 @@ return {
     extra4 = {
         name = 'Gang Level 4: Extra Inkoop',
         inventory = {
-            { name = 'phone', price = 750, metadata = { registered = false }, },
-            { name = 'radio', price = 500, metadata = { registered = false }, },
+            { name = 'phone', price = 1500, metadata = { registered = false }, },
+            { name = 'radio', price = 1200, metadata = { registered = false }, },
             { name = 'tiewraps', price = 1250, metadata = { registered = false }, },
 
         }
@@ -578,29 +584,35 @@ return {
         name = 'Gang Level 5: Inkoop Wapens',
         inventory = {
 
-            { name = 'WEAPON_AK74_1', price = 1200000, metadata = { registered = true }, },  
-            { name = 'WEAPON_AKS74U', price = 975000, metadata = { registered = true }, },
+            { name = 'WEAPON_ASSAULTRIFLE_MK2', price = 1600000, metadata = { registered = true }, },
+            { name = 'WEAPON_NVRIFLE', price = 1600000, metadata = { registered = true }, },
+            { name = 'WEAPON_AK74_1', price = 1450000, metadata = { registered = true }, },  
+            { name = 'WEAPON_AKS74U', price = 1350000, metadata = { registered = true }, },
+            
 
-                                 -- SMGS --  
-            { name = 'WEAPON_HKUMP', price = 700000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_AGC', price = 750000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_MINISMG', price = 575000, metadata = { registered = true }, },
+                                -- shotguns--
+               { name = 'WEAPON_SAWNOFFSHOTGUN', price = 800000, metadata = { registered = true }, },
+               { name = 'WEAPON_BENELLIM4', price = 1100000, metadata = { registered = true }, }, 
 
-            { name = 'WEAPON_SAWNOFFSHOTGUN', price = 425000, metadata = { registered = true }, },  
+                                -- SMGS --   
+           { name = 'WEAPON_HKUMP', price = 1100000, metadata = { registered = true }, }, 
+           { name = 'WEAPON_AGC', price = 1100000, metadata = { registered = true }, }, 
+           { name = 'WEAPON_MINIUZI', price = 1075000, metadata = { registered = true }, },
+           { name = 'WEAPON_MINISMG', price = 875000, metadata = { registered = true }, },
 
-                                 -- PISTOLS --            
-            { name = 'WEAPON_PISTOL50', price = 400000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_FM1_M9A3', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SNSPISTOL', price = 300000, metadata = { registered = true }, },
-            { name = 'WEAPON_SIG', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_GLOCK19X', price = 360000, metadata = { registered = true }, },
+                                -- PISTOLS --            
+                    { name = 'WEAPON_PISTOL50', price = 700000, metadata = { registered = true }, }, 
+                    { name = 'WEAPON_PISTOL_MK2', price = 675000, metadata = { registered = true }, },
+                    { name = 'WEAPON_FM1_M9A3', price = 650000, metadata = { registered = true }, },
+                    { name = 'WEAPON_SIG', price = 650000, metadata = { registered = true }, },
+                    { name = 'WEAPON_GLOCK19X', price = 660000, metadata = { registered = true }, },
+                    { name = 'WEAPON_SNSPISTOL', price = 500000, metadata = { registered = true }, },
 
-
-                                 -- MESSEN --                         
-			{ name = 'WEAPON_SwitchBlade', price = 50000 },
-			{ name = 'WEAPON_BAT', price = 35000 },
-			{ name = 'WEAPON_KNIFE', price = 35000 },
-			{ name = 'WEAPON_MACHETE', price = 30000 },
+                                -- MESSEN --                         
+                    { name = 'WEAPON_SwitchBlade', price = 100000 },
+                    { name = 'WEAPON_BAT', price = 85000 },
+                    { name = 'WEAPON_KNIFE', price = 85000 },
+                    { name = 'WEAPON_MACHETE', price = 80000 },
         }
 	},
 
@@ -608,10 +620,10 @@ return {
         name = 'Gang Level 5: Ammo Inkoop',
         inventory = {
                                  -- Ammo -- 
-			{ name = 'ammo-pistol', price = 220, },
-            { name = 'ammo-smg', price = 280, },
-            { name = 'ammo-shotgun', price = 290, },
-            { name = 'ammo-rifle', price = 550, },
+                                 { name = 'ammo-pistol', price = 200, },
+                                 { name = 'ammo-smg', price = 300, },
+                                 { name = 'ammo-shotgun', price = 250, },
+                                 { name = 'ammo-rifle', price = 550, },
 
         }
 	},
@@ -619,8 +631,8 @@ return {
     extra5 = {
         name = 'Gang Level 5: Extra Inkoop',
         inventory = {
-            { name = 'phone', price = 750, metadata = { registered = false }, },
-            { name = 'radio', price = 500, metadata = { registered = false }, },
+            { name = 'phone', price = 1500, metadata = { registered = false }, },
+            { name = 'radio', price = 1200, metadata = { registered = false }, },
             { name = 'tiewraps', price = 1250, metadata = { registered = false }, },
 
         }
@@ -630,11 +642,18 @@ return {
         name = 'Gang: Suppressor Inkoop',
         inventory = {
 
-			{ name = 'at_suppressor_light', price = 50000, },
-			{ name = 'at_suppressor_heavy', price = 50000, },
-			{ name = 'at_fm_sup_10', price = 50000, },
-			{ name = 'markomods-shared-supp12', price = 50000, },
-			{ name = 'ak74_muz_07', price = 50000, },
+            { name = 'at_suppressor_light', price = 50000, },
+            { name = 'at_suppressor_heavy', price = 50000, },
+            { name = 'at_fm_sup_10', price = 50000, },
+            { name = 'markomods-shared-supp12', price = 50000, },
+            { name = 'at_uzi_supp2', price = 50000, },
+            { name = 'sigsupp', price = 50000, },
+            { name = 'at_ump_sup_04', price = 50000, },
+            { name = 'w_at_sg_benellim4_supp', price = 50000, },
+            { name = 'w_at_nvrifle_supp', price = 50000, },
+            { name = 'ak74_muz_07', price = 50000, },
+            { name = 'at_muzzle_tactical', price = 50000, },
+
 
         }
 	},
@@ -643,17 +662,21 @@ return {
         name = 'Gang: Scopes Inkoop',
         inventory = {
 
-			{ name = 'at_scope_macro', price = 50000, },
-			{ name = 'at_fm_scope_30', price = 50000, },
-			{ name = 'markomods-shared-scope1', price = 50000, },
-			{ name = 'markomods-shared-scope8', price = 50000, },
-			{ name = 'ak74_scope_02', price = 50000, },
-			{ name = 'ak74_scope_04', price = 50000, },
-			{ name = 'ak74_scope_05', price = 50000, },
-			{ name = 'ak74_scope_07', price = 50000, },
-			{ name = 'ak74_scope_08', price = 50000, },
-			{ name = 'at_uzi_scope6', price = 50000, },
-			{ name = 'at_uzi_supp2', price = 50000, },
+            { name = 'at_scope_macro', price = 50000, },
+            { name = 'at_fm_scope_30', price = 50000, },
+            { name = 'markomods-shared-scope1', price = 50000, },
+            { name = 'markomods-shared-scope8', price = 50000, },
+            { name = 'ak74_scope_02', price = 50000, },
+            { name = 'ak74_scope_04', price = 50000, },
+            { name = 'ak74_scope_05', price = 50000, },
+            { name = 'ak74_scope_07', price = 50000, },
+            { name = 'ak74_scope_08', price = 50000, },
+            { name = 'sigscope2', price = 50000, },
+            { name = 'w_at_nvrifle_scope_small', price = 50000, },
+            { name = 'at_uzi_scope6', price = 50000, },
+            { name = 'at_scope_macro', price = 50000, },
+            { name = 'at_scope_holo', price = 50000, },
+            { name = 'at_scope_medium', price = 50000, },
 
         }
 	},
@@ -662,7 +685,10 @@ return {
         name = 'Gang: Grips Inkoop',
         inventory = {
 
-			{ name = 'at_grip', price = 50000, },
+            { name = 'at_grip', price = 50000, },
+            { name = 'at_ump_grip_01', price = 50000, },
+            { name = 'w_at_nvrifle_afgrip', price = 50000, },
+            { name = 'w_at_nvrifle_afgrip', price = 50000, },
 
         }
 	},
@@ -671,12 +697,15 @@ return {
         name = 'Gang: Magazines Inkoop',
         inventory = {
 
-			{ name = 'at_m9a3_clip_02', price = 50000, },
-			{ name = 'at_clip_extended_pistol', price = 50000, },
-			{ name = 'at_clip_extended_smg', price = 50000, },
-			{ name = 'at_clip_extended_rifle', price = 50000, },
-			{ name = 'at_clip_drum_rifle', price = 75000, },
-			{ name = 'ak74_mag_09', price = 75000, },
+            { name = 'at_m9a3_clip_02', price = 50000, },
+            { name = 'at_clip_extended_pistol', price = 50000, },
+            { name = 'at_clip_extended_smg', price = 50000, },
+            { name = 'at_clip_extended_rifle', price = 50000, },
+            { name = 'at_clip_drum_rifle', price = 75000, },
+            { name = 'ak74_mag_09', price = 75000, },
+            { name = 'at_uzi_clip4', price = 50000, },
+            { name = 'w_ar_nvrifle_mag2', price = 50000, },
+            { name = 'at_ump_clip_02', price = 50000, },
 
         }
 	},
@@ -686,34 +715,25 @@ return {
         name = 'VIP: Wapens',
         inventory = {
 
-            { name = 'WEAPON_NVRIFLE', price = 1800000, metadata = { registered = true }, },
-            { name = 'WEAPON_BENELLIM4', price = 1600000, metadata = { registered = true }, },  
-            { name = 'WEAPON_AK74_1', price = 1600000, metadata = { registered = true }, },  
-            { name = 'WEAPON_AKS74U', price = 1200000, metadata = { registered = true }, },
 
 
-                                 -- SMGS --  
-            { name = 'WEAPON_HKUMP', price = 750000, metadata = { registered = true }, },
-            { name = 'WEAPON_AGC', price = 750000, metadata = { registered = true }, },
-            { name = 'WEAPON_MINIUZI', price = 700000, metadata = { registered = true }, },
-            { name = 'WEAPON_MINISMG', price = 675000, metadata = { registered = true }, },
-
-
-            { name = 'WEAPON_SAWNOFFSHOTGUN', price = 400000, metadata = { registered = true }, },
+            { name = 'WEAPON_SAWNOFFSHOTGUN', price = 800000, metadata = { registered = true }, },
+            { name = 'WEAPON_BENELLIM4', price = 1100000, metadata = { registered = true }, },
   
 
                                  -- PISTOLS --            
-            { name = 'WEAPON_PISTOL50', price = 400000, metadata = { registered = true }, }, 
-            { name = 'WEAPON_FM1_M9A3', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SIG', price = 350000, metadata = { registered = true }, },
-            { name = 'WEAPON_SNSPISTOL', price = 300000, metadata = { registered = true }, },
-            { name = 'WEAPON_GLOCK19X', price = 360000, metadata = { registered = true }, },
+                         { name = 'WEAPON_PISTOL50', price = 700000, metadata = { registered = true }, }, 
+                         { name = 'WEAPON_PISTOL_MK2', price = 675000, metadata = { registered = true }, },
+                         { name = 'WEAPON_FM1_M9A3', price = 650000, metadata = { registered = true }, },
+                         { name = 'WEAPON_SIG', price = 650000, metadata = { registered = true }, },
+                         { name = 'WEAPON_GLOCK19X', price = 660000, metadata = { registered = true }, },
+                         { name = 'WEAPON_SNSPISTOL', price = 500000, metadata = { registered = true }, },
 
                                  -- MESSEN --                         
-			{ name = 'WEAPON_SwitchBlade', price = 40000 },
-			{ name = 'WEAPON_BAT', price = 25000 },
-			{ name = 'WEAPON_KNIFE', price = 25000 },
-			{ name = 'WEAPON_MACHETE', price = 20000 },
+                    { name = 'WEAPON_SwitchBlade', price = 900000 },
+                    { name = 'WEAPON_BAT', price = 85000 },
+                    { name = 'WEAPON_KNIFE', price = 85000 },
+                     { name = 'WEAPON_MACHETE', price = 80000 },
         }
 	},
 
@@ -721,7 +741,7 @@ return {
         name = 'VIP: Ammo',
         inventory = {
                                  -- Ammo -- 
-			{ name = 'ammo-pistol', price = 100, },
+			{ name = 'ammo-pistol', price = 200, },
             { name = 'ammo-smg', price = 150, },
             { name = 'ammo-shotgun', price = 250, },
             { name = 'ammo-rifle', price = 450, },
@@ -744,45 +764,6 @@ return {
 			{ name = 'sigmag2', price = 50000, },
 			{ name = 'sigsupp', price = 50000, },
 
-			{ name = 'markomods-shared-supp12', price = 50000, },
-			{ name = 'markomods-shared-scope1', price = 50000, },
-			{ name = 'markomods-shared-scope8', price = 50000, },
-			{ name = 'markomods-shared-supp12', price = 50000, },
-
-			{ name = 'at_uzi_scope6', price = 50000, },
-			{ name = 'at_uzi_stock2', price = 50000, },
-			{ name = 'at_uzi_clip4', price = 50000, },
-			{ name = 'at_uzi_supp2', price = 50000, },
-
-			{ name = 'at_ak74u_clip_09', price = 50000, },
-			{ name = 'at_ak74u_scope_13', price = 50000, },
-			{ name = 'at_ak74u_flash_10', price = 50000, },
-			{ name = 'at_ak74u_muzzle_09', price = 50000, },
-
-			{ name = 'at_ump_sup_04', price = 50000, },
-			{ name = 'at_ump_sight_03', price = 50000, },
-			{ name = 'at_ump_sight_06', price = 50000, },
-			{ name = 'at_ump_grip_01', price = 50000, },
-			{ name = 'at_ump_flashlight_01', price = 50000, },
-			{ name = 'at_ump_clip_02', price = 50000, },
-
-            { name = 'w_at_nvrifle_afgrip', price = 50000, },
-			{ name = 'w_ar_nvrifle_mag2', price = 50000, },
-			{ name = 'w_at_nvrifle_scope_small', price = 50000, },
-			{ name = 'w_at_nvrifle_supp', price = 50000, },
-            { name = 'w_at_sg_benellim4_supp', price = 50000, },
-
-			{ name = 'ak74_muz_07', price = 50000, },
-			{ name = 'ak74_scope_02', price = 50000, },
-			{ name = 'ak74_scope_04', price = 50000, },
-			{ name = 'ak74_scope_05', price = 50000, },
-			{ name = 'ak74_scope_07', price = 50000, },
-			{ name = 'ak74_scope_08', price = 50000, },
-			{ name = 'ak74_mag_09', price = 75000, },
-
-			{ name = 'at_clip_extended_pistol', price = 50000, },
-			{ name = 'at_clip_extended_smg', price = 50000, },
-
         }
 	},
 
@@ -795,7 +776,7 @@ return {
 			{ name = 'at_glock_flashlight', price = 250 },
 			{ name = 'at_glock_suppressor', price = 250 },
 			{ name = 'at_glock_scope_1', price = 250 },
-			{ name = 'ammo-9', price = 10 },
+			{ name = 'ammo-9', price = 110 },
 			{ name = 'bewijszak', price = 0 },
         },
 		groups = {

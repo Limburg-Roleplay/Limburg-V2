@@ -12,7 +12,7 @@ local function SendShootingAlert(coords, gender)
 
     local data = {
         code = '10-71',
-        message = 'Shots in area',
+        message = 'Shots in de omgeving!',
         extraInfo = {
             {icon = 'fa-venus-mars', info = gender},
         },
@@ -38,7 +38,7 @@ local function SendStoreRobbery(coords, gender)
 
     local data = {
         code = '10-90',
-        message = 'Store robbery in progress',
+        message = 'Winkeloverval gaande',
         extraInfo = {
             {icon = 'fa-store', info = gender},
         },
@@ -66,7 +66,7 @@ local function SendBankRobbery(coords, gender)
 
     local data = {
         code = '10-90',
-        message = 'Bank robbery in progress',
+        message = 'Bankoverval gaande',
         extraInfo = {
             {icon = 'fa-vault', info = gender},
         },
@@ -93,7 +93,7 @@ local function SendHouseRobbery(coords, gender)
 
     local data = {
         code = '10-90',
-        message = 'House robbery in progress',
+        message = 'Woninginbraak gaande',
         extraInfo = {
             {icon = 'fa-house', info = gender},
         },
@@ -120,7 +120,7 @@ local function SendDrugSellAlert(coords, gender)
 
     local data = {
         code = '10-13',
-        message = 'Drug sell in progress',
+        message = 'Drugsverkoop gaande',
         extraInfo = {
             {icon = 'fa-pills', info = 'Gender:' .. gender},
         },
@@ -147,7 +147,7 @@ local function SendInjuredPersonAlert(coords, gender)
 
     local data = {
         code = '10-69',
-        message = 'Person injured required help',
+        message = 'Persoon gewond, hulp vereist',
         extraInfo = {
             {icon = 'fa-skull', info = 'Gender:' .. gender},
         },
@@ -174,7 +174,7 @@ local function SendOfficerDown(coords, gender)
 
     local data = {
         code = '10-99',
-        message = 'Officer down required help',
+        message = 'Agent neergeschoten, hulp vereist',
         extraInfo = {
             {icon = 'fa-skull', info = gender},
         },

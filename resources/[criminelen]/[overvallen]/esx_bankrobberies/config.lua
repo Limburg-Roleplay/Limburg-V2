@@ -1,9 +1,9 @@
 Config = {}
-Config.MinPolice = 3
+Config.MinPolice = 0
 Config.BankHeists = {
     ["Fleeca_Bank_Highway"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
 
         ["Bank_Vault"] = {
             ["model"] = -63539571,
@@ -32,7 +32,7 @@ Config.BankHeists = {
 
     ["Fleeca_Bank_Center"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
 
         ["Bank_Vault"] = {
             ["model"] = 2121050683,
@@ -57,7 +57,7 @@ Config.BankHeists = {
 
     ["Fleeca_Bank_Top"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
 
         ["Bank_Vault"] = {
             ["model"] = 2121050683,
@@ -81,7 +81,7 @@ Config.BankHeists = {
     },
     ["Fleeca_Lombank"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
 
         ["Bank_Vault"] = {
             ["model"] = 2121050683,
@@ -103,7 +103,7 @@ Config.BankHeists = {
     },
     ["Fleeca_Casino"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
 
         ["Bank_Vault"] = {
             ["model"] = 2121050683,
@@ -125,7 +125,7 @@ Config.BankHeists = {
     },
     ["Fleeca_SuperSandy"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
 
         ["Bank_Vault"] = {
             ["model"] = 2121050683,
@@ -145,7 +145,7 @@ Config.BankHeists = {
     },
     ["Fleeca_Paleto"] = {
 
-        ["Money"] = math.random(250000, 400000),
+        ["Money"] = math.random(350000, 500000),
         ["Bank_Vault"] = {
             ["model"] = 1185745326,
             ["x"] = -104.6049,

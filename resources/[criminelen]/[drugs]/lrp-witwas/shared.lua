@@ -1,6 +1,6 @@
 Shared = {}
     
-Shared.percentage = math.random(50, 80) 
+Shared.percentage = math.random(30, 70) 
 
 Shared.StartLocations = {
     {

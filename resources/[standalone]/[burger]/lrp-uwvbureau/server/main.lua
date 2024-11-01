@@ -7,5 +7,5 @@ RegisterServerEvent('lrp-uwvbureau:server:join:job')
 AddEventHandler('lrp-uwvbureau:server:join:job', function(job)
 	local src = source
 	local xPlayer = ESX.GetPlayerFromId(src)
-	xPlayer.setJob(job.job, 0)
+	xPlayer.setJob2(job.job, 0)
 end)

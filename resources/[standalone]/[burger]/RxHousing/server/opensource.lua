@@ -159,6 +159,17 @@ function GetMoney(src, type)
     end
 end
 
+ESX.RegisterServerCallback('RxHousing:hasItem', function(source, cb, itemName)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local item = xPlayer.getInventoryItem(itemName)
+    if item and item.count > 0 then 
+        cb(true)
+        TriggerEvent('td_logs:sendLog', 'https://discord.com/api/webhooks/1301330739689685092/V-JUN59-c0exRsCyCY0Y-CtRmZTqRWpAC-b37ONZZoDodipyK8pI7-11hfzxu1lX1stt', source, {title = "Huis ingevallen", desc = "[".. source .."] ".. GetPlayerName(source) .." is zojuist een huis binnen gevallen."})
+    else
+        cb(false)
+    end
+end)
+
 function RemoveMoney(src, type, amount)
     if ESX then
         ESX.GetPlayerFromId(src).removeAccountMoney(type, amount)

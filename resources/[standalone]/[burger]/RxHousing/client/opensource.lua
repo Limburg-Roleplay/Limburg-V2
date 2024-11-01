@@ -139,12 +139,18 @@ function BreakInMinigame()
 end
 
 function RaidMinigame()
-    TaskStartScenarioInPlace(PlayerPedId(), "WORLD_HUMAN_STAND_MOBILE", 0, true)
+    local player = PlayerPedId()
     
-    local result = lib.skillCheck({'easy', 'easy', 'easy'}, {'w', 'a', 's', 'd'})
-    
-    ClearPedTasks(PlayerPedId())
-    return result
+    ESX.TriggerServerCallback('RxHousing:hasItem', function(hasItem)
+        if hasItem then
+            TaskStartScenarioInPlace(player, "WORLD_HUMAN_STAND_MOBILE", 0, true)
+            local result = lib.skillCheck({'easy', 'easy', 'easy'}, {'w', 'a', 's', 'd'})
+            ClearPedTasks(player)
+            return result
+        else
+            exports['okokNotify']:Alert("Error", "You don't have the required item to start this minigame.", 5000, 'error')
+        end
+    end, 'stormram')
 end
 
 function Notify(msg, type)

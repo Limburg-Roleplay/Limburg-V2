@@ -148,7 +148,7 @@ Config.Boats = { -- Add all of your boats here so the script sets them as boats 
 
 Config.Stands = { -- Vehicle shops informations
 	{
-		name = "Vehicle Shop", -- name of the vehicle shop
+		name = "Car Dealer", -- name of the vehicle shop
 		licenseType = "", -- if you want to use a license system you'll need to set it up on sv_utils.lua
 		currency = "bank", -- used to buy/sell the business and buy vehicle
 		hasOwner = false, -- true = this vehicle shop can have a owner and will need maintenance to have stock | false = no owner and with vehicles all the time, price = max_price set on the database
@@ -164,7 +164,7 @@ Config.Stands = { -- Vehicle shops informations
 		},
 		radius = 1, -- Interaction radius for the markers
 		price = 10000, -- Price of the vehicle shop
-		blip = {blipId = 225, blipColor = 3, blipScale = 0.9, blipText = "Vehicle shop"}, -- Blip informations for vehicleshop blip
+		blip = {blipId = 225, blipColor = 3, blipScale = 0.9, blipText = "Car Dealer"}, -- Blip informations for vehicleshop blip
 		ownerBlip = {blipId = 225, blipColor = 2, blipScale = 0.9, blipText = "Vehicleshop Panel"}, -- Blip informations for shops you own/work for
 		buyBlip = {blipId = 225, blipColor = 1, blipScale = 0.9, blipText = "Vehicleshop to buy"}, -- Blip informations for shop on sale
 		marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0}, -- Marker informations for the vehicle shop
@@ -188,7 +188,7 @@ Config.Stands = { -- Vehicle shops informations
 		id = "alwaysshop1",
 	},]]--
 	{
-		name = "Air Shop",
+		name = "Luchtvaart Dealer",
 		licenseType = "",
 		currency = "bank",
 		hasOwner = false,
@@ -203,7 +203,7 @@ Config.Stands = { -- Vehicle shops informations
 		},
 		radius = 1,
 		price = 12000,
-		blip = {blipId = 64, blipColor = 3, blipScale = 0.9, blipText = "Air shop"},
+		blip = {blipId = 64, blipColor = 3, blipScale = 0.9, blipText = "Luchtvaart Dealer"},
 		ownerBlip = {blipId = 64, blipColor = 2, blipScale = 0.9, blipText = "Air shop Panel"},
 		buyBlip = {blipId = 64, blipColor = 1, blipScale = 0.9, blipText = "Air shop to buy"},
 		marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
@@ -213,7 +213,7 @@ Config.Stands = { -- Vehicle shops informations
 		id = "air1",
 	},
 	{
-		name = "Water Shop",
+		name = "Boat Dealer",
 		licenseType = "",
 		currency = "bank",
 		hasOwner = false,
@@ -228,9 +228,9 @@ Config.Stands = { -- Vehicle shops informations
 		},
 		radius = 1,
 		price = 14000,
-		blip = {blipId = 427, blipColor = 3, blipScale = 0.9, blipText = "Water shop"},
-		ownerBlip = {blipId = 427, blipColor = 2, blipScale = 0.9, blipText = "Water shop Panel"},
-		buyBlip = {blipId = 427, blipColor = 1, blipScale = 0.9, blipText = "Water shop to buy"},
+		blip = {blipId = 427, blipColor = 3, blipScale = 0.9, blipText = "Boat Dealer"},
+		ownerBlip = {blipId = 427, blipColor = 2, blipScale = 0.9, blipText = "Boat Dealer Panel"},
+		buyBlip = {blipId = 427, blipColor = 1, blipScale = 0.9, blipText = "Boat Dealer to buy"},
 		marker = {id = 20, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
 		ownerMarker = {id = 21, color = {r = 31, g = 94, b = 255, a = 90}, size = {x = 0.5, y = 0.5, z = 0.5}, bobUpAndDown = 0, faceCamera = 0, rotate = 1, drawOnEnts = 0, textureDict = 0, textureName = 0},
 		bigVehicles = true,

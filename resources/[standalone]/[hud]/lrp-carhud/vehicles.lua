@@ -63,7 +63,7 @@ vehicles = {
     [`nerossmk2`] = 321,
     [`nexus`] = 263,
     [`niner`] = 285,
-    [`nriata`] = 255,
+    [`nriata`] = 261,
     [`nsandstorm`] = 232,
     [`nspeedo`] = 212,
     [`oraclelwb`] = 252,
@@ -72,9 +72,32 @@ vehicles = {
     [`schafter3rs`] = 283,
     [`sentinels`] = 263,
     [`shinobir`] = 313,
-    [`tempestaa`] = 308,
+    [`tempesta`] = 308,
     [`turismowb`] = 312,
     [`xp1`] = 299,
+    [`rebelr`] = 289,
+    [`baller7r`] = 284,
+    -- OVERHEID KMAR
+    [`kmarargent2`] = 308,
+    [`kmardubstag`] = 269,
+    [`kmareveron`] = 252,
+    -- AMBULANCE
+    [`ambuargento`] = 301,
+    [`ambuimperia`] = 269,
+    [`ambujogger`] = 249,
+    [`ambusandsto`] = 261,
+    -- POLITIE
+    [`polargento1`] = 310,
+    [`polargento2`] = 305,
+    [`poleveron`] = 245,
+    [`polimperial`] = 261,
+    [`polrebla`] = 281,
+    [`polthrust`] = 291,
+    -- UNMAREKD
+    [`upolballer`] = 268,
+    [`upolschafte`] = 303,
+    [`upolstreite`] = 308,
+    [`rrdominatorgte`] = 307,
 }
 
 --[[ voobeeld

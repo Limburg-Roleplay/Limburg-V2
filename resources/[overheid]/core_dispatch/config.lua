@@ -1,6 +1,6 @@
 Config = {
 
-	NewESX = true, -- True if you have es_extended version > 1.8, false instead.
+	NewESX = false, -- True if you have es_extended version > 1.8, false instead.
 	OpenMenuKey = '-', -- Key to open the dispatch menu (Leave blank if you dont need a key)
 
 	EnableUnitArrivalNotice = true, -- Give player notice that the unit is arriving to them! (Triggered when any unit accepts the call)
@@ -18,7 +18,7 @@ Config = {
 	-- Shooting Alert Part --
 	-------------------------
 
-	EnableShootingAlerts = true, -- Alerts when player shoot in shooting zones or nearby npcs
+	EnableShootingAlerts = false, -- Alerts when player shoot in shooting zones or nearby npcs
 
 	NPCShootingReport = false, -- Alerts when shot nearby npcs
 	NPCReportRadius = 50.0, -- How close to npcs player need to be to get an alert
@@ -110,25 +110,26 @@ Config = {
 	},
 
 	Text = {
-		['call_removed'] = 'Call was removed',
-		['backup_requested'] = 'Backup requested',
-		['call_forwarded'] = 'Call forwarded',
-		['someone_is_reacting'] = 'Unit is arriving to your location!',
-		['offduty'] = 'Offduty is not set up, check config file',
-		['alerts_turned_off'] = 'Alerts turned off!',
-		['alerts_turned_on'] = 'Alerts turned on!',
-		['phone_number_copied'] = 'Phone number copied',
-		['unit_blips_turned_on'] = 'Units are now shown',
-		['unit_blips_turned_off'] = 'Units are now hidden',
-		['call_blips_turned_on'] = 'Call blips shown',
-		['call_blips_turned_off'] = 'Call blips hidden',
-		['callsign_changed'] = 'Call sign changed',
-		['no_permission'] = 'You dont have permissions!',
-		['callsign_char_long'] = 'Too many characters! 3 Max',
-		['accepted'] = 'Accepted',
-		['active_units_error'] = 'Cannot remove call with active units',
-		['cant_accept_call'] = 'Cant accept call because it was removed'
+		['call_removed'] = 'Oproep is verwijderd',
+		['backup_requested'] = 'Backup aangevraagd',
+		['call_forwarded'] = 'Oproep doorgestuurd',
+		['someone_is_reacting'] = 'Een eenheid arriveert op uw locatie!',
+		['offduty'] = 'Offduty is niet ingesteld, controleer configbestand',
+		['alerts_turned_off'] = 'Meldingen uitgeschakeld!',
+		['alerts_turned_on'] = 'Meldingen ingeschakeld!',
+		['phone_number_copied'] = 'Telefoonnummer gekopieerd',
+		['unit_blips_turned_on'] = 'Eenheden worden nu getoond',
+		['unit_blips_turned_off'] = 'Eenheden worden nu verborgen',
+		['call_blips_turned_on'] = 'Oproep blips getoond',
+		['call_blips_turned_off'] = 'Oproep blips verborgen',
+		['callsign_changed'] = 'Call sign gewijzigd',
+		['no_permission'] = 'Je hebt geen toestemming!',
+		['callsign_char_long'] = 'Teveel tekens! Maximaal 3',
+		['accepted'] = 'Geaccepteerd',
+		['active_units_error'] = 'Kan oproep niet verwijderen met actieve eenheden',
+		['cant_accept_call'] = 'Kan oproep niet accepteren omdat deze is verwijderd'
 	},
+
 
 	Sprite = { -- Vehicle blip sprite by class
 		[0] = 225,
