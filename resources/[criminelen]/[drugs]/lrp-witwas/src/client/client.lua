@@ -115,7 +115,7 @@ AddEventHandler('exios-witwas:client:started:cleaning', function()
             sleep = 0
             ESX.Game.Utils.DrawMarker(location['coords'], 2, 0.2, 33, 176, 23)
             if dist <= 3.0 and not IsPedInAnyVehicle(PlayerPedId(), false) and not isWashing then
-                exports['lrp-interaction']:Interaction('success', '[E] - Klop aan bij deur', location['coords'], 1.0, GetCurrentResourceName())
+                exports['frp-interaction']:Interaction('success', '[E] - Klop aan bij deur', location['coords'], 1.0, GetCurrentResourceName())
                 if IsControlJustPressed(0, 38) then
                     ClearPedTasks(PlayerPedId())
                     isWashing = true

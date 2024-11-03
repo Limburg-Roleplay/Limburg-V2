@@ -101,11 +101,11 @@ startInteraction = function(messagetype, description, coords, dist, resourcename
     end
 end
 
-RegisterNetEvent('lrp-interaction:client:interaction')
-AddEventHandler('lrp-interaction:client:interaction', startInteraction)
+RegisterNetEvent('frp-interaction:client:interaction')
+AddEventHandler('frp-interaction:client:interaction', startInteraction)
 
-RegisterNetEvent('lrp-interaction:client:clear:table')
-AddEventHandler('lrp-interaction:client:clear:table', function(resourcename)
+RegisterNetEvent('frp-interaction:client:clear:table')
+AddEventHandler('frp-interaction:client:clear:table', function(resourcename)
     timeout[resourcename] = {true}
 
     if interactions[resourcename] then

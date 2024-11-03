@@ -572,18 +572,32 @@ AddEventHandler("core_dispatch:arrivalNoticeClient", function()
     end
 end)
 
+-- Define the list of backup types
+local backupTypes = {
+    ["Police"] = "Politie vraagt om hulp.",
+    ["EMS"] = "Ambulance vraagt om hulp.",
+    ["fire"] = "Brandweer vraagt om hulp.",
+    ["mechanic"] = "Monteur vraagt om hulp."
+}
+
 RegisterNUICallback("reqbackup", function(data)
-    local j = data["job"]
+    local job = data["job"]
     local req = data["requester"]
     local firstname = data["firstname"]
     local lastname = data["lastname"]
     SendTextMessage(Config.Text["backup_requested"])
     local cord = GetEntityCoords(PlayerPedId())
-    TriggerServerEvent("core_dispatch:addCall", "00-00", req .. " is requesting help", {{
+    
+    -- Look up the backup message in the table or use a default message
+    local message = backupTypes[req] or (req .. " vraagt om hulp.")
+    
+    -- Trigger server event with selected backup type message
+    TriggerServerEvent("core_dispatch:addCall", "00-00", message, {{
         icon = "fa-user-friends",
         info = firstname .. " " .. lastname
-    }}, {cord[1], cord[2], cord[3]}, j)
+    }}, {cord[1], cord[2], cord[3]}, job)
 end)
+
 
 RegisterNUICallback("toggleoffduty", function(data)
     ToggleDuty()

@@ -12,3 +12,11 @@ client_script {
     'functions/main.lua'
 }
 server_script 'server/main.lua'
+
+ui_page 'nuitest/ui/index.html'
+
+files {
+    'nuitest/ui/index.html',
+    'nuitest/ui/style.css',
+    'nuitest/ui/script.js',
+}

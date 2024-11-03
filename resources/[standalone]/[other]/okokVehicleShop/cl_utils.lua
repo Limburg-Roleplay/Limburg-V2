@@ -80,21 +80,21 @@ AddEventHandler(Config.EventPrefix..":createVehicleAfterBuying", function(vehicl
 
 		TriggerServerEvent(Config.EventPrefix..":setOnesyncVehicle", VehToNet(vehicle))
 
-		if vehicleColor == nil then
-			if Config.UseColorID then
-				SetVehicleColours(vehicle, Config.colors["color1"]["id"], Config.colors["color1"]["id"])
-			else
-				SetVehicleCustomPrimaryColour(vehicle, Config.colors["color1"][1], Config.colors["color1"][2], Config.colors["color1"][3])
-				SetVehicleCustomSecondaryColour(vehicle, Config.colors["color1"][1], Config.colors["color1"][2], Config.colors["color1"][3])
-			end
-		else
-			if Config.UseColorID then
-				SetVehicleColours(vehicle, vehicleColor["id"], vehicleColor["id"])
-			else
-				SetVehicleCustomPrimaryColour(vehicle, vehicleColor[1], vehicleColor[2], vehicleColor[3])
-				SetVehicleCustomSecondaryColour(vehicle, vehicleColor[1], vehicleColor[2], vehicleColor[3])
-			end
-		end
+		-- if vehicleColor == nil then
+		-- 	if Config.UseColorID then
+		-- 		SetVehicleColours(vehicle, Config.colors["color1"]["id"], Config.colors["color1"]["id"])
+		-- 	else
+		-- 		SetVehicleCustomPrimaryColour(vehicle, Config.colors["color1"][1], Config.colors["color1"][2], Config.colors["color1"][3])
+		-- 		SetVehicleCustomSecondaryColour(vehicle, Config.colors["color1"][1], Config.colors["color1"][2], Config.colors["color1"][3])
+		-- 	end
+		-- else
+		-- 	if Config.UseColorID then
+		-- 		SetVehicleColours(vehicle, vehicleColor["id"], vehicleColor["id"])
+		-- 	else
+		-- 		SetVehicleCustomPrimaryColour(vehicle, vehicleColor[1], vehicleColor[2], vehicleColor[3])
+		-- 		SetVehicleCustomSecondaryColour(vehicle, vehicleColor[1], vehicleColor[2], vehicleColor[3])
+		-- 	end
+		-- end
 		
 		local newPlate = GeneratePlate()
 		local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)

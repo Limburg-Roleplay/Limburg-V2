@@ -886,7 +886,7 @@ Citizen.CreateThread(function()
                     if dist then
                         ESX.DrawBasicMarker(gangCoords, 50, 50, 204)
                         if dist2 then
-                            exports['lrp-interaction']:Interaction({ r = '0', g = '74', b = '154' },
+                            exports['frp-interaction']:Interaction({ r = '0', g = '74', b = '154' },
                                 '[E] - Open Gang Menu', gangCoords, 2.5,
                                 GetCurrentResourceName() .. '-action-' .. tostring(k))
                             if IsControlJustReleased(1, 38) then
@@ -1692,7 +1692,7 @@ Citizen.CreateThread(function()
                     sleep = 0
                     ESX.DrawBasicMarker(gangData[1].coordsbossmenu, 255, 0, 0)
                     if dist < 2.5 then
-                        exports['lrp-interaction']:Interaction('error', '[E] - Boss Menu ', gangData[1].coordsbossmenu,
+                        exports['frp-interaction']:Interaction('error', '[E] - Boss Menu ', gangData[1].coordsbossmenu,
                             2.5, GetCurrentResourceName() .. '-action-' .. tostring(gangName))
                         if IsControlJustReleased(1, 38) then
                             Citizen.Wait(100)
@@ -1717,7 +1717,7 @@ Citizen.CreateThread(function()
                     sleep = 0
                     ESX.DrawBasicMarker(gangData[1].coordsbossmenu, 255, 0, 0)
                     if dist < 2.5 then
-                        exports['lrp-interaction']:Interaction('error', '[E] - Boss Menu ', gangData[1].coordsbossmenu,
+                        exports['frp-interaction']:Interaction('error', '[E] - Boss Menu ', gangData[1].coordsbossmenu,
                             2.5, GetCurrentResourceName() .. '-action-' .. tostring(gangName))
                         if IsControlJustReleased(1, 38) then
                             Citizen.Wait(100)

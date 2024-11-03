@@ -13,7 +13,7 @@ Config.Setup = {
 
 --------//////////Dit zijn de script namen die de anwbjob nodig heeft dus als je resource renamt dan moet je het ook hier veranderen\\\\\\\\\\--------
 Config.Notify = 'lrp-notifications'
-Config.interaction = 'lrp-interaction'
+Config.interaction = 'frp-interaction'
 Config.Jobsmenu = 'lrp-jobsmenu'
 Config.Carkeys = 'lrp-carkeys'
 Config.Benzine = 'lrp-benzine'

@@ -50,7 +50,7 @@ Citizen.CreateThread(function()
 
                 if dist < 2.5 then
                     if not IsPedInAnyVehicle(PlayerPedId(), false) then
-                        exports['lrp-interaction']:Interaction('info', isRented and '[E] - Breng je voertuig terug' or '[E] - Huur een voertuig', Config.Locations[i]['coords'], 2.5, GetCurrentResourceName())
+                        exports['frp-interaction']:Interaction('info', isRented and '[E] - Breng je voertuig terug' or '[E] - Huur een voertuig', Config.Locations[i]['coords'], 2.5, GetCurrentResourceName())
                         if IsControlJustReleased(0, 38) then
                             if not isRented then
                                 LRP.OpenHireMenu(i)
@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
                             end
                         end
                     elseif isRented then
-                        exports['lrp-interaction']:Interaction('info', '[E] - Breng je voertuig terug', Config.Locations[i]['coords'], 2.5, GetCurrentResourceName())
+                        exports['frp-interaction']:Interaction('info', '[E] - Breng je voertuig terug', Config.Locations[i]['coords'], 2.5, GetCurrentResourceName())
                         if IsControlJustReleased(0, 38) then
                             LRP.BringBackVoertuig(i)
                         end

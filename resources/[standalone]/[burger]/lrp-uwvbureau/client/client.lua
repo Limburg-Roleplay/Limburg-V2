@@ -42,7 +42,7 @@ Citizen.CreateThread(function()
                 sleep = 0
                 ESX.Game.Utils.DrawMarker(Config.Locations[i].coords, 2, 0.2, 224, 148, 25)
                 if dist < 2.5 then
-                    exports['lrp-interaction']:Interaction('info', '[E] - Bekijk UWV banen', Config.Locations[i]['coords'], 2.5, GetCurrentResourceName())
+                    exports['frp-interaction']:Interaction('info', '[E] - Bekijk UWV banen', Config.Locations[i]['coords'], 2.5, GetCurrentResourceName())
                     if IsControlJustReleased(0, 38) then
                         LRP.OpenUWV()
                     end

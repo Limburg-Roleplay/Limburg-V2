@@ -6,6 +6,7 @@
   <title>FiveM NUI</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Voeg jQuery toe -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,86 +16,251 @@
       <!-- Navigatiebalk -->
       <div id="navbar">
         <i class="fa-solid fa-user" onclick="showPage('home')"></i>
-        <i class="fa-solid fa-user" onclick="showPage('page1')"></i>
-        <i class="fa-solid fa-user" onclick="showPage('page2')"></i>
-        <i class="fa-solid fa-user" onclick="showPage('page3')"></i>
+        <i class="fa-solid fa-truck-fast" onclick="showPage('page1')"></i> <!-- Dit toont pagina 1 -->
+        <i class="fa-solid fa-truck" onclick="showPage('page2')"></i> <!-- Dit toont pagina 2 -->
+        <i class="fa-solid fa-money-check-dollar" onclick="showPage('page3')"></i> <!-- Dit toont pagina 3 -->
         <i class="fa-solid fa-xmark" onclick="closeNUI()"></i>
-      </div>
+    </div>
+    
       <!-- Hoofdinhoud -->
-        <div id="content">
-            <h2>Trucker Job</h2> <!-- H2 hier -->
-            <div id="grid"> <!-- Grid voor de vakken -->
-            <div class="grid-item">
-                <p class="stats-p">€5252</p>
-                <p class="item-p">Geld</p>
+      <div id="content">
+        <div id="home" class="page">
+            <h2>Trucker Job</h2> 
+            <div id="grid">
+                <div class="grid-item">
+                    <p class="stats-p">€5252</p>
+                    <p class="item-p">Geld</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">€13043</p>
+                    <p class="item-p">Totaal verdiend geld</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">11</p>
+                    <p class="item-p">Voltooide Leveringen</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">23,2km</p>
+                    <p class="item-p">Afgelegde Afstand</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">183</p>
+                    <p class="item-p">Totaal verdiend XP</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">0</p>
+                    <p class="item-p">Vaardigheidspunten</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">1</p>
+                    <p class="item-p">Trucks</p>
+                </div>
+                <div class="grid-item">
+                    <p class="stats-p">1</p>
+                    <p class="item-p">Chauffeurs</p>
+                </div>
             </div>
-            <div class="grid-item">
-                <p class="stats-p">€13043</p>
-                <p class="item-p">Totaal verdiend geld</p>
+          <div id="topdrivers">
+            <h3>Top Chauffeurs</h3>
+            <p class="topdriversinfo">De top 10 chauffeurs van Limburg!</p>
+            <div class="topdriver">
+                <p class="drivername">Matthijs Jansen</p>
+                <p class="driverstats">Afgelegde afstand: 2.123km</p>
             </div>
-            <div class="grid-item">
-                <p class="stats-p">11</p>
-                <p class="item-p">Voltooide Leveringen</p>
+            <div class="topdriver">
+                <p class="drivername">Matthijs Jansen</p>
+                <p class="driverstats">Afgelegde afstand: 2.123km</p>
             </div>
-            <div class="grid-item">
-                <p class="stats-p">23,2km</p>
-                <p class="item-p">Afgelegde Afstand</p>
+            <div class="topdriver">
+                <p class="drivername">Matthijs Jansen</p>
+                <p class="driverstats">Afgelegde afstand: 2.123km</p>
             </div>
-            <div class="grid-item">
-                <p class="stats-p">183</p>
-                <p class="item-p">Totaal verdiend XP</p>
+          </div>
+        </div>
+
+        <!-- Pagina 1 -->
+        <div id="page1" class="page">
+            <div class="page1-info">
+                <h2 id="page-titel">Snelle Leveringen</h2>
+                <p id="page-info">Hier vind je de snelle opdrachten, je krijgt een mooie truck en zal wat minder verdienen zonder je eigen vrachtwagen.</p>
             </div>
-            <div class="grid-item">
-                <p class="stats-p">0</p>
-                <p class="item-p">Vaardigheidspunten</p>
+                <div id="opdracht-grid">
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering"  onclick="startLevering()">Start Leveringg</button>
+                            <button class="startingroup" onclick="startLevering()">Start in Groep</button>
+                        </div>
+                    </div>
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                        </div>
+                    </div>
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                        </div>
+                    </div>
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Pagina 2 -->
+        <div id="page2" class="page">
+            <div class="page1-info">
+                <h2 id="page-titel">Vracht Leveringen</h2>
+                <p id="page-info">Hier vind je de vracht opdrachten met je eigen truck. Verdien meer door de bonus en langere afstanden te rijden.</p>
             </div>
-            <div class="grid-item">
-                <p class="stats-p">1</p>
-                <p class="item-p">Trucks</p>
-            </div>
-            <div class="grid-item">
-                <p class="stats-p">1</p>
-                <p class="item-p">Chauffeurs</p>
+                <div id="opdracht-grid">
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                        </div>
+                    </div>
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                        </div>
+                    </div>
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                        </div>
+                    </div>
+                    <div class="opdracht-grid-item">
+                        <img src="./assets/vrachtwagen.png" alt="vrachtwagen" class="vrachtwagen-img">
+                        <div class="opdracht-details">
+                            <p class="opdracht-grid-item-titel">Transport Ajax Shirts</p>
+                            <p class="opdracht-grid-item-description">Afstand: 5,03km</p>
+                            <p class="opdracht-grid-item-description">Beloning: €3.235</p>
+                        </div>
+                        <div class="opdracht-buttons">
+                            <button class="startlevering">Start Levering</button>
+                            <button class="startingroup">Start in Groep</button>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
+
+        <!-- Pagina 3 -->
+        <div id="page3" class="page">
+            <div class="page1-info">
+                <h2 id="page-titel">Bank</h2>
+                <p id="page-info">Bekijk hier je bank gegevens en neem je geld op of stort het!</p>
+            </div>
+            <div class="bankinfo">
+                <img src="/assets/moneybag.png" alt="">
+                <h3>€533</h3>
+            <div class="bankbuttons">
+                <button class="storten">Storten</button>
+                <button class="opnemen">Opnemen</button>
+            </div>
+            </div>
+        </div>
+
+      </div>    
     </div>
   </div>
-  
-  
 
   <script>
     // Ontvang berichten vanuit het client.lua script
+    // Ontvang berichten vanuit het client.lua script
     window.addEventListener('message', function(event) {
-        if (event.data.action === "show") {
-            document.getElementById("overlay").style.display = "flex"; // Maak de overlay zichtbaar
-            showPage('home'); // Open standaard de hoofdpagina
-        } else if (event.data.action === "hide") {
-            document.getElementById("overlay").style.display = "none"; // Verberg de overlay
-        }
-    });
+    if (event.data.action === "show") {
+        document.getElementById("overlay").style.display = "flex"; // Maak de overlay zichtbaar
+        showPage('home'); // Open standaard de hoofdpagina
+    } else if (event.data.action === "hide") {
+        document.getElementById("overlay").style.display = "none"; // Verberg de overlay
+    }
+});
 
-    // Functie om de NUI te sluiten
+
+    // Functie om de NUI te sluiten en terug te sturen naar client.lua
     function closeNUI() {
-        fetch(`https://${GetParentResourceName()}/closeNUI`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=UTF-8'
-            },
-            body: JSON.stringify({})
-        });
+      fetch(`https://${GetParentResourceName()}/closeNUI`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify({})
+      });
     }
 
     // Functie om de gewenste pagina te tonen
     function showPage(pageId) {
-        // Verberg alle pagina's
-        document.querySelectorAll('.page').forEach(page => {
-            page.style.display = 'none';
-        });
-        // Toon de geselecteerde pagina
-        document.getElementById(pageId).style.display = 'block';
+      // Verberg alle pagina's
+      document.querySelectorAll('.page').forEach(page => {
+        page.style.display = 'none';
+      });
+      // Toon de geselecteerde pagina
+      document.getElementById(pageId).style.display = 'block';
     }
-</script>
+
+    document.querySelector('.startlevering').addEventListener('click', function() {
+    console.log('Knop geklikt!');  // Debug log
+    startLevering();
+});
+
+function startLevering() {
+    $.post('http://nuitest/startLevering', JSON.stringify({}), function(response) {
+        console.log('Response van server:', response);  // Log de server response
+    });
+}
+
+  </script>
+
 
 </body>
 </html>

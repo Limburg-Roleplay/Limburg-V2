@@ -3,8 +3,8 @@
 ---------------------------------------------------------------
 
 closeMenu = function()
-    RenderScriptCams(false, false, 0, true, true)
-    DestroyAllCams(true)
+    -- RenderScriptCams(false, false, 0, true, true)
+    -- DestroyAllCams(true)
     DisplayRadar(true)
     SetNuiFocus(false, false)
     SetEntityInvincible(PlayerPedId(), false)

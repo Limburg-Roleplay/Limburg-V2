@@ -106,7 +106,7 @@ AddEventHandler("loodsen:openMenu", function(markerLocation, loodsId)
                 function(data, menu)
                     if data.current.value == "enter" then
                         local teleportLocation = Config.InsideLoods
-                        exports["lrp-interaction"]:clearInteraction()
+                        exports["frp-interaction"]:clearInteraction()
                         DoScreenFadeOut(400)
                         Citizen.Wait(500)
                         SetEntityHeading(PlayerPedId(), teleportLocation.w)
@@ -125,7 +125,7 @@ AddEventHandler("loodsen:openMenu", function(markerLocation, loodsId)
                         Citizen.Wait(500)
                         DoScreenFadeIn(500)
 
-                        exports["lrp-interaction"]:clearInteraction()
+                        exports["frp-interaction"]:clearInteraction()
                     elseif data.current.value == "sell" then
                         ESX.UI.Menu.Open(
                             "default",
@@ -213,7 +213,7 @@ Citizen.CreateThread(
                         y = Config.LeaveLocation.y,
                         z = Config.LeaveLocation.z
                     }
-                    exports["lrp-interaction"]:Interaction(
+                    exports["frp-interaction"]:Interaction(
                         {r = "255", g = "0", b = "0"},
                         "[E] - Loods verlaten",
                         Config.LeaveLocation,
@@ -225,7 +225,7 @@ Citizen.CreateThread(
                         TriggerEvent("loodsen:showLeaveMenu")
                     end
                 else
-                    exports["lrp-interaction"]:clearInteraction()
+                    exports["frp-interaction"]:clearInteraction()
                 end
             end
 
@@ -262,7 +262,7 @@ Citizen.CreateThread(function()
                         currentMarker = loods.id
                         markerLocation = {x = location.x, y = location.y, z = location.z}
 
-                        exports["lrp-interaction"]:Interaction(
+                        exports["frp-interaction"]:Interaction(
                             {r = "0", g = "255", b = "0"},
                             "[E] - Loods menu",
                             location,
@@ -275,7 +275,7 @@ Citizen.CreateThread(function()
                             TriggerEvent("loodsen:openMenu", markerLocation, loods.id)
                         end
                     else
-                        exports["lrp-interaction"]:clearInteraction()
+                        exports["frp-interaction"]:clearInteraction()
                     end
                 end
             end
@@ -561,7 +561,7 @@ AddEventHandler(
     function(senderRouting)
         local teleportLocation = vector3(1065.8849, -3183.4270, -39.1635)
         local heading = 175.9785
-        exports["lrp-interaction"]:clearInteraction()
+        exports["frp-interaction"]:clearInteraction()
         DoScreenFadeOut(400)
         Citizen.Wait(500)
         SetEntityHeading(PlayerPedId(), heading)
@@ -580,7 +580,7 @@ AddEventHandler(
         Citizen.Wait(500)
         DoScreenFadeIn(500)
 
-        exports["lrp-interaction"]:clearInteraction()
+        exports["frp-interaction"]:clearInteraction()
     end
 )
 

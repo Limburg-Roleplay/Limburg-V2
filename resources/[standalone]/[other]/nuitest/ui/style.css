@@ -1,165 +1,324 @@
 /* Reset marges en body-instellingen */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  /* Overlay-styling */
-  #overlay {
-    display: none; /* Verberg overlay standaard */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Donkere overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* NUI-container */
-  #nui {
-    width: 80vw;
-    height: 80vh;
-    background-color: #333;
-    color: white;
-    display: flex;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Navigatiebalk-styling */
-  #navbar {
-    width: 60px;
-    background-color: #222;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly; /* Gelijkmatige verdeling van de iconen */
-    padding: 20px 0; /* Boven- en onderruimte voor gelijkmatige afstand */
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-  
-  #navbar i {
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    transition: color 0.2s ease;
-    margin: 0; /* Verwijder marge tussen iconen */
-  }
-  
-  
-  #navbar i:hover {
-    color: #aaa;
-  }
-  
-  /* Hoofdinhoud-styling */
-  /* Content-styling */
-  #content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background: rgba(56, 55, 55, 0.8); /* Achtergrondkleur met opacity */
-    border-radius: 10px; /* Randen afronden (optioneel) */
-  }
-  
-  /* Titel bovenaan in #content */
-  #content h2 {
-    font-size: 40px;
-    color: rgb(255, 255, 255); /* Kleur van de tekst */
-    margin-bottom: 20px;
-    text-align: left;
-  }
-  
-  /* Raster-instellingen: vult rest van #content */
-  #grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 kolommen */
-    grid-template-rows: repeat(2, 1fr); /* 2 rijen */
-    gap: 10px; /* Ruimte tussen de vakjes */
-  }
-  
-  /* Stijl voor elk vakje */
-  .grid-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #444; /* Achtergrondkleur van de vakjes */
-    color: white;
-    border-radius: 5px;
-    height: 15vh; /* Minimale hoogte voor elk vakje */
-    padding: 20px;
-  }
-  
-  .stats-p {
-    color: rgba(255, 255, 255, 0.767);
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 40px;
-    text-align: left;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .grid-item:nth-of-type(1) .stats-p {
-        color: rgba(89, 219, 180, 0.767); /* Eerste stats-p binnen de eerste grid-item */
-    }
-    .grid-item:nth-of-type(2) .stats-p {
-        color: rgba(89, 219, 180, 0.767); /* Eerste stats-p binnen de eerste grid-item */
-    }
-    .grid-item:nth-of-type(3) .stats-p {
-        color: rgba(0, 255, 255, 0.767); /* Tweede stats-p binnen de tweede grid-item */
-    }
-    .grid-item:nth-of-type(4) .stats-p {
-        color: rgba(0, 255, 255, 0.767); /* Tweede stats-p binnen de tweede grid-item */
-    }
-    .grid-item:nth-of-type(5) .stats-p {
-        color: rgba(255, 136, 0, 0.767); /* Tweede stats-p binnen de tweede grid-item */
-    }
-    .grid-item:nth-of-type(6) .stats-p {
-        color: rgba(255, 136, 0, 0.767); /* Tweede stats-p binnen de tweede grid-item */
-    }
-    .grid-item:nth-of-type(7) .stats-p {
-        color: rgba(47, 236, 250, 0.767); /* Tweede stats-p binnen de tweede grid-item */
-    }
-    .grid-item:nth-of-type(8) .stats-p {
-        color: rgba(47, 236, 250, 0.767); /* Tweede stats-p binnen de tweede grid-item */
-    }
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Overlay-styling */
+#overlay {
+  display: none; /* Verberg overlay standaard */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Donkere overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NUI-container */
+#nui {
+  width: 80vw;
+  height: 80vh;
+  background-color: #333;
+  color: white;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigatiebalk-styling */
+#navbar {
+  width: 60px;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly; /* Gelijkmatige verdeling van de iconen */
+  padding: 20px 0; /* Boven- en onderruimte voor gelijkmatige afstand */
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#navbar i {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  margin: 0; /* Verwijder marge tussen iconen */
+}
 
 
+#navbar i:hover {
+  color: #aaa;
+}
 
-  .item-p {
-    color: rgba(255, 255, 255, 0.801);
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 21px;
+/* Hoofdinhoud-styling */
+/* Content-styling */
+#content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: rgba(56, 55, 55, 0.8); /* Achtergrondkleur met opacity */
+  border-radius: 10px; /* Randen afronden (optioneel) */
+  overflow-y: scroll;
+}
+
+/* Titel bovenaan in #content */
+#content h2 {
+  font-size: 40px;
+  color: rgb(255, 255, 255); /* Kleur van de tekst */
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Raster-instellingen: vult rest van #content */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 kolommen */
+  grid-template-rows: repeat(2, 1fr); /* 2 rijen */
+  gap: 10px; /* Ruimte tussen de vakjes */
+}
+
+/* Stijl voor elk vakje */
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #444; /* Achtergrondkleur van de vakjes */
+  color: white;
+  border-radius: 5px;
+  height: 15vh; /* Minimale hoogte voor elk vakje */
+  padding: 20px;
+}
+
+.stats-p {
+  color: rgba(255, 255, 255, 0.767);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  text-align: left;
+}
+
+  .grid-item:nth-of-type(1) .stats-p {
+      color: rgba(89, 219, 180, 0.767); /* Eerste stats-p binnen de eerste grid-item */
   }
-  
-  .page {
-    display: none; /* Verberg pagina's standaard */
+  .grid-item:nth-of-type(2) .stats-p {
+      color: rgba(89, 219, 180, 0.767); /* Eerste stats-p binnen de eerste grid-item */
   }
-  
-  button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  .grid-item:nth-of-type(3) .stats-p {
+      color: rgba(0, 255, 255, 0.767); /* Tweede stats-p binnen de tweede grid-item */
   }
-  
-  button:hover {
-    background-color: #777;
+  .grid-item:nth-of-type(4) .stats-p {
+      color: rgba(0, 255, 255, 0.767); /* Tweede stats-p binnen de tweede grid-item */
   }
-  
+  .grid-item:nth-of-type(5) .stats-p {
+      color: rgba(255, 136, 0, 0.767); /* Tweede stats-p binnen de tweede grid-item */
+  }
+  .grid-item:nth-of-type(6) .stats-p {
+      color: rgba(255, 136, 0, 0.767); /* Tweede stats-p binnen de tweede grid-item */
+  }
+  .grid-item:nth-of-type(7) .stats-p {
+      color: rgba(47, 236, 250, 0.767); /* Tweede stats-p binnen de tweede grid-item */
+  }
+  .grid-item:nth-of-type(8) .stats-p {
+      color: rgba(47, 236, 250, 0.767); /* Tweede stats-p binnen de tweede grid-item */
+  }
+
+.item-p {
+  color: rgba(255, 255, 255, 0.801);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 21px;
+}
+
+#topdrivers {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+}
+
+#topdrivers h3 {
+  font-size: 25px;
+  color: white;
+  margin: 0;
+}
+
+.topdriversinfo {
+  font-size: 16px;
+  color: white;
+  margin: 0;
+}
+
+.topdriver {
+  background-color:  #444;
+  padding: 10px;
+}
+
+.drivername {
+  font-size: 22px;
+  color: white;
+  margin: 0;
+}
+
+.driverstats {
+  font-size: 15px;
+  color: white;
+  margin: 0;
+}
+
+.page {
+  display: none; /* Verberg alle pagina's standaard */
+}
+
+button:hover {
+  background-color: #777;
+}
+
+/* page 1 */
+
+#page1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Zorg ervoor dat het de volledige hoogte van de container gebruikt */
+}
+#page-titel {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 1px;
+}
+
+#page-info {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+#opdracht-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.opdracht-grid-item {
+  display: flex;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  background-color: #424D51;
+}
+
+.vrachtwagen-img {
+  width: auto; /* Pas de breedte aan zoals gewenst */
+  height: 100px; /* Zorg ervoor dat de hoogte automatisch is */
+  margin-right: 15px; /* Ruimte tussen de afbeelding en de tekst */
+}
+
+.opdracht-details {
+  display: flex; /* Maak de details een flex-container */
+  flex-direction: column; /* Zet de items in een kolom */
+  justify-content: center;
+  flex-grow: 1; /* Laat deze sectie groeien om ruimte in te nemen */
+}
+
+.opdracht-grid-item-titel {
+  font-size: 22px; /* Grootte van de titel */
+  color: white; /* Witte tekstkleur */
+  margin: 0; /* Verwijder standaardmarges */
+}
+
+.opdracht-grid-item-description {
+  font-size: 17px; /* Grootte van de beschrijving */
+  color: rgba(255, 255, 255, 0.8); /* Witte tekstkleur met lichte transparantie */
+  margin: 0; /* Verwijder standaardmarges */
+}
+
+.opdracht-buttons {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  align-items: center; /* Vertically center the buttons */
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 1em;
+}
+
+.startlevering, .startingroup {
+  height: 50px;
+  flex: 1; /* Allow buttons to grow and take available space */
+  padding: 15px; /* Padding for buttons */
+  cursor: pointer; /* Hand cursor for buttons */
+  border: none; /* Remove default border */
+  border-radius: 3px; /* Optional rounded corners */
+  color: white; /* White text color */
+}
+
+/* Specific background colors for buttons */
+.startlevering {
+  background-color: #007bff; /* Custom background color for start delivery */
+}
+
+.startingroup {
+  background-color: #4f5356; /* Custom background color for start in group */
+}
+
+/* PAGE 3 */
+
+.bankinfo {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #464F53;
+  padding:40px;
+}
+
+.bankinfo h3 {
+  font-size: 45px;
+  color: white;
+  margin: 0;
+}
+
+.bankinfo img {
+  height: 100px;
+  width: 100px;
+  margin-right: 1em;
+}
+
+.bankbuttons {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.bankinfo .storten {
+  background-color: #464F53;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 50px;
+  cursor: pointer;
+  border: 1px solid rgb(61, 114, 158);
+}
+
+.bankinfo .opnemen {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 50px;
+  border: 1px solid rgb(61, 114, 158);
+  cursor: pointer;
+}

@@ -95,7 +95,7 @@ CreateThread(function()
                         end
                     end
 
-                    exports['lrp-interaction']:Interaction({r = 130, g = 23, b = 23}, '[E] - ' .. vehLabel .. ' verkopen voor €' .. ESX.Math.Round(sellPrice), Shared.QuickSell.coords, 2.5, GetCurrentResourceName() .. '-action-quicksell')
+                    exports['frp-interaction']:Interaction({r = 130, g = 23, b = 23}, '[E] - ' .. vehLabel .. ' verkopen voor €' .. ESX.Math.Round(sellPrice), Shared.QuickSell.coords, 2.5, GetCurrentResourceName() .. '-action-quicksell')
                 
                     if IsControlJustReleased(0, 38) then
                         Exios.Functions.ConfirmQuickSellMenu(vehicle, vehLabel, sellPrice)

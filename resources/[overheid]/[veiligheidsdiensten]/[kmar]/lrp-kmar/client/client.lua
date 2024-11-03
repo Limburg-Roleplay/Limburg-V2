@@ -292,20 +292,20 @@ Citizen.CreateThread(function()
 								if v.drawText == 'Voertuig wegzetten' or v.drawText == 'Impound' then
 									if v.deleteType == 'heli' then
 										if IsPedInAnyHeli(playerPed) then
-											exports['lrp-interaction']:Interaction('error', '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+											exports['frp-interaction']:Interaction('error', '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 											ESX.DrawBasicMarker(v.coords, 255, 0, 0)
 										end
 									elseif v.deleteType == 'boot' then
 										if IsPedInAnyBoat(playerPed) then
-											exports['lrp-interaction']:Interaction('error', '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+											exports['frp-interaction']:Interaction('error', '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 											ESX.DrawBasicMarker(v.coords, 255, 0, 0)
 										end
 									else
-										exports['lrp-interaction']:Interaction('error', '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+										exports['frp-interaction']:Interaction('error', '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 										ESX.DrawBasicMarker(v.coords, 255, 0, 0)
 									end
 								else
-									exports['lrp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+									exports['frp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 									ESX.DrawBasicMarker(v.coords, 0, 74, 154)
 								end
 								if IsControlJustReleased(0, 38) then
@@ -329,7 +329,7 @@ Citizen.CreateThread(function()
 					elseif dist < 1.0 then
 						sleep = 0
 						if v.drawText ~= nil then
-							exports['lrp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+							exports['frp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 							ESX.DrawBasicMarker(v.coords, 0, 74, 154)
 							if IsControlJustReleased(0, 38) then
 								if v.type == nil then v.type = 'default' end
@@ -345,7 +345,7 @@ Citizen.CreateThread(function()
 					elseif dist < 1.0 then
 						sleep = 0
 						if v.drawText ~= nil then
-							exports['lrp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+							exports['frp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 							ESX.DrawBasicMarker(v.coords, 0, 74, 154)
 							if IsControlJustReleased(0, 38) then
 								if v.type == nil then v.type = 'default' end
@@ -367,7 +367,7 @@ Citizen.CreateThread(function()
 					elseif dist < 1.0 then
 						sleep = 0
 						if v.drawText ~= nil then
-							exports['lrp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
+							exports['frp-interaction']:Interaction({r = '0', g = '74', b = '154'}, '[E] - ' .. v.drawText, v.coords, 2.5, GetCurrentResourceName() .. '-action-' .. tostring(k))
 							ESX.DrawBasicMarker(v.coords, 0, 74, 154)
 							if IsControlJustReleased(0, 38) then
 								if v.type == nil then v.type = 'default' end

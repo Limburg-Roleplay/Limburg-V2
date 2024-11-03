@@ -96,7 +96,7 @@ Citizen.CreateThread(
 					sleep = 0
 					ESX.Game.Utils.DrawMarker(Config.Setup["Locations"][i]["Position"], 2, 0.2, 10, 78, 161)
 					if distance < 2.5 then
-						exports["lrp-interaction"]:Interaction(
+						exports["frp-interaction"]:Interaction(
 							"info",
 							"[E] - Rijschool",
 							Config.Setup["Locations"][i]["Position"],

@@ -171,9 +171,9 @@ Citizen.CreateThread(function()
 
 				if dist < 2.5 then
 					if OnDuty then
-						exports['lrp-interaction']:Interaction({r = tostring(Shared.Locations[i]['color'].r), g = tostring(Shared.Locations[i]['color'].g), b = tostring(Shared.Locations[i]['color'].b)}, '[E] - Uitklokken', Shared.Locations[i]['inklok']['coords'], 5.0, GetCurrentResourceName())
+						exports['frp-interaction']:Interaction({r = tostring(Shared.Locations[i]['color'].r), g = tostring(Shared.Locations[i]['color'].g), b = tostring(Shared.Locations[i]['color'].b)}, '[E] - Uitklokken', Shared.Locations[i]['inklok']['coords'], 5.0, GetCurrentResourceName())
 					else
-						exports['lrp-interaction']:Interaction({r = tostring(Shared.Locations[i]['color'].r), g = tostring(Shared.Locations[i]['color'].g), b = tostring(Shared.Locations[i]['color'].b)}, '[E] - Inklokken', Shared.Locations[i]['inklok']['coords'], 5.0, GetCurrentResourceName())
+						exports['frp-interaction']:Interaction({r = tostring(Shared.Locations[i]['color'].r), g = tostring(Shared.Locations[i]['color'].g), b = tostring(Shared.Locations[i]['color'].b)}, '[E] - Inklokken', Shared.Locations[i]['inklok']['coords'], 5.0, GetCurrentResourceName())
 					end
 					if IsControlJustReleased(0, 38) and not OnDuty then
 						local veh = GetVehiclePedIsIn(playerPed)
@@ -313,7 +313,7 @@ Citizen.CreateThread(function()
 				ESX.Game.Utils.DrawMarker(Shared.Locations[i]['verkoop']['coords'], 2, 0.2, Shared.Locations[i]['color'].r, Shared.Locations[i]['color'].g, Shared.Locations[i]['color'].b)
 
 				if dist2 < 2.5 then
-					exports['lrp-interaction']:Interaction({r = tostring(Shared.Locations[i]['color'].r), g = tostring(Shared.Locations[i]['color'].g), b = tostring(Shared.Locations[i]['color'].b)}, '[E] - Facturen verkopen', Shared.Locations[i]['verkoop']['coords'], 5.0, GetCurrentResourceName().."-verkoopfactuur")
+					exports['frp-interaction']:Interaction({r = tostring(Shared.Locations[i]['color'].r), g = tostring(Shared.Locations[i]['color'].g), b = tostring(Shared.Locations[i]['color'].b)}, '[E] - Facturen verkopen', Shared.Locations[i]['verkoop']['coords'], 5.0, GetCurrentResourceName().."-verkoopfactuur")
 					if IsControlJustReleased(0, 38) then
 						doingProgress = true
 						TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_CLIPBOARD", 0, 1)

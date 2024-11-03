@@ -384,7 +384,14 @@ function getCallSign(id) {
 }
 
 function OpenBase() {
-
+  let label = ""
+  if (jobInfo[job]?.label?.toUpperCase() == "EMS") {
+    label = 'AMBU'
+  } else if (jobInfo[job]?.label?.toUpperCase() == "POLICE") {
+    label = 'POLITIE'
+  } else if (jobInfo[job]?.label?.toUpperCase() == "MECH") {
+    label = 'PECH'
+  }
   var base = '   <div class="clearfix grpelem " id="pu1129"><!-- group -->' +
     '<div class="gradient"><div>' +
 
@@ -401,7 +408,7 @@ function OpenBase() {
     '   <div id="u1507" onclick ="toggleAlerts()"><i class="fas fa-bell-slash fa-lg"></i></div>' +
     '   <div id="u1513" onclick ="toggleUnitBlips()"><i class="fas fa-car fa-lg"></i><!-- simple frame --></div>' +
     '   <div class="rounded-corners clearfix" id="u1516-4"><!-- content -->' +
-    '    <p id="u1516-2">' + jobInfo[job]?.label?.toUpperCase() + '</p>' +
+    '    <p id="u1516-2">' + label + '</p>' +
     '   </div></div>' +
     '    <div class="rgba-background column" data-column="1" id="u1129"><!-- simple frame -->' +
     '<div style="margin-bottom: 40px;"></div>' +
@@ -410,7 +417,7 @@ function OpenBase() {
     '</div>' +
     '    <div class="rounded-corners" id="u1132"><!-- simple frame --></div>' +
     '    <div class="clearfix" id="u1135-4"><!-- content -->' +
-    '     <p>POLICE</p>' +
+    '     <p>Politie</p>' +
 
     '    </div>' +
 
@@ -427,7 +434,7 @@ function OpenBase() {
     '</div>' +
     '    <div class="rounded-corners" id="u1163"><!-- simple frame --></div>' +
     '    <div class="clearfix" id="u1164-4"><!-- content -->' +
-    '     <p>EMS</p>' +
+    '     <p>Ambulance</p>' +
     '    </div>' +
 
 
@@ -441,7 +448,7 @@ function OpenBase() {
     '</div>' +
     '    <div class="rounded-corners" id="u1196"><!-- simple frame --></div>' +
     '    <div class="clearfix" id="u1197-4"><!-- content -->' +
-    '     <p>MECHANICS</p>' +
+    '     <p>Pechhulp</p>' +
     '    </div>' +
 
     '   </div>';
@@ -735,43 +742,53 @@ window.oncontextmenu = function (event) {
       var col = currentElement.dataset.column;
 
       if (jobInfo[job].canRequestLocalBackup && col == jobInfo[job].column) {
-        html = html + '    <a onclick="requestBackup()">Request Backup</a>';
+        html = html + '    <a onclick="requestBackup()">Vraag ondersteuning</a>';
       }
       if (jobInfo[job].canRequestOtherJobBackup && col != jobInfo[job].column) {
-        html = html + '    <a onclick="requestBackup()">Request Backup</a>';
+        html = html + '    <a onclick="requestBackup()">Vraag ondersteuning</a>';
       }
 
 
     }
     else if (statusMenu) {
 
-      html = html + '    <a onclick="changeToBusy()">Change to busy</a>';
-      html = html + '    <a onclick="changeToPatrol()">Change to patrol</a>';
+      html = html + '    <a onclick="changeToBusy()">Verander status naar bezig</a>';
+      html = html + '    <a onclick="changeToPatrol()">Verander status naar beschikbaar</a>';
 
 
     }
     else {
       if (acceptedCall == '') {
-        html = html + '    <a onclick="acceptCall()">Accept Call</a>';
+        html = html + '    <a onclick="acceptCall()">Accepteer melding</a>';
         if (jobInfo[job].canRemoveCall) {
-          html = html + '    <a onclick="removeCall()">Remove Call</a>';
+          html = html + '    <a onclick="removeCall()">Verwijder melding</a>';
         }
       }
 
       if ($(element).hasClass('message')) {
-        html = html + '    <a onclick="copyNumber()">Copy number</a>';
+        html = html + '    <a onclick="copyNumber()">Kopieer nummer</a>';
       }
 
       if (acceptedCall != '' && acceptedCall == $(element).attr('id')) {
         html = html + '    <a onclick="dismissCall()">Dismiss Call</a>';
       }
-
-
+      
       for (const [key, value] of Object.entries(jobInfo)) {
-        if (key != job && jobInfo[job].forwardCall) {
-          html = html + '    <a onclick="forwardCall(' + value.column + ')">Forward ' + value.label + '</a>';
-        }
+          if (key !== job && jobInfo[job].forwardCall) {
+              let label = "";
+              if (value.label == 'Police') {
+                label = "Politie"
+              } else if(value.label = "Mech") {
+                label = "Pechhulp"
+              } else if(value.label = "EMS") {
+                label = "Ambulance"
+              }
+            
+              html += `<a onclick="forwardCall(${value.column})">Stuur door naar ${label}</a>`;
+          }
       }
+    
+    
 
 
     }

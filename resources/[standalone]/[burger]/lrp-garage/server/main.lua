@@ -1,6 +1,6 @@
 ESX = exports["es_extended"]:getSharedObject()
 
-ESX.RegisterServerCallback('lrp-garage:getMechanic', function(source, cb)
+ESX.RegisterServerCallback('frp-garage:getMechanic', function(source, cb)
 
     local xPlayers = ESX.GetPlayers()
     Mechanics = 0
@@ -16,7 +16,7 @@ ESX.RegisterServerCallback('lrp-garage:getMechanic', function(source, cb)
     SetTimeout(120 * 1000, mechanicss)
 end)
 
-ESX.RegisterServerCallback('lrp-garage:server:receive:vehicles', function(source, cb, bool)
+ESX.RegisterServerCallback('frp-garage:server:receive:vehicles', function(source, cb, bool)
     local ownedCars = {}
     local xPlayer = ESX.GetPlayerFromId(source)
     if bool == true then
@@ -58,7 +58,7 @@ ESX.RegisterServerCallback('lrp-garage:server:receive:vehicles', function(source
     end
 end)
 
-ESX.RegisterServerCallback('lrp-garage:server:receive:impoundvehicles', function(source, cb, bool)
+ESX.RegisterServerCallback('frp-garage:server:receive:impoundvehicles', function(source, cb, bool)
     local ownedCars = {}
     local xPlayer = ESX.GetPlayerFromId(source)
     if bool == true then
@@ -102,7 +102,7 @@ ESX.RegisterServerCallback('lrp-garage:server:receive:impoundvehicles', function
     end
 end)
 
-ESX.RegisterServerCallback('lrp-garage:server:allowed:to:spawn', function(source, cb, plate)
+ESX.RegisterServerCallback('frp-garage:server:allowed:to:spawn', function(source, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(source)
 
     MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
@@ -119,7 +119,7 @@ ESX.RegisterServerCallback('lrp-garage:server:allowed:to:spawn', function(source
     end)
 end)
 
-ESX.RegisterServerCallback('lrp-garage:server:is:deleting:allowed', function(source, cb, plate, veh, props)
+ESX.RegisterServerCallback('frp-garage:server:is:deleting:allowed', function(source, cb, plate, veh, props)
     local xPlayer = ESX.GetPlayerFromId(source)
     MySQL.Async.fetchAll('SELECT * FROM owned_vehicles WHERE owner = @owner AND plate = @plate', {
         ['@owner'] = xPlayer.getIdentifier(),
@@ -145,7 +145,7 @@ ESX.RegisterServerCallback('lrp-garage:server:is:deleting:allowed', function(sou
     end)
 end)
 
-ESX.RegisterServerCallback('lrp-garage:server:can:pay:impound', function(source, cb, plate)
+ESX.RegisterServerCallback('frp-garage:server:can:pay:impound', function(source, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(source)
     local price = Config.Prices['ImpoundPrice']
 
@@ -158,7 +158,7 @@ ESX.RegisterServerCallback('lrp-garage:server:can:pay:impound', function(source,
     end
 end)
 
-ESX.RegisterServerCallback('lrp-garage:server:can:pay:p:impound', function(source, cb, plate)
+ESX.RegisterServerCallback('frp-garage:server:can:pay:p:impound', function(source, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(source)
     local price = Config.Prices['PolitieImpound']
 
@@ -171,8 +171,8 @@ ESX.RegisterServerCallback('lrp-garage:server:can:pay:p:impound', function(sourc
     end
 end)
 
-RegisterServerEvent('lrp-garage:server:set:vehicle:state')
-AddEventHandler('lrp-garage:server:set:vehicle:state', function(state, plate, garage)
+RegisterServerEvent('frp-garage:server:set:vehicle:state')
+AddEventHandler('frp-garage:server:set:vehicle:state', function(state, plate, garage)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
 
@@ -188,8 +188,8 @@ AddEventHandler('lrp-garage:server:set:vehicle:state', function(state, plate, ga
     end)
 end)
 
-RegisterNetEvent('lrp-garage:server:garage:VehicleTransfer')
-AddEventHandler('lrp-garage:server:garage:VehicleTransfer', function(data, playerId)
+RegisterNetEvent('frp-garage:server:garage:VehicleTransfer')
+AddEventHandler('frp-garage:server:garage:VehicleTransfer', function(data, playerId)
     local xPlayer = ESX.GetPlayerFromId(source)
     if not xPlayer then return end
 
@@ -226,8 +226,8 @@ AddEventHandler('lrp-garage:server:garage:VehicleTransfer', function(data, playe
     -- TriggerClientEvent('lrp-notifications', tPlayer.source, 'success', 'Voertuig met kentekenplaat: ' ..s data.props.plate .. ' is overgeschreven!')
 end)
 
-RegisterNetEvent('lrp-garage:server:garage:VehicleRename')
-AddEventHandler('lrp-garage:server:garage:VehicleRename', function(data, nickname)
+RegisterNetEvent('frp-garage:server:garage:VehicleRename')
+AddEventHandler('frp-garage:server:garage:VehicleRename', function(data, nickname)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     MySQL.Async.fetchAll("SELECT * FROM owned_vehicles WHERE owner = @owner", {["@owner"] = xPlayer.getIdentifier()}, function(result)

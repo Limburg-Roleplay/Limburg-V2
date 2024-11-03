@@ -50,7 +50,7 @@ Citizen.CreateThread(function()
 				sleep = 0
 				ESX.Game.Utils.DrawMarker(washPos, 21, 0.2, 227, 173, 48)
 				if washDist < 2.5 and IsPedSittingInAnyVehicle(PlayerPedId()) and GetPedInVehicleSeat(GetVehiclePedIsIn(PlayerPedId(), false), -1) == PlayerPedId() then 
-					exports['lrp-interaction']:Interaction('success', '[E] - Voertuig wassen', washPos, 2.5, GetCurrentResourceName())
+					exports['frp-interaction']:Interaction('success', '[E] - Voertuig wassen', washPos, 2.5, GetCurrentResourceName())
 					if IsControlJustPressed(0, 38) then 
 						LRP.Functions.washVehicle()
 					end

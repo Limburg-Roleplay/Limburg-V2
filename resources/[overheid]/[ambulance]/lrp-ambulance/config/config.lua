@@ -31,7 +31,7 @@ Config.RespawnPoint = vector4(351.9720, -588.6777, 28.7968, 248.5847)
 
 --------//////////Dit zijn de script namen die de ambujob nodig heeft dus als je resource renamt dan moet je het ook hier veranderen\\\\\\\\\\--------
 Config.Notify = 'lrp-notifications'
-Config.interaction = 'lrp-interaction'
+Config.interaction = 'frp-interaction'
 Config.Jobsmenu = 'lrp-jobsmenu'
 Config.Carkeys = 'lrp-carkeys'
 Config.Benzine = 'lrp-benzine'

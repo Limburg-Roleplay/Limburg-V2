@@ -148,8 +148,6 @@ function start_route(route)
 		TriggerEvent('ry_truckerjob:start_route', 'route2')
 	elseif route == 'route3' then
 		TriggerEvent('ry_truckerjob:start_route', 'route3')
-	elseif route == 'route4' then
-		TriggerEvent('ry_truckerjob:start_route', 'route4')
 	end
 end
 
@@ -312,10 +310,5 @@ end)
 
 RegisterNetEvent('ry_truckerjob:route3')
 AddEventHandler('ry_truckerjob:route3', function(route)
-	start_route(route)
-end)
-
-RegisterNetEvent('ry_truckerjob:route4')
-AddEventHandler('ry_truckerjob:route4', function(route)
 	start_route(route)
 end)

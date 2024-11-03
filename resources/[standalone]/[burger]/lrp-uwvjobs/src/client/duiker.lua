@@ -80,7 +80,7 @@ startDuiker = function(number)
                 sleep = 0
                 ESX.Game.Utils.DrawMarker(Shared.Locations[number]['vehicle']['removeLocation'], 2, 0.2, Shared.Locations[number]['color'].r, Shared.Locations[number]['color'].g, Shared.Locations[number]['color'].b)
                 if #(coords - Shared.Locations[number]['vehicle']['removeLocation']) <= 2.0 and IsPedInAnyVehicle(PlayerPedId()) then 
-                    exports['lrp-interaction']:Interaction({r = tostring(Shared.Locations[number]['color'].r), g = tostring(Shared.Locations[number]['color'].g), b = tostring(Shared.Locations[number]['color'].b)}, '[E] - Zet voertuig weg', Shared.Locations[number]['vehicle']['removeLocation'], 2.0, GetCurrentResourceName())
+                    exports['frp-interaction']:Interaction({r = tostring(Shared.Locations[number]['color'].r), g = tostring(Shared.Locations[number]['color'].g), b = tostring(Shared.Locations[number]['color'].b)}, '[E] - Zet voertuig weg', Shared.Locations[number]['vehicle']['removeLocation'], 2.0, GetCurrentResourceName())
                     if IsControlJustPressed(0, 38) then 
                         local veh = GetVehiclePedIsIn(PlayerPedId())
                         local plate = ESX.Math.Trim(GetVehicleNumberPlateText(veh))
@@ -88,7 +88,7 @@ startDuiker = function(number)
                             pressedButton = true
                             ESX.TriggerServerCallback('exios-nonwhitelistedjobs:server:create:borg', function(bool)
                                 if bool then
-                                    exports['lrp-interaction']:clearInteraction()
+                                    exports['frp-interaction']:clearInteraction()
                                     pressedButton = false
                                 end
                             end, plate, GetVehicleEngineHealth(veh), NetworkGetNetworkIdFromEntity(veh))
@@ -108,7 +108,7 @@ startDuiker = function(number)
                         sleep = 0
                         ESX.Game.Utils.DrawMarker(Shared.Locations[number]['actions'][i].coords, 2, 0.2, Shared.Locations[number]['color'].r, Shared.Locations[number]['color'].g, Shared.Locations[number]['color'].b)
                         if dist < 1.5 then 
-                            exports['lrp-interaction']:Interaction({r = tostring(Shared.Locations[number]['color'].r), g = tostring(Shared.Locations[number]['color'].g), b = tostring(Shared.Locations[number]['color'].b)}, '[E] - Repareer wrak', Shared.Locations[number]['actions'][i].coords, 1.5, GetCurrentResourceName())
+                            exports['frp-interaction']:Interaction({r = tostring(Shared.Locations[number]['color'].r), g = tostring(Shared.Locations[number]['color'].g), b = tostring(Shared.Locations[number]['color'].b)}, '[E] - Repareer wrak', Shared.Locations[number]['actions'][i].coords, 1.5, GetCurrentResourceName())
                             if IsControlJustPressed(0, 38) and not Shared.Locations[number]['actions'][i].ready then 
                                 Shared.Locations[number]['actions'][i].ready = true
                                 exports['lrp-progressbar']:Progress({
@@ -174,7 +174,7 @@ startDuiker = function(number)
                             end
 
                             if not taken then
-                                exports['lrp-interaction']:Interaction({r = tostring(Shared.Locations[number]['color'].r), g = tostring(Shared.Locations[number]['color'].g), b = tostring(Shared.Locations[number]['color'].b)}, '[E] Pak spullen uit voertuig | [G] Gooi Anker in-/uit', vector3(TruckCoords.x, TruckCoords.y, TruckCoords.z + 1), 1.5, GetCurrentResourceName())
+                                exports['frp-interaction']:Interaction({r = tostring(Shared.Locations[number]['color'].r), g = tostring(Shared.Locations[number]['color'].g), b = tostring(Shared.Locations[number]['color'].b)}, '[E] Pak spullen uit voertuig | [G] Gooi Anker in-/uit', vector3(TruckCoords.x, TruckCoords.y, TruckCoords.z + 1), 1.5, GetCurrentResourceName())
                                 if IsControlJustReleased(0, 38) then
                                     Wait(1)
                                     taken = true

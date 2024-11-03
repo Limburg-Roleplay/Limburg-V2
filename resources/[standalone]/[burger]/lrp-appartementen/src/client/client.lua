@@ -75,7 +75,7 @@ CreateThread(function()
                 sleep = 0
                 ESX.DrawBasicMarker(Shared.Appartments[k]['appartmentCoords'])
                 if dist <= 2.5 then 
-                    exports['lrp-interaction']:Interaction('info', '[E] - Huis interacties', Shared.Appartments[k]['appartmentCoords'], 2.5, GetCurrentResourceName() .. '-appartments')
+                    exports['frp-interaction']:Interaction('info', '[E] - Huis interacties', Shared.Appartments[k]['appartmentCoords'], 2.5, GetCurrentResourceName() .. '-appartments')
                     if IsControlJustPressed(0, 38) then 
                         Exios.Functions.Interaction(k)
                     end
@@ -403,7 +403,7 @@ Exios.Functions.AppartmentHandler = function(index, modelName)
 
             if dist <= 1.5 then
                 if k == 'exit' then 
-                    exports['lrp-interaction']:Interaction('error', '[E] - Verlaten', totalCoords, 2.5, GetCurrentResourceName() .. '-appartments')
+                    exports['frp-interaction']:Interaction('error', '[E] - Verlaten', totalCoords, 2.5, GetCurrentResourceName() .. '-appartments')
                     if IsControlJustPressed(0, 38) then 
                         isInAppartment = false
                         TaskStartScenarioInPlace(PlayerPedId(), 'PROP_HUMAN_PARKING_METER', true, true)
@@ -414,7 +414,7 @@ Exios.Functions.AppartmentHandler = function(index, modelName)
                         TriggerServerEvent('td_logs:sendLog', 'https://discord.com/api/webhooks/1203502743642312745/wnF6oCPGXADIMuGfRrPqYDDnoQ1SfcXnfjelD_tVMGLrLDZjZ3-r5QNT3BhNqOVXlNbp', GetPlayerServerId(PlayerPedId()), {title = "Appartement verlaten", desc = "[".. GetPlayerServerId(PlayerPedId()) .."] ".. GetPlayerName(PlayerPedId()) .." heeft zojuist zijn appartement verlaten"})
                     end
                 elseif k == 'stash' then 
-                    exports['lrp-interaction']:Interaction('info', '[E] - Opslag', totalCoords, 2.5, GetCurrentResourceName() .. '-appartments')
+                    exports['frp-interaction']:Interaction('info', '[E] - Opslag', totalCoords, 2.5, GetCurrentResourceName() .. '-appartments')
                     if IsControlJustPressed(0, 38) then 
                         ESX.TriggerServerCallback('exios-appartments:server:open:stash', function(bool, stashName)
                             if not bool and not stashName then return end
@@ -422,7 +422,7 @@ Exios.Functions.AppartmentHandler = function(index, modelName)
                         end, index)
                     end
                 elseif k == 'clothing' then 
-                    exports['lrp-interaction']:Interaction('info', '[E] - Kleding', totalCoords, 2.5, GetCurrentResourceName() .. '-appartments')
+                    exports['frp-interaction']:Interaction('info', '[E] - Kleding', totalCoords, 2.5, GetCurrentResourceName() .. '-appartments')
                     if IsControlJustPressed(0, 38) then 
                         if not clothingContextRegistered then
                             local opts = {}

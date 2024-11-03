@@ -10,3 +10,7 @@ resources/Archive.zip
 resources/\[standalone]/\[jtm]/lrp-loadingscreen/loadingscreen/lrp.mp4
 txData/
 txData/default/data
+txData/default/data/stats_playerDrop.json
+txData/default/data/stats_svRuntime.json
+/txData/default/data
+resources/\[standalone\]/\[burger\]/lrp-loadingscreen/loadingscreen/lrp.mp4
